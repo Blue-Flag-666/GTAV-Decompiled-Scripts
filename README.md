@@ -6,6 +6,8 @@ If you don't want to decompile the scripts yourself you can find them in the fol
 
 Note that this is a git repository, so there is a history, if you want to look at older scripts.
 
+- Thanks to **Sainan**
+
 ## Doing it yourself
 
 1. Clone this repo.
