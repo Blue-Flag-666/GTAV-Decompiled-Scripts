@@ -19,7 +19,7 @@
 	int iLocal_17 = 0;
 #endregion
 
-void __EntryFunction__()
+void main() // Position - 0x0
 {
 	iLocal_2 = 1;
 	iLocal_3 = 134;
@@ -31,7 +31,8 @@ void __EntryFunction__()
 	iLocal_9 = 1;
 	iLocal_10 = 12;
 	iLocal_11 = 12;
-	fLocal_14 = 0,001f;
+	fLocal_14 = 0.001f;
 	iLocal_17 = -1;
+	return;
 }
 

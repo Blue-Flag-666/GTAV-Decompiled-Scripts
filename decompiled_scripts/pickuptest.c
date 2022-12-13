@@ -1,21 +1,22 @@
-void __EntryFunction__()
+void main() // Position - 0x0
 {
-	if (CAM::IS_SCREEN_FADED_OUT())
-	{
-		CAM::DO_SCREEN_FADE_IN(500);
-	}
-	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(18))
-	{
+	if (unk_0x72474BA05A104E1E())
+		unk_0x78DD793477D04C42(500);
+
+	if (unk_0x55EEDBBFDC6E810F(18))
 		func_1();
-	}
+
 	while (true)
 	{
 		SYSTEM::WAIT(0);
 	}
+
+	return;
 }
 
-void func_1()
+void func_1() // Position - 0x2F
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	unk_0x675D9C12C73D3DE7();
+	return;
 }
 

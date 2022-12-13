@@ -19,7 +19,7 @@
 	int iLocal_17 = 0;
 	var uLocal_18 = 0;
 	var uLocal_19 = 0;
-	char* sLocal_20 = NULL;
+	char* sLocal_20 = 0;
 	float fLocal_21 = 0f;
 	var uLocal_22 = 0;
 	var uLocal_23 = 0;
@@ -29,7 +29,7 @@
 	var uLocal_27 = 0;
 #endregion
 
-void __EntryFunction__()
+void main() // Position - 0x0
 {
 	iLocal_2 = 1;
 	iLocal_3 = 134;
@@ -41,94 +41,102 @@ void __EntryFunction__()
 	iLocal_9 = 1;
 	iLocal_10 = 12;
 	iLocal_11 = 12;
-	fLocal_14 = 0,001f;
+	fLocal_14 = 0.001f;
 	iLocal_17 = -1;
 	sLocal_20 = "NULL";
 	fLocal_21 = 0f;
-	fLocal_25 = -0,0375f;
-	fLocal_26 = 0,17f;
-	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(67))
+	fLocal_25 = -0.0375f;
+	fLocal_26 = 0.17f;
+
+	if (unk_0x55EEDBBFDC6E810F(67))
 	{
-		if (PLAYER::GET_CAUSE_OF_MOST_RECENT_FORCE_CLEANUP() != 2)
-		{
+		if (unk_0xC62B624C267237C2() != 2)
 			func_4(19);
-		}
+	
 		func_3();
 	}
+
 	func_2(19);
-	AUDIO::REGISTER_SCRIPT_WITH_AUDIO(1);
-	while (!AUDIO::LOAD_STREAM("CONSTRUCTION_SITE_STREAM", "FBI_HEIST_SOUNDSET"))
+	unk_0xD3EC2BD7C1DEA1A7(1);
+
+	while (!unk_0xF379D4FB3767B7FF("CONSTRUCTION_SITE_STREAM", "FBI_HEIST_SOUNDSET"))
 	{
 		SYSTEM::WAIT(0);
 	}
-	AUDIO::PLAY_STREAM_FROM_POSITION(-147f, -1005f, 28f);
+
+	unk_0x5B0B38F44494AF79(-147f, -1005f, 28f);
+
 	while (func_1(70))
 	{
 		SYSTEM::WAIT(0);
 	}
+
 	func_4(19);
 	func_3();
+	return;
 }
 
-int func_1(int iParam0)
+BOOL func_1(int iParam0) // Position - 0xB6
 {
 	if (iParam0 == 146 || iParam0 == -1)
-	{
-		return 0;
-	}
-	return Global_113386.f_9085.f_99.f_58[iParam0];
+		return false;
+
+	return Global_113648.f_9087.f_99.f_58[iParam0];
 }
 
-int func_2(int iParam0)
+int func_2(int iParam0) // Position - 0xE3
 {
-	int iVar0;
-	bool bVar1;
-	
+	int num;
+	int num2;
+
 	if (iParam0 <= 31)
 	{
-		iVar0 = 9;
-		bVar1 = iParam0;
+		num = 9;
+		num2 = iParam0;
 	}
 	else
 	{
-		iVar0 = 10;
-		bVar1 = (iParam0 - 32);
+		num = 10;
+		num2 = iParam0 - 32;
 	}
-	if (BitTest(Global_113386.f_9085.f_99.f_219[iVar0], bVar1))
-	{
+
+	if (IS_BIT_SET(Global_113648.f_9087.f_99.f_219[num], num2))
 		return 0;
-	}
-	MISC::SET_BIT(&(Global_113386.f_9085.f_99.f_219[iVar0]), bVar1);
+
+	unk_0xECDAB41968FF21A8(&Global_113648.f_9087.f_99.f_219[num], num2);
 	return 1;
 }
 
-void func_3()
+void func_3() // Position - 0x13A
 {
-	AUDIO::STOP_STREAM();
-	AUDIO::UNREGISTER_SCRIPT_WITH_AUDIO();
-	SCRIPT::TERMINATE_THIS_THREAD();
+	unk_0x0AED5D631A4A1C97();
+	unk_0xB68010349746BC3E();
+	unk_0x675D9C12C73D3DE7();
+	return;
 }
 
-int func_4(int iParam0)
+int func_4(int iParam0) // Position - 0x14E
 {
-	int iVar0;
-	bool bVar1;
-	
+	int num;
+	int num2;
+
 	if (iParam0 <= 31)
 	{
-		iVar0 = 9;
-		bVar1 = iParam0;
+		num = 9;
+		num2 = iParam0;
 	}
 	else
 	{
-		iVar0 = 10;
-		bVar1 = (iParam0 - 32);
+		num = 10;
+		num2 = iParam0 - 32;
 	}
-	if (BitTest(Global_113386.f_9085.f_99.f_219[iVar0], bVar1))
+
+	if (IS_BIT_SET(Global_113648.f_9087.f_99.f_219[num], num2))
 	{
-		MISC::CLEAR_BIT(&(Global_113386.f_9085.f_99.f_219[iVar0]), bVar1);
+		unk_0x061B1200C95204CB(&Global_113648.f_9087.f_99.f_219[num], num2);
 		return 1;
 	}
+
 	return 0;
 }
 
