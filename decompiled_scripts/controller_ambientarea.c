@@ -40,7 +40,7 @@ void main() // Position - 0x0
 {
 	int num;
 	int num2;
-	var unk;
+	var entityCoords;
 
 	iLocal_2 = 1;
 	iLocal_3 = 134;
@@ -62,7 +62,7 @@ void main() // Position - 0x0
 	fLocal_32 = -0.0375f;
 	fLocal_33 = 0.17f;
 
-	if (unk_0x55EEDBBFDC6E810F(98))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(98))
 		func_15();
 
 	func_14();
@@ -72,23 +72,23 @@ void main() // Position - 0x0
 	{
 		SYSTEM::WAIT(500);
 		num2 = 0;
-		unk = { 0f, 0f, 0f };
+		entityCoords = { 0f, 0f, 0f };
 	
-		if (!unk_0x055111B11E6624FD(unk_0xC1A5EC5C986B98AD(), 0))
-			unk = { unk_0x30BE8A934C020461(unk_0xC1A5EC5C986B98AD(), 1) };
+		if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+			entityCoords = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 	
 		while (num2 != 2)
 		{
 			if (func_13(&Global_32504[num /*7*/]))
 			{
-				if (func_12(num, unk))
+				if (func_12(num, entityCoords))
 				{
 					func_11(&Global_32504[num /*7*/], 2);
 				
 					if (Global_32504[num /*7*/].f_5 != 0)
 					{
-						if (unk_0xB8CEC43FB7EF2D92(Global_32504[num /*7*/].f_5))
-							unk_0xCE24BFA06404D6AC(Global_32504[num /*7*/].f_5, 1);
+						if (SCRIPT::IS_THREAD_ACTIVE(Global_32504[num /*7*/].f_5))
+							PLAYER::FORCE_CLEANUP_FOR_THREAD_WITH_THIS_ID(Global_32504[num /*7*/].f_5, 1);
 					
 						Global_32504[num /*7*/].f_5 = 0;
 					}
@@ -96,7 +96,7 @@ void main() // Position - 0x0
 			}
 			else if (!func_10(Global_32504[num /*7*/], 4))
 			{
-				if (func_5(&Global_32504[num /*7*/], unk))
+				if (func_5(&Global_32504[num /*7*/], entityCoords))
 					func_1(num);
 			}
 		
@@ -114,7 +114,7 @@ void main() // Position - 0x0
 void func_1(int iParam0) // Position - 0x14A
 {
 	char* scriptName;
-	int num;
+	Hash scriptHash;
 	eStackSize stackSize;
 	BOOL flag;
 
@@ -125,32 +125,32 @@ void func_1(int iParam0) // Position - 0x14A
 	{
 		case 0:
 			scriptName = "re_ArmyBase";
-			num = joaat("re_armybase");
+			scriptHash = joaat("re_armybase");
 			break;
 	
 		case 1:
 			stackSize = MULTIPLAYER_MISSION;
 			scriptName = "golf_ai_foursome";
-			num = joaat("golf_ai_foursome");
+			scriptHash = joaat("golf_ai_foursome");
 			flag = false;
 			break;
 	
 		case 3:
 			scriptName = "re_Prison";
-			num = joaat("re_prison");
+			scriptHash = joaat("re_prison");
 			break;
 	
 		case 2:
 			stackSize = MULTIPLAYER_MISSION;
 			scriptName = "golf_ai_foursome_putting";
-			num = joaat("golf_ai_foursome_putting");
+			scriptHash = joaat("golf_ai_foursome_putting");
 			flag = false;
 			break;
 	
 		case 4:
 			stackSize = FRIEND;
 			scriptName = "stripclub";
-			num = joaat("stripclub");
+			scriptHash = joaat("stripclub");
 			flag = false;
 			break;
 	}
@@ -158,19 +158,19 @@ void func_1(int iParam0) // Position - 0x14A
 	if (!flag && func_3())
 		return;
 
-	if (unk_0xA7D1818D200CD09B(scriptName) != 0)
+	if (HUD::GET_LENGTH_OF_LITERAL_STRING(scriptName) != 0)
 	{
-		if (unk_0x24B651D85CCE5EB4(num) == 0)
+		if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(scriptHash) == 0)
 		{
-			unk_0x3EC562D93709C894(scriptName);
+			SCRIPT::REQUEST_SCRIPT(scriptName);
 		
-			while (!unk_0x6CAF14BE58B4BFF8(scriptName))
+			while (!SCRIPT::HAS_SCRIPT_LOADED(scriptName))
 			{
 				SYSTEM::WAIT(0);
 			}
 		
 			Global_32504[iParam0 /*7*/].f_5 = SYSTEM::START_NEW_SCRIPT(scriptName, stackSize);
-			unk_0x037A80676B8FF0F5(scriptName);
+			SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED(scriptName);
 		
 			if (Global_32504[iParam0 /*7*/].f_5 != 0)
 				func_2(&Global_32504[iParam0 /*7*/], 2);
@@ -208,8 +208,8 @@ BOOL func_5(int iParam0, Vector3 vParam1, var uParam2, var uParam3) // Position 
 	if (SYSTEM::VDIST2(vParam1, iParam0->f_2) > iParam0->f_1)
 		return false;
 
-	if (!unk_0x66599E73DBA5A850(unk_0xC1A5EC5C986B98AD()))
-		if (unk_0x9DC9E896F189AAA5(unk_0xC1A5EC5C986B98AD(), -2080.115f, 3292.193f, -11.667f, -2112.049f, 3224.331f, 11.667f, 115f, 1, 0, 0))
+	if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+		if (ENTITY::IS_ENTITY_IN_ANGLED_AREA(PLAYER::PLAYER_PED_ID(), -2080.115f, 3292.193f, -11.667f, -2112.049f, 3224.331f, 11.667f, 115f, true, false, 0))
 			return false;
 
 	return true;
@@ -378,7 +378,7 @@ BOOL func_12(int iParam0, Vector3 vParam1, var uParam2, var uParam3) // Position
 {
 	vParam1.f_2 = 0f;
 
-	if (!unk_0xB8CEC43FB7EF2D92(Global_32504[iParam0 /*7*/].f_5))
+	if (!SCRIPT::IS_THREAD_ACTIVE(Global_32504[iParam0 /*7*/].f_5))
 		return true;
 
 	if (func_10(Global_32504[iParam0 /*7*/], 4))
@@ -387,7 +387,7 @@ BOOL func_12(int iParam0, Vector3 vParam1, var uParam2, var uParam3) // Position
 	if (func_9() && !func_6(6))
 		if (!func_10(Global_32504[iParam0 /*7*/], 1))
 			if (iParam0 == 1 || iParam0 == 2)
-				if (unk_0x24B651D85CCE5EB4(joaat("golf")) == 0)
+				if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("golf")) == 0)
 					return true;
 			else
 				return true;
@@ -438,7 +438,7 @@ void func_14() // Position - 0x60E
 
 void func_15() // Position - 0x74E
 {
-	unk_0x675D9C12C73D3DE7();
+	SCRIPT::TERMINATE_THIS_THREAD();
 	return;
 }
 

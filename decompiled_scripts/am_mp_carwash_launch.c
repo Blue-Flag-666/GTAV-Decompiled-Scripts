@@ -76,11 +76,11 @@
 
 void main() // Position - 0x0
 {
-	int num;
-	int num2;
+	int gameTimer;
+	Hash hashKey;
 	char* scriptName;
 	Vector3 vector;
-	int num3;
+	int num;
 
 	iLocal_2 = 1;
 	iLocal_3 = 134;
@@ -106,30 +106,30 @@ void main() // Position - 0x0
 	iLocal_44 = 65;
 	iLocal_45 = 49;
 	iLocal_46 = 64;
-	num2 = joaat("carwash1");
+	hashKey = joaat("carwash1");
 	scriptName = "carwash1";
 	vector = { uScriptParam_0.f_1[0 /*3*/] };
 
-	if (unk_0x24B651D85CCE5EB4(joaat("am_mp_carwash_launch")) > 1)
-		unk_0x675D9C12C73D3DE7();
+	if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("am_mp_carwash_launch")) > 1)
+		SCRIPT::TERMINATE_THIS_THREAD();
 
-	if (unk_0xA26A9A07F761D8F8())
+	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
 	{
-		unk_0x389D5B1C24A046B5();
-		unk_0xF1440897111F3111(0);
+		MISC::NETWORK_SET_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
+		MISC::SET_THIS_SCRIPT_CAN_BE_PAUSED(false);
 	}
 	else
 	{
-		unk_0x675D9C12C73D3DE7();
+		SCRIPT::TERMINATE_THIS_THREAD();
 	}
 
 	if (Global_2883694)
 	{
-		if (unk_0x24B651D85CCE5EB4(131838674) == 0)
+		if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(131838674) == 0)
 		{
-			unk_0xD9C38C2E8E7C8C13(131838674);
+			SCRIPT::REQUEST_SCRIPT_WITH_NAME_HASH(131838674);
 		
-			while (!unk_0xAF83A305E6D700D3(131838674))
+			while (!SCRIPT::HAS_SCRIPT_WITH_NAME_HASH_LOADED(131838674))
 			{
 				SYSTEM::WAIT(0);
 			}
@@ -137,18 +137,18 @@ void main() // Position - 0x0
 			SYSTEM::START_NEW_SCRIPT_WITH_NAME_HASH_AND_ARGS(131838674, &uScriptParam_0, 23, DEFAULT);
 		}
 	
-		unk_0x675D9C12C73D3DE7();
+		SCRIPT::TERMINATE_THIS_THREAD();
 	}
 
-	func_12(unk_0xC1A5EC5C986B98AD());
-	num3 = 0;
+	func_12(PLAYER::PLAYER_PED_ID());
+	num = 0;
 
-	while (num3 == 0)
+	while (num == 0)
 	{
-		if (func_9(unk_0x93E99A2DBCBA9CFA(), true, false) || func_8() || !func_7(unk_0x93E99A2DBCBA9CFA()) || func_6() || func_5(unk_0x93E99A2DBCBA9CFA()) || func_4(unk_0x93E99A2DBCBA9CFA()) || func_2(unk_0x93E99A2DBCBA9CFA()))
-			num3 = 0;
+		if (func_9(PLAYER::PLAYER_ID(), true, false) || func_8() || !func_7(PLAYER::PLAYER_ID()) || func_6() || func_5(PLAYER::PLAYER_ID()) || func_4(PLAYER::PLAYER_ID()) || func_2(PLAYER::PLAYER_ID()))
+			num = 0;
 		else
-			num3 = 1;
+			num = 1;
 	
 		SYSTEM::WAIT(0);
 	}
@@ -156,30 +156,30 @@ void main() // Position - 0x0
 	if (SYSTEM::VDIST2(vector, func_1(157)) < SYSTEM::VDIST2(vector, func_1(156)))
 		scriptName = "carwash2";
 
-	num = unk_0xA5E11AF0A2B928C1();
-	num2 = unk_0x14580F20CBCE4FA9(scriptName);
+	gameTimer = MISC::GET_GAME_TIMER();
+	hashKey = MISC::GET_HASH_KEY(scriptName);
 
-	if (unk_0x24B651D85CCE5EB4(num2) == 0)
+	if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(hashKey) == 0)
 	{
-		unk_0x3EC562D93709C894(scriptName);
+		SCRIPT::REQUEST_SCRIPT(scriptName);
 	
-		while (!unk_0x6CAF14BE58B4BFF8(scriptName))
+		while (!SCRIPT::HAS_SCRIPT_LOADED(scriptName))
 		{
-			unk_0x3EC562D93709C894(scriptName);
+			SCRIPT::REQUEST_SCRIPT(scriptName);
 			SYSTEM::WAIT(0);
 		
-			if (unk_0xA5E11AF0A2B928C1() > num + 20000)
-				unk_0x675D9C12C73D3DE7();
+			if (MISC::GET_GAME_TIMER() > gameTimer + 20000)
+				SCRIPT::TERMINATE_THIS_THREAD();
 		}
 	
-		if (unk_0x6CAF14BE58B4BFF8(scriptName))
+		if (SCRIPT::HAS_SCRIPT_LOADED(scriptName))
 		{
 			SYSTEM::START_NEW_SCRIPT(scriptName, DEFAULT);
-			unk_0x037A80676B8FF0F5(scriptName);
+			SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED(scriptName);
 		}
 	}
 
-	unk_0x675D9C12C73D3DE7();
+	SCRIPT::TERMINATE_THIS_THREAD();
 	return;
 }
 
@@ -222,12 +222,12 @@ BOOL func_5(Player plParam0) // Position - 0x26E
 
 BOOL func_6() // Position - 0x295
 {
-	return IS_BIT_SET(Global_1853910[unk_0x93E99A2DBCBA9CFA() /*862*/].f_36.f_18, 0);
+	return IS_BIT_SET(Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_36.f_18, 0);
 }
 
-BOOL func_7(int iParam0) // Position - 0x2AE
+BOOL func_7(Player plParam0) // Position - 0x2AE
 {
-	return IS_BIT_SET(Global_1853910[iParam0 /*862*/].f_139, 6);
+	return IS_BIT_SET(Global_1853910[plParam0 /*862*/].f_139, 6);
 }
 
 int func_8() // Position - 0x2C3
@@ -242,35 +242,35 @@ int func_8() // Position - 0x2C3
 	return 0;
 }
 
-int func_9(int iParam0, BOOL bParam1, BOOL bParam2) // Position - 0x2F6
+int func_9(Player plParam0, BOOL bParam1, BOOL bParam2) // Position - 0x2F6
 {
 	if (bParam1)
-		if (func_10(iParam0))
+		if (func_10(plParam0))
 			return 1;
 
 	!bParam2;
 
-	if (Global_1853910[iParam0 /*862*/] == -1)
+	if (Global_1853910[plParam0 /*862*/] == -1)
 		return 0;
 
 	return 1;
 }
 
-BOOL func_10(int iParam0) // Position - 0x328
+BOOL func_10(Player plParam0) // Position - 0x328
 {
-	return func_11(iParam0);
+	return func_11(plParam0);
 }
 
-BOOL func_11(int iParam0) // Position - 0x336
+BOOL func_11(Player plParam0) // Position - 0x336
 {
-	return IS_BIT_SET(Global_1853910[iParam0 /*862*/].f_11.f_1, 0);
+	return IS_BIT_SET(Global_1853910[plParam0 /*862*/].f_11.f_1, 0);
 }
 
-BOOL func_12(var uParam0) // Position - 0x34D
+BOOL func_12(Ped pedParam0) // Position - 0x34D
 {
-	if (!unk_0x7DE17ACDD8BA2642(uParam0))
+	if (!ENTITY::DOES_ENTITY_EXIST(pedParam0))
 		return false;
 
-	return !unk_0x055111B11E6624FD(uParam0, 0);
+	return !ENTITY::IS_ENTITY_DEAD(pedParam0, false);
 }
 

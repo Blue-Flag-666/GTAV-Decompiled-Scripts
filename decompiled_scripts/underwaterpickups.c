@@ -59,19 +59,19 @@ void main() // Position - 0x0
 	iLocal_2 = -1;
 	unk = { uScriptParam_0.f_1[0 /*3*/] };
 
-	if (unk_0x55EEDBBFDC6E810F(19))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(19))
 		func_26();
 
 	func_24(unk);
 	bLocal_24 = func_4();
-	uLocal_25 = { unk_0x30BE8A934C020461(unk_0xC1A5EC5C986B98AD(), 0) };
+	uLocal_25 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
 	func_1();
 
 	while (true)
 	{
 		SYSTEM::WAIT(0);
 	
-		if (!unk_0xCBE2EC2868A6C438())
+		if (!BRAIN::IS_WORLD_POINT_WITHIN_BRAIN_ACTIVATION_RANGE())
 			func_26();
 	}
 
@@ -81,54 +81,54 @@ void main() // Position - 0x0
 void func_1() // Position - 0x5C
 {
 	int i;
-	int num;
+	Hash pickupHash;
 	Vector3 vector;
-	var unk3;
-	int num2;
-	var unk6;
+	Vector3 vector2;
+	int address;
+	int value;
 
 	i = 0;
 
 	for (i = 0; i < 20; i = i + 1)
 	{
-		if (func_3(i, &num, &vector, &unk3, &unk6))
+		if (func_3(i, &pickupHash, &vector, &vector2, &value))
 		{
-			if (func_2(unk3, 0f, 0f, 0f, false))
+			if (func_2(vector2, 0f, 0f, 0f, false))
 			{
-				num2 = 0;
-				unk_0xECDAB41968FF21A8(&num2, 1);
-				unk_0xECDAB41968FF21A8(&num2, 4);
-				unk_0xECDAB41968FF21A8(&num2, 3);
+				address = 0;
+				MISC::SET_BIT(&address, 1);
+				MISC::SET_BIT(&address, 4);
+				MISC::SET_BIT(&address, 3);
 			
-				if (num == joaat("PICKUP_MONEY_CASE"))
+				if (pickupHash == joaat("PICKUP_MONEY_CASE"))
 					if (bLocal_24)
-						uLocal_3[i] = unk_0x8D2015F36A52256C(num, vector, num2, unk6, 1, 0);
+						uLocal_3[i] = OBJECT::CREATE_PICKUP(pickupHash, vector, address, value, true, 0);
 				else if (SYSTEM::VDIST2(vector, uLocal_25) > 400f)
-					if (num == joaat("PICKUP_ARMOUR_STANDARD"))
-						uLocal_3[i] = unk_0x8D2015F36A52256C(num, vector, num2, unk6, 1, 0);
-					else if (num == joaat("PICKUP_WEAPON_GRENADELAUNCHER") || num == joaat("PICKUP_WEAPON_RPG") || num == joaat("PICKUP_WEAPON_MG"))
+					if (pickupHash == joaat("PICKUP_ARMOUR_STANDARD"))
+						uLocal_3[i] = OBJECT::CREATE_PICKUP(pickupHash, vector, address, value, true, 0);
+					else if (pickupHash == joaat("PICKUP_WEAPON_GRENADELAUNCHER") || pickupHash == joaat("PICKUP_WEAPON_RPG") || pickupHash == joaat("PICKUP_WEAPON_MG"))
 						if (bLocal_24)
-							uLocal_3[i] = unk_0x8D2015F36A52256C(num, vector, num2, -1, 1, 0);
+							uLocal_3[i] = OBJECT::CREATE_PICKUP(pickupHash, vector, address, -1, true, 0);
 					else
-						uLocal_3[i] = unk_0x8D2015F36A52256C(num, vector, num2, -1, 1, 0);
+						uLocal_3[i] = OBJECT::CREATE_PICKUP(pickupHash, vector, address, -1, true, 0);
 			}
 			else
 			{
-				num2 = 0;
-				unk_0xECDAB41968FF21A8(&num2, 1);
-				unk_0xECDAB41968FF21A8(&num2, 4);
+				address = 0;
+				MISC::SET_BIT(&address, 1);
+				MISC::SET_BIT(&address, 4);
 			
-				if (num == joaat("PICKUP_MONEY_CASE"))
+				if (pickupHash == joaat("PICKUP_MONEY_CASE"))
 					if (bLocal_24)
-						uLocal_3[i] = unk_0x9D4156571988E1D4(num, vector, unk3, num2, 10000, 2, 1, 0);
+						uLocal_3[i] = OBJECT::CREATE_PICKUP_ROTATE(pickupHash, vector, vector2, address, 10000, 2, true, 0);
 				else if (SYSTEM::VDIST2(vector, uLocal_25) > 400f)
-					if (num == joaat("PICKUP_ARMOUR_STANDARD"))
-						uLocal_3[i] = unk_0x9D4156571988E1D4(num, vector, unk3, num2, -1, 2, 1, 0);
-					else if (num == joaat("PICKUP_WEAPON_GRENADELAUNCHER") || num == joaat("PICKUP_WEAPON_RPG") || num == joaat("PICKUP_WEAPON_MG"))
+					if (pickupHash == joaat("PICKUP_ARMOUR_STANDARD"))
+						uLocal_3[i] = OBJECT::CREATE_PICKUP_ROTATE(pickupHash, vector, vector2, address, -1, 2, true, 0);
+					else if (pickupHash == joaat("PICKUP_WEAPON_GRENADELAUNCHER") || pickupHash == joaat("PICKUP_WEAPON_RPG") || pickupHash == joaat("PICKUP_WEAPON_MG"))
 						if (bLocal_24)
-							uLocal_3[i] = unk_0x9D4156571988E1D4(num, vector, unk3, num2, -1, 2, 1, 0);
+							uLocal_3[i] = OBJECT::CREATE_PICKUP_ROTATE(pickupHash, vector, vector2, address, -1, 2, true, 0);
 					else
-						uLocal_3[i] = unk_0x9D4156571988E1D4(num, vector, unk3, num2, -1, 2, 1, 0);
+						uLocal_3[i] = OBJECT::CREATE_PICKUP_ROTATE(pickupHash, vector, vector2, address, -1, 2, true, 0);
 			}
 		}
 	}
@@ -1328,12 +1328,12 @@ int func_23() // Position - 0x1EBE
 {
 	var unk;
 
-	func_22(&unk, unk_0x731F95B6458DCF80());
-	func_21(&unk, unk_0x77BBAAED3E25322C());
-	func_20(&unk, unk_0x30DFE1FFD2CC7420());
-	func_18(&unk, unk_0x8C0F17CAC308A14B());
-	func_19(&unk, unk_0x61117764C67882B7());
-	func_17(&unk, unk_0x367F557725B53815());
+	func_22(&unk, CLOCK::GET_CLOCK_SECONDS());
+	func_21(&unk, CLOCK::GET_CLOCK_MINUTES());
+	func_20(&unk, CLOCK::GET_CLOCK_HOURS());
+	func_18(&unk, CLOCK::GET_CLOCK_DAY_OF_MONTH());
+	func_19(&unk, CLOCK::GET_CLOCK_MONTH());
+	func_17(&unk, CLOCK::GET_CLOCK_YEAR());
 	return unk;
 }
 
@@ -1374,12 +1374,12 @@ BOOL func_25(float fParam0, var uParam1, var uParam2, var uParam3, var uParam4, 
 		iParam6 = 0f;
 
 	if (!bParam7)
-		if (unk_0x2655A8EC638E4FD1(fParam0 - uParam3) <= iParam6)
-			if (unk_0x2655A8EC638E4FD1(fParam0.f_1 - uParam3.f_1) <= iParam6)
-				if (unk_0x2655A8EC638E4FD1(fParam0.f_2 - uParam3.f_2) <= iParam6)
+		if (MISC::ABSF(fParam0 - uParam3) <= iParam6)
+			if (MISC::ABSF(fParam0.f_1 - uParam3.f_1) <= iParam6)
+				if (MISC::ABSF(fParam0.f_2 - uParam3.f_2) <= iParam6)
 					return true;
-	else if (unk_0x2655A8EC638E4FD1(fParam0 - uParam3) <= iParam6)
-		if (unk_0x2655A8EC638E4FD1(fParam0.f_1 - uParam3.f_1) <= iParam6)
+	else if (MISC::ABSF(fParam0 - uParam3) <= iParam6)
+		if (MISC::ABSF(fParam0.f_1 - uParam3.f_1) <= iParam6)
 			return true;
 
 	return false;
@@ -1388,7 +1388,7 @@ BOOL func_25(float fParam0, var uParam1, var uParam2, var uParam3, var uParam4, 
 void func_26() // Position - 0x20CE
 {
 	func_27();
-	unk_0x675D9C12C73D3DE7();
+	SCRIPT::TERMINATE_THIS_THREAD();
 	return;
 }
 
@@ -1398,8 +1398,8 @@ void func_27() // Position - 0x20DE
 
 	for (i = 0; i < 20; i = i + 1)
 	{
-		if (unk_0x0E0433D7F75E162D(uLocal_3[i]))
-			unk_0x7E131AB8520C5824(uLocal_3[i]);
+		if (OBJECT::DOES_PICKUP_EXIST(uLocal_3[i]))
+			OBJECT::REMOVE_PICKUP(uLocal_3[i]);
 	}
 
 	return;

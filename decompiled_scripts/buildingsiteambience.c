@@ -48,23 +48,23 @@ void main() // Position - 0x0
 	fLocal_25 = -0.0375f;
 	fLocal_26 = 0.17f;
 
-	if (unk_0x55EEDBBFDC6E810F(67))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(67))
 	{
-		if (unk_0xC62B624C267237C2() != 2)
+		if (PLAYER::GET_CAUSE_OF_MOST_RECENT_FORCE_CLEANUP() != 2)
 			func_4(19);
 	
 		func_3();
 	}
 
 	func_2(19);
-	unk_0xD3EC2BD7C1DEA1A7(1);
+	AUDIO::REGISTER_SCRIPT_WITH_AUDIO(1);
 
-	while (!unk_0xF379D4FB3767B7FF("CONSTRUCTION_SITE_STREAM", "FBI_HEIST_SOUNDSET"))
+	while (!AUDIO::LOAD_STREAM("CONSTRUCTION_SITE_STREAM", "FBI_HEIST_SOUNDSET"))
 	{
 		SYSTEM::WAIT(0);
 	}
 
-	unk_0x5B0B38F44494AF79(-147f, -1005f, 28f);
+	AUDIO::PLAY_STREAM_FROM_POSITION(-147f, -1005f, 28f);
 
 	while (func_1(70))
 	{
@@ -87,53 +87,53 @@ BOOL func_1(int iParam0) // Position - 0xB6
 int func_2(int iParam0) // Position - 0xE3
 {
 	int num;
-	int num2;
+	int offset;
 
 	if (iParam0 <= 31)
 	{
 		num = 9;
-		num2 = iParam0;
+		offset = iParam0;
 	}
 	else
 	{
 		num = 10;
-		num2 = iParam0 - 32;
+		offset = iParam0 - 32;
 	}
 
-	if (IS_BIT_SET(Global_113648.f_9087.f_99.f_219[num], num2))
+	if (IS_BIT_SET(Global_113648.f_9087.f_99.f_219[num], offset))
 		return 0;
 
-	unk_0xECDAB41968FF21A8(&Global_113648.f_9087.f_99.f_219[num], num2);
+	MISC::SET_BIT(&Global_113648.f_9087.f_99.f_219[num], offset);
 	return 1;
 }
 
 void func_3() // Position - 0x13A
 {
-	unk_0x0AED5D631A4A1C97();
-	unk_0xB68010349746BC3E();
-	unk_0x675D9C12C73D3DE7();
+	AUDIO::STOP_STREAM();
+	AUDIO::UNREGISTER_SCRIPT_WITH_AUDIO();
+	SCRIPT::TERMINATE_THIS_THREAD();
 	return;
 }
 
 int func_4(int iParam0) // Position - 0x14E
 {
 	int num;
-	int num2;
+	int offset;
 
 	if (iParam0 <= 31)
 	{
 		num = 9;
-		num2 = iParam0;
+		offset = iParam0;
 	}
 	else
 	{
 		num = 10;
-		num2 = iParam0 - 32;
+		offset = iParam0 - 32;
 	}
 
-	if (IS_BIT_SET(Global_113648.f_9087.f_99.f_219[num], num2))
+	if (IS_BIT_SET(Global_113648.f_9087.f_99.f_219[num], offset))
 	{
-		unk_0x061B1200C95204CB(&Global_113648.f_9087.f_99.f_219[num], num2);
+		MISC::CLEAR_BIT(&Global_113648.f_9087.f_99.f_219[num], offset);
 		return 1;
 	}
 

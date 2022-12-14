@@ -273,11 +273,11 @@ void main() // Position - 0x0
 	iLocal_108 = -1;
 	fLocal_110 = 0.5f;
 
-	if (unk_0x55EEDBBFDC6E810F(2))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(2))
 		func_20();
 
-	unk_0xA3C681843B51A4CC("FMMC", 2);
-	unk_0xE333240A90F2FF3C(unk_0x93E99A2DBCBA9CFA(), 0, 0);
+	HUD::REQUEST_ADDITIONAL_TEXT("FMMC", 2);
+	PLAYER::SET_PLAYER_CONTROL(PLAYER::PLAYER_ID(), false, 0);
 	uLocal_237 = Global_4718592.f_2;
 	Global_1574605 = 0;
 	uLocal_116.f_5 = Global_4718592;
@@ -296,7 +296,7 @@ void main() // Position - 0x0
 		{
 			func_19(&uLocal_116);
 			iLocal_236 = Global_4718592;
-			unk_0x061B1200C95204CB(&(uLocal_116.f_4), 0);
+			MISC::CLEAR_BIT(&(uLocal_116.f_4), 0);
 		}
 	
 		if (func_18() == 3)
@@ -310,9 +310,9 @@ void main() // Position - 0x0
 		switch (iLocal_234)
 		{
 			case 0:
-				unk_0xA3C681843B51A4CC("FMMC", 2);
+				HUD::REQUEST_ADDITIONAL_TEXT("FMMC", 2);
 			
-				if (unk_0x7F29CD9C0A5C1E44("FMMC", 2))
+				if (HUD::HAS_THIS_ADDITIONAL_TEXT_LOADED("FMMC", 2))
 					iLocal_234 = 1;
 				break;
 		
@@ -323,7 +323,7 @@ void main() // Position - 0x0
 					func_19(&uLocal_116);
 				}
 			
-				unk_0x91E7CCDECE70A543();
+				HUD::DISABLE_FRONTEND_THIS_FRAME();
 				func_16(&uLocal_116);
 				Global_1926653 = 0;
 				Global_1926652 = 0;
@@ -367,7 +367,7 @@ void main() // Position - 0x0
 				break;
 		
 			case 3:
-				if (unk_0x87644B1F984197FE(2, 217))
+				if (PAD::IS_CONTROL_JUST_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_SELECT))
 					iLocal_234 = 1;
 				break;
 		
@@ -411,25 +411,25 @@ BOOL func_1() // Position - 0x2FB
 	return Global_1574533;
 }
 
-BOOL func_2(var uParam0) // Position - 0x307
+BOOL func_2(int* piParam0) // Position - 0x307
 {
-	if (!IS_BIT_SET(*uParam0, 2))
+	if (!IS_BIT_SET(*piParam0, 2))
 	{
-		unk_0x3EC562D93709C894("FM_Race_Creator");
+		SCRIPT::REQUEST_SCRIPT("FM_Race_Creator");
 	
-		if (unk_0x6CAF14BE58B4BFF8("FM_Race_Creator"))
+		if (SCRIPT::HAS_SCRIPT_LOADED("FM_Race_Creator"))
 		{
 			if (!func_3())
 			{
 				SYSTEM::START_NEW_SCRIPT("FM_Race_Creator", 54000);
-				unk_0x037A80676B8FF0F5("FM_Race_Creator");
-				unk_0xECDAB41968FF21A8(uParam0, 2);
+				SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED("FM_Race_Creator");
+				MISC::SET_BIT(piParam0, 2);
 			}
 		}
 	}
-	else if (unk_0x24B651D85CCE5EB4(joaat("fm_race_creator")) == 0)
+	else if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_race_creator")) == 0)
 	{
-		unk_0x061B1200C95204CB(uParam0, 2);
+		MISC::CLEAR_BIT(piParam0, 2);
 		return true;
 	}
 
@@ -438,7 +438,7 @@ BOOL func_2(var uParam0) // Position - 0x307
 
 BOOL func_3() // Position - 0x36A
 {
-	if (unk_0x24B651D85CCE5EB4(joaat("fm_mission_creator")) > 0 || unk_0x24B651D85CCE5EB4(joaat("fm_deathmatch_creator")) > 0 || unk_0x24B651D85CCE5EB4(joaat("fm_race_creator")) > 0 || unk_0x24B651D85CCE5EB4(joaat("fm_capture_creator")) > 0 || unk_0x24B651D85CCE5EB4(joaat("fm_lts_creator")) > 0 || unk_0x24B651D85CCE5EB4(joaat("fm_survival_creator")) > 0 || unk_0x24B651D85CCE5EB4(joaat("basic_creator")) > 0 || unk_0x24B651D85CCE5EB4(joaat("freemode_creator")) > 0)
+	if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_mission_creator")) > 0 || SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_deathmatch_creator")) > 0 || SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_race_creator")) > 0 || SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_capture_creator")) > 0 || SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_lts_creator")) > 0 || SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_survival_creator")) > 0 || SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("basic_creator")) > 0 || SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("freemode_creator")) > 0)
 		return true;
 
 	return false;
@@ -452,150 +452,150 @@ BOOL func_4() // Position - 0x3FC
 	return false;
 }
 
-BOOL func_5(var uParam0) // Position - 0x41F
+BOOL func_5(int* piParam0) // Position - 0x41F
 {
-	if (!IS_BIT_SET(*uParam0, 2))
+	if (!IS_BIT_SET(*piParam0, 2))
 	{
-		unk_0x3EC562D93709C894("FM_Deathmatch_Creator");
+		SCRIPT::REQUEST_SCRIPT("FM_Deathmatch_Creator");
 	
-		if (unk_0x6CAF14BE58B4BFF8("FM_Deathmatch_Creator"))
+		if (SCRIPT::HAS_SCRIPT_LOADED("FM_Deathmatch_Creator"))
 		{
 			if (!func_3())
 			{
 				SYSTEM::START_NEW_SCRIPT("FM_Deathmatch_Creator", 54000);
-				unk_0x037A80676B8FF0F5("FM_Deathmatch_Creator");
-				unk_0xECDAB41968FF21A8(uParam0, 2);
+				SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED("FM_Deathmatch_Creator");
+				MISC::SET_BIT(piParam0, 2);
 			}
 		}
 	}
-	else if (unk_0x24B651D85CCE5EB4(joaat("fm_deathmatch_creator")) == 0)
+	else if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_deathmatch_creator")) == 0)
 	{
-		unk_0x061B1200C95204CB(uParam0, 2);
+		MISC::CLEAR_BIT(piParam0, 2);
 		return true;
 	}
 
 	return false;
 }
 
-BOOL func_6(var uParam0) // Position - 0x482
+BOOL func_6(int* piParam0) // Position - 0x482
 {
-	if (!IS_BIT_SET(*uParam0, 2))
+	if (!IS_BIT_SET(*piParam0, 2))
 	{
-		unk_0x3EC562D93709C894("FM_Capture_Creator");
+		SCRIPT::REQUEST_SCRIPT("FM_Capture_Creator");
 	
-		if (unk_0x6CAF14BE58B4BFF8("FM_Capture_Creator"))
+		if (SCRIPT::HAS_SCRIPT_LOADED("FM_Capture_Creator"))
 		{
 			if (!func_3())
 			{
 				SYSTEM::START_NEW_SCRIPT("FM_Capture_Creator", 54000);
-				unk_0x037A80676B8FF0F5("FM_Capture_Creator");
-				unk_0xECDAB41968FF21A8(uParam0, 2);
+				SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED("FM_Capture_Creator");
+				MISC::SET_BIT(piParam0, 2);
 			}
 		}
 	}
-	else if (unk_0x24B651D85CCE5EB4(joaat("fm_capture_creator")) == 0)
+	else if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_capture_creator")) == 0)
 	{
-		unk_0x061B1200C95204CB(uParam0, 2);
+		MISC::CLEAR_BIT(piParam0, 2);
 		return true;
 	}
 
 	return false;
 }
 
-BOOL func_7(var uParam0) // Position - 0x4E5
+BOOL func_7(int* piParam0) // Position - 0x4E5
 {
-	if (!IS_BIT_SET(*uParam0, 2))
+	if (!IS_BIT_SET(*piParam0, 2))
 	{
-		unk_0x3EC562D93709C894("FM_Mission_Creator");
+		SCRIPT::REQUEST_SCRIPT("FM_Mission_Creator");
 	
-		if (unk_0x6CAF14BE58B4BFF8("FM_Mission_Creator"))
+		if (SCRIPT::HAS_SCRIPT_LOADED("FM_Mission_Creator"))
 		{
 			if (!func_3())
 			{
 				SYSTEM::START_NEW_SCRIPT("FM_Mission_Creator", 54000);
-				unk_0x037A80676B8FF0F5("FM_Mission_Creator");
-				unk_0xECDAB41968FF21A8(uParam0, 2);
+				SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED("FM_Mission_Creator");
+				MISC::SET_BIT(piParam0, 2);
 			}
 		}
 	}
-	else if (unk_0x24B651D85CCE5EB4(joaat("fm_mission_creator")) == 0)
+	else if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_mission_creator")) == 0)
 	{
-		unk_0x061B1200C95204CB(uParam0, 2);
+		MISC::CLEAR_BIT(piParam0, 2);
 		return true;
 	}
 
 	return false;
 }
 
-BOOL func_8(var uParam0) // Position - 0x548
+BOOL func_8(int* piParam0) // Position - 0x548
 {
-	if (!IS_BIT_SET(*uParam0, 2))
+	if (!IS_BIT_SET(*piParam0, 2))
 	{
-		unk_0x3EC562D93709C894("Freemode_Creator");
+		SCRIPT::REQUEST_SCRIPT("Freemode_Creator");
 	
-		if (unk_0x6CAF14BE58B4BFF8("Freemode_Creator"))
+		if (SCRIPT::HAS_SCRIPT_LOADED("Freemode_Creator"))
 		{
 			if (!func_3())
 			{
 				SYSTEM::START_NEW_SCRIPT("Freemode_Creator", 54000);
-				unk_0x037A80676B8FF0F5("Freemode_Creator");
-				unk_0xECDAB41968FF21A8(uParam0, 2);
+				SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED("Freemode_Creator");
+				MISC::SET_BIT(piParam0, 2);
 			}
 		}
 	}
-	else if (unk_0x24B651D85CCE5EB4(joaat("freemode_creator")) == 0)
+	else if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("freemode_creator")) == 0)
 	{
-		unk_0x061B1200C95204CB(uParam0, 2);
+		MISC::CLEAR_BIT(piParam0, 2);
 		return true;
 	}
 
 	return false;
 }
 
-BOOL func_9(var uParam0) // Position - 0x5AB
+BOOL func_9(int* piParam0) // Position - 0x5AB
 {
-	if (!IS_BIT_SET(*uParam0, 2))
+	if (!IS_BIT_SET(*piParam0, 2))
 	{
-		unk_0x3EC562D93709C894("Basic_Creator");
+		SCRIPT::REQUEST_SCRIPT("Basic_Creator");
 	
-		if (unk_0x6CAF14BE58B4BFF8("Basic_Creator"))
+		if (SCRIPT::HAS_SCRIPT_LOADED("Basic_Creator"))
 		{
 			if (!func_3())
 			{
 				SYSTEM::START_NEW_SCRIPT("Basic_Creator", 54000);
-				unk_0x037A80676B8FF0F5("Basic_Creator");
-				unk_0xECDAB41968FF21A8(uParam0, 2);
+				SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED("Basic_Creator");
+				MISC::SET_BIT(piParam0, 2);
 			}
 		}
 	}
-	else if (unk_0x24B651D85CCE5EB4(joaat("basic_creator")) == 0)
+	else if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("basic_creator")) == 0)
 	{
-		unk_0x061B1200C95204CB(uParam0, 2);
+		MISC::CLEAR_BIT(piParam0, 2);
 		return true;
 	}
 
 	return false;
 }
 
-BOOL func_10(var uParam0) // Position - 0x60E
+BOOL func_10(int* piParam0) // Position - 0x60E
 {
-	if (!IS_BIT_SET(*uParam0, 2))
+	if (!IS_BIT_SET(*piParam0, 2))
 	{
-		unk_0x3EC562D93709C894("FM_Survival_Creator");
+		SCRIPT::REQUEST_SCRIPT("FM_Survival_Creator");
 	
-		if (unk_0x6CAF14BE58B4BFF8("FM_Survival_Creator"))
+		if (SCRIPT::HAS_SCRIPT_LOADED("FM_Survival_Creator"))
 		{
 			if (!func_3())
 			{
 				SYSTEM::START_NEW_SCRIPT("FM_Survival_Creator", 54000);
-				unk_0x037A80676B8FF0F5("FM_Survival_Creator");
-				unk_0xECDAB41968FF21A8(uParam0, 2);
+				SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED("FM_Survival_Creator");
+				MISC::SET_BIT(piParam0, 2);
 			}
 		}
 	}
-	else if (unk_0x24B651D85CCE5EB4(joaat("fm_survival_creator")) == 0)
+	else if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_survival_creator")) == 0)
 	{
-		unk_0x061B1200C95204CB(uParam0, 2);
+		MISC::CLEAR_BIT(piParam0, 2);
 		return true;
 	}
 
@@ -607,25 +607,25 @@ BOOL func_11() // Position - 0x671
 	return Global_4718592 == 3;
 }
 
-BOOL func_12(var uParam0) // Position - 0x67F
+BOOL func_12(int* piParam0) // Position - 0x67F
 {
-	if (!IS_BIT_SET(*uParam0, 2))
+	if (!IS_BIT_SET(*piParam0, 2))
 	{
-		unk_0x3EC562D93709C894("FM_LTS_Creator");
+		SCRIPT::REQUEST_SCRIPT("FM_LTS_Creator");
 	
-		if (unk_0x6CAF14BE58B4BFF8("FM_LTS_Creator"))
+		if (SCRIPT::HAS_SCRIPT_LOADED("FM_LTS_Creator"))
 		{
 			if (!func_3())
 			{
 				SYSTEM::START_NEW_SCRIPT("FM_LTS_Creator", 54000);
-				unk_0x037A80676B8FF0F5("FM_LTS_Creator");
-				unk_0xECDAB41968FF21A8(uParam0, 2);
+				SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED("FM_LTS_Creator");
+				MISC::SET_BIT(piParam0, 2);
 			}
 		}
 	}
-	else if (unk_0x24B651D85CCE5EB4(joaat("fm_lts_creator")) == 0)
+	else if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("fm_lts_creator")) == 0)
 	{
-		unk_0x061B1200C95204CB(uParam0, 2);
+		MISC::CLEAR_BIT(piParam0, 2);
 		return true;
 	}
 
@@ -700,13 +700,13 @@ int func_18() // Position - 0x907
 
 	if (IS_BIT_SET(Global_1653913.f_102, 2))
 	{
-		unk_0x061B1200C95204CB(&(Global_1653913.f_102), 2);
+		MISC::CLEAR_BIT(&(Global_1653913.f_102), 2);
 		return 2;
 	}
 
 	if (IS_BIT_SET(Global_1653913.f_102, 3))
 	{
-		unk_0x061B1200C95204CB(&(Global_1653913.f_102), 3);
+		MISC::CLEAR_BIT(&(Global_1653913.f_102), 3);
 		return 3;
 	}
 
@@ -724,7 +724,7 @@ void func_20() // Position - 0x95B
 	Global_4718592.f_112509 = 0;
 	Global_1574605 = 1;
 	Global_1574606 = false;
-	unk_0x675D9C12C73D3DE7();
+	SCRIPT::TERMINATE_THIS_THREAD();
 	return;
 }
 

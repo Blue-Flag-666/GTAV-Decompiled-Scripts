@@ -60,17 +60,17 @@ void main() // Position - 0x0
 BOOL func_1(var uParam0, var uParam1) // Position - 0x6D
 {
 	float num;
-	var unk;
+	var value;
 	int i;
 	float num2;
 	int num3;
 	int num4;
 	int num5;
-	int num6;
+	Hash tunableContext;
 
 	if (uParam0->f_2)
 	{
-		if (unk_0x3CDF9E9E483AADE1(unk_0x55DB5FC567C065D9(unk_0xA5E11AF0A2B928C1(), uParam0->f_1)) >= uParam0->f_3)
+		if (MISC::ABSI(NETWORK::GET_TIME_DIFFERENCE(MISC::GET_GAME_TIMER(), uParam0->f_1)) >= uParam0->f_3)
 			func_5();
 	}
 	else
@@ -80,11 +80,11 @@ BOOL func_1(var uParam0, var uParam1) // Position - 0x6D
 	
 		num3 = 5;
 	
-		if (unk_0x95A5B3169785AB83())
+		if (NETWORK::NETWORK_CAN_BAIL())
 		{
 			num4 = 2348;
 			num5 = uParam0->f_4 + num3;
-			num6 = func_4(*uParam0);
+			tunableContext = func_4(*uParam0);
 		
 			for (i = uParam0->f_4; i <= num5; i = i + 1)
 			{
@@ -94,24 +94,24 @@ BOOL func_1(var uParam0, var uParam1) // Position - 0x6D
 				
 					if (i >= num2.f_4 && i != 27)
 					{
-						if (num6 != 0 && num2.f_5 != 0)
+						if (tunableContext != 0 && num2.f_5 != 0)
 						{
-							if (unk_0x8885801D5A217563(num6, num2.f_5, &num))
+							if (unk_0x8885801D5A217563(tunableContext, num2.f_5, &num))
 							{
 								if (num > num2.f_1 || num < num2)
 								{
 									uParam0->f_2 = 1;
-									uParam0->f_3 = unk_0x15A88CFAAFFC6C4B(20000, 30000);
-									uParam0->f_1 = unk_0xA5E11AF0A2B928C1();
+									uParam0->f_3 = MISC::GET_RANDOM_INT_IN_RANGE(20000, 30000);
+									uParam0->f_1 = MISC::GET_GAME_TIMER();
 								}
 							}
-							else if (unk_0xE04F0101BC206A86(num6, num2.f_5, &unk))
+							else if (NETWORK::NETWORK_ACCESS_TUNABLE_INT_HASH(tunableContext, num2.f_5, &value))
 							{
-								if (unk > num2.f_3 || unk < num2.f_2)
+								if (value > num2.f_3 || value < num2.f_2)
 								{
 									uParam0->f_2 = 1;
-									uParam0->f_3 = unk_0x15A88CFAAFFC6C4B(20000, 30000);
-									uParam0->f_1 = unk_0xA5E11AF0A2B928C1();
+									uParam0->f_3 = MISC::GET_RANDOM_INT_IN_RANGE(20000, 30000);
+									uParam0->f_1 = MISC::GET_GAME_TIMER();
 								}
 							}
 						}
@@ -21429,7 +21429,7 @@ int func_3() // Position - 0x1D148
 	return 32 - Global_2691795;
 }
 
-int func_4(int iParam0) // Position - 0x1D163
+Hash func_4(int iParam0) // Position - 0x1D163
 {
 	var unk;
 
@@ -21437,7 +21437,7 @@ int func_4(int iParam0) // Position - 0x1D163
 	{
 		TEXT_LABEL_ASSIGN_STRING(&unk, "CONTENT_MODIFIER_", 64);
 		TEXT_LABEL_APPEND_INT(&unk, iParam0 - 28, 64);
-		return unk_0x14580F20CBCE4FA9(&unk);
+		return MISC::GET_HASH_KEY(&unk);
 	}
 
 	switch (iParam0)
@@ -21536,23 +21536,23 @@ int func_4(int iParam0) // Position - 0x1D163
 
 void func_5() // Position - 0x1D372
 {
-	unk_0x3B1432F98F2FA18F();
-	unk_0x209346B124BD3521(-9f, -9f, -9f, -10f, -10f, -10f, -25f, -25f, -25f, -28f, -28f, -28f, 0f, 0f, 0f, 0, 0, 0);
-	unk_0x54ECDA2DAB9CFB10(-9f, -9f, -9f, -10f, -10f, -10f, 0, 1, 1, 1);
+	MISC::CLEAR_TACTICAL_NAV_MESH_POINTS();
+	MISC::ADD_STUNT_JUMP(-9f, -9f, -9f, -10f, -10f, -10f, -25f, -25f, -25f, -28f, -28f, -28f, 0f, 0f, 0f, 0, 0, 0);
+	PED::ADD_SCENARIO_BLOCKING_AREA(-9f, -9f, -9f, -10f, -10f, -10f, false, true, true, true);
 	func_5();
 	return;
 }
 
 void func_6() // Position - 0x1D3F0
 {
-	unk_0x675D9C12C73D3DE7();
+	SCRIPT::TERMINATE_THIS_THREAD();
 	return;
 }
 
 BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x1D3FC
 {
 	if (Global_1575035 == 0)
-		if (!unk_0xA26A9A07F761D8F8())
+		if (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
 			return true;
 
 	if (func_14())
@@ -21571,17 +21571,17 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x1D3FC
 	if (_DOES_EVENT_OF_TYPE_EXIST(157))
 		return true;
 
-	if (!unk_0x67EBFCF2F78761B9())
+	if (!NETWORK::NETWORK_IS_SIGNED_ONLINE())
 		return true;
 
 	if (_GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() != 0)
-		if (unk_0x24B651D85CCE5EB4(_GET_CURRENT_SESSION_TYPE_SCRIPT_HASH()) == 0)
+		if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(_GET_CURRENT_SESSION_TYPE_SCRIPT_HASH()) == 0)
 			return true;
 
 	return false;
 }
 
-int _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x1D480
+Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x1D480
 {
 	switch (func_10())
 	{
@@ -21595,7 +21595,7 @@ int _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x1D480
 	return 0;
 }
 
-int func_9() // Position - 0x1D4B3
+Hash func_9() // Position - 0x1D4B3
 {
 	switch (Global_2697019)
 	{
@@ -21621,7 +21621,7 @@ BOOL func_11() // Position - 0x1D4E2
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x1D4F1
 {
-	if (unk_0x36D3321E138A43F0(1, iParam0))
+	if (SCRIPT::GET_EVENT_EXISTS(SCRIPT_EVENT_QUEUE_NETWORK, iParam0))
 		return true;
 
 	return false;

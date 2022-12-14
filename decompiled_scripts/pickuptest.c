@@ -1,9 +1,9 @@
 void main() // Position - 0x0
 {
-	if (unk_0x72474BA05A104E1E())
-		unk_0x78DD793477D04C42(500);
+	if (CAM::IS_SCREEN_FADED_OUT())
+		CAM::DO_SCREEN_FADE_IN(500);
 
-	if (unk_0x55EEDBBFDC6E810F(18))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(18))
 		func_1();
 
 	while (true)
@@ -16,7 +16,7 @@ void main() // Position - 0x0
 
 void func_1() // Position - 0x2F
 {
-	unk_0x675D9C12C73D3DE7();
+	SCRIPT::TERMINATE_THIS_THREAD();
 	return;
 }
 

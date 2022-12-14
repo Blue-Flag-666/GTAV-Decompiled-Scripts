@@ -45,7 +45,7 @@ void main() // Position - 0x0
 	fLocal_14 = 0.001f;
 	iLocal_17 = -1;
 
-	if (unk_0x55EEDBBFDC6E810F(2))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(2))
 		func_11();
 
 	while (true)
@@ -85,13 +85,13 @@ void main() // Position - 0x0
 			case 1:
 				for (iLocal_22 = 0; iLocal_22 < Global_22844[1 /*42*/].f_32[1]; iLocal_22 = iLocal_22 + 1)
 				{
-					if (!unk_0x66599E73DBA5A850(unk_0xC1A5EC5C986B98AD()))
+					if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 					{
-						if (unk_0x7DE17ACDD8BA2642(uLocal_23[iLocal_22]))
+						if (ENTITY::DOES_ENTITY_EXIST(uLocal_23[iLocal_22]))
 						{
-							if (unk_0x66599E73DBA5A850(uLocal_23[iLocal_22]))
+							if (PED::IS_PED_INJURED(uLocal_23[iLocal_22]))
 							{
-								if (unk_0x7559C38E6535AB89(uLocal_23[iLocal_22], unk_0xC1A5EC5C986B98AD(), 1))
+								if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY(uLocal_23[iLocal_22], PLAYER::PLAYER_PED_ID(), true))
 								{
 									if (!Global_32214[iLocal_22])
 									{
@@ -100,11 +100,11 @@ void main() // Position - 0x0
 										Global_32214[iLocal_22] = true;
 									}
 								
-									if (unk_0x055111B11E6624FD(uLocal_23[iLocal_22], 0))
+									if (ENTITY::IS_ENTITY_DEAD(uLocal_23[iLocal_22], false))
 									{
 										if (!Global_32218[iLocal_22])
 										{
-											if (unk_0xEB2F93AF244F1AFC(uLocal_23[iLocal_22]) && func_1())
+											if (MOBILE::CELL_CAM_IS_CHAR_VISIBLE_NO_FACE_CHECK(uLocal_23[iLocal_22]) && func_1())
 											{
 												Global_22844[1 /*42*/].f_27[2] = Global_22844[1 /*42*/].f_27[2] + 1;
 												func_2("CL_C1A_J2" /*Photos taken of dead gang members ~1~/~1~*/, Global_22844[1 /*42*/].f_27[2], Global_22844[1 /*42*/].f_32[2], 2000, 1);
@@ -180,30 +180,30 @@ void main() // Position - 0x0
 	return;
 }
 
-int func_1() // Position - 0x438
+BOOL func_1() // Position - 0x438
 {
 	if (Global_22761)
-		return 1;
+		return true;
 
-	return 0;
+	return false;
 }
 
 void func_2(char* sParam0, int iParam1, int iParam2, int iParam3, int iParam4) // Position - 0x44E
 {
 	iParam4 = iParam4;
-	unk_0x7FC9F66A5DE18E09(sParam0);
-	unk_0x64C50E40AA09A6B5(iParam1);
-	unk_0x64C50E40AA09A6B5(iParam2);
-	unk_0xAC8CD22C06543F95(iParam3, 0);
+	HUD::BEGIN_TEXT_COMMAND_PRINT(sParam0);
+	HUD::ADD_TEXT_COMPONENT_INTEGER(iParam1);
+	HUD::ADD_TEXT_COMPONENT_INTEGER(iParam2);
+	HUD::END_TEXT_COMMAND_PRINT(iParam3, false);
 	return;
 }
 
 void func_3(char* sParam0, char* sParam1, int iParam2, int iParam3) // Position - 0x473
 {
 	iParam3 = iParam3;
-	unk_0x7FC9F66A5DE18E09(sParam0);
-	unk_0x48849374B34BB7B9(sParam1);
-	unk_0xAC8CD22C06543F95(iParam2, 0);
+	HUD::BEGIN_TEXT_COMMAND_PRINT(sParam0);
+	HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam1);
+	HUD::END_TEXT_COMMAND_PRINT(iParam2, false);
 	return;
 }
 
@@ -220,7 +220,7 @@ int func_4(int iParam0, int iParam1, BOOL bParam2, int iParam3) // Position - 0x
 
 int func_5(int iParam0, int iParam1, BOOL bParam2, int iParam3) // Position - 0x4BD
 {
-	if (unk_0x24B651D85CCE5EB4(joaat("appsidetask")) > 0)
+	if (SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("appsidetask")) > 0)
 		return 0;
 
 	if (func_8() == 0)
@@ -247,25 +247,25 @@ int func_5(int iParam0, int iParam1, BOOL bParam2, int iParam3) // Position - 0x
 
 void func_6(int iParam0) // Position - 0x521
 {
-	var unk;
-	var unk2;
-	var unk3;
-	var unk4;
+	int clockSeconds;
+	int clockMinutes;
+	int clockHours;
+	int clockDayOfMonth;
 	int num;
-	var unk5;
+	int clockYear;
 
-	unk = unk_0x731F95B6458DCF80();
-	unk2 = unk_0x77BBAAED3E25322C();
-	unk3 = unk_0x30DFE1FFD2CC7420();
-	unk4 = unk_0x8C0F17CAC308A14B();
-	num = unk_0x61117764C67882B7() + 1;
-	unk5 = unk_0x367F557725B53815();
-	Global_23013[iParam0 /*9*/].f_2 = unk;
-	Global_23013[iParam0 /*9*/].f_2.f_1 = unk2;
-	Global_23013[iParam0 /*9*/].f_2.f_2 = unk3;
-	Global_23013[iParam0 /*9*/].f_2.f_3 = unk4;
+	clockSeconds = CLOCK::GET_CLOCK_SECONDS();
+	clockMinutes = CLOCK::GET_CLOCK_MINUTES();
+	clockHours = CLOCK::GET_CLOCK_HOURS();
+	clockDayOfMonth = CLOCK::GET_CLOCK_DAY_OF_MONTH();
+	num = CLOCK::GET_CLOCK_MONTH() + 1;
+	clockYear = CLOCK::GET_CLOCK_YEAR();
+	Global_23013[iParam0 /*9*/].f_2 = clockSeconds;
+	Global_23013[iParam0 /*9*/].f_2.f_1 = clockMinutes;
+	Global_23013[iParam0 /*9*/].f_2.f_2 = clockHours;
+	Global_23013[iParam0 /*9*/].f_2.f_3 = clockDayOfMonth;
 	Global_23013[iParam0 /*9*/].f_2.f_4 = num;
-	Global_23013[iParam0 /*9*/].f_2.f_5 = unk5;
+	Global_23013[iParam0 /*9*/].f_2.f_5 = clockYear;
 	return;
 }
 
@@ -364,7 +364,7 @@ BOOL func_10() // Position - 0x768
 
 void func_11() // Position - 0x78F
 {
-	unk_0x675D9C12C73D3DE7();
+	SCRIPT::TERMINATE_THIS_THREAD();
 	return;
 }
 
