@@ -1081,13 +1081,13 @@ void func_33(int iParam0, int iParam1) // Position - 0xB63
 	struct<4> eventData;
 	int playerBits;
 
-	eventData = -295285447;
+	eventData = 1012894035;
 	eventData.f_1 = PLAYER::PLAYER_ID();
 	eventData.f_2 = iParam0;
 	eventData.f_3 = iParam1;
 	playerBits = _GET_PARTICIPANTS_SCRIPT_EVENT_BITS(true);
 
-	if (!playerBits == 0)
+	if (!(playerBits == 0))
 		SCRIPT::SEND_TU_SCRIPT_EVENT(SCRIPT_EVENT_QUEUE_NETWORK, &eventData, 4, playerBits);
 
 	return;
@@ -2869,7 +2869,7 @@ BOOL func_78(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position -
 	}
 
 	if (iParam0 == 0 || iParam0 == 1)
-		if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Global_2765782) && !PED::IS_PED_INJURED(NETWORK::NET_TO_PED(Global_2765782)) && AUDIO::IS_ANY_SPEECH_PLAYING(NETWORK::NET_TO_PED(Global_2765782)))
+		if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Global_2765784) && !PED::IS_PED_INJURED(NETWORK::NET_TO_PED(Global_2765784)) && AUDIO::IS_ANY_SPEECH_PLAYING(NETWORK::NET_TO_PED(Global_2765784)))
 			return 0;
 
 	if (!Global_1579666)
@@ -2893,7 +2893,7 @@ BOOL func_78(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position -
 	if (_IS_FMMC_ACTIVE() || func_80() || func_79())
 		return 0;
 
-	if (Global_2694556)
+	if (Global_2694558)
 		return 0;
 
 	if (IS_BIT_SET(Global_1975258[PLAYER::NETWORK_PLAYER_ID_TO_INT() /*68*/].f_42, 1))
@@ -2909,12 +2909,12 @@ BOOL func_78(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position -
 
 BOOL func_79() // Position - 0x295A
 {
-	return Global_2683862.f_692;
+	return Global_2683864.f_692;
 }
 
 BOOL func_80() // Position - 0x2969
 {
-	return Global_2683862.f_691;
+	return Global_2683864.f_691;
 }
 
 BOOL _IS_FMMC_ACTIVE() // Position - 0x2978
@@ -3585,7 +3585,7 @@ void func_99(var uParam0, int iParam1) // Position - 0x3447
 			
 				switch (eventData)
 				{
-					case -295285447:
+					case 1012894035:
 						if (Global_1669394.f_822)
 							return;
 					
@@ -4755,7 +4755,7 @@ void func_121(var uParam0) // Position - 0x49C5
 	PED::SET_PED_CAN_EVASIVE_DIVE(*uParam0, false);
 	PED::SET_TREAT_AS_AMBIENT_PED_FOR_DRIVER_LOCKON(*uParam0, true);
 	PED::SET_PED_CAN_RAGDOLL_FROM_PLAYER_IMPACT(*uParam0, false);
-	PED::SET_PED_DIES_WHEN_INJURED(*uParam0, false);
+	PED::SET_PED_CAN_RAGDOLL(*uParam0, false);
 	PED::SET_PED_CONFIG_FLAG(*uParam0, 208, true);
 	TASK::CLEAR_PED_TASKS(*uParam0);
 	return;
@@ -5205,10 +5205,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_142(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_142(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -5230,13 +5230,13 @@ int func_142(int iParam0) // Position - 0x5207
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -5533,7 +5533,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x580E
 	if (func_156())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_155())
@@ -5572,7 +5572,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x5892
 
 Hash func_151() // Position - 0x58C5
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -5591,7 +5591,7 @@ int func_152() // Position - 0x58E9
 
 BOOL func_153() // Position - 0x58F4
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x5903
@@ -5604,12 +5604,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x5903
 
 BOOL func_155() // Position - 0x591A
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_156() // Position - 0x5926
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_157() // Position - 0x5935
@@ -6515,7 +6515,7 @@ void func_182() // Position - 0x6C53
 void func_183() // Position - 0x6C5F
 {
 	if (ENTITY::DOES_ENTITY_EXIST(uLocal_47.f_382))
-		OBJECT::DELETE_OBJECT(&(uLocal_47.f_382));
+		OBJECT::DELETE_OBJECT(&(uLocal_47.f_&func_2));
 
 	if (ENTITY::DOES_ENTITY_EXIST(uLocal_47.f_383))
 		OBJECT::DELETE_OBJECT(&(uLocal_47.f_383));

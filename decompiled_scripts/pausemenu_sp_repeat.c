@@ -347,7 +347,7 @@ void main() // Position - 0x0
 						func_29(false, 1);
 						func_28(2, false);
 					
-						if (!iScriptParam_0.f_1 == 52 && !iScriptParam_0.f_1 == 154)
+						if (!(iScriptParam_0.f_1 == 52) && !(iScriptParam_0.f_1 == 154))
 							func_28(1, false);
 					
 						Global_78808 = 0;
@@ -614,10 +614,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_14(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_14(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -639,13 +639,13 @@ int func_14(int iParam0) // Position - 0x6D1
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -770,7 +770,7 @@ eMPStat func_16(int iParam0) // Position - 0x711
 			return MP_STAT_SHOPFM_GUN_08_CS;
 	
 		case 36:
-			return MP_STAT_SHOPFM_GUN_09_GOH;
+			return &func_2;
 	
 		case 37:
 			return MP_STAT_SHOPFM_GUN_10_VWH;
@@ -794,7 +794,7 @@ eMPStat func_16(int iParam0) // Position - 0x711
 			return MP_STAT_SHOPFM_CARMOD_08_CS6;
 	
 		case 44:
-			return MP_STAT_RAYPISTOL_FM_AMMO_CURRENT;
+			return MP_STAT_SHOPFM_CARMOD_SUPERMOD;
 	
 		case 45:
 			return MP_STAT_SHOPFM_PERS_GAR;
@@ -836,16 +836,16 @@ eMPStat func_16(int iParam0) // Position - 0x711
 			return MP_STAT_SHOPFM_CLOTHES_STUDIO;
 	
 		case 58:
-			return MP_STAT_GBTELTIMESPLAYEDGOONPREV;
+			return UNK_108067914;
 	
 		case 59:
-			return MP_STAT_TAMPA3_FMINI_HELDTIME;
+			return UNK_067837685;
 	
 		default:
 			break;
 	}
 
-	return 14192;
+	return MP_STAT_INVALID;
 }
 
 int func_17() // Position - 0xAAA
@@ -1798,15 +1798,15 @@ void func_52(int iParam0, var uParam1) // Position - 0x1958
 	return;
 }
 
-BOOL func_53(int iParam0, int iParam1, Player plParam2) // Position - 0x1A18
+BOOL func_53(int iParam0, int iParam1, int iParam2) // Position - 0x1A18
 {
 	int num;
 	int num2;
 	int num3;
 	char* str;
 
-	if (plParam2 != 0)
-		if (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plParam2))
+	if (iParam2 != 0)
+		if (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iParam2))
 			return false;
 
 	if (Global_63587[iParam0 /*13*/].f_7)
@@ -1846,7 +1846,7 @@ BOOL func_53(int iParam0, int iParam1, Player plParam2) // Position - 0x1A18
 
 	if (num3 == -1)
 	{
-		func_61(num3, iParam1, 0, str, iParam0, plParam2);
+		func_61(num3, iParam1, 0, str, iParam0, iParam2);
 		num2 = 0;
 	}
 	else
@@ -1854,56 +1854,56 @@ BOOL func_53(int iParam0, int iParam1, Player plParam2) // Position - 0x1A18
 		switch (num)
 		{
 			case 1:
-				func_60(num3, iParam1, num2, "MTTIME", iParam0, plParam2);
+				func_60(num3, iParam1, num2, "MTTIME", iParam0, iParam2);
 				break;
 		
 			case 2:
-				func_60(num3, iParam1, num2, str, iParam0, plParam2);
+				func_60(num3, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 3:
-				func_59(iParam1, num2, str, iParam0, plParam2);
+				func_59(iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 17:
 			case 4:
-				func_60(num3, iParam1, num2, str, iParam0, plParam2);
+				func_60(num3, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 5:
-				func_58(num3, num.f_2, iParam1, num2, str, iParam0, plParam2);
+				func_58(num3, num.f_2, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 6:
-				func_59(iParam1, num2, str, iParam0, plParam2);
+				func_59(iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 7:
-				func_57(num3, num.f_2, iParam1, num2, str, iParam0, plParam2);
+				func_57(num3, num.f_2, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 8:
-				func_57(num3, num.f_2, iParam1, num2, str, iParam0, plParam2);
+				func_57(num3, num.f_2, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 9:
-				func_58(num3, 100, iParam1, num2, str, iParam0, plParam2);
+				func_58(num3, 100, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 16:
 			case 10:
 			case 14:
 			case 15:
-				func_56(num3, iParam1, num2, str, iParam0, plParam2);
+				func_56(num3, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 11:
-				func_58(num3, 100, iParam1, num2, str, iParam0, plParam2);
+				func_58(num3, 100, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 12:
 			case 13:
-				func_54(num3, iParam1, num2, str, iParam0, plParam2);
+				func_54(num3, iParam1, num2, str, iParam0, iParam2);
 				break;
 		
 			case 0:
@@ -1917,11 +1917,11 @@ BOOL func_53(int iParam0, int iParam1, Player plParam2) // Position - 0x1A18
 	return true;
 }
 
-void func_54(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, Player plParam5) // Position - 0x1C7E
+void func_54(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, int iParam5) // Position - 0x1C7E
 {
-	if (plParam5 != 0)
+	if (iParam5 != 0)
 	{
-		NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam5, "SET_DATA_SLOT");
+		GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam5, "SET_DATA_SLOT");
 	}
 	else
 	{
@@ -1934,7 +1934,7 @@ void func_54(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, 
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(6);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(iParam0);
 
-	if (plParam5 == 0)
+	if (iParam5 == 0)
 	{
 		GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("PM_RP_STATD" /*~a~~n~~a~*/);
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam3);
@@ -2479,7 +2479,7 @@ char* AUDIO_SPEECH_GET_PARAM_STRING_FROM_ENUM(int iParam0) // Position - 0x1CEE
 		case 799:
 			return "MISHSTD158";
 	
-		case 800:
+		case &func_1:
 			return "MISHSTD159";
 	
 		case 801:
@@ -3086,11 +3086,11 @@ char* AUDIO_SPEECH_GET_PARAM_STRING_FROM_ENUM(int iParam0) // Position - 0x1CEE
 	return "MISSING_MISSION_STAT_STRING";
 }
 
-void func_56(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, Player plParam5) // Position - 0x2EC9
+void func_56(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, int iParam5) // Position - 0x2EC9
 {
-	if (plParam5 != 0)
+	if (iParam5 != 0)
 	{
-		NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam5, "SET_DATA_SLOT");
+		GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam5, "SET_DATA_SLOT");
 	}
 	else
 	{
@@ -3103,7 +3103,7 @@ void func_56(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, 
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(iParam0);
 
-	if (plParam5 == 0)
+	if (iParam5 == 0)
 	{
 		GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("PM_RP_STATD" /*~a~~n~~a~*/);
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam3);
@@ -3119,13 +3119,13 @@ void func_56(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, 
 	return;
 }
 
-void func_57(int iParam0, int iParam1, int iParam2, int iParam3, char* sParam4, int iParam5, Player plParam6) // Position - 0x2F39
+void func_57(int iParam0, int iParam1, int iParam2, int iParam3, char* sParam4, int iParam5, int iParam6) // Position - 0x2F39
 {
 	int value;
 
-	if (plParam6 != 0)
+	if (iParam6 != 0)
 	{
-		NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam6, "SET_DATA_SLOT");
+		GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam6, "SET_DATA_SLOT");
 	}
 	else
 	{
@@ -3144,7 +3144,7 @@ void func_57(int iParam0, int iParam1, int iParam2, int iParam3, char* sParam4, 
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(value);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(iParam1);
 
-	if (plParam6 == 0)
+	if (iParam6 == 0)
 	{
 		GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("PM_RP_STATD" /*~a~~n~~a~*/);
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam4);
@@ -3160,15 +3160,15 @@ void func_57(int iParam0, int iParam1, int iParam2, int iParam3, char* sParam4, 
 	return;
 }
 
-void func_58(int iParam0, int iParam1, int iParam2, int iParam3, char* sParam4, int iParam5, Player plParam6) // Position - 0x2FBE
+void func_58(int iParam0, int iParam1, int iParam2, int iParam3, char* sParam4, int iParam5, int iParam6) // Position - 0x2FBE
 {
 	float value;
 
 	value = (SYSTEM::TO_FLOAT(iParam0) / SYSTEM::TO_FLOAT(iParam1)) * 100f;
 
-	if (plParam6 != 0)
+	if (iParam6 != 0)
 	{
-		NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam6, "SET_DATA_SLOT");
+		GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam6, "SET_DATA_SLOT");
 	}
 	else
 	{
@@ -3181,7 +3181,7 @@ void func_58(int iParam0, int iParam1, int iParam2, int iParam3, char* sParam4, 
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(3);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(SYSTEM::CEIL(value));
 
-	if (plParam6 == 0)
+	if (iParam6 == 0)
 	{
 		GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("PM_RP_STATD" /*~a~~n~~a~*/);
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam4);
@@ -3197,11 +3197,11 @@ void func_58(int iParam0, int iParam1, int iParam2, int iParam3, char* sParam4, 
 	return;
 }
 
-void func_59(int iParam0, int iParam1, char* sParam2, int iParam3, Player plParam4) // Position - 0x3047
+void func_59(int iParam0, int iParam1, char* sParam2, int iParam3, int iParam4) // Position - 0x3047
 {
-	if (plParam4 != 0)
+	if (iParam4 != 0)
 	{
-		NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam4, "SET_DATA_SLOT");
+		GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam4, "SET_DATA_SLOT");
 	}
 	else
 	{
@@ -3212,7 +3212,7 @@ void func_59(int iParam0, int iParam1, char* sParam2, int iParam3, Player plPara
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(iParam0);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(iParam1);
 
-	if (plParam4 == 0)
+	if (iParam4 == 0)
 	{
 		GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("PM_RP_STATD" /*~a~~n~~a~*/);
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam2);
@@ -3228,7 +3228,7 @@ void func_59(int iParam0, int iParam1, char* sParam2, int iParam3, Player plPara
 	return;
 }
 
-void func_60(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, Player plParam5) // Position - 0x30AC
+void func_60(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, int iParam5) // Position - 0x30AC
 {
 	int value;
 	int value2;
@@ -3236,9 +3236,9 @@ void func_60(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, 
 	value = SYSTEM::FLOOR(SYSTEM::TO_FLOAT(iParam0) / 60000f);
 	value2 = SYSTEM::FLOOR(SYSTEM::TO_FLOAT(iParam0) / 1000f) - (value * 60);
 
-	if (plParam5 != 0)
+	if (iParam5 != 0)
 	{
-		NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam5, "SET_DATA_SLOT");
+		GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam5, "SET_DATA_SLOT");
 	}
 	else
 	{
@@ -3252,7 +3252,7 @@ void func_60(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, 
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(value);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(value2);
 
-	if (plParam5 == 0)
+	if (iParam5 == 0)
 	{
 		GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("PM_RP_STATD" /*~a~~n~~a~*/);
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam3);
@@ -3268,11 +3268,11 @@ void func_60(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, 
 	return;
 }
 
-void func_61(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, Player plParam5) // Position - 0x314B
+void func_61(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, int iParam5) // Position - 0x314B
 {
-	if (plParam5 != 0)
+	if (iParam5 != 0)
 	{
-		NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam5, "SET_DATA_SLOT");
+		GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam5, "SET_DATA_SLOT");
 	}
 	else
 	{
@@ -3285,7 +3285,7 @@ void func_61(int iParam0, int iParam1, int iParam2, char* sParam3, int iParam4, 
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(0);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(iParam0);
 
-	if (plParam5 == 0)
+	if (iParam5 == 0)
 	{
 		GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("PM_RP_STATD" /*~a~~n~~a~*/);
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam3);
@@ -3812,7 +3812,7 @@ char* AUDIO_SPEECH_GET_PARAM_STRING_FROM_ENUM_0(int iParam0) // Position - 0x31B
 		case 799:
 			return "MISHSTA_110";
 	
-		case 800:
+		case &func_1:
 			return "MISHSTA_111";
 	
 		case 801:
@@ -5022,7 +5022,7 @@ int func_74(int iParam0, int iParam1) // Position - 0x467F
 			switch (iParam1)
 			{
 				case 0:
-					return 800;
+					return &func_1;
 			
 				case 1:
 					return 801;

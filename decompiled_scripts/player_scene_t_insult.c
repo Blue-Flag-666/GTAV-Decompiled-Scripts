@@ -1701,7 +1701,7 @@ void func_26(Ped pedParam0, int iParam1) // Position - 0xAF9
 				if (ENTITY::GET_ENTITY_HEALTH(iLocal_237[iParam1]) < ENTITY::GET_ENTITY_MAX_HEALTH(iLocal_237[iParam1]))
 					flag = true;
 			
-				if (FILES::GET_DLC_VEHICLE_FLAGS(iLocal_237[iParam1]))
+				if (FIRE::IS_ENTITY_ON_FIRE(iLocal_237[iParam1]))
 					flag = true;
 			
 				if (flag)
@@ -1832,9 +1832,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -2285,7 +2285,7 @@ void func_43() // Position - 0x1EAB
 	if (Global_100404 > 0)
 		return;
 
-	unk_0xF60B883B88B61903();
+	STREAMING::ALLOW_PLAYER_SWITCH_OUTRO();
 	return;
 }
 

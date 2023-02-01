@@ -29,7 +29,7 @@
 	int iLocal_27 = 0;
 	int iLocal_28 = 0;
 	BOOL bLocal_29 = 0;
-	Player plLocal_30 = 0;
+	int iLocal_30 = 0;
 	int iLocal_31 = 0;
 	int iLocal_32 = 0;
 	BOOL bLocal_33 = 0;
@@ -532,7 +532,7 @@ void func_3(eCharacter echParam0, int iParam1, int iParam2) // Position - 0x65F
 			break;
 	
 		case CHAR_MULTIPLAYER:
-			stat = 14192;
+			stat = MP_STAT_INVALID;
 		
 			switch (iParam1)
 			{
@@ -565,7 +565,7 @@ void func_3(eCharacter echParam0, int iParam1, int iParam2) // Position - 0x65F
 					break;
 			}
 		
-			if (stat != 14192)
+			if (stat != MP_STAT_INVALID)
 			{
 				num = _MPCHAR_STAT_GET_INT(stat, -1, 0);
 				num = num + iParam2;
@@ -586,7 +586,7 @@ void _MPCHAR_STAT_SET_INT(eMPStat empsParam0, int iParam1, int iParam2, BOOL bPa
 	Hash statName;
 
 	bParam4;
-	statName = Global_2805027[empsParam0 /*3*/][func_5(iParam2)];
+	statName = Global_2805029[empsParam0 /*3*/][func_5(iParam2)];
 
 	if (statName != 0)
 		STATS::STAT_SET_INT(statName, iParam1, bParam3);
@@ -607,13 +607,13 @@ int func_5(int iParam0) // Position - 0x77F
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -630,10 +630,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_5(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_5(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -766,14 +766,14 @@ void func_17() // Position - 0xA32
 			{
 				if (!func_23())
 				{
-					plLocal_30 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("MIDSIZED_MESSAGE");
+					iLocal_30 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("MIDSIZED_MESSAGE");
 				
-					while (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_30))
+					while (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_30))
 					{
 						SYSTEM::WAIT(0);
 					}
 				
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_30, "SHOW_BRIDGES_KNIVES_PROGRESS");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_30, "SHOW_BRIDGES_KNIVES_PROGRESS");
 				
 					if (bLocal_38)
 					{
@@ -808,7 +808,7 @@ void func_17() // Position - 0xA32
 		case 1:
 			if (SYSTEM::TIMERB() > 3750 || CAM::IS_SCREEN_FADED_OUT() || !PLAYER::IS_PLAYER_PLAYING(PLAYER::PLAYER_ID()) || func_23() || !PLAYER::IS_PLAYER_CONTROL_ON(PLAYER::PLAYER_ID()) || func_21() || func_20())
 			{
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_30, "SHARD_ANIM_OUT");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_30, "SHARD_ANIM_OUT");
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(0.33f);
 				GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
@@ -852,8 +852,8 @@ void func_17() // Position - 0xA32
 
 void func_18() // Position - 0xC08
 {
-	if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_30))
-		GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&plLocal_30);
+	if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_30))
+		GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_30);
 
 	return;
 }
@@ -861,8 +861,8 @@ void func_18() // Position - 0xC08
 void func_19() // Position - 0xC1F
 {
 	if (!func_23())
-		if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_30))
-			GRAPHICS::DRAW_SCALEFORM_MOVIE(plLocal_30, 0.5f, 0.5f, 1f, 1f, 100, 100, 100, 255, 0);
+		if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_30))
+			GRAPHICS::DRAW_SCALEFORM_MOVIE(iLocal_30, 0.5f, 0.5f, 1f, 1f, 100, 100, 100, 255, 0);
 
 	return;
 }
@@ -1846,7 +1846,7 @@ void func_44(int iParam0, int iParam1, int iParam2) // Position - 0x3155
 	}
 	else
 	{
-		_STAT_SET_PACKED_BOOL(891 + iParam0, 1, -1);
+		_STAT_SET_PACKED_BOOL(891 + iParam0, true, -1);
 	}
 
 	flag = true;
@@ -2053,12 +2053,12 @@ int func_46() // Position - 0x36F9
 	return Global_32163;
 }
 
-void _STAT_SET_PACKED_BOOL(int iParam0, int iParam1, int iParam2) // Position - 0x3704
+void _STAT_SET_PACKED_BOOL(int iParam0, BOOL bParam1, int iParam2) // Position - 0x3704
 {
 	if (iParam2 == -1)
 		iParam2 = func_6();
 
-	unk_0x0111091C0EE35B9C(iParam0, iParam1, iParam2);
+	STATS::SET_PACKED_STAT_BOOL_CODE(iParam0, bParam1, iParam2);
 	return;
 }
 

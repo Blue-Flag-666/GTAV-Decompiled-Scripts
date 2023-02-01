@@ -125,7 +125,7 @@ void main() // Position - 0x0
 		if (Global_32414 != iLocal_66)
 		{
 			if (iLocal_66 == 0 && Global_32414 != 0)
-				if (MISC::IS_PS3_VERSION() || func_172())
+				if (MISC::IS_PS3_VERSION() || IS_PLAYSTATION_PLATFORM())
 					_DISPLAY_HELP_TEXT("CHEAT_TROPHIE" /*Cheats have been activated. Trophies will not be awarded for the duration of this session.*/, -1);
 				else
 					_DISPLAY_HELP_TEXT("CHEAT_ACHIEVE" /*Cheats have been activated. Achievements will not be awarded for the duration of this session.*/, -1);
@@ -294,7 +294,7 @@ void func_2() // Position - 0x29A
 			func_137(40, 1);
 
 	if (!PLAYER::HAS_ACHIEVEMENT_BEEN_PASSED(41))
-		if (IS_BIT_SET(Global_2793044.f_2320.f_18, 1))
+		if (IS_BIT_SET(Global_2793046.f_2320.f_18, 1))
 			func_137(41, 1);
 
 	if (!PLAYER::HAS_ACHIEVEMENT_BEEN_PASSED(43))
@@ -309,7 +309,7 @@ void func_2() // Position - 0x29A
 		func_8(false);
 
 	if (!PLAYER::HAS_ACHIEVEMENT_BEEN_PASSED(48))
-		if (func_7(11, -1))
+		if (_STAT_GET_PACKED_BOOL(11, -1))
 			func_137(48, 1);
 
 	if (!PLAYER::HAS_ACHIEVEMENT_BEEN_PASSED(49))
@@ -358,7 +358,7 @@ BOOL func_4(int iParam0, int iParam1) // Position - 0x4B4
 	Hash statHash;
 	BOOL outValue;
 
-	statHash = Global_2848280[iParam0 /*3*/][func_5(iParam1)];
+	statHash = Global_2848282[iParam0 /*3*/][func_5(iParam1)];
 
 	if (STATS::STAT_GET_BOOL(statHash, &outValue, -1))
 		return outValue;
@@ -379,13 +379,13 @@ int func_5(int iParam0) // Position - 0x4E0
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -397,12 +397,12 @@ int func_6() // Position - 0x514
 	return Global_1574918;
 }
 
-BOOL func_7(int iParam0, int iParam1) // Position - 0x520
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0x520
 {
 	if (iParam1 == -1)
 		iParam1 = func_6();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 int func_8(BOOL bParam0) // Position - 0x53C
@@ -487,10 +487,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_5(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_5(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -504,7 +504,7 @@ int func_11(int iParam0, int iParam1) // Position - 0x670
 	Hash statHash;
 	int outValue;
 
-	statHash = Global_2850192[iParam0 /*3*/][func_5(iParam1)];
+	statHash = Global_2850194[iParam0 /*3*/][func_5(iParam1)];
 
 	if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 		return outValue;
@@ -559,7 +559,7 @@ BOOL func_14(int iParam0, int iParam1) // Position - 0x724
 	Hash statHash;
 	BOOL outValue;
 
-	statHash = Global_2850649[iParam0 /*3*/][func_5(iParam1)];
+	statHash = Global_2850651[iParam0 /*3*/][func_5(iParam1)];
 
 	if (STATS::STAT_GET_BOOL(statHash, &outValue, -1))
 		return outValue;
@@ -980,7 +980,7 @@ BOOL func_21(var uParam0, Hash hParam1, int iParam2, BOOL bParam3) // Position -
 						break;
 				}
 			
-				if (*uParam0 == -1566778158 && !(func_7(36788, -1) || func_82(-1566778158, joaat("WEAPON_MICROSMG"), -1)))
+				if (*uParam0 == -1566778158 && !(_STAT_GET_PACKED_BOOL(36788, -1) || func_82(-1566778158, joaat("WEAPON_MICROSMG"), -1)))
 					return false;
 			}
 			else
@@ -2393,7 +2393,7 @@ BOOL func_21(var uParam0, Hash hParam1, int iParam2, BOOL bParam3) // Position -
 					break;
 			}
 		
-			if (*uParam0 == 1141184690 && !func_7(36786, -1))
+			if (*uParam0 == 1141184690 && !_STAT_GET_PACKED_BOOL(36786, -1))
 				return false;
 			break;
 	
@@ -2639,7 +2639,7 @@ BOOL func_21(var uParam0, Hash hParam1, int iParam2, BOOL bParam3) // Position -
 				}
 			}
 		
-			if (*uParam0 == 330905451 && !(func_7(36787, -1) || func_82(330905451, joaat("WEAPON_PUMPSHOTGUN"), -1)))
+			if (*uParam0 == 330905451 && !(_STAT_GET_PACKED_BOOL(36787, -1) || func_82(330905451, joaat("WEAPON_PUMPSHOTGUN"), -1)))
 				return false;
 			break;
 	
@@ -4212,8 +4212,8 @@ int func_22(Hash hParam0, int iParam1) // Position - 0x6027
 	int j;
 	var unk61;
 	var ComponentDataPtr2;
-	var unk121;
-	var unk137;
+	var name;
+	var unk136;
 	float num2;
 
 	price = 0;
@@ -7629,11 +7629,11 @@ int func_22(Hash hParam0, int iParam1) // Position - 0x6027
 
 	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && func_71())
 	{
-		TEXT_LABEL_ASSIGN_STRING(&unk137, func_69(iParam1, hParam0), 16);
-		func_62(&unk121, unk137, ENTITY::GET_ENTITY_MODEL(PLAYER::PLAYER_PED_ID()), 3, 1, func_67(hParam0), func_66(hParam0), -1, false, false);
+		TEXT_LABEL_ASSIGN_STRING(&unk136, func_69(iParam1, hParam0), 16);
+		func_62(&name, unk136, ENTITY::GET_ENTITY_MODEL(PLAYER::PLAYER_PED_ID()), 3, 1, func_67(hParam0), func_66(hParam0), -1, false, false);
 	
-		if (unk_0x0E4605546F88E7A3(&unk121))
-			price = NETSHOPPING::NET_GAMESERVER_GET_PRICE(MISC::GET_HASH_KEY(&unk121), joaat("CATEGORY_WEAPON_MOD"), true);
+		if (NETSHOPPING::NET_GAMESERVER_CATALOG_ITEM_IS_VALID(&name))
+			price = NETSHOPPING::NET_GAMESERVER_GET_PRICE(MISC::GET_HASH_KEY(&name), joaat("CATEGORY_WEAPON_MOD"), true);
 	}
 
 	if (price > 0)
@@ -9952,9 +9952,9 @@ int func_76() // Position - 0xC433
 			return 1;
 	}
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (unk_0x8BD41D5945F5762B())
+		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		{
 			if (NETWORK::NETWORK_HAS_ROS_PRIVILEGE_SPECIAL_EDITION_CONTENT())
 			{
@@ -9992,9 +9992,9 @@ BOOL _IS_EXCLUSIVE_CONTENT_UNLOCKED() // Position - 0xC56C
 	else if (Global_152523 == 3)
 		return false;
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (unk_0x8BD41D5945F5762B())
+		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		{
 			if (NETWORK::NETWORK_HAS_ROS_PRIVILEGE_PLAYED_LAST_GEN())
 			{
@@ -11919,7 +11919,7 @@ int func_85(int iParam0, int iParam1) // Position - 0xCB53
 					return 521;
 			
 				case joaat("COMPONENT_MARKSMANRIFLE_MK2_CAMO_02"):
-					return 522;
+					return &func_1;
 			
 				case joaat("COMPONENT_MARKSMANRIFLE_MK2_CAMO_03"):
 					return 523;
@@ -12404,7 +12404,7 @@ eMPStat func_87(int iParam0, int iParam1) // Position - 0xF03E
 		}
 	}
 
-	return 14192;
+	return MP_STAT_INVALID;
 }
 
 int func_88() // Position - 0xF1AF
@@ -16047,9 +16047,9 @@ void _DISPLAY_HELP_TEXT(char* text, int iParam1) // Position - 0x12785
 	return;
 }
 
-BOOL func_172() // Position - 0x1279C
+BOOL IS_PLAYSTATION_PLATFORM() // Position - 0x1279C
 {
-	return MISC::IS_ORBIS_VERSION() || unk_0xEE17703CF2C2875A();
+	return MISC::IS_ORBIS_VERSION() || MISC::IS_PROSPERO_VERSION();
 }
 
 void func_173(int* piParam0) // Position - 0x127B2

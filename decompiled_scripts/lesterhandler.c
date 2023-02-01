@@ -290,12 +290,12 @@ void main() // Position - 0x0
 					PED::SET_RELATIONSHIP_BETWEEN_GROUPS(1, hLocal_50, joaat("PLAYER"));
 					PED::SET_RELATIONSHIP_BETWEEN_GROUPS(1, joaat("PLAYER"), hLocal_50);
 					PED::SET_PED_RELATIONSHIP_GROUP_HASH(pedLocal_46, hLocal_50);
-					unk_0xB7561E3CA1BE2262(pedLocal_46, 0);
+					PED::SET_PED_DIES_WHEN_INJURED(pedLocal_46, false);
 					PED::SET_PED_CAN_BE_TARGETTED(pedLocal_46, false);
 					PED::SET_PED_SUFFERS_CRITICAL_HITS(pedLocal_46, false);
 					PED::SET_PED_CAN_EVASIVE_DIVE(pedLocal_46, false);
 					ENTITY::SET_ENTITY_IS_TARGET_PRIORITY(pedLocal_46, false, 0);
-					PED::SET_PED_DIES_WHEN_INJURED(pedLocal_46, false);
+					PED::SET_PED_CAN_RAGDOLL(pedLocal_46, false);
 					PED::SET_PED_ID_RANGE(pedLocal_46, 250f);
 					PED::SET_PED_TARGET_LOSS_RESPONSE(pedLocal_46, 1);
 					ENTITY::SET_ENTITY_IS_TARGET_PRIORITY(pedLocal_46, false, 0);
@@ -976,9 +976,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;

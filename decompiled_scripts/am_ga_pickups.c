@@ -562,7 +562,7 @@ void func_6(var uParam0, Vector3 vParam1, var uParam2, var uParam3) // Position 
 	if (playerBits != 0)
 	{
 		eventData.f_2 = 123;
-		eventData = 1883636994;
+		eventData = -285086167;
 		eventData.f_1 = PLAYER::PLAYER_ID();
 		eventData.f_2 = { *uParam0 };
 		eventData.f_7 = { vParam1 };
@@ -1029,7 +1029,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0xD0D
 	if (func_39())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_38())
@@ -1068,7 +1068,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0xD91
 
 Hash func_34() // Position - 0xDC4
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -1087,7 +1087,7 @@ int func_35() // Position - 0xDE8
 
 BOOL func_36() // Position - 0xDF3
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0xE02
@@ -1100,12 +1100,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0xE02
 
 BOOL func_38() // Position - 0xE19
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_39() // Position - 0xE25
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_40() // Position - 0xE34

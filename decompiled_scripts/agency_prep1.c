@@ -1425,12 +1425,12 @@ void main() // Position - 0x0
 				{
 					if (VEHICLE::IS_VEHICLE_DRIVEABLE(veLocal_909, false) && PED::IS_PED_IN_VEHICLE(PLAYER::PLAYER_PED_ID(), veLocal_909, false) || VEHICLE::IS_VEHICLE_DRIVEABLE(veLocal_910, false) && PED::IS_PED_IN_VEHICLE(PLAYER::PLAYER_PED_ID(), veLocal_910, false))
 					{
-						if (unk_0xF56053F98EFCE77C(PLAYER::PLAYER_PED_ID(), "DAVIS" /*Davis*/) && ENTITY::GET_ENTITY_SPEED(PLAYER::PLAYER_PED_ID()) > 5f && PLAYER::GET_PLAYER_WANTED_LEVEL(PLAYER::PLAYER_ID()) > 0)
+						if (ENTITY::IS_ENTITY_IN_ZONE(PLAYER::PLAYER_PED_ID(), "DAVIS" /*Davis*/) && ENTITY::GET_ENTITY_SPEED(PLAYER::PLAYER_PED_ID()) > 5f && PLAYER::GET_PLAYER_WANTED_LEVEL(PLAYER::PLAYER_ID()) > 0)
 						{
 							if (_GET_RANDOM_BOOL())
-								unk_0x34954CC75CC067A4("SCRIPTED_SCANNER_REPORT_AH_PREP_01", 0f);
+								AUDIO::PLAY_POLICE_REPORT("SCRIPTED_SCANNER_REPORT_AH_PREP_01", 0f);
 							else
-								unk_0x34954CC75CC067A4("SCRIPTED_SCANNER_REPORT_AH_PREP_02", 0f);
+								AUDIO::PLAY_POLICE_REPORT("SCRIPTED_SCANNER_REPORT_AH_PREP_02", 0f);
 						
 							bLocal_1100 = true;
 						}
@@ -2496,14 +2496,14 @@ void func_36(Vehicle veParam0) // Position - 0x1E3C
 	return;
 }
 
-Blip func_37(var uParam0, var uParam1, var uParam2, BOOL bParam3) // Position - 0x1F66
+Blip func_37(Vector3 vParam0, var uParam1, var uParam2, BOOL bParam3) // Position - 0x1F66
 {
-	Blip vehicleWheelType;
+	Blip blip;
 
-	vehicleWheelType = VEHICLE::GET_VEHICLE_WHEEL_TYPE(uParam0);
-	HUD::SET_BLIP_SCALE(vehicleWheelType, NETWORK::NETWORK_IS_GAME_IN_PROGRESS() ? 1f : 1f);
-	HUD::SET_BLIP_ROUTE(vehicleWheelType, bParam3);
-	return vehicleWheelType;
+	blip = HUD::ADD_BLIP_FOR_COORD(vParam0);
+	HUD::SET_BLIP_SCALE(blip, NETWORK::NETWORK_IS_GAME_IN_PROGRESS() ? 1f : 1f);
+	HUD::SET_BLIP_ROUTE(blip, bParam3);
+	return blip;
 }
 
 var func_38(BOOL bParam0, var uParam1, var uParam2) // Position - 0x1F92
@@ -3361,9 +3361,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -4172,7 +4172,7 @@ void func_98(int iParam0) // Position - 0x40A1
 
 	Global_63363 = 0;
 
-	if (!Global_63587[iParam0 /*13*/] == 3)
+	if (!(Global_63587[iParam0 /*13*/] == 3))
 		return;
 
 	flag = false;

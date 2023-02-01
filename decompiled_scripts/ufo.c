@@ -127,9 +127,9 @@ void func_2(int iParam0, int iParam1) // Position - 0x132
 	
 		case 71:
 			if (iParam1 != 1)
-				unk_0x14D7CA14E183F034("HEIST_SWEATSHOP_ZONES", 0, 0);
+				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("HEIST_SWEATSHOP_ZONES", false, false);
 			else
-				unk_0x14D7CA14E183F034("HEIST_SWEATSHOP_ZONES", 1, 0);
+				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("HEIST_SWEATSHOP_ZONES", true, false);
 			break;
 	
 		case 65:
@@ -148,7 +148,7 @@ void func_2(int iParam0, int iParam1) // Position - 0x132
 	
 		case 174:
 			if (iParam1 == 2)
-				unk_0x2FF31AAA6E87720B("V_CARSHOWROOM_PS_WINDOW_UNBROKEN");
+				AUDIO::REMOVE_PORTAL_SETTINGS_OVERRIDE("V_CARSHOWROOM_PS_WINDOW_UNBROKEN");
 			break;
 	
 		case 37:
@@ -469,7 +469,7 @@ BOOL func_4(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position - 
 
 BOOL func_5() // Position - 0xB9F
 {
-	if (func_7() == -1 || func_7() == 999 && !func_6() == 0)
+	if (func_7() == -1 || func_7() == 999 && !(func_6() == 0))
 		return true;
 
 	return false;
@@ -2120,7 +2120,7 @@ int func_8(var uParam0, int iParam1) // Position - 0xBE5
 
 BOOL func_9() // Position - 0x4424
 {
-	if (unk_0x553B3FCAA16365C6("RAIN") || unk_0x553B3FCAA16365C6("THUNDER") || unk_0x64717903D9978CE3("RAIN") || unk_0x64717903D9978CE3("THUNDER"))
+	if (MISC::IS_NEXT_WEATHER_TYPE("RAIN") || MISC::IS_NEXT_WEATHER_TYPE("THUNDER") || MISC::IS_PREV_WEATHER_TYPE("RAIN") || MISC::IS_PREV_WEATHER_TYPE("THUNDER"))
 		return true;
 
 	return false;

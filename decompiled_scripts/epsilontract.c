@@ -249,7 +249,7 @@ void func_1() // Position - 0xCE
 			}
 			else if (iLocal_41 < 10)
 			{
-				if (!iLocal_42 == -1)
+				if (!(iLocal_42 == -1))
 				{
 					if (MISC::GET_GAME_TIMER() - iLocal_42 > 15000)
 					{
@@ -270,7 +270,7 @@ void func_1() // Position - 0xCE
 					uLocal_49[iLocal_41 /*11*/].f_10 = 0;
 					PAD::SET_CONTROL_SHAKE(PLAYER_CONTROL, 200, 250);
 					num = 805 + iLocal_41;
-					_STAT_SET_PACKED_BOOL(num, 1, -1);
+					_STAT_SET_PACKED_BOOL(num, true, -1);
 					STATS::STAT_INCREMENT(joaat("NUM_HIDDEN_PACKAGES_2"), 1f);
 					bLocal_46 = true;
 				
@@ -337,7 +337,7 @@ void func_2(var uParam0, var uParam1, var uParam2, int iParam3, var uParam4, int
 				break;
 		
 			case 1:
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam5, "SHOW_SHARD_MIDSIZED_MESSAGE");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam5, "SHOW_SHARD_MIDSIZED_MESSAGE");
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING(sParam6);
 				GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING(sParam7);
@@ -351,7 +351,7 @@ void func_2(var uParam0, var uParam1, var uParam2, int iParam3, var uParam4, int
 			case 2:
 				if (MISC::GET_GAME_TIMER() - *uParam2 > 7000)
 				{
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam5, "SHARD_ANIM_OUT");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam5, "SHARD_ANIM_OUT");
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(0.33f);
 					GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
@@ -442,7 +442,7 @@ int func_4(int iParam0) // Position - 0x44B
 		{
 			num = func_7(iParam0) + i;
 		
-			if (func_5(num, -1))
+			if (_STAT_GET_PACKED_BOOL(num, -1))
 				outValue = outValue + 1;
 		}
 	}
@@ -450,12 +450,12 @@ int func_4(int iParam0) // Position - 0x44B
 	return outValue;
 }
 
-BOOL func_5(int iParam0, int iParam1) // Position - 0x50F
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0x50F
 {
 	if (iParam1 == -1)
 		iParam1 = func_6();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 int func_6() // Position - 0x52B
@@ -644,7 +644,7 @@ void func_14(int iParam0, int iParam1, BOOL bParam2, BOOL bParam3, BOOL bParam4)
 	int num7;
 	int num8;
 
-	if (!iParam0 < 3)
+	if (!(iParam0 < 3))
 		return;
 
 	num = -1;
@@ -661,7 +661,7 @@ void func_14(int iParam0, int iParam1, BOOL bParam2, BOOL bParam3, BOOL bParam4)
 		num3 = num5;
 		unk = { func_25(Global_44465[num5 /*12*/].f_1) };
 	
-		if (Global_44465[num5 /*12*/].f_2 == iParam0 && !Global_44465[num5 /*12*/].f_3 == iParam0)
+		if (Global_44465[num5 /*12*/].f_2 == iParam0 && !(Global_44465[num5 /*12*/].f_3 == iParam0))
 			return;
 	
 		num2 = Global_44465[num5 /*12*/].f_2;
@@ -1639,7 +1639,7 @@ BOOL func_31(int iParam0, int iParam1) // Position - 0x1B6C
 		num2 = 845;
 
 	num = num2 + iParam1;
-	return func_5(num, -1);
+	return _STAT_GET_PACKED_BOOL(num, -1);
 }
 
 void func_32(var uParam0, var uParam1) // Position - 0x1BC5
@@ -1700,12 +1700,12 @@ void func_37(int iParam0, int iParam1) // Position - 0x1CC1
 	return;
 }
 
-void _STAT_SET_PACKED_BOOL(int iParam0, int iParam1, int iParam2) // Position - 0x1CD9
+void _STAT_SET_PACKED_BOOL(int iParam0, BOOL bParam1, int iParam2) // Position - 0x1CD9
 {
 	if (iParam2 == -1)
 		iParam2 = func_6();
 
-	unk_0x0111091C0EE35B9C(iParam0, iParam1, iParam2);
+	STATS::SET_PACKED_STAT_BOOL_CODE(iParam0, bParam1, iParam2);
 	return;
 }
 
@@ -1873,7 +1873,7 @@ void func_46() // Position - 0x1F1E
 	{
 		num = 805 + i;
 	
-		if (func_5(num, -1))
+		if (_STAT_GET_PACKED_BOOL(num, -1))
 			iLocal_41 = iLocal_41 + 1;
 	}
 

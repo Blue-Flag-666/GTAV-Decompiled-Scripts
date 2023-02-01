@@ -1187,18 +1187,18 @@ int func_11(Ped pedParam0, var uParam1, int iParam2, Player plParam3, BOOL bPara
 			}
 		}
 	
-		if (!iParam9 == -1)
+		if (!(iParam9 == -1))
 			HUD::SET_PED_AI_BLIP_SPRITE(pedParam0, iParam9);
 	
 		HUD::SET_PED_AI_BLIP_FORCED_ON(pedParam0, bParam4);
 		HUD::SET_PED_AI_BLIP_HAS_CONE(pedParam0, bParam5);
 		*uParam1 = HUD::GET_AI_PED_PED_BLIP_INDEX(pedParam0);
 	
-		if (!iParam9 == -1 || bParam12)
+		if (!(iParam9 == -1) || bParam12)
 		{
 			if (HUD::DOES_BLIP_EXIST(*uParam1))
 			{
-				if (!iParam8 == -1)
+				if (!(iParam8 == -1))
 					HUD::SET_BLIP_COLOUR(*uParam1, iParam8);
 			
 				if (!MISC::IS_STRING_NULL_OR_EMPTY(sParam7))
@@ -1229,7 +1229,7 @@ int func_11(Ped pedParam0, var uParam1, int iParam2, Player plParam3, BOOL bPara
 			{
 				if (HUD::DOES_BLIP_EXIST(uParam1->f_1))
 				{
-					if (!iParam8 == -1)
+					if (!(iParam8 == -1))
 						HUD::SET_BLIP_COLOUR(uParam1->f_1, iParam8);
 				
 					if (!MISC::IS_STRING_NULL_OR_EMPTY(sParam7))
@@ -1333,7 +1333,7 @@ Ped func_15(var uParam0, int iParam1, int iParam2) // Position - 0xC01
 	int num;
 
 	ped = PED::CREATE_PED(PED_TYPE_MISSION, iLocal_36.f_53[0], uParam0->[iParam1 /*122*/].f_2[iParam2 /*20*/].f_10, uParam0->[iParam1 /*122*/].f_2[iParam2 /*20*/].f_13, true, true);
-	unk_0xB7561E3CA1BE2262(ped, 1);
+	PED::SET_PED_DIES_WHEN_INJURED(ped, true);
 	PED::SET_PED_AS_ENEMY(ped, true);
 	PED::SET_PED_RELATIONSHIP_GROUP_HASH(ped, iLocal_36.f_52);
 	ENTITY::SET_ENTITY_IS_TARGET_PRIORITY(ped, true, 0);
@@ -1532,7 +1532,7 @@ void func_23() // Position - 0x10FD
 			{
 				if (HUD::DOES_BLIP_EXIST(uLocal_143[0 /*122*/].f_2[i /*20*/].f_1))
 				{
-					_SHOW_SUBTITLE("PMD_OBJ", 7500, 1);
+					_SHOW_SUBTITLE("PMD_OBJ", &func_38, 1);
 					num = 1;
 					iLocal_36.f_71 = 1;
 				}
@@ -1699,7 +1699,7 @@ void func_30(var uParam0) // Position - 0x15AE
 	if (!_IS_NULL_VECTOR(uParam0->f_76) && !_IS_NULL_VECTOR(uParam0->f_79))
 		uParam0->f_82 = PED::ADD_SCENARIO_BLOCKING_AREA(uParam0->f_76 - uParam0->f_79, uParam0->f_76.f_1 - uParam0->f_79.f_1, uParam0->f_76.f_2 - uParam0->f_79.f_2, uParam0->f_76 + uParam0->f_79, uParam0->f_76.f_1 + uParam0->f_79.f_1, uParam0->f_76.f_2 + uParam0->f_79.f_2, false, true, true, true);
 
-	if (!_IS_NULL_VECTOR(uParam0->f_72) && !uParam0->f_75 <= 0f)
+	if (!_IS_NULL_VECTOR(uParam0->f_72) && !(uParam0->f_75 <= 0f))
 		MISC::CLEAR_AREA(uParam0->f_72, uParam0->f_75, true, false, false, false);
 
 	return;

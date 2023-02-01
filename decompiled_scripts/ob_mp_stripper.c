@@ -573,7 +573,7 @@ void func_1() // Position - 0x384
 						func_44();
 					
 						if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("SA_STRIP_CALL" /*Press ~INPUT_CONTEXT~ to call stripper.~n~*/))
-							HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+							HUD::CLEAR_HELP(true);
 					
 						MISC::CLEAR_AREA_OF_PROJECTILES(uLocal_378, 2.5f, 0);
 						_SET_PLAYER_CONTROL_EX(PLAYER::PLAYER_ID(), false, SPC_LEAVE_CAMERA_CONTROL_ON, false);
@@ -587,7 +587,7 @@ void func_1() // Position - 0x384
 				else
 				{
 					if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("SA_STRIP_CALL" /*Press ~INPUT_CONTEXT~ to call stripper.~n~*/))
-						HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+						HUD::CLEAR_HELP(true);
 				
 					iLocal_312 = 0;
 				}
@@ -608,13 +608,13 @@ void func_1() // Position - 0x384
 				if (!func_15(iLocal_322))
 				{
 					NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_322), iLocal_317, sLocal_324, sLocal_326, 4f, -2f, 1, 0, 1148846080, 0);
-					AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_322), sLocal_328, sLocal_324);
+					PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_322), sLocal_328, sLocal_324);
 				}
 			
 				if (!func_15(iLocal_323))
 				{
 					NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_323), iLocal_317, sLocal_324, sLocal_327, 4f, -2f, 1, 0, 1148846080, 0);
-					AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_323), sLocal_329, sLocal_324);
+					PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_323), sLocal_329, sLocal_324);
 				}
 			
 				NETWORK::NETWORK_START_SYNCHRONISED_SCENE(iLocal_317);
@@ -650,13 +650,13 @@ void func_1() // Position - 0x384
 			if (!func_15(iLocal_322))
 			{
 				NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_322), iLocal_317, sLocal_372, sLocal_374, 4f, -2f, 1, 0, 1148846080, 0);
-				AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_322), sLocal_376, sLocal_372);
+				PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_322), sLocal_376, sLocal_372);
 			}
 		
 			if (!func_15(iLocal_323))
 			{
 				NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_323), iLocal_317, sLocal_372, sLocal_375, 4f, -2f, 1, 0, 1148846080, 0);
-				AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_323), sLocal_377, sLocal_372);
+				PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_323), sLocal_377, sLocal_372);
 			}
 		
 			NETWORK::NETWORK_START_SYNCHRONISED_SCENE(iLocal_317);
@@ -681,19 +681,19 @@ void func_1() // Position - 0x384
 				if (!func_15(iLocal_322))
 				{
 					NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_322), iLocal_317, sLocal_348, sLocal_350, 4f, -2f, 1, 0, 1148846080, 0);
-					AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_322), sLocal_352, sLocal_348);
+					PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_322), sLocal_352, sLocal_348);
 				}
 			
 				if (!func_15(iLocal_323))
 				{
 					NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_323), iLocal_317, sLocal_348, sLocal_351, 4f, -2f, 1, 0, 1148846080, 0);
-					AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_323), sLocal_353, sLocal_348);
+					PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_323), sLocal_353, sLocal_348);
 				}
 			
 				NETWORK::NETWORK_START_SYNCHRONISED_SCENE(iLocal_317);
 			
 				if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("SA_STRIP_CAM" /*Press ~INPUT_CONTEXT~ to change view.~n~*/))
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+					HUD::CLEAR_HELP(true);
 			
 				iLocal_312 = 6;
 			}
@@ -712,13 +712,13 @@ void func_1() // Position - 0x384
 				if (!func_15(iLocal_322))
 				{
 					NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_322), iLocal_317, sLocal_354, sLocal_356, 4f, -2f, 1, 0, 1148846080, 0);
-					AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_322), sLocal_358, sLocal_354);
+					PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_322), sLocal_358, sLocal_354);
 				}
 			
 				if (!func_15(iLocal_323))
 				{
 					NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_323), iLocal_317, sLocal_354, sLocal_357, 4f, -2f, 1, 0, 1148846080, 0);
-					AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_323), sLocal_359, sLocal_354);
+					PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_323), sLocal_359, sLocal_354);
 				}
 			
 				NETWORK::NETWORK_START_SYNCHRONISED_SCENE(iLocal_317);
@@ -741,7 +741,7 @@ void func_1() // Position - 0x384
 				if (PAD::IS_CONTROL_JUST_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_RDOWN))
 				{
 					if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("SA_STRIP_MENU" /*Press ~INPUT_SCRIPT_RRIGHT~ for another dance.~n~Press ~INPUT_SCRIPT_RUP~ to quit.~n~*/))
-						HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+						HUD::CLEAR_HELP(true);
 				
 					iLocal_312 = 8;
 				}
@@ -749,7 +749,7 @@ void func_1() // Position - 0x384
 				if (PAD::IS_CONTROL_JUST_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_RUP))
 				{
 					if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("SA_STRIP_MENU" /*Press ~INPUT_SCRIPT_RRIGHT~ for another dance.~n~Press ~INPUT_SCRIPT_RUP~ to quit.~n~*/))
-						HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+						HUD::CLEAR_HELP(true);
 				
 					func_11();
 					iLocal_312 = 10;
@@ -767,13 +767,13 @@ void func_1() // Position - 0x384
 			if (!func_15(iLocal_322))
 			{
 				NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_322), iLocal_317, sLocal_360, sLocal_362, 4f, -2f, 1, 0, 1148846080, 0);
-				AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_322), sLocal_364, sLocal_360);
+				PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_322), sLocal_364, sLocal_360);
 			}
 		
 			if (!func_15(iLocal_323))
 			{
 				NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_323), iLocal_317, sLocal_360, sLocal_363, 4f, -2f, 1, 0, 1148846080, 0);
-				AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_323), sLocal_365, sLocal_360);
+				PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_323), sLocal_365, sLocal_360);
 			}
 		
 			NETWORK::NETWORK_START_SYNCHRONISED_SCENE(iLocal_317);
@@ -836,13 +836,13 @@ void func_1() // Position - 0x384
 			if (!func_15(iLocal_322))
 			{
 				NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_322), iLocal_317, sLocal_366, sLocal_368, 4f, -2f, 1, 0, 1148846080, 0);
-				AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_322), sLocal_370, sLocal_366);
+				PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_322), sLocal_370, sLocal_366);
 			}
 		
 			if (!func_15(iLocal_323))
 			{
 				NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(NETWORK::NET_TO_PED(iLocal_323), iLocal_317, sLocal_366, sLocal_369, 4f, -2f, 1, 0, 1148846080, 0);
-				AUDIO::HINT_SCRIPT_AUDIO_BANK(NETWORK::NET_TO_PED(iLocal_323), sLocal_371, sLocal_366);
+				PED::PLAY_FACIAL_ANIM(NETWORK::NET_TO_PED(iLocal_323), sLocal_371, sLocal_366);
 			}
 		
 			NETWORK::NETWORK_START_SYNCHRONISED_SCENE(iLocal_317);
@@ -915,14 +915,14 @@ void func_3(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4) // 
 {
 	struct<6> eventData;
 
-	eventData = 653628905;
+	eventData = 475427856;
 	eventData.f_1 = PLAYER::PLAYER_ID();
 	eventData.f_2 = iParam1;
 	eventData.f_3 = iParam2;
 	eventData.f_4 = iParam3;
 	eventData.f_5 = iParam4;
 
-	if (!iParam0 == 0)
+	if (!(iParam0 == 0))
 		SCRIPT::SEND_TU_SCRIPT_EVENT(SCRIPT_EVENT_QUEUE_NETWORK, &eventData, 6, iParam0);
 
 	return;
@@ -1091,7 +1091,7 @@ void func_16(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position -
 
 	if (func_19())
 	{
-		statName = Global_2848280[iParam0 /*3*/][func_17(iParam2)];
+		statName = Global_2848282[iParam0 /*3*/][func_17(iParam2)];
 	
 		if (statName != 0)
 			STATS::STAT_SET_BOOL(statName, bParam1, bParam3);
@@ -1113,13 +1113,13 @@ int func_17(int iParam0) // Position - 0x10B6
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -1171,7 +1171,7 @@ void func_21(int iParam0, int iParam1) // Position - 0x1154
 
 void func_22() // Position - 0x118A
 {
-	Global_2793044.f_4629 = 0;
+	Global_2793046.f_4629 = 0;
 	return;
 }
 
@@ -1487,7 +1487,7 @@ void _SET_PLAYER_CONTROL_EX(Player plParam0, BOOL bParam1, eSetPlayerControlFlag
 				if (PED::HAS_PED_HEAD_BLEND_FINISHED(playerPed) && PED::HAVE_ALL_STREAMING_REQUESTS_COMPLETED(playerPed))
 					PED::FINALIZE_HEAD_BLEND(playerPed);
 			
-				PED::SET_PED_DIES_WHEN_INJURED(playerPed, true);
+				PED::SET_PED_CAN_RAGDOLL(playerPed, true);
 			
 				if (PLAYER::IS_PLAYER_CONTROL_ON(PLAYER::PLAYER_ID()) == false)
 				{
@@ -1596,11 +1596,11 @@ void func_35() // Position - 0x1900
 {
 	var unk;
 
-	Global_2672505.f_1023 = 0;
 	Global_2672505.f_1024 = 0;
-	Global_2672505.f_1025 = { 9999.9f, 9999.9f, 9999.9f };
-	Global_2672505.f_1030 = -1;
-	Global_2672505.f_1031 = 0;
+	Global_2672505.f_1025 = 0;
+	Global_2672505.f_1026 = { 9999.9f, 9999.9f, 9999.9f };
+	Global_2672505.f_1031 = -1;
+	Global_2672505.f_1032 = 0;
 	Global_2635559.f_2692 = { unk };
 	return;
 }
@@ -1730,7 +1730,7 @@ int func_42() // Position - 0x1B15
 
 BOOL func_43() // Position - 0x1B23
 {
-	if (IS_BIT_SET(Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_861, 2) && !Global_2684799.f_2846.f_216 == -1)
+	if (IS_BIT_SET(Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_861, 2) && !(Global_2684801.f_2846.f_216 == -1))
 		return true;
 
 	return false;
@@ -1999,7 +1999,7 @@ BOOL func_57(Vector3 vParam0, var uParam1, var uParam2, float fParam3, var uPara
 {
 	if (PLAYER::IS_PLAYER_PLAYING(PLAYER::PLAYER_ID()))
 	{
-		if (!PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), false) && !FILES::GET_DLC_VEHICLE_FLAGS(PLAYER::PLAYER_PED_ID()) && PLAYER::IS_PLAYER_CONTROL_ON(PLAYER::PLAYER_ID()))
+		if (!PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), false) && !FIRE::IS_ENTITY_ON_FIRE(PLAYER::PLAYER_PED_ID()) && PLAYER::IS_PLAYER_CONTROL_ON(PLAYER::PLAYER_ID()))
 		{
 			if (!FIRE::IS_EXPLOSION_IN_SPHERE(-1, vParam0, 2f))
 			{
@@ -2102,7 +2102,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x2200
 	if (func_69())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_68())
@@ -2141,7 +2141,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x2284
 
 Hash func_64() // Position - 0x22B7
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -2160,7 +2160,7 @@ int func_65() // Position - 0x22DB
 
 BOOL func_66() // Position - 0x22E6
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x22F5
@@ -2173,12 +2173,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x22F5
 
 BOOL func_68() // Position - 0x230C
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_69() // Position - 0x2318
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 int func_70() // Position - 0x2327
@@ -4787,7 +4787,7 @@ void func_84(int iParam0, int iParam1, var uParam2, int iParam3, BOOL bParam4) /
 		case 897:
 		case 898:
 		case 899:
-		case 900:
+		case &func_1:
 		case 901:
 		case 902:
 		case 903:
@@ -5522,7 +5522,7 @@ void func_89() // Position - 0x8F7D
 void func_90() // Position - 0x8F89
 {
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("SA_SHWR_OUT" /*Press ~INPUT_SCRIPT_RUP~ to stop showering.~n~*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("SA_SHWR_IN" /*Press ~INPUT_CONTEXT~ to take a shower.~n~*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (bLocal_314)
 	{

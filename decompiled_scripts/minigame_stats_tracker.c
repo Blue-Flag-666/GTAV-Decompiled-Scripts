@@ -45,7 +45,7 @@
 	var uLocal_43 = 0;
 	var uLocal_44 = 0;
 	int iLocal_45 = 0;
-	Player plLocal_46 = 0;
+	int iLocal_46 = 0;
 	var uLocal_47 = 0;
 	var uLocal_48 = 0;
 	var uLocal_49 = 0;
@@ -156,28 +156,28 @@ void main() // Position - 0x0
 		switch (iLocal_45)
 		{
 			case 0:
-				plLocal_46 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("mission_complete");
+				iLocal_46 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("mission_complete");
 				iLocal_45 = 1;
 				break;
 		
 			case 1:
-				if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_46))
+				if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_46))
 					iLocal_45 = 2;
 				break;
 		
 			case 2:
-				GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_STRING(plLocal_46, "SET_MISSION_TITLE", sScriptParam_0, sScriptParam_0.f_1, 0, 0, 0);
-				GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_NUMBER(plLocal_46, "SET_MISSION_TITLE_COLOUR", sScriptParam_0.f_2, sScriptParam_0.f_2, sScriptParam_0.f_2, -1082130432, -1082130432);
+				GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_STRING(iLocal_46, "SET_MISSION_TITLE", sScriptParam_0, sScriptParam_0.f_1, 0, 0, 0);
+				GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_NUMBER(iLocal_46, "SET_MISSION_TITLE_COLOUR", sScriptParam_0.f_2, sScriptParam_0.f_2, sScriptParam_0.f_2, -1082130432, -1082130432);
 			
 				if (sScriptParam_0.f_5.f_1 != -1f && !MISC::IS_STRING_NULL(sScriptParam_0.f_5.f_2))
-					GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_NUMBER_AND_STRING(plLocal_46, "SET_TOTAL", SYSTEM::TO_FLOAT(sScriptParam_0.f_5), sScriptParam_0.f_5.f_1, -1f, -1f, -1f, sScriptParam_0.f_5.f_2, 0, 0, 0, 0);
+					GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_NUMBER_AND_STRING(iLocal_46, "SET_TOTAL", SYSTEM::TO_FLOAT(sScriptParam_0.f_5), sScriptParam_0.f_5.f_1, -1f, -1f, -1f, sScriptParam_0.f_5.f_2, 0, 0, 0, 0);
 			
-				GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_NUMBER(plLocal_46, "SET_MEDAL", SYSTEM::TO_FLOAT(sScriptParam_0.f_5), -1082130432, -1082130432, -1082130432, -1082130432);
-				GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_NUMBER(plLocal_46, "SET_SOCIAL_CLUB_INFO", 0f, -1082130432, -1082130432, -1082130432, -1082130432);
+				GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_NUMBER(iLocal_46, "SET_MEDAL", SYSTEM::TO_FLOAT(sScriptParam_0.f_5), -1082130432, -1082130432, -1082130432, -1082130432);
+				GRAPHICS::CALL_SCALEFORM_MOVIE_METHOD_WITH_NUMBER(iLocal_46, "SET_SOCIAL_CLUB_INFO", 0f, -1082130432, -1082130432, -1082130432, -1082130432);
 			
 				for (i = 0; i < sScriptParam_0.f_66 + 1; i = i + 1)
 				{
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_46, "SET_DATA_SLOT");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_46, "SET_DATA_SLOT");
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(sScriptParam_0.f_9[i /*7*/]);
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(sScriptParam_0.f_9[i /*7*/].f_1);
 				
@@ -240,7 +240,7 @@ void main() // Position - 0x0
 			
 				if (sScriptParam_0.f_5 != 0 && !MISC::IS_STRING_NULL(sScriptParam_0.f_5.f_2))
 				{
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_46, "SET_TOTAL");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_46, "SET_TOTAL");
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(sScriptParam_0.f_5);
 				
 					if (!MISC::IS_STRING_NULL(sScriptParam_0.f_5.f_3))
@@ -252,7 +252,7 @@ void main() // Position - 0x0
 					GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 				}
 			
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_46, "DRAW_MENU_LIST");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_46, "DRAW_MENU_LIST");
 				GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 				func_12(1);
 				func_9(&uLocal_47);
@@ -271,7 +271,7 @@ void main() // Position - 0x0
 				else
 				{
 					func_1(1);
-					GRAPHICS::DRAW_SCALEFORM_MOVIE(plLocal_46, 0.1495f, 0.3159f, 0.2021f, 0.5111f, 255, 255, 255, 0, 0);
+					GRAPHICS::DRAW_SCALEFORM_MOVIE(iLocal_46, 0.1495f, 0.3159f, 0.2021f, 0.5111f, 255, 255, 255, 0, 0);
 				
 					if (HUD::IS_HUD_COMPONENT_ACTIVE(HUD_HELP_TEXT))
 						HUD::HIDE_HUD_COMPONENT_THIS_FRAME(HUD_HELP_TEXT);
@@ -486,7 +486,7 @@ void func_18(const char* sParam0) // Position - 0x724
 
 void func_19() // Position - 0x736
 {
-	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&plLocal_46);
+	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_46);
 	Global_32308 = false;
 	func_1(0);
 	SCRIPT::TERMINATE_THIS_THREAD();

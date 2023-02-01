@@ -1,5 +1,5 @@
 #region Local Var
-	Player plLocal_0 = 0;
+	int iLocal_0 = 0;
 	int iLocal_1 = 0;
 	BOOL bLocal_2 = 0;
 #endregion
@@ -17,9 +17,9 @@ void main() // Position - 0x0
 	if (!CAM::IS_SCREEN_FADED_OUT())
 		CAM::DO_SCREEN_FADE_OUT(0);
 
-	plLocal_0 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("OPENING_CREDITS");
+	iLocal_0 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("OPENING_CREDITS");
 
-	while (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_0))
+	while (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_0))
 	{
 		func_7();
 		SYSTEM::WAIT(0);
@@ -40,7 +40,7 @@ void main() // Position - 0x0
 	
 		if (!IS_BIT_SET(Global_113648.f_10018.f_25, 1))
 		{
-			GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(plLocal_0, 255, 255, 255, 255, 0);
+			GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(iLocal_0, 255, 255, 255, 255, 0);
 		
 			if (!bLocal_2)
 			{
@@ -112,7 +112,7 @@ void func_4(int iParam0, int iParam1) // Position - 0x1BB
 
 void func_5(char* sParam0) // Position - 0x1D3
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_0, "HIDE_LOGO");
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_0, "HIDE_LOGO");
 	GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("STRING");
 	HUD::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(sParam0);
 	GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
@@ -122,7 +122,7 @@ void func_5(char* sParam0) // Position - 0x1D3
 
 void func_6(char* sParam0, float fParam1, float fParam2, float fParam3, float fParam4, float fParam5, float fParam6, float fParam7) // Position - 0x1FA
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_0, "SHOW_LOGO");
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_0, "SHOW_LOGO");
 	GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("STRING");
 	HUD::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(sParam0);
 	GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
@@ -163,8 +163,8 @@ void func_10() // Position - 0x286
 {
 	MISC::SET_BIT(&(Global_113648.f_10018.f_25), 1);
 
-	if (plLocal_0 != 0)
-		GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&plLocal_0);
+	if (iLocal_0 != 0)
+		GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_0);
 
 	GRAPHICS::SET_SCRIPT_GFX_DRAW_ORDER(4);
 	SCRIPT::SET_NO_LOADING_SCREEN(false);

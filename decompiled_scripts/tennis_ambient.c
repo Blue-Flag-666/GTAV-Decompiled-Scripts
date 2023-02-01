@@ -2281,7 +2281,7 @@ int func_26(var uParam0) // Position - 0x35F8
 void func_27(var uParam0, char* sParam1, float fParam2) // Position - 0x3604
 {
 	if (!(!PED::IS_PED_INJURED(func_265(uParam0)) && TASK::IS_TASK_MOVE_NETWORK_ACTIVE(func_265(uParam0)) && MISC::ARE_STRINGS_EQUAL(TASK::GET_TASK_MOVE_NETWORK_STATE(func_265(uParam0)), "running")))
-		unk_0x4434776A9F00F7B5(func_265(uParam0), sParam1, fParam2, 0, "mini@tennis", 4);
+		TASK::TASK_MOVE_NETWORK_BY_NAME(func_265(uParam0), sParam1, fParam2, false, "mini@tennis", 4);
 
 	return;
 }
@@ -2367,7 +2367,7 @@ void func_35(eCharacter echParam0, int iParam1, int iParam2) // Position - 0x375
 			break;
 	
 		case CHAR_MULTIPLAYER:
-			stat = 14192;
+			stat = MP_STAT_INVALID;
 		
 			switch (iParam1)
 			{
@@ -2400,7 +2400,7 @@ void func_35(eCharacter echParam0, int iParam1, int iParam2) // Position - 0x375
 					break;
 			}
 		
-			if (stat != 14192)
+			if (stat != MP_STAT_INVALID)
 			{
 				num = _MPCHAR_STAT_GET_INT(stat, -1, 0);
 				num = num + iParam2;
@@ -2421,7 +2421,7 @@ void _MPCHAR_STAT_SET_INT(eMPStat empsParam0, int iParam1, int iParam2, BOOL bPa
 	Hash statName;
 
 	bParam4;
-	statName = Global_2805027[empsParam0 /*3*/][func_37(iParam2)];
+	statName = Global_2805029[empsParam0 /*3*/][func_37(iParam2)];
 
 	if (statName != 0)
 		STATS::STAT_SET_INT(statName, iParam1, bParam3);
@@ -2442,13 +2442,13 @@ int func_37(int iParam0) // Position - 0x387C
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -2465,10 +2465,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_37(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_37(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -3384,13 +3384,13 @@ int func_105(var uParam0) // Position - 0x4D3A
 
 BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, int iParam5, int iParam6, BOOL bParam7) // Position - 0x4D46
 {
-	BOOL flag;
-	BOOL flag2;
-	BOOL flag3;
-	BOOL flag4;
+	BOOL isControlPressed;
+	BOOL isControlPressed2;
+	BOOL isControlPressed3;
+	BOOL isControlPressed4;
 	int num;
 	float num2;
-	BOOL flag5;
+	BOOL flag;
 	var unk;
 	var unk2;
 	int num3;
@@ -3408,13 +3408,13 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 	float i;
 	float num8;
 	int num9;
-	BOOL flag6;
-	BOOL flag7;
-	BOOL flag8;
-	BOOL flag9;
+	BOOL flag2;
+	BOOL flag3;
+	BOOL flag4;
+	BOOL flag5;
 	int num10;
 
-	flag5 = ENTITY::DOES_ENTITY_EXIST(uParam1->f_247) && !ENTITY::IS_ENTITY_ATTACHED(uParam1->f_247);
+	flag = ENTITY::DOES_ENTITY_EXIST(uParam1->f_247) && !ENTITY::IS_ENTITY_ATTACHED(uParam1->f_247);
 	unk = func_92(&(uParam1->f_247));
 	unk2 = func_90(&(uParam1->f_247));
 	num3 = _STOPWATCH_IS_INITIALIZED_0_0(&(uParam1->f_247));
@@ -3422,7 +3422,7 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 	unk3 = { func_283(&(uParam1->f_247)) };
 	unk6 = { uParam1->f_247.f_10 };
 
-	if (flag5 && iParam3 != iParam4)
+	if (flag && iParam3 != iParam4)
 		if (!func_104(uParam0, 32768))
 			func_174(uParam0, uParam1, &unk3, &unk6, &unk, &num4, &unk2, &num3);
 		else if (func_104(uParam0, 32768))
@@ -3443,17 +3443,17 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 
 	if (uParam0->f_31 != 4 && MISC::GET_GAME_TIMER() > func_163(uParam0))
 	{
-		flag = GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(0, 223);
-		flag3 = GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(0, 224);
-		flag4 = GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(0, 225);
-		flag2 = GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(0, 222);
+		isControlPressed = PAD::IS_CONTROL_PRESSED(PLAYER_CONTROL, INPUT_SCRIPT_RDOWN);
+		isControlPressed3 = PAD::IS_CONTROL_PRESSED(PLAYER_CONTROL, INPUT_SCRIPT_RLEFT);
+		isControlPressed4 = PAD::IS_CONTROL_PRESSED(PLAYER_CONTROL, INPUT_SCRIPT_RRIGHT);
+		isControlPressed2 = PAD::IS_CONTROL_PRESSED(PLAYER_CONTROL, INPUT_SCRIPT_RUP);
 	
 		if (PAD::IS_CONTROL_JUST_PRESSED(PLAYER_CONTROL, INPUT_SCRIPT_RDOWN) || PAD::IS_CONTROL_JUST_PRESSED(PLAYER_CONTROL, INPUT_SCRIPT_RLEFT) || PAD::IS_CONTROL_JUST_PRESSED(PLAYER_CONTROL, INPUT_SCRIPT_RRIGHT) || PAD::IS_CONTROL_JUST_PRESSED(PLAYER_CONTROL, INPUT_SCRIPT_RUP))
 		{
 			if (func_162(uParam0))
 				func_58(uParam0, 1);
 		
-			if (func_161(uParam1, uParam0, flag5))
+			if (func_161(uParam1, uParam0, flag))
 				func_58(uParam0, 8);
 		
 			unk9 = { unk6 };
@@ -3468,7 +3468,7 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 	else if (MISC::GET_GAME_TIMER() > func_163(uParam0))
 	{
 		if (SYSTEM::VDIST2(func_283(&(uParam1->f_247)), uParam0->f_37) > 0f * 0f)
-			func_160(uParam0, uParam1, &flag, &flag2);
+			func_160(uParam0, uParam1, &isControlPressed, &isControlPressed2);
 	}
 
 	if (uParam0->f_31 != 4 && func_104(uParam0, 512) && func_159(uParam0) > 0.95f && func_75(uParam0) == 75)
@@ -3480,25 +3480,25 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 	{
 		func_157(uParam0);
 	
-		if (flag || flag3 || flag4)
+		if (isControlPressed || isControlPressed3 || isControlPressed4)
 			func_156(uParam0);
 		else
 			func_56(uParam0);
 	}
 
-	if (flag || flag2 || flag3 || flag4)
+	if (isControlPressed || isControlPressed2 || isControlPressed3 || isControlPressed4)
 	{
 		if (func_75(uParam0) == 75 && !func_104(uParam0, 512) && !func_104(uParam0, 4096))
 		{
 			func_58(uParam0, 512);
 		
-			if (flag)
+			if (isControlPressed)
 				func_230(uParam0, 0);
-			else if (flag2)
+			else if (isControlPressed2)
 				func_230(uParam0, 2);
-			else if (flag3)
+			else if (isControlPressed3)
 				func_230(uParam0, 3);
-			else if (flag4)
+			else if (isControlPressed4)
 				func_230(uParam0, 1);
 		
 			if (uParam0->f_31 != 4)
@@ -3508,10 +3508,10 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 			}
 		}
 	
-		if (uParam0->f_31 != 4 && flag)
+		if (uParam0->f_31 != 4 && isControlPressed)
 			if (func_104(uParam0, 1))
 				func_155(uParam0);
-		else if (!flag)
+		else if (!isControlPressed)
 			func_154(uParam0);
 	
 		if (func_153(uParam0))
@@ -3527,7 +3527,7 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 
 	if (iParam3 != iParam4 && func_104(uParam0, 512) && uParam0->f_31 != 4 || uParam0->f_31 == 4)
 	{
-		if (func_152(uParam0, unk3, flag5))
+		if (func_152(uParam0, unk3, flag))
 		{
 			unk18 = { func_70(&(uParam0->f_4)) };
 			num = func_150(uParam0, uParam1, &(uParam1->f_303), &(uParam1->f_535), &(uParam1->f_1583), &unk18, &num6, &unk21);
@@ -3593,7 +3593,7 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 		}
 	}
 
-	if (func_133(uParam0, &(uParam1->f_247), uParam1->f_189.f_29, flag5))
+	if (func_133(uParam0, &(uParam1->f_247), uParam1->f_189.f_29, flag))
 	{
 		num10 = 1 - iParam4;
 		unk3 = { func_283(&(uParam1->f_247)) };
@@ -3604,11 +3604,11 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 		
 			if (func_132(&uParam1->[num10 /*94*/], &(uParam1->f_189), uParam1->f_1661))
 			{
-				flag6 = true;
+				flag2 = true;
 			}
 			else
 			{
-				flag7 = true;
+				flag3 = true;
 				func_230(uParam0, 5);
 			}
 		}
@@ -3617,17 +3617,17 @@ BOOL func_106(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 			func_131(uParam0);
 			func_277(uParam0, 1);
 			func_154(uParam0);
-			flag9 = true;
+			flag5 = true;
 		}
 		else if (func_130(uParam0, &(uParam1->f_189), &(uParam1->f_1661), unk3.f_2, _STOPWATCH_IS_INITIALIZED_0_0(&(uParam1->f_247))))
 		{
-			flag8 = true;
+			flag4 = true;
 		}
 	
 		if (func_129(&(uParam1->f_247), &(uParam1->f_189), uParam0, &uParam1->[num10 /*94*/]))
 			func_278(&(uParam1->f_247), 32);
 	
-		func_107(uParam0, uParam1, iParam4, flag8, flag9, flag6, flag7);
+		func_107(uParam0, uParam1, iParam4, flag4, flag5, flag2, flag3);
 		return true;
 	}
 
@@ -6645,7 +6645,7 @@ void func_236(var uParam0, var uParam1, int iParam2, int iParam3, BOOL bParam4, 
 		if (MISC::IS_TENNIS_MODE(func_265(uParam0)) && num2 < 0f)
 		{
 			num3 = func_69(uParam0->f_43, func_283(&(uParam1->f_247)) - uParam0->f_37);
-			unk_0x8A8352CE1E857CF0(func_265(uParam0), "ForcedStopDirection", num3);
+			MISC::SET_TENNIS_MOVE_NETWORK_SIGNAL_FLOAT(func_265(uParam0), "ForcedStopDirection", num3);
 		}
 	}
 	else if (uParam0->f_31 != 3)
@@ -6696,7 +6696,7 @@ void func_236(var uParam0, var uParam1, int iParam2, int iParam3, BOOL bParam4, 
 				TEXT_LABEL_ASSIGN_STRING(&(uParam1->f_1670), randomFloatInRange < 0.33f ? "Idle3" : randomFloatInRange < 0.66f ? "Idle4" : "Idle1", 8);
 			}
 		
-			unk_0x6F997966D458AC11(func_265(uParam0), &(uParam1->f_1670), 1);
+			TASK::SET_TASK_MOVE_NETWORK_SIGNAL_BOOL(func_265(uParam0), &(uParam1->f_1670), true);
 			TASK::SET_TASK_MOVE_NETWORK_SIGNAL_FLOAT(func_265(uParam0), "Speed", uParam0->f_62);
 		}
 	}
@@ -6919,7 +6919,7 @@ void func_239(var uParam0, var uParam1, var uParam2, var uParam3, var uParam4) /
 					}
 				}
 			
-				if (!PED::IS_PED_INJURED(func_265(uParam0)) && !SYSTEM::VDIST2(uParam0->f_37, vector) <= 0f * 0f && !func_228(&(uParam0->f_4), 4) && !func_104(uParam0, 1024))
+				if (!PED::IS_PED_INJURED(func_265(uParam0)) && !(SYSTEM::VDIST2(uParam0->f_37, vector) <= 0f * 0f) && !func_228(&(uParam0->f_4), 4) && !func_104(uParam0, 1024))
 				{
 					TASK::TASK_GO_STRAIGHT_TO_COORD(uParam0->f_32, func_70(&(uParam0->f_4)), 2f, -1, 1193033728, 1056964608);
 					vector = { func_70(&(uParam0->f_4)) };
@@ -7862,7 +7862,7 @@ void func_293(BOOL bParam0) // Position - 0xBA48
 	}
 	else if (Global_20383.f_1 == 1)
 	{
-		if (!Global_20383.f_1 == 0)
+		if (!(Global_20383.f_1 == 0))
 			Global_20383.f_1 = 3;
 	}
 

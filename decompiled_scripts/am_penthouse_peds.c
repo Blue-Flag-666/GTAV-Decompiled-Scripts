@@ -3388,7 +3388,7 @@ void func_18(var uParam0) // Position - 0x1038
 	PED::SET_PED_CAN_EVASIVE_DIVE(*uParam0, false);
 	PED::SET_TREAT_AS_AMBIENT_PED_FOR_DRIVER_LOCKON(*uParam0, true);
 	PED::SET_PED_CAN_RAGDOLL_FROM_PLAYER_IMPACT(*uParam0, false);
-	PED::SET_PED_DIES_WHEN_INJURED(*uParam0, false);
+	PED::SET_PED_CAN_RAGDOLL(*uParam0, false);
 	PED::SET_PED_CONFIG_FLAG(*uParam0, 208, true);
 	TASK::CLEAR_PED_TASKS(*uParam0);
 	return;
@@ -3602,7 +3602,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x13E3
 	if (func_36())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_35())
@@ -3641,7 +3641,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x1467
 
 Hash func_31() // Position - 0x149A
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -3660,7 +3660,7 @@ int func_32() // Position - 0x14BE
 
 BOOL func_33() // Position - 0x14C9
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x14D8
@@ -3673,12 +3673,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x14D8
 
 BOOL func_35() // Position - 0x14EF
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_36() // Position - 0x14FB
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_37() // Position - 0x150A

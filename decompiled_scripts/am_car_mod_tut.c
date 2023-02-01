@@ -590,7 +590,7 @@ void _MPCHAR_STAT_SET_INT(eMPStat empsParam0, int iParam1, int iParam2, BOOL bPa
 	Hash statName;
 
 	bParam4;
-	statName = Global_2805027[empsParam0 /*3*/][func_13(iParam2)];
+	statName = Global_2805029[empsParam0 /*3*/][func_13(iParam2)];
 
 	if (statName != 0)
 		STATS::STAT_SET_INT(statName, iParam1, bParam3);
@@ -611,13 +611,13 @@ int func_13(int iParam0) // Position - 0x52A
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -634,10 +634,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_13(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_13(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -699,7 +699,7 @@ eMPStat func_16(int iParam0) // Position - 0x5A7
 			return MP_STAT_SHOPFM_CLOTHES_M_03_H;
 	
 		case 16:
-			return MP_STAT_SHOPFM_CLOTHES_M_04_HW;
+			return &func_8;
 	
 		case 17:
 			return MP_STAT_SHOPFM_CLOTHES_M_05_GOH;
@@ -783,7 +783,7 @@ eMPStat func_16(int iParam0) // Position - 0x5A7
 			return MP_STAT_SHOPFM_CARMOD_08_CS6;
 	
 		case 44:
-			return MP_STAT_RAYPISTOL_FM_AMMO_CURRENT;
+			return MP_STAT_SHOPFM_CARMOD_SUPERMOD;
 	
 		case 45:
 			return MP_STAT_SHOPFM_PERS_GAR;
@@ -825,16 +825,16 @@ eMPStat func_16(int iParam0) // Position - 0x5A7
 			return MP_STAT_SHOPFM_CLOTHES_STUDIO;
 	
 		case 58:
-			return MP_STAT_GBTELTIMESPLAYEDGOONPREV;
+			return UNK_108067914;
 	
 		case 59:
-			return MP_STAT_TAMPA3_FMINI_HELDTIME;
+			return UNK_067837685;
 	
 		default:
 			break;
 	}
 
-	return 14192;
+	return MP_STAT_INVALID;
 }
 
 int func_17() // Position - 0x940
@@ -1098,7 +1098,7 @@ void func_23() // Position - 0xD7E
 	if (!func_29())
 		return;
 
-	if (!MISC::GET_HASH_KEY(SCRIPT::GET_THIS_SCRIPT_NAME()) == Global_1574757.f_9)
+	if (!(MISC::GET_HASH_KEY(SCRIPT::GET_THIS_SCRIPT_NAME()) == Global_1574757.f_9))
 		return;
 
 	func_24();
@@ -1393,7 +1393,7 @@ void func_31(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position -
 
 	if (func_32())
 	{
-		statName = Global_2848280[iParam0 /*3*/][func_13(iParam2)];
+		statName = Global_2848282[iParam0 /*3*/][func_13(iParam2)];
 	
 		if (statName != 0)
 			STATS::STAT_SET_BOOL(statName, bParam1, bParam3);
@@ -1450,7 +1450,7 @@ BOOL func_37(int iParam0, int iParam1) // Position - 0x13CB
 	Hash statHash;
 	BOOL outValue;
 
-	statHash = Global_2848280[iParam0 /*3*/][func_13(iParam1)];
+	statHash = Global_2848282[iParam0 /*3*/][func_13(iParam1)];
 
 	if (STATS::STAT_GET_BOOL(statHash, &outValue, -1))
 		return outValue;
@@ -1545,7 +1545,7 @@ void func_41(BOOL bParam0, BOOL bParam1) // Position - 0x155A
 
 	if (bParam0)
 		if (func_42(0) > 1)
-			MISC::SET_BIT(&(Global_2793044.f_1828), 10);
+			MISC::SET_BIT(&(Global_2793046.f_1828), 10);
 
 	return;
 }
@@ -1582,13 +1582,13 @@ eMPStat func_44(int iParam0) // Position - 0x1645
 	switch (iParam0)
 	{
 		case 0:
-			return MP_STAT_RAYPISTOL_ENEMY_KILLS;
+			return MP_STAT_LOW_FLOW_CURRENT_PROG;
 	
 		default:
 		
 	}
 
-	return MP_STAT_RAYPISTOL_ENEMY_KILLS;
+	return MP_STAT_LOW_FLOW_CURRENT_PROG;
 }
 
 void func_45(BOOL bParam0, BOOL bParam1) // Position - 0x1663
@@ -1685,7 +1685,7 @@ BOOL func_47() // Position - 0x187F
 	if (Global_1574612)
 		return true;
 
-	if (IS_BIT_SET(Global_2793044.f_1824, 23))
+	if (IS_BIT_SET(Global_2793046.f_1824, 23))
 		return true;
 
 	if (func_34())
@@ -1698,7 +1698,7 @@ BOOL func_47() // Position - 0x187F
 
 	if (IS_BIT_SET(num, 7))
 	{
-		MISC::SET_BIT(&(Global_2793044.f_1824), 23);
+		MISC::SET_BIT(&(Global_2793046.f_1824), 23);
 		return true;
 	}
 
@@ -1988,15 +1988,15 @@ BOOL func_59() // Position - 0x1CE5
 {
 	int num;
 
-	if (IS_BIT_SET(Global_2793044.f_1824, 6))
+	if (IS_BIT_SET(Global_2793046.f_1824, 6))
 		return true;
 
 	num = Global_1665626[func_13(-1)];
 
 	if (IS_BIT_SET(num, 0))
 	{
-		if (!IS_BIT_SET(Global_2793044.f_1824, 6))
-			MISC::SET_BIT(&(Global_2793044.f_1824), 6);
+		if (!IS_BIT_SET(Global_2793046.f_1824, 6))
+			MISC::SET_BIT(&(Global_2793046.f_1824), 6);
 	
 		return true;
 	}
@@ -2177,7 +2177,7 @@ eMPStat func_64(int iParam0) // Position - 0x1FCB
 			return MP_STAT_FM_ACT_PH9;
 	
 		case 9:
-			return _0x805318357;
+			return MP_STAT_FM_ACT_PH10;
 	}
 
 	return MP_STAT_FM_ACT_PHN;
@@ -2664,7 +2664,7 @@ void func_78() // Position - 0x2679
 										func_157(true);
 								
 									if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("FM_CTUT_HMD" /*Los Santos Customs won't accept this vehicle. Service vehicles, vehicles that are too damaged, boats, cycles and aircraft can't be modified.*/))
-										HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+										HUD::CLEAR_HELP(true);
 								
 									if (!func_147() || func_147() && PLAYER::IS_PLAYER_CONTROL_ON(PLAYER::PLAYER_ID()))
 									{
@@ -2754,7 +2754,7 @@ void func_78() // Position - 0x2679
 						if (func_147())
 						{
 							if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("FM_IHELP_CAR" /*Steal a vehicle to use as your own. This vehicle will be available to you in future Online sessions once you have fitted a 'Tracker' in Los Santos Customs.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("FM_IHELP_MOD" /*Los Santos Customs is shown by ~BLIP_CAR_MOD_SHOP~.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("FM_CMOD_GPS" /*Use the Interaction Menu to set a quick GPS to a location. Hold ~INPUT_INTERACTION_MENU~ to bring up the Interaction Menu.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("FM_CMOD_STOL" /*If the Cops spot you in a stolen vehicle you will gain a Wanted Level.*/))
-								HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+								HUD::CLEAR_HELP(true);
 						
 							if (func_124("FM_IHELP_LCP" /*Lose the Cops.*/))
 								func_23();
@@ -2764,7 +2764,7 @@ void func_78() // Position - 0x2679
 								if (func_122())
 								{
 									MISC::SET_BIT(&iLocal_238, 9);
-									MISC::SET_BIT(&(Global_2793044.f_1822), 25);
+									MISC::SET_BIT(&(Global_2793046.f_1822), 25);
 								
 									if (func_124("FM_CTUT_MOD" /*Go to Los Santos Customs.*/))
 										func_23();
@@ -2773,8 +2773,8 @@ void func_78() // Position - 0x2679
 						
 							if (func_121())
 							{
-								if (!IS_BIT_SET(Global_2793044.f_1822, 25))
-									MISC::SET_BIT(&(Global_2793044.f_1822), 25);
+								if (!IS_BIT_SET(Global_2793046.f_1822, 25))
+									MISC::SET_BIT(&(Global_2793046.f_1822), 25);
 							
 								if (!func_120(PLAYER::PLAYER_ID()))
 								{
@@ -3202,7 +3202,7 @@ void _SET_PLAYER_CONTROL_EX(Player plParam0, BOOL bParam1, eSetPlayerControlFlag
 				if (PED::HAS_PED_HEAD_BLEND_FINISHED(playerPed) && PED::HAVE_ALL_STREAMING_REQUESTS_COMPLETED(playerPed))
 					PED::FINALIZE_HEAD_BLEND(playerPed);
 			
-				PED::SET_PED_DIES_WHEN_INJURED(playerPed, true);
+				PED::SET_PED_CAN_RAGDOLL(playerPed, true);
 			
 				if (PLAYER::IS_PLAYER_CONTROL_ON(PLAYER::PLAYER_ID()) == false)
 				{
@@ -3311,11 +3311,11 @@ void func_91() // Position - 0x34B5
 {
 	var unk;
 
-	Global_2672505.f_1023 = 0;
 	Global_2672505.f_1024 = 0;
-	Global_2672505.f_1025 = { 9999.9f, 9999.9f, 9999.9f };
-	Global_2672505.f_1030 = -1;
-	Global_2672505.f_1031 = 0;
+	Global_2672505.f_1025 = 0;
+	Global_2672505.f_1026 = { 9999.9f, 9999.9f, 9999.9f };
+	Global_2672505.f_1031 = -1;
+	Global_2672505.f_1032 = 0;
 	Global_2635559.f_2692 = { unk };
 	return;
 }
@@ -3477,7 +3477,7 @@ int func_99(int iParam0, BOOL bParam1) // Position - 0x370E
 
 BOOL func_100() // Position - 0x374F
 {
-	if (IS_BIT_SET(Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_861, 2) && !Global_2684799.f_2846.f_216 == -1)
+	if (IS_BIT_SET(Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_861, 2) && !(Global_2684801.f_2846.f_216 == -1))
 		return true;
 
 	return false;
@@ -3689,7 +3689,7 @@ int func_108(Vehicle veParam0, BOOL bParam1) // Position - 0x38CF
 
 	num5 = num * 25;
 
-	if (unk_0xE3D43E568F45340A(veParam0))
+	if (AUDIO::IS_VEHICLE_AUDIBLY_DAMAGED(veParam0))
 		num9 = 50;
 
 	value = num2 + num3 + num4 + num6 + num5 + num7 + num8 + num9;
@@ -5446,7 +5446,7 @@ BOOL func_152() // Position - 0x667E
 
 BOOL func_153() // Position - 0x6732
 {
-	return Global_2672505.f_2837.f_582;
+	return Global_2672505.f_2838.f_582;
 }
 
 BOOL func_154() // Position - 0x6744
@@ -5475,16 +5475,16 @@ BOOL func_156(int iParam0, int iParam1) // Position - 0x6761
 void func_157(BOOL bParam0) // Position - 0x6799
 {
 	if (bParam0)
-		MISC::SET_BIT(&(Global_2793044.f_1825), 4);
+		MISC::SET_BIT(&(Global_2793046.f_1825), 4);
 	else
-		MISC::CLEAR_BIT(&(Global_2793044.f_1825), 4);
+		MISC::CLEAR_BIT(&(Global_2793046.f_1825), 4);
 
 	return;
 }
 
 BOOL func_158() // Position - 0x67C1
 {
-	return IS_BIT_SET(Global_2793044.f_1825, 4);
+	return IS_BIT_SET(Global_2793046.f_1825, 4);
 }
 
 BOOL func_159(Hash hParam0) // Position - 0x67D2
@@ -6306,7 +6306,7 @@ BOOL func_176(Vehicle veParam0, BOOL bParam1) // Position - 0x79CE
 		case joaat("technical"):
 		case joaat("insurgent"):
 			if (func_178(ENTITY::GET_ENTITY_MODEL(veParam0), 0))
-				if (Global_2793044.f_304 == veParam0)
+				if (Global_2793046.f_304 == veParam0)
 					return true;
 				else if (func_177(veParam0) != -1 && !bParam1)
 					return true;
@@ -6324,7 +6324,7 @@ int func_177(Vehicle veParam0) // Position - 0x7A29
 	{
 		for (i = 0; i < 32; i = i + 1)
 		{
-			if (Global_2672505.f_220[i] == veParam0)
+			if (Global_2672505.f_221[i] == veParam0)
 				return i;
 		}
 	}
@@ -6771,7 +6771,7 @@ BOOL func_196(BOOL bParam0) // Position - 0x85AF
 
 	if (bParam0)
 	{
-		if (!IS_BIT_SET(Global_2793044.f_1819, 26))
+		if (!IS_BIT_SET(Global_2793046.f_1819, 26))
 		{
 			num = _MPCHAR_STAT_GET_INT(MP_STAT_FM_NON_MISS_HELP_TEXT, -1, 0);
 		
@@ -6840,7 +6840,7 @@ void func_201() // Position - 0x8694
 	else
 		NETWORK::NETWORK_SET_PRESENCE_SESSION_INVITES_BLOCKED(false);
 
-	Global_2683862.f_743 = 0;
+	Global_2683864.f_743 = 0;
 
 	if (func_202())
 		if (!func_37(133, -1))
@@ -6978,7 +6978,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x88C6
 	if (func_215())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_214())
@@ -7017,7 +7017,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x894A
 
 Hash func_211() // Position - 0x897D
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -7031,7 +7031,7 @@ Hash func_211() // Position - 0x897D
 
 BOOL func_212() // Position - 0x89A1
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x89B0
@@ -7044,12 +7044,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x89B0
 
 BOOL func_214() // Position - 0x89C7
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_215() // Position - 0x89D3
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_216() // Position - 0x89E2
@@ -7083,7 +7083,7 @@ void func_218() // Position - 0x8A3C
 	if (func_37(133, -1))
 		func_31(133, false, -1, true);
 
-	Global_2683862.f_743 = 1;
+	Global_2683864.f_743 = 1;
 	return;
 }
 

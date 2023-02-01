@@ -241,7 +241,7 @@ void main() // Position - 0x0
 					{
 						if (!func_9(0) && !func_9(4) && !func_9(3))
 						{
-							if (unk_0xE777A59AAA1C96A0(11) < 256)
+							if (MISC::GET_NUMBER_RESOURCES_ALLOCATED_TO_WANTED_LEVEL(DT_Gangs) < 256)
 								if (ENTITY::DOES_ENTITY_EXIST(PLAYER::PLAYER_PED_ID()))
 									if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 										MISC::CREATE_INCIDENT_WITH_ENTITY(DT_Gangs, PLAYER::PLAYER_PED_ID(), numUnits, 0f, &iLocal_33, 0, 0);
@@ -271,7 +271,7 @@ void main() // Position - 0x0
 	
 		if (bLocal_29)
 			if (!MISC::IS_INCIDENT_VALID(iLocal_33))
-				if (unk_0xE777A59AAA1C96A0(11) < 256)
+				if (MISC::GET_NUMBER_RESOURCES_ALLOCATED_TO_WANTED_LEVEL(DT_Gangs) < 256)
 					if (ENTITY::DOES_ENTITY_EXIST(PLAYER::PLAYER_PED_ID()))
 						if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 							MISC::CREATE_INCIDENT_WITH_ENTITY(DT_Gangs, PLAYER::PLAYER_PED_ID(), numUnits, 0f, &iLocal_33, 0, 0);
@@ -284,7 +284,7 @@ void main() // Position - 0x0
 			if (numUnits < 8)
 				if (MISC::IS_INCIDENT_VALID(iLocal_33))
 					MISC::SET_INCIDENT_REQUESTED_UNITS(iLocal_33, DT_Gangs, numUnits);
-				else if (unk_0xE777A59AAA1C96A0(11) < 256)
+				else if (MISC::GET_NUMBER_RESOURCES_ALLOCATED_TO_WANTED_LEVEL(DT_Gangs) < 256)
 					if (ENTITY::DOES_ENTITY_EXIST(PLAYER::PLAYER_PED_ID()))
 						if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 							MISC::CREATE_INCIDENT_WITH_ENTITY(DT_Gangs, PLAYER::PLAYER_PED_ID(), numUnits, 0f, &iLocal_33, 0, 0);
@@ -876,7 +876,7 @@ void func_21(var uParam0) // Position - 0xF42
 	if (*uParam0 == -1)
 		return;
 
-	if (!*uParam0 == Global_43219)
+	if (!(*uParam0 == Global_43219))
 	{
 		*uParam0 = -1;
 		return;

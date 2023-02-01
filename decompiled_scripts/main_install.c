@@ -39,7 +39,7 @@ void main() // Position - 0x0
 	STREAMING::REQUEST_IPL("prologue03_grv_fun");
 	STREAMING::REMOVE_IPL("prologue03_grv_dug");
 	STREAMING::REMOVE_IPL("prologue_grv_torch");
-	unk_0xEF45BEC89B9F35EF("prologue", 1);
+	STREAMING::SET_MAPDATACULLBOX_ENABLED("prologue", true);
 	STREAMING::REQUEST_MODEL(joaat("CSB_ProlSec"));
 
 	while (!STREAMING::HAS_MODEL_LOADED(joaat("CSB_ProlSec")))

@@ -6201,7 +6201,7 @@
 	float fLocal_6199 = 0f;
 	float fLocal_6200 = 0f;
 	int iLocal_6201 = 0;
-	Player plLocal_6202 = 0;
+	int iLocal_6202 = 0;
 	int iLocal_6203 = 0;
 	int iLocal_6204 = 0;
 	BOOL bLocal_6205 = 0;
@@ -6305,11 +6305,11 @@ BOOL func_1() // Position - 0x117
 			
 				if (bLocal_6205)
 				{
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_6202, "SET_TEXT");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_6202, "SET_TEXT");
 					func_2("KEYNOTE_NAME");
 					func_2("KEYNOTE_TITLE");
 					GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
-					GRAPHICS::DRAW_SCALEFORM_MOVIE(plLocal_6202, 0.5f, 0.5f, 1f, 1f, 100, 100, 100, 255, 0);
+					GRAPHICS::DRAW_SCALEFORM_MOVIE(iLocal_6202, 0.5f, 0.5f, 1f, 1f, 100, 100, 100, 255, 0);
 				}
 			}
 			else
@@ -6551,7 +6551,7 @@ void func_16(BOOL bParam0) // Position - 0x53B
 		}
 	}
 
-	unk_0xA86292DA3C45FD42("EXTRASUNNY");
+	MISC::SET_WEATHER_TYPE_NOW_PERSIST("EXTRASUNNY");
 	iLocal_59[0] = joaat("A_M_Y_Hipster_01");
 	iLocal_59[1] = joaat("A_M_Y_Hipster_02");
 	iLocal_59[2] = joaat("A_M_Y_Hipster_03");
@@ -6590,7 +6590,7 @@ void func_16(BOOL bParam0) // Position - 0x53B
 
 	func_29("misslester1b_crowdlow@14@", 1);
 	func_29("misslester1b_crowdlow@24@", 1);
-	func_28("BREAKING_NEWS", &plLocal_6202, 1);
+	func_28("BREAKING_NEWS", &iLocal_6202, 1);
 	func_28("lifeinvader_presentation", &iLocal_6201, 1);
 	func_27("LEST1", 0, 1, false);
 
@@ -7273,7 +7273,7 @@ void func_34(BOOL bParam0) // Position - 0x27F9
 	}
 	else if (Global_20383.f_1 == 1)
 	{
-		if (!Global_20383.f_1 == 0)
+		if (!(Global_20383.f_1 == 0))
 			Global_20383.f_1 = 3;
 	}
 
@@ -7404,7 +7404,7 @@ void func_42() // Position - 0x2A12
 	HUD::RELEASE_NAMED_RENDERTARGET("Big_Disp");
 	STREAMING::REMOVE_IPL("LInvader");
 	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_6201);
-	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&plLocal_6202);
+	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_6202);
 	MISC::CLEAR_WEATHER_TYPE_PERSIST();
 
 	for (i = 0; i < iLocal_90; i = i + 1)

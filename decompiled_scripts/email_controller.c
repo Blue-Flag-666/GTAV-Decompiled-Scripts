@@ -1088,7 +1088,7 @@ void func_18(int iParam0, int iParam1, BOOL bParam2, BOOL bParam3, BOOL bParam4)
 	int num7;
 	int num8;
 
-	if (!iParam0 < 3)
+	if (!(iParam0 < 3))
 		return;
 
 	num = -1;
@@ -1105,7 +1105,7 @@ void func_18(int iParam0, int iParam1, BOOL bParam2, BOOL bParam3, BOOL bParam4)
 		num3 = num5;
 		unk = { func_13(Global_44465[num5 /*12*/].f_1) };
 	
-		if (Global_44465[num5 /*12*/].f_2 == iParam0 && !Global_44465[num5 /*12*/].f_3 == iParam0)
+		if (Global_44465[num5 /*12*/].f_2 == iParam0 && !(Global_44465[num5 /*12*/].f_3 == iParam0))
 			return;
 	
 		num2 = Global_44465[num5 /*12*/].f_2;
@@ -3097,7 +3097,7 @@ int func_57(Ped pedParam0) // Position - 0x4980
 
 	for (i = 0; i < 16; i = i + 1)
 	{
-		if (!Global_44232[i /*5*/] == -1)
+		if (!(Global_44232[i /*5*/] == -1))
 			if (pedParam0 == Global_44232[i /*5*/].f_1)
 				return i;
 	}

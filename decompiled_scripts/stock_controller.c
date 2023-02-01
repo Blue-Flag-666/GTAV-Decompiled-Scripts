@@ -103,7 +103,7 @@ void main() // Position - 0x0
 	{
 		for (j = 0; j < 3; j = j + 1)
 		{
-			if (!Global_113648.f_20566.f_233[j /*69*/].f_1 < 11)
+			if (!(Global_113648.f_20566.f_233[j /*69*/].f_1 < 11))
 				Global_113648.f_20566.f_233[j /*69*/].f_1 = 0;
 		}
 	
@@ -154,20 +154,20 @@ void main() // Position - 0x0
 void func_1() // Position - 0x201
 {
 	Ped playerPed;
-	Ped dlcVehicleIndex;
+	Ped ped;
 
 	playerPed = PLAYER::GET_PLAYER_PED(PLAYER::GET_PLAYER_INDEX());
 
 	if (ENTITY::IS_ENTITY_DEAD(playerPed, false))
 		return;
 
-	dlcVehicleIndex = func_3(playerPed);
+	ped = func_3(playerPed);
 
-	if (FILES::GET_DLC_VEHICLE_FLAGS(dlcVehicleIndex))
+	if (FIRE::IS_ENTITY_ON_FIRE(ped))
 	{
 		func_2(89, 1);
 	
-		if (ENTITY::GET_ENTITY_SPEED(dlcVehicleIndex) > 5f)
+		if (ENTITY::GET_ENTITY_SPEED(ped) > 5f)
 			func_2(90, 1);
 	}
 
@@ -243,7 +243,7 @@ int func_5() // Position - 0x2FE
 	float outValue;
 	float num3;
 
-	if (!NETWORK::NETWORK_IS_SIGNED_ONLINE() || !unk_0x8BD41D5945F5762B())
+	if (!NETWORK::NETWORK_IS_SIGNED_ONLINE() || !NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		return 1;
 
 	i = 0;
@@ -1422,7 +1422,7 @@ void func_41() // Position - 0x1836
 	for (i = 0; i < 80; i = i + 1)
 	{
 		if (!Global_55661[i /*36*/].f_8)
-			if (!Global_55661[i /*36*/].f_10 == 0f)
+			if (!(Global_55661[i /*36*/].f_10 == 0f))
 				Global_55661[i /*36*/].f_11 = Global_55661[i /*36*/].f_10;
 	
 		if (i % 40 == 0)
@@ -1484,7 +1484,7 @@ void func_41() // Position - 0x1836
 		
 			Global_58816[num2 /*7*/] = Global_58816[num2 /*7*/] - (((num3 * 0.66f) + (Global_58816[num2 /*7*/] * 0.33f)) * 0.02f);
 		
-			if (!Global_55661[i /*36*/].f_9 > 0f)
+			if (!(Global_55661[i /*36*/].f_9 > 0f))
 			{
 				Global_55661[i /*36*/].f_9 = -1f * Global_55661[i /*36*/].f_9;
 				Global_55661[i /*36*/].f_9 = Global_55661[i /*36*/].f_9 + 0.02f;
@@ -1607,7 +1607,7 @@ float func_43(int iParam0) // Position - 0x1CD1
 	num9 = SYSTEM::TO_FLOAT(num7 - num8);
 	num10 = SYSTEM::TO_FLOAT(num4 - num8);
 
-	if (!num10 > 0f)
+	if (!(num10 > 0f))
 		return 1f;
 
 	return 1f - (num9 / num10);
@@ -2836,9 +2836,9 @@ BOOL _IS_EXCLUSIVE_CONTENT_UNLOCKED() // Position - 0x3D0C
 	else if (Global_152523 == 3)
 		return false;
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (unk_0x8BD41D5945F5762B())
+		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		{
 			if (NETWORK::NETWORK_HAS_ROS_PRIVILEGE_PLAYED_LAST_GEN())
 			{
@@ -3151,7 +3151,7 @@ void func_68() // Position - 0x409D
 							func_2(111, 1);
 							func_2(124, 1);
 						
-							if (FILES::GET_DLC_VEHICLE_FLAGS(eventData))
+							if (FIRE::IS_ENTITY_ON_FIRE(eventData))
 								func_2(130, 1);
 						}
 						else if (ENTITY::IS_ENTITY_A_VEHICLE(eventData))
@@ -3422,7 +3422,7 @@ void func_74(Entity eParam0) // Position - 0x4701
 		}
 	}
 
-	if (FILES::GET_DLC_VEHICLE_FLAGS(eParam0))
+	if (FIRE::IS_ENTITY_ON_FIRE(eParam0))
 		func_2(129, 1);
 
 	if (!func_75(eParam0))

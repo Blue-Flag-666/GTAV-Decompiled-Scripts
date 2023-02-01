@@ -111,7 +111,7 @@ void main() // Position - 0x0
 		if (Global_78558)
 		{
 			Global_9058[Global_20383 /*2811*/][1 /*281*/].f_259 = _MPCHAR_STAT_GET_INT(MP_STAT_FM_CELLPHONE_RINGTONE, -1, 0);
-			Global_9058[Global_20383 /*2811*/][2 /*281*/].f_259 = _MPCHAR_STAT_GET_INT(MP_STAT_FM_CELLPHONE_THEME, -1, 0);
+			Global_9058[Global_20383 /*2811*/][2 /*281*/].f_259 = _MPCHAR_STAT_GET_INT(&func_10, -1, 0);
 			Global_9058[Global_20383 /*2811*/][4 /*281*/].f_259 = _MPCHAR_STAT_GET_INT(MP_STAT_FM_CELLPHONE_BACKGROUND, -1, 0);
 		}
 		else if (MISC::ARE_STRINGS_EQUAL(&(Global_113648.f_14053[Global_20383 /*20*/].f_11), &Global_9058[Global_20383 /*2811*/][1 /*281*/].f_144[i /*6*/]))
@@ -191,7 +191,7 @@ void main() // Position - 0x0
 						else if (SYSTEM::TIMERB() > 7500)
 						{
 							bLocal_57 = false;
-							HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+							HUD::CLEAR_HELP(true);
 						}
 					}
 					else
@@ -261,7 +261,7 @@ void func_2() // Position - 0x491
 		AUDIO::STOP_PED_RINGTONE(PLAYER::PLAYER_PED_ID());
 
 	if (bLocal_56)
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (Global_113648.f_14053.f_83 == 0 || Global_113648.f_14053.f_82 == 0)
 		func_3();
@@ -526,7 +526,7 @@ void func_12() // Position - 0x895
 			bLocal_52 = false;
 			SYSTEM::SETTIMERB(0);
 			bLocal_50 = true;
-			NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "GET_CURRENT_SELECTION");
+			GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "GET_CURRENT_SELECTION");
 			iLocal_41 = GRAPHICS::END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE();
 		
 			while (!GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_41))
@@ -564,7 +564,7 @@ void func_12() // Position - 0x895
 		{
 			func_23();
 			Global_20361 = 1;
-			NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "GET_CURRENT_SELECTION");
+			GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "GET_CURRENT_SELECTION");
 			iLocal_41 = GRAPHICS::END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE();
 		
 			while (!GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_41))
@@ -588,7 +588,7 @@ void func_12() // Position - 0x895
 				if (Global_78558)
 				{
 					Global_4542573 = Global_9058[3 /*2811*/][2 /*281*/].f_259;
-					_MPCHAR_STAT_SET_INT(MP_STAT_FM_CELLPHONE_THEME, Global_9058[3 /*2811*/][2 /*281*/].f_259, -1, true, false);
+					_MPCHAR_STAT_SET_INT(&func_10, Global_9058[3 /*2811*/][2 /*281*/].f_259, -1, true, false);
 					func_46(Global_20364, "SET_THEME", SYSTEM::TO_FLOAT(Global_4542573), -1082130432, -1082130432, -1082130432, -1082130432);
 				}
 				else
@@ -632,7 +632,7 @@ void func_12() // Position - 0x895
 						
 							if (num2 == 0)
 							{
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "SET_BACKGROUND_CREW_IMAGE");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "SET_BACKGROUND_CREW_IMAGE");
 								GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("CELL_2000" /*~a~*/);
 								HUD::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(&txdName);
 								GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
@@ -714,7 +714,7 @@ void func_12() // Position - 0x895
 						{
 							if (Global_113648.f_14053.f_82 == 0)
 							{
-								HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+								HUD::CLEAR_HELP(true);
 								func_16("CELL_7050" /*If you select Sleep Mode you will not receive incoming calls. This can pause game story progression. ~n~Select Normal Mode from this menu or trigger an existing mission to leave Sleep Mode.*/);
 								fLocal_63 == fLocal_64;
 								bLocal_56 = true;
@@ -727,7 +727,7 @@ void func_12() // Position - 0x895
 							
 								if (Global_113648.f_14053.f_83 == 0)
 								{
-									HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+									HUD::CLEAR_HELP(true);
 									_DISPLAY_HELP_TEXT("CELL_7051" /*When Sleep Mode is active, the Sleep symbol will be displayed near the Radar.*/, -1);
 									Global_113648.f_14053.f_83 = 1;
 								}
@@ -753,9 +753,9 @@ void func_12() // Position - 0x895
 	return;
 }
 
-void func_13(Player plParam0, char* sParam1, char* sParam2, const char* sParam3, const char* sParam4, const char* sParam5, const char* sParam6) // Position - 0x1152
+void func_13(int iParam0, char* sParam1, char* sParam2, const char* sParam3, const char* sParam4, const char* sParam5, const char* sParam6) // Position - 0x1152
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	func_14(sParam2);
 
 	if (!MISC::IS_STRING_NULL_OR_EMPTY(sParam3))
@@ -803,9 +803,9 @@ struct<13> GET_GAMER_HANDLE_PLAYER(Player plParam0) // Position - 0x11EC
 	return gamerHandle;
 }
 
-void func_18(Player plParam0, char* sParam1, float fParam2, float fParam3, float fParam4, float fParam5, float fParam6, char* sParam7, const char* sParam8, const char* sParam9, const char* sParam10, const char* sParam11) // Position - 0x1203
+void func_18(int iParam0, char* sParam1, float fParam2, float fParam3, float fParam4, float fParam5, float fParam6, char* sParam7, const char* sParam8, const char* sParam9, const char* sParam10, const char* sParam11) // Position - 0x1203
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(SYSTEM::ROUND(fParam2));
 
 	if (fParam3 != -1f)
@@ -1000,7 +1000,7 @@ void _MPCHAR_STAT_SET_INT(eMPStat empsParam0, int iParam1, int iParam2, BOOL bPa
 	Hash statName;
 
 	bParam4;
-	statName = Global_2805027[empsParam0 /*3*/][func_21(iParam2)];
+	statName = Global_2805029[empsParam0 /*3*/][func_21(iParam2)];
 
 	if (statName != 0)
 		STATS::STAT_SET_INT(statName, iParam1, bParam3);
@@ -1021,13 +1021,13 @@ int func_21(int iParam0) // Position - 0x155D
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -1088,7 +1088,7 @@ void func_26() // Position - 0x161D
 		{
 			func_23();
 			Global_20361 = 1;
-			NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "GET_CURRENT_SELECTION");
+			GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "GET_CURRENT_SELECTION");
 			iLocal_41 = GRAPHICS::END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE();
 		
 			while (!GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_41))
@@ -1108,7 +1108,7 @@ void func_26() // Position - 0x161D
 						{
 							if (Global_113648.f_14053.f_82 == 0)
 							{
-								HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+								HUD::CLEAR_HELP(true);
 								func_16("CELL_7050" /*If you select Sleep Mode you will not receive incoming calls. This can pause game story progression. ~n~Select Normal Mode from this menu or trigger an existing mission to leave Sleep Mode.*/);
 								fLocal_63 == fLocal_64;
 								bLocal_56 = true;
@@ -1563,10 +1563,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_21(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_21(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -1606,9 +1606,9 @@ void _UPDATE_CURRENT_PLAYER_CHARACTER() // Position - 0x212A
 	return;
 }
 
-void func_46(Player plParam0, char* sParam1, float fParam2, int iParam3, int iParam4, int iParam5, int iParam6) // Position - 0x21CC
+void func_46(int iParam0, char* sParam1, float fParam2, int iParam3, int iParam4, int iParam5, int iParam6) // Position - 0x21CC
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(SYSTEM::ROUND(fParam2));
 
 	if (iParam3 != -1f)

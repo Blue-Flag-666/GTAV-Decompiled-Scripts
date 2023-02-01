@@ -1690,7 +1690,7 @@ int func_23(int iParam0, int iParam1) // Position - 0x278E
 			if (iParam1 % 4 == 0)
 				if (iParam1 % 100 != 0)
 					return 29;
-				else if (iParam1 % 400 == 0)
+				else if (iParam1 % &func_1 == 0)
 					return 29;
 		
 			return 28;
@@ -3214,7 +3214,7 @@ struct<7> func_30(int iParam0) // Position - 0x2927
 
 BOOL func_31() // Position - 0x5533
 {
-	if (func_33() == -1 || func_33() == 999 && !func_32() == 0)
+	if (func_33() == -1 || func_33() == 999 && !(func_32() == 0))
 		return true;
 
 	return false;
@@ -3699,9 +3699,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -3944,7 +3944,7 @@ BOOL func_62(Vehicle veParam0) // Position - 0x6257
 {
 	if (_DOES_ENTITY_EXIST_AND_IS_ALIVE(veParam0))
 		if (VEHICLE::IS_VEHICLE_DRIVEABLE(veParam0, false))
-			if (!FILES::GET_DLC_VEHICLE_FLAGS(veParam0))
+			if (!FIRE::IS_ENTITY_ON_FIRE(veParam0))
 				return true;
 
 	return false;

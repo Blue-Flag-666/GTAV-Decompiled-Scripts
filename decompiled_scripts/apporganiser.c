@@ -110,52 +110,52 @@ void func_3() // Position - 0x148
 {
 	if (!bLocal_20)
 	{
-		if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 172))
+		if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CELLPHONE_UP))
 		{
 			bLocal_20 = true;
 			func_7(Global_20364, "SET_INPUT_EVENT", 1f, -1082130432, -1082130432, -1082130432, -1082130432);
 		}
 	}
-	else if (!GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 172))
+	else if (!PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CELLPHONE_UP))
 	{
 		bLocal_20 = false;
 	}
 
 	if (!bLocal_21)
 	{
-		if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 173))
+		if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CELLPHONE_DOWN))
 		{
 			bLocal_21 = true;
 			func_7(Global_20364, "SET_INPUT_EVENT", 3f, -1082130432, -1082130432, -1082130432, -1082130432);
 		}
 	}
-	else if (!GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 173))
+	else if (!PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CELLPHONE_DOWN))
 	{
 		bLocal_21 = false;
 	}
 
 	if (!bLocal_22)
 	{
-		if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 174))
+		if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CELLPHONE_LEFT))
 		{
 			bLocal_22 = true;
 			func_7(Global_20364, "SET_INPUT_EVENT", 4f, -1082130432, -1082130432, -1082130432, -1082130432);
 		}
 	}
-	else if (!GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 174))
+	else if (!PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CELLPHONE_LEFT))
 	{
 		bLocal_22 = false;
 	}
 
 	if (!bLocal_23)
 	{
-		if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 175))
+		if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CELLPHONE_RIGHT))
 		{
 			bLocal_23 = true;
 			func_7(Global_20364, "SET_INPUT_EVENT", 2f, -1082130432, -1082130432, -1082130432, -1082130432);
 		}
 	}
-	else if (!GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 175))
+	else if (!PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CELLPHONE_RIGHT))
 	{
 		bLocal_23 = false;
 	}
@@ -163,7 +163,7 @@ void func_3() // Position - 0x148
 	return;
 }
 
-void func_4(Player plParam0, BOOL bParam1) // Position - 0x25C
+void func_4(int iParam0, BOOL bParam1) // Position - 0x25C
 {
 	int num;
 	int value;
@@ -177,10 +177,10 @@ void func_4(Player plParam0, BOOL bParam1) // Position - 0x25C
 		if (!bParam1)
 			return;
 
-	if (plParam0 == 0)
+	if (iParam0 == 0)
 		return;
 
-	if (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plParam0))
+	if (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iParam0))
 		return;
 
 	func_8();
@@ -196,9 +196,9 @@ void func_4(Player plParam0, BOOL bParam1) // Position - 0x25C
 		num3 = num2;
 		num2 = Global_97773[num /*25*/][value];
 	
-		if (!num2 == num3)
+		if (!(num2 == num3))
 		{
-			if (!num2 == 0)
+			if (!(num2 == 0))
 			{
 				switch (num)
 				{
@@ -231,10 +231,10 @@ void func_4(Player plParam0, BOOL bParam1) // Position - 0x25C
 						break;
 				}
 			
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, "SET_DATA_SLOT_EMPTY");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, "SET_DATA_SLOT_EMPTY");
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(value2);
 				GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, "SET_DATA_SLOT");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, "SET_DATA_SLOT");
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(5);
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(value2);
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(value);
@@ -287,9 +287,9 @@ void func_6(char* sParam0) // Position - 0x400
 	return;
 }
 
-void func_7(Player plParam0, char* sParam1, float fParam2, int iParam3, int iParam4, int iParam5, int iParam6) // Position - 0x412
+void func_7(int iParam0, char* sParam1, float fParam2, int iParam3, int iParam4, int iParam5, int iParam6) // Position - 0x412
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(SYSTEM::ROUND(fParam2));
 
 	if (iParam3 != -1f)
@@ -361,7 +361,7 @@ void func_8() // Position - 0x475
 			{
 				for (j = 0; j < 24; j = j + 1)
 				{
-					if (!Global_97773[num4 /*25*/][num5] == 0)
+					if (!(Global_97773[num4 /*25*/][num5] == 0))
 					{
 						Global_97768 = Global_97768 + 1;
 						Global_97770 = Global_97770 - 1;
@@ -393,7 +393,7 @@ void func_8() // Position - 0x475
 			if (num4 > 6)
 				num4 = 0;
 		
-			if (!Global_97773[num4 /*25*/][num5] == 0)
+			if (!(Global_97773[num4 /*25*/][num5] == 0))
 			{
 				Global_97768 = Global_97768 + 1;
 				Global_97770 = Global_97770 - 1;
@@ -431,7 +431,7 @@ void func_8() // Position - 0x475
 		
 			for (i = 0; i < num6; i = i + 1)
 			{
-				if (!Global_97773[num4 /*25*/][num5] == 0)
+				if (!(Global_97773[num4 /*25*/][num5] == 0))
 				{
 					Global_97768 = Global_97768 + 1;
 					Global_97770 = Global_97770 - 1;
@@ -482,7 +482,7 @@ int func_9(int iParam0, int iParam1, int iParam2, int iParam3) // Position - 0x7
 
 	i = 0;
 
-	if (!iParam1 == iParam3)
+	if (!(iParam1 == iParam3))
 	{
 		if (iParam1 < iParam3)
 		{

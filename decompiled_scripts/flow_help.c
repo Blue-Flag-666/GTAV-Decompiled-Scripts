@@ -136,9 +136,9 @@ void main() // Position - 0x0
 			{
 				if (MISC::ARE_STRINGS_EQUAL(&(uLocal_20.f_4), ""))
 					if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(&uLocal_20))
-						HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+						HUD::CLEAR_HELP(false);
 				else if (func_2(&uLocal_20, &(uLocal_20.f_4)))
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+					HUD::CLEAR_HELP(false);
 			
 				if (MISC::GET_GAME_TIMER() - Global_112289 > 4000 || uLocal_20.f_16)
 				{
@@ -549,9 +549,9 @@ void func_23() // Position - 0xCD1
 	if (Global_112288)
 		if (MISC::ARE_STRINGS_EQUAL(&(uLocal_20.f_4), ""))
 			if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(&uLocal_20))
-				HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+				HUD::CLEAR_HELP(true);
 		else if (func_2(&uLocal_20, &(uLocal_20.f_4)))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 
 	Global_112289 = 0;
 	Global_112288 = false;

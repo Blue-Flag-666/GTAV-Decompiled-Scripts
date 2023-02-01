@@ -770,7 +770,7 @@ BOOL func_3() // Position - 0x2B9
 	if (!bLocal_339)
 		return SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("stripclub")) == 0;
 
-	if (func_4(PLAYER::PLAYER_ID()) == 185 && Global_2793044.f_4676 == 2)
+	if (func_4(PLAYER::PLAYER_ID()) == 185 && Global_2793046.f_4676 == 2)
 		return true;
 
 	return SYSTEM::VDIST2(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false), 114.64f, -1290.34f, 29.68f) > 14400f;
@@ -1283,7 +1283,7 @@ void func_35() // Position - 0xC5D
 			if (!PED::IS_PED_HEADTRACKING_PED(pedLocal_69, func_91()))
 				TASK::TASK_LOOK_AT_ENTITY(pedLocal_69, func_91(), -1, SLF_EXTEND_YAW_LIMIT, 4);
 	else if (SYSTEM::VDIST2(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), ENTITY::GET_ENTITY_COORDS(pedLocal_69, true)) < 10f * 10f)
-		TASK::TASK_LOOK_AT_ENTITY(pedLocal_69, PLAYER::PLAYER_PED_ID(), 2500, 0, 2);
+		TASK::TASK_LOOK_AT_ENTITY(pedLocal_69, PLAYER::PLAYER_PED_ID(), &_GET_CHARACTER_MODEL, 0, 2);
 
 	if (!func_15(2, -1) && !func_15(4, -1) || !func_15(64, -1) && func_90() && flag3)
 	{
@@ -1678,13 +1678,13 @@ int func_51(int iParam0) // Position - 0x149E
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -2501,9 +2501,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -2585,7 +2585,7 @@ BOOL func_94() // Position - 0x240C
 {
 	if (bLocal_339)
 	{
-		if (func_4(PLAYER::PLAYER_ID()) == 185 && Global_2793044.f_4676 == 2)
+		if (func_4(PLAYER::PLAYER_ID()) == 185 && Global_2793046.f_4676 == 2)
 			return false;
 	
 		if (!NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT())
@@ -2869,7 +2869,7 @@ int _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x28B8
 	if (func_114())
 		return 1;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return 1;
 
 	if (func_113())
@@ -2908,7 +2908,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x293C
 
 Hash func_110() // Position - 0x296F
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -2922,7 +2922,7 @@ Hash func_110() // Position - 0x296F
 
 BOOL func_111() // Position - 0x2993
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x29A2
@@ -2935,12 +2935,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x29A2
 
 BOOL func_113() // Position - 0x29B9
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_114() // Position - 0x29C5
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_115(var uParam0) // Position - 0x29D4

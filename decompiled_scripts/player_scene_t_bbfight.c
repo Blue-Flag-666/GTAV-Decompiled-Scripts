@@ -1096,9 +1096,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, eCharacter echParam1, Ped pedPa
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[echParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -1418,7 +1418,7 @@ int func_28(var uParam0, var uParam1) // Position - 0xBB5
 				
 					if (num6 > 45f)
 					{
-						if (!TASK::GET_SCRIPT_TASK_STATUS(uParam0->[i], SCRIPT_TASK_ACHIEVE_HEADING) == 1)
+						if (!(TASK::GET_SCRIPT_TASK_STATUS(uParam0->[i], SCRIPT_TASK_ACHIEVE_HEADING) == 1))
 							TASK::TASK_ACHIEVE_HEADING(uParam0->[i], heading, 0);
 					
 						break;
@@ -1449,7 +1449,7 @@ int func_28(var uParam0, var uParam1) // Position - 0xBB5
 						break;
 					}
 				
-					if (!TASK::GET_SCRIPT_TASK_STATUS(uParam0->[i], SCRIPT_TASK_FOLLOW_NAV_MESH_TO_COORD) == 1 && !TASK::GET_SCRIPT_TASK_STATUS(uParam0->[i], SCRIPT_TASK_FOLLOW_NAV_MESH_TO_COORD) == 0)
+					if (!(TASK::GET_SCRIPT_TASK_STATUS(uParam0->[i], SCRIPT_TASK_FOLLOW_NAV_MESH_TO_COORD) == 1) && !(TASK::GET_SCRIPT_TASK_STATUS(uParam0->[i], SCRIPT_TASK_FOLLOW_NAV_MESH_TO_COORD) == 0))
 					{
 						TASK::TASK_FOLLOW_NAV_MESH_TO_COORD(uParam0->[i], vector2, 0.5f, -1, 1048576000, 0, 1193033728);
 						break;
@@ -1963,7 +1963,7 @@ BOOL func_46() // Position - 0x1DC7
 	if (func_17(8, -1))
 		return true;
 
-	if (Global_2672505.f_60)
+	if (Global_2672505.f_61)
 		return true;
 
 	if (Global_98159.f_44 == 1)
@@ -2078,7 +2078,7 @@ void func_52() // Position - 0x1FFB
 	if (Global_100404 > 0)
 		return;
 
-	unk_0xF60B883B88B61903();
+	STREAMING::ALLOW_PLAYER_SWITCH_OUTRO();
 	return;
 }
 

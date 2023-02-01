@@ -476,7 +476,7 @@ void func_5() // Position - 0x22D
 		if (iLocal_94 == 3)
 			Global_113648.f_10051.f_120 = 1;
 	
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 	}
 
 	if (HUD::DOES_BLIP_EXIST(blLocal_93))
@@ -678,7 +678,7 @@ void func_10() // Position - 0x6CF
 	func_6();
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("TX_H02" /*Press ~INPUT_ENTER~ to enter a taxi as a passenger. Hold ~INPUT_ENTER~ to jack a taxi.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	iLocal_96 = 0;
 	iLocal_54 = 0;
@@ -877,7 +877,7 @@ void func_16() // Position - 0xA58
 				if (bLocal_89)
 				{
 					if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("TX_H02" /*Press ~INPUT_ENTER~ to enter a taxi as a passenger. Hold ~INPUT_ENTER~ to jack a taxi.*/))
-						HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+						HUD::CLEAR_HELP(true);
 				
 					bLocal_89 = false;
 				}
@@ -1227,7 +1227,7 @@ void func_27() // Position - 0xFF1
 
 BOOL func_28(var uParam0, var uParam1, BOOL bParam2) // Position - 0x10C9
 {
-	if (!*uParam0 == Global_112679 && !Global_112679 == 0)
+	if (!(*uParam0 == Global_112679) && !(Global_112679 == 0))
 		func_6();
 
 	if (ENTITY::DOES_ENTITY_EXIST(*uParam0) && ENTITY::DOES_ENTITY_EXIST(*uParam1))
@@ -1290,7 +1290,7 @@ void func_29() // Position - 0x120C
 		{
 			if (veLocal_277 == Global_112679 && iLocal_55 == 4)
 			{
-				if (!DECORATOR::DECOR_GET_BOOL())
+				if (!HUD::IS_HELP_MESSAGE_ON_SCREEN())
 				{
 					if (!_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("TX_H02" /*Press ~INPUT_ENTER~ to enter a taxi as a passenger. Hold ~INPUT_ENTER~ to jack a taxi.*/))
 					{
@@ -1343,7 +1343,7 @@ void func_29() // Position - 0x120C
 	}
 	else if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("TX_H02" /*Press ~INPUT_ENTER~ to enter a taxi as a passenger. Hold ~INPUT_ENTER~ to jack a taxi.*/))
 	{
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 	}
 
 	return;
@@ -1535,7 +1535,7 @@ BOOL func_39(Vehicle veParam0) // Position - 0x1737
 {
 	if (_DOES_ENTITY_EXIST_AND_IS_ALIVE(veParam0))
 		if (VEHICLE::IS_VEHICLE_DRIVEABLE(veParam0, false))
-			if (!FILES::GET_DLC_VEHICLE_FLAGS(veParam0))
+			if (!FIRE::IS_ENTITY_ON_FIRE(veParam0))
 				return true;
 
 	return false;
@@ -1700,7 +1700,7 @@ void func_49() // Position - 0x1A2F
 	{
 		flag = false;
 	
-		if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 23))
+		if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_ENTER))
 			flag = true;
 	
 		if (func_41(iLocal_97, 1000))
@@ -2069,7 +2069,7 @@ void func_58() // Position - 0x2011
 						if (func_61(iLocal_95, true))
 						{
 							if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("TXM_H01" /*Press ~INPUT_CONTEXT~ to hail a taxi.*/))
-								HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+								HUD::CLEAR_HELP(true);
 						
 							if (iLocal_92 == 0)
 							{
@@ -2286,13 +2286,13 @@ void _CONTEXT_ADD_HELP_TEXT(var uParam0, int iParam1, char* sParam2, int iParam3
 
 	if (STREAMING::IS_PLAYER_SWITCH_IN_PROGRESS())
 	{
-		if (!*uParam0 == -1)
+		if (!(*uParam0 == -1))
 			_CONTEXT_REMOVE_HELP_TEXT(uParam0);
 	
 		return;
 	}
 
-	if (!*uParam0 == -1)
+	if (!(*uParam0 == -1))
 		return;
 
 	i = 0;
@@ -2342,7 +2342,7 @@ BOOL func_63(var uParam0) // Position - 0x262C
 	{
 		pedInVehicleSeat = VEHICLE::GET_PED_IN_VEHICLE_SEAT(*uParam0, 1, false);
 	
-		if (!pedInVehicleSeat == PLAYER::PLAYER_PED_ID())
+		if (!(pedInVehicleSeat == PLAYER::PLAYER_PED_ID()))
 		{
 			if (!PED::IS_PED_GROUP_MEMBER(pedInVehicleSeat, func_12()))
 			{
@@ -2358,7 +2358,7 @@ BOOL func_63(var uParam0) // Position - 0x262C
 	{
 		pedInVehicleSeat = VEHICLE::GET_PED_IN_VEHICLE_SEAT(*uParam0, 2, false);
 	
-		if (!pedInVehicleSeat == PLAYER::PLAYER_PED_ID())
+		if (!(pedInVehicleSeat == PLAYER::PLAYER_PED_ID()))
 		{
 			if (!PED::IS_PED_GROUP_MEMBER(pedInVehicleSeat, func_12()))
 			{
@@ -6071,9 +6071,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;

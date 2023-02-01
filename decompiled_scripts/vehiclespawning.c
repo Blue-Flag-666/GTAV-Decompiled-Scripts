@@ -93,7 +93,7 @@ void main() // Position - 0x0
 	fLocal_34 = 0.17f;
 	fLocal_63 = 277.7314f;
 	uLocal_65 = { -196.045f, -580.13f, 135.0004f };
-	CAM::DO_SCREEN_FADE_OUT(800);
+	CAM::DO_SCREEN_FADE_OUT(&func_13);
 	func_16();
 
 	while (true)
@@ -126,7 +126,7 @@ void main() // Position - 0x0
 				}
 				else
 				{
-					CAM::DO_SCREEN_FADE_IN(800);
+					CAM::DO_SCREEN_FADE_IN(&func_13);
 					bLocal_58 = true;
 				}
 			}
@@ -223,7 +223,7 @@ int _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x214
 	if (func_14())
 		return 1;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return 1;
 
 	if (func_13())
@@ -262,7 +262,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x298
 
 Hash func_9() // Position - 0x2CB
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -281,7 +281,7 @@ int func_10() // Position - 0x2EF
 
 BOOL func_11() // Position - 0x2FA
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x309
@@ -294,12 +294,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x309
 
 BOOL func_13() // Position - 0x320
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_14() // Position - 0x32C
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_15() // Position - 0x33B

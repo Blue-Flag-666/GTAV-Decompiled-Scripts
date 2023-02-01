@@ -902,7 +902,7 @@ void func_15() // Position - 0x992
 		Global_8260[14 /*15*/].f_4 = -99;
 		Global_8260[4 /*15*/].f_4 = -99;
 	
-		if (Global_2694519)
+		if (Global_2694521)
 		{
 			if (func_17(14))
 			{
@@ -1484,7 +1484,7 @@ void func_47(int iParam0, int iParam1, int iParam2) // Position - 0x16D5
 	}
 	else
 	{
-		_STAT_SET_PACKED_BOOL(891 + iParam0, 1, -1);
+		_STAT_SET_PACKED_BOOL(891 + iParam0, true, -1);
 	}
 
 	flag = true;
@@ -1727,12 +1727,12 @@ BOOL func_51(int iParam0, int iParam1) // Position - 0x1CCF
 	return false;
 }
 
-void _STAT_SET_PACKED_BOOL(int iParam0, int iParam1, int iParam2) // Position - 0x1D20
+void _STAT_SET_PACKED_BOOL(int iParam0, BOOL bParam1, int iParam2) // Position - 0x1D20
 {
 	if (iParam2 == -1)
 		iParam2 = func_53();
 
-	unk_0x0111091C0EE35B9C(iParam0, iParam1, iParam2);
+	STATS::SET_PACKED_STAT_BOOL_CODE(iParam0, bParam1, iParam2);
 	return;
 }
 
@@ -2451,25 +2451,25 @@ void func_60(int iParam0) // Position - 0x2B7C
 
 	if (iParam0 == 8)
 	{
-		_STAT_SET_PACKED_BOOL(129, 0, -1);
+		_STAT_SET_PACKED_BOOL(129, false, -1);
 		return;
 	}
 
 	if (iParam0 == 9)
 	{
-		_STAT_SET_PACKED_BOOL(135, 0, -1);
+		_STAT_SET_PACKED_BOOL(135, false, -1);
 		return;
 	}
 
 	if (iParam0 == 10)
 	{
-		_STAT_SET_PACKED_BOOL(136, 0, -1);
+		_STAT_SET_PACKED_BOOL(136, false, -1);
 		return;
 	}
 
 	if (iParam0 == 11)
 	{
-		_STAT_SET_PACKED_BOOL(137, 0, -1);
+		_STAT_SET_PACKED_BOOL(137, false, -1);
 		return;
 	}
 
@@ -2615,7 +2615,7 @@ void _MPCHAR_STAT_SET_INT(eMPStat empsParam0, int iParam1, int iParam2, BOOL bPa
 	Hash statName;
 
 	bParam4;
-	statName = Global_2805027[empsParam0 /*3*/][func_64(iParam2)];
+	statName = Global_2805029[empsParam0 /*3*/][func_64(iParam2)];
 
 	if (statName != 0)
 		STATS::STAT_SET_INT(statName, iParam1, bParam3);
@@ -2636,13 +2636,13 @@ int func_64(int iParam0) // Position - 0x2E3C
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -2673,16 +2673,16 @@ BOOL func_66(int iParam0) // Position - 0x2E90
 	int num6;
 
 	if (iParam0 == 8)
-		return func_68(129, -1);
+		return _STAT_GET_PACKED_BOOL(129, -1);
 
 	if (iParam0 == 9)
-		return func_68(135, -1);
+		return _STAT_GET_PACKED_BOOL(135, -1);
 
 	if (iParam0 == 10)
-		return func_68(136, -1);
+		return _STAT_GET_PACKED_BOOL(136, -1);
 
 	if (iParam0 == 11)
-		return func_68(137, -1);
+		return _STAT_GET_PACKED_BOOL(137, -1);
 
 	if (iParam0 == 12)
 	{
@@ -2761,10 +2761,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_64(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_64(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -2773,12 +2773,12 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	return 0;
 }
 
-BOOL func_68(int iParam0, int iParam1) // Position - 0x3073
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0x3073
 {
 	if (iParam1 == -1)
 		iParam1 = func_53();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 int func_69(BOOL bParam0) // Position - 0x308F
@@ -2855,21 +2855,21 @@ void func_72() // Position - 0x31C6
 {
 	int outValue;
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
 		STATS::STAT_GET_INT(joaat("SP0_TOTAL_CASH"), &outValue, -1);
 	
-		if (!Global_60536[0] == outValue)
+		if (!(Global_60536[0] == outValue))
 			Global_60536[0] = outValue;
 	
 		STATS::STAT_GET_INT(joaat("SP1_TOTAL_CASH"), &outValue, -1);
 	
-		if (!Global_60536[1] == outValue)
+		if (!(Global_60536[1] == outValue))
 			Global_60536[1] = outValue;
 	
 		STATS::STAT_GET_INT(joaat("SP2_TOTAL_CASH"), &outValue, -1);
 	
-		if (!Global_60536[2] == outValue)
+		if (!(Global_60536[2] == outValue))
 			Global_60536[2] = outValue;
 	}
 
@@ -3103,7 +3103,7 @@ void func_82(var uParam0, var uParam1, var uParam2, int iParam3, var uParam4, in
 				break;
 		
 			case 1:
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam5, "SHOW_SHARD_MIDSIZED_MESSAGE");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam5, "SHOW_SHARD_MIDSIZED_MESSAGE");
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING(sParam6);
 				GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING(sParam7);
@@ -3117,7 +3117,7 @@ void func_82(var uParam0, var uParam1, var uParam2, int iParam3, var uParam4, in
 			case 2:
 				if (MISC::GET_GAME_TIMER() - *uParam2 > 7000)
 				{
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam5, "SHARD_ANIM_OUT");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam5, "SHARD_ANIM_OUT");
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(0.33f);
 					GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
@@ -3208,7 +3208,7 @@ int func_84(int iParam0) // Position - 0x37A5
 		{
 			num = func_85(iParam0) + i;
 		
-			if (func_68(num, -1))
+			if (_STAT_GET_PACKED_BOOL(num, -1))
 				outValue = outValue + 1;
 		}
 	}
@@ -3473,7 +3473,7 @@ void func_98(var uParam0) // Position - 0x3CF4
 		if (func_12(uParam0, i))
 		{
 			num = num + 1;
-			_STAT_SET_PACKED_BOOL(uParam0->f_2 + i, 1, -1);
+			_STAT_SET_PACKED_BOOL(uParam0->f_2 + i, true, -1);
 			bLocal_40;
 		}
 	}
@@ -3507,7 +3507,7 @@ void func_100(var uParam0, int iParam1) // Position - 0x3DB2
 	if (func_12(uParam0, iParam1))
 	{
 		uParam0->f_4 = uParam0->f_4 + 1;
-		_STAT_SET_PACKED_BOOL(uParam0->f_2 + iParam1, 1, -1);
+		_STAT_SET_PACKED_BOOL(uParam0->f_2 + iParam1, true, -1);
 		bLocal_40;
 	}
 
@@ -3736,7 +3736,7 @@ void func_109() // Position - 0x41DD
 			{
 				func_124(true);
 			
-				if (!bLocal_389 && !uLocal_42.f_1.f_4 >= uLocal_42.f_1.f_3)
+				if (!bLocal_389 && !(uLocal_42.f_1.f_4 >= uLocal_42.f_1.f_3))
 				{
 					func_113("SUBM_TRKHELP" /*To restart Trackify, select the Trackify app from the bottom right of the phone.*/, 1, 0, -1, 10000, 7, 0, 0, 0);
 					bLocal_389 = true;
@@ -3941,7 +3941,7 @@ void func_119(int* piParam0, int iParam1, int iParam2) // Position - 0x46E9
 
 	for (i = 0; i < piParam0->f_3; i = i + 1)
 	{
-		if (func_68(piParam0->f_2 + i, -1))
+		if (_STAT_GET_PACKED_BOOL(piParam0->f_2 + i, -1))
 		{
 			num = num + 1;
 			func_102(piParam0, i, true);

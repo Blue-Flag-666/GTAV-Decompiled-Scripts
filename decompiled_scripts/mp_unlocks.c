@@ -194,7 +194,7 @@ void main() // Position - 0x0
 	MISC::NETWORK_SET_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
 	GRAPHICS::SET_SCRIPT_GFX_DRAW_ORDER(1);
 
-	if (func_58() || func_57() || MISC::IS_PC_VERSION())
+	if (IS_XBOX_PLATFORM() || IS_PLAYSTATION_PLATFORM() || MISC::IS_PC_VERSION())
 		iLocal_144 = 40;
 
 	switch (iScriptParam_0)
@@ -695,13 +695,13 @@ int func_14(int iParam0) // Position - 0xABA
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -804,7 +804,7 @@ BOOL func_19() // Position - 0xD06
 	if (Global_1574612)
 		return true;
 
-	if (IS_BIT_SET(Global_2793044.f_1824, 23))
+	if (IS_BIT_SET(Global_2793046.f_1824, 23))
 		return true;
 
 	if (func_21())
@@ -817,7 +817,7 @@ BOOL func_19() // Position - 0xD06
 
 	if (IS_BIT_SET(num, 7))
 	{
-		MISC::SET_BIT(&(Global_2793044.f_1824), 23);
+		MISC::SET_BIT(&(Global_2793046.f_1824), 23);
 		return true;
 	}
 
@@ -1026,7 +1026,7 @@ BOOL func_28(int iParam0, int iParam1) // Position - 0x1008
 	Hash statHash;
 	BOOL outValue;
 
-	statHash = Global_2848280[iParam0 /*3*/][func_14(iParam1)];
+	statHash = Global_2848282[iParam0 /*3*/][func_14(iParam1)];
 
 	if (STATS::STAT_GET_BOOL(statHash, &outValue, -1))
 		return outValue;
@@ -1059,7 +1059,7 @@ BOOL func_30(int iParam0) // Position - 0x1065
 			return func_28(80, -1);
 	
 		case 3:
-			return func_36(30, -1);
+			return _STAT_GET_PACKED_BOOL(30, -1);
 	
 		case 4:
 			return func_28(81, -1);
@@ -1074,7 +1074,7 @@ BOOL func_30(int iParam0) // Position - 0x1065
 			return func_28(83, -1);
 	
 		case 8:
-			return func_36(11, -1);
+			return _STAT_GET_PACKED_BOOL(11, -1);
 	
 		case 9:
 			return func_28(95, -1);
@@ -1086,10 +1086,10 @@ BOOL func_30(int iParam0) // Position - 0x1065
 			return func_28(97, -1);
 	
 		case 12:
-			return func_36(8, -1);
+			return _STAT_GET_PACKED_BOOL(8, -1);
 	
 		case 13:
-			return func_36(9, -1);
+			return _STAT_GET_PACKED_BOOL(9, -1);
 	
 		case 14:
 			return func_28(98, -1);
@@ -1101,19 +1101,19 @@ BOOL func_30(int iParam0) // Position - 0x1065
 			return func_34(27, -1) > 0;
 	
 		case 17:
-			return func_36(3, -1);
+			return _STAT_GET_PACKED_BOOL(3, -1);
 	
 		case 18:
-			return func_36(2, -1);
+			return _STAT_GET_PACKED_BOOL(2, -1);
 	
 		case 19:
-			return func_36(4, -1);
+			return _STAT_GET_PACKED_BOOL(4, -1);
 	
 		case 20:
 			return func_28(100, -1);
 	
 		case 21:
-			return func_36(31, -1);
+			return _STAT_GET_PACKED_BOOL(31, -1);
 	
 		case 22:
 			return func_28(102, -1);
@@ -1165,10 +1165,10 @@ BOOL func_30(int iParam0) // Position - 0x1065
 			break;
 	
 		case 37:
-			return func_36(27, -1);
+			return _STAT_GET_PACKED_BOOL(27, -1);
 	
 		case 38:
-			return func_36(26, -1);
+			return _STAT_GET_PACKED_BOOL(26, -1);
 	
 		case 39:
 			return _MPCHAR_STAT_GET_INT(MP_STAT_CRARMWREST, -1, 0) > 0;
@@ -1177,22 +1177,22 @@ BOOL func_30(int iParam0) // Position - 0x1065
 			return _MPCHAR_STAT_GET_INT(MP_STAT_TOTAL_NO_SHOPS_HELD_UP, -1, 0) > 0;
 	
 		case 41:
-			return func_36(5, -1);
+			return _STAT_GET_PACKED_BOOL(5, -1);
 	
 		case 42:
-			return func_36(1, -1);
+			return _STAT_GET_PACKED_BOOL(1, -1);
 	
 		case 43:
 			return _MPCHAR_STAT_GET_INT(MP_STAT_CR_GANGATTACK_CITY, -1, 0) > 0 || _MPCHAR_STAT_GET_INT(MP_STAT_CR_GANGATTACK_COUNTRY, -1, 0) > 0;
 	
 		case 44:
-			return func_36(10, -1);
+			return _STAT_GET_PACKED_BOOL(10, -1);
 	
 		case 45:
 			return func_28(90, -1);
 	
 		case 46:
-			return func_36(25, -1);
+			return _STAT_GET_PACKED_BOOL(25, -1);
 	
 		case 47:
 			return func_32();
@@ -1246,7 +1246,7 @@ int func_34(int iParam0, int iParam1) // Position - 0x1432
 	Hash statHash;
 	int outValue;
 
-	statHash = Global_2850192[iParam0 /*3*/][func_14(iParam1)];
+	statHash = Global_2850194[iParam0 /*3*/][func_14(iParam1)];
 
 	if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 		return outValue;
@@ -1259,10 +1259,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_14(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_14(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -1271,12 +1271,12 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	return 0;
 }
 
-BOOL func_36(int iParam0, int iParam1) // Position - 0x149B
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0x149B
 {
 	if (iParam1 == -1)
 		iParam1 = func_15();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 void func_37(var uParam0, int iParam1, int iParam2) // Position - 0x14B7
@@ -1334,7 +1334,7 @@ int func_39(int iParam0) // Position - 0x1547
 			return Global_794709.f_183669[0];
 	
 		case 5:
-			if (func_41() || func_40() || MISC::IS_PC_VERSION() || func_57() || func_58())
+			if (func_41() || func_40() || MISC::IS_PC_VERSION() || IS_PLAYSTATION_PLATFORM() || IS_XBOX_PLATFORM())
 			{
 				num = num + 2;
 				num = num + 2;
@@ -1808,13 +1808,13 @@ void _STOPWATCH_INITIALIZE(var pStopwatch, BOOL useLocalTimer, BOOL useAccurateT
 	return;
 }
 
-BOOL func_57() // Position - 0x1E29
+BOOL IS_PLAYSTATION_PLATFORM() // Position - 0x1E29
 {
-	return MISC::IS_ORBIS_VERSION() || unk_0xEE17703CF2C2875A();
+	return MISC::IS_ORBIS_VERSION() || MISC::IS_PROSPERO_VERSION();
 }
 
-BOOL func_58() // Position - 0x1E3F
+BOOL IS_XBOX_PLATFORM() // Position - 0x1E3F
 {
-	return MISC::IS_DURANGO_VERSION() || unk_0x14F62099DEBAEA33();
+	return MISC::IS_DURANGO_VERSION() || MISC::IS_SCARLETT_VERSION();
 }
 

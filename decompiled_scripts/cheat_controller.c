@@ -657,7 +657,7 @@ void func_24(char* sParam0) // Position - 0xA23
 void func_25() // Position - 0xA4E
 {
 	if (PED::IS_PED_ON_FOOT(PLAYER::PLAYER_PED_ID()))
-		if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 25))
+		if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_AIM))
 			if (func_26(PLAYER::PLAYER_PED_ID()) != joaat("WEAPON_UNARMED") && func_26(PLAYER::PLAYER_PED_ID()) != joaat("OBJECT"))
 				MISC::SET_TIME_SCALE(fLocal_78);
 			else
@@ -1144,7 +1144,7 @@ void func_44() // Position - 0x13AD
 				return;
 			}
 		
-			unk_0xD6F191BCA9E07AEE(PLAYER::PLAYER_ID());
+			MISC::SET_EXPLOSIVE_MELEE_THIS_FRAME(PLAYER::PLAYER_ID());
 			break;
 	
 		case 9:
@@ -1286,7 +1286,7 @@ void func_49(Ped pedParam0) // Position - 0x1661
 
 	num = func_57(pedParam0);
 
-	if (!num == -1)
+	if (!(num == -1))
 	{
 		num2 = Global_44232[num /*5*/];
 		func_52(1, num2, 1);
@@ -1307,7 +1307,7 @@ void func_50(int iParam0) // Position - 0x16BA
 	if (iParam0 < 0 || iParam0 >= 5)
 		return;
 
-	if (!Global_44206[iParam0 /*5*/].f_1 == 0)
+	if (!(Global_44206[iParam0 /*5*/].f_1 == 0))
 		if (Global_44206[iParam0 /*5*/].f_1 == PLAYER::PLAYER_PED_ID())
 			Global_44444 = 0;
 
@@ -1426,7 +1426,7 @@ int func_57(Ped pedParam0) // Position - 0x189D
 
 	for (i = 0; i < 16; i = i + 1)
 	{
-		if (!Global_44232[i /*5*/] == -1)
+		if (!(Global_44232[i /*5*/] == -1))
 			if (pedParam0 == Global_44232[i /*5*/].f_1)
 				return i;
 	}
@@ -1507,12 +1507,12 @@ int func_61(Ped pedParam0, int iParam1, BOOL bParam2) // Position - 0x19C7
 
 	num = func_63(pedParam0);
 
-	if (!num == -1)
+	if (!(num == -1))
 		return 1;
 
 	num2 = func_51(pedParam0);
 
-	if (!num2 == -1)
+	if (!(num2 == -1))
 		return 1;
 
 	if (!bParam2)
@@ -1596,7 +1596,7 @@ void func_64() // Position - 0x1AF3
 				return;
 			}
 		
-			unk_0xD1A6BECE55945337(PLAYER::PLAYER_ID());
+			MISC::SET_EXPLOSIVE_AMMO_THIS_FRAME(PLAYER::PLAYER_ID());
 			break;
 	
 		case 9:
@@ -1955,42 +1955,42 @@ void func_77() // Position - 0x20BD
 				[[fallthrough]];
 		
 			case 1:
-				unk_0xA86292DA3C45FD42("EXTRASUNNY");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("EXTRASUNNY");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_EXTRA_SUNNY" /*Extra sunny weather.*/);
 				iLocal_71 = 2;
 				break;
 		
 			case 2:
-				unk_0xA86292DA3C45FD42("CLEAR");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("CLEAR");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_CLEAR" /*Clear weather.*/);
 				iLocal_71 = 3;
 				break;
 		
 			case 3:
-				unk_0xA86292DA3C45FD42("CLOUDS");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("CLOUDS");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_CLOUDY" /*Cloudy weather.*/);
 				iLocal_71 = 4;
 				break;
 		
 			case 4:
-				unk_0xA86292DA3C45FD42("SMOG");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("SMOG");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_SMOGGY" /*Smoggy weather.*/);
 				iLocal_71 = 6;
 				break;
 		
 			case 6:
-				unk_0xA86292DA3C45FD42("OVERCAST");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("OVERCAST");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_OVERCAST" /*Overcast weather.*/);
 				iLocal_71 = 7;
 				break;
 		
 			case 7:
-				unk_0xA86292DA3C45FD42("RAIN");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("RAIN");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_RAIN" /*Rainy weather.*/);
 				func_31(5, true);
@@ -1998,21 +1998,21 @@ void func_77() // Position - 0x20BD
 				break;
 		
 			case 8:
-				unk_0xA86292DA3C45FD42("THUNDER");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("THUNDER");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_THUNDER" /*Thundery weather.*/);
 				iLocal_71 = 9;
 				break;
 		
 			case 9:
-				unk_0xA86292DA3C45FD42("CLEARING");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("CLEARING");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_CLEARING" /*Clearing weather.*/);
 				iLocal_71 = 11;
 				break;
 		
 			case 11:
-				unk_0xA86292DA3C45FD42("XMAS");
+				MISC::SET_WEATHER_TYPE_NOW_PERSIST("XMAS");
 				MISC::CLEAR_WEATHER_TYPE_PERSIST();
 				func_16("CHEAT_ADVANCE_WEATHER_SNOW" /*Snowy weather.*/);
 				iLocal_71 = 0;
@@ -3076,9 +3076,9 @@ BOOL _IS_EXCLUSIVE_CONTENT_UNLOCKED() // Position - 0x39FD
 	else if (Global_152523 == 3)
 		return false;
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (unk_0x8BD41D5945F5762B())
+		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		{
 			if (NETWORK::NETWORK_HAS_ROS_PRIVILEGE_PLAYED_LAST_GEN())
 			{

@@ -604,7 +604,7 @@ BOOL func_16() // Position - 0x5A7
 	if (func_17(8, -1))
 		return true;
 
-	if (Global_2672505.f_60)
+	if (Global_2672505.f_61)
 		return true;
 
 	if (Global_98159.f_44 == 1)
@@ -809,7 +809,7 @@ void func_29() // Position - 0x99B
 	if (Global_100404 > 0)
 		return;
 
-	unk_0xF60B883B88B61903();
+	STREAMING::ALLOW_PLAYER_SWITCH_OUTRO();
 	return;
 }
 
@@ -997,10 +997,10 @@ void func_33() // Position - 0xA08
 		}
 	}
 
-	if (!VEHICLE::GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(iLocal_153[2]) > 0)
+	if (!(VEHICLE::GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(iLocal_153[2]) > 0))
 		VEHICLE::ATTACH_VEHICLE_TO_TRAILER(iLocal_153[0], iLocal_153[2], 1065353216);
 
-	if (!VEHICLE::GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(iLocal_153[3]) > 0)
+	if (!(VEHICLE::GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(iLocal_153[3]) > 0))
 		VEHICLE::ATTACH_VEHICLE_TO_TRAILER(iLocal_153[1], iLocal_153[3], 1065353216);
 
 	for (i = 0; i < 4; i = i + 1)

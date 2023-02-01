@@ -674,7 +674,7 @@ void func_4() // Position - 0x485
 				STREAMING::REQUEST_IPL("xm3_warehouse_grnd");
 		}
 	
-		if (Global_2764890)
+		if (Global_2764892)
 			if (STREAMING::IS_IPL_ACTIVE("xs_arena_banners_ipl"))
 				STREAMING::REMOVE_IPL("xs_arena_banners_ipl");
 		else if (!STREAMING::IS_IPL_ACTIVE("xs_arena_banners_ipl"))
@@ -774,17 +774,17 @@ void func_6(int iParam0, BOOL bParam1) // Position - 0xD68
 	
 		if (!bParam1)
 		{
-			if (Global_2802789.f_93[iParam0])
+			if (Global_2802791.f_93[iParam0])
 			{
-				Global_2802789.f_93[iParam0] = false;
-				Global_2802789.f_136 = Global_2802789.f_136 + -1;
+				Global_2802791.f_93[iParam0] = false;
+				Global_2802791.f_136 = Global_2802791.f_136 + -1;
 			}
 		
-			if (Global_2802789.f_136 <= 0)
+			if (Global_2802791.f_136 <= 0)
 			{
 				STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(func_8());
 				STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(func_7());
-				Global_2802789.f_136 = 0;
+				Global_2802791.f_136 = 0;
 			}
 		}
 	}
@@ -875,7 +875,7 @@ BOOL func_16(int iParam0) // Position - 0xECB
 
 BOOL func_17() // Position - 0xF05
 {
-	return Global_2683862.f_19;
+	return Global_2683864.f_19;
 }
 
 void func_18() // Position - 0xF13
@@ -891,7 +891,7 @@ void func_18() // Position - 0xF13
 
 BOOL func_19() // Position - 0xFB9
 {
-	return Global_2696070;
+	return Global_2696072;
 }
 
 void func_20() // Position - 0xFC5
@@ -6502,7 +6502,7 @@ BOOL func_76(int iParam0) // Position - 0xA382
 
 BOOL func_77() // Position - 0xA390
 {
-	if (func_3() == -1 || func_3() == 999 && !func_78() == 0)
+	if (func_3() == -1 || func_3() == 999 && !(func_78() == 0))
 		return true;
 
 	return false;
@@ -8387,9 +8387,9 @@ void func_86(int iParam0, int iParam1) // Position - 0xDFB9
 	
 		case 71:
 			if (iParam1 != 1)
-				unk_0x14D7CA14E183F034("HEIST_SWEATSHOP_ZONES", 0, 0);
+				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("HEIST_SWEATSHOP_ZONES", false, false);
 			else
-				unk_0x14D7CA14E183F034("HEIST_SWEATSHOP_ZONES", 1, 0);
+				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("HEIST_SWEATSHOP_ZONES", true, false);
 			break;
 	
 		case 65:
@@ -8408,7 +8408,7 @@ void func_86(int iParam0, int iParam1) // Position - 0xDFB9
 	
 		case 174:
 			if (iParam1 == 2)
-				unk_0x2FF31AAA6E87720B("V_CARSHOWROOM_PS_WINDOW_UNBROKEN");
+				AUDIO::REMOVE_PORTAL_SETTINGS_OVERRIDE("V_CARSHOWROOM_PS_WINDOW_UNBROKEN");
 			break;
 	
 		case 37:
@@ -8868,7 +8868,7 @@ void func_90() // Position - 0xEA77
 	
 		STREAMING::REMOVE_IPL("DES_ProTree_start");
 		STREAMING::REMOVE_IPL("DES_ProTree_start_lod");
-		unk_0xEF45BEC89B9F35EF("Prologue_Main", 0);
+		STREAMING::SET_MAPDATACULLBOX_ENABLED("Prologue_Main", false);
 		func_91(false);
 		bLocal_65 = false;
 	}
@@ -8879,9 +8879,9 @@ void func_90() // Position - 0xEA77
 void func_91(BOOL bParam0) // Position - 0xED4B
 {
 	int i;
-	int zoneId;
+	int zoneFromNameId;
 
-	if (!bParam0 == Global_38594)
+	if (!(bParam0 == Global_38594))
 	{
 		i = 0;
 	
@@ -8898,8 +8898,8 @@ void func_91(BOOL bParam0) // Position - 0xED4B
 
 	Global_38594 = bParam0;
 	HUD::SET_MINIMAP_IN_PROLOGUE(bParam0);
-	zoneId = unk_0xFA70BE9307EC9D4A("PrLog");
-	ZONE::SET_ZONE_ENABLED(zoneId, bParam0);
+	zoneFromNameId = ZONE::GET_ZONE_FROM_NAME_ID("PrLog");
+	ZONE::SET_ZONE_ENABLED(zoneFromNameId, bParam0);
 	return;
 }
 
@@ -8958,11 +8958,11 @@ void func_93() // Position - 0xEE2C
 		return;
 	}
 
-	if (Global_2694521)
+	if (Global_2694523)
 	{
 		func_89();
 		func_105(false);
-		Global_2694521 = false;
+		Global_2694523 = false;
 	}
 
 	if (STREAMING::IS_NEW_LOAD_SCENE_ACTIVE() && !STREAMING::IS_PLAYER_SWITCH_IN_PROGRESS() || STREAMING::GET_PLAYER_SWITCH_STATE() != 5)
@@ -9216,7 +9216,7 @@ void func_97() // Position - 0xF16C
 
 BOOL func_98() // Position - 0xF40C
 {
-	return Global_2683862.f_691;
+	return Global_2683864.f_691;
 }
 
 void func_99() // Position - 0xF41B
@@ -9828,7 +9828,7 @@ void func_108() // Position - 0x115B7
 	{
 		if (!Global_113648.f_7263.f_426 || IS_BIT_SET(iLocal_46, 0) || NETWORK::NETWORK_IS_GAME_IN_PROGRESS() || Global_38615)
 		{
-			if (!Global_2696069)
+			if (!Global_2696071)
 			{
 				if (IS_BIT_SET(iLocal_46, 0) || Global_38615)
 					bLocal_162 = true;
@@ -9862,22 +9862,22 @@ BOOL func_109() // Position - 0x11670
 
 BOOL func_110() // Position - 0x116AC
 {
-	return Global_2683862.f_843;
+	return Global_2683864.f_843;
 }
 
 BOOL func_111() // Position - 0x116BB
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 BOOL func_112() // Position - 0x116CA
 {
-	return Global_2683862.f_706;
+	return Global_2683864.f_706;
 }
 
 BOOL func_113() // Position - 0x116D9
 {
-	return IS_BIT_SET(Global_2683862, 21);
+	return IS_BIT_SET(Global_2683864, 21);
 }
 
 BOOL func_114() // Position - 0x116E8

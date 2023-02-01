@@ -469,13 +469,13 @@ void func_1() // Position - 0x129
 	if (CUTSCENE::IS_CUTSCENE_PLAYING())
 		iLocal_242 = 3;
 
-	if (Global_2764906.f_224 || func_2(PLAYER::PLAYER_ID()))
+	if (Global_2764908.f_224 || _IS_PLAYER_IN_ANIMAL_FORM(PLAYER::PLAYER_ID()))
 		iLocal_242 = 3;
 
 	return;
 }
 
-int func_2(Player plParam0) // Position - 0x26A
+int _IS_PLAYER_IN_ANIMAL_FORM(Player plParam0) // Position - 0x26A
 {
 	Ped playerPed;
 	Hash entityModel;
@@ -485,7 +485,7 @@ int func_2(Player plParam0) // Position - 0x26A
 
 	if (plParam0 == PLAYER::PLAYER_ID())
 	{
-		return Global_2764905;
+		return Global_2764907;
 	}
 	else
 	{
@@ -1667,7 +1667,7 @@ void func_53() // Position - 0x1CA6
 					uLocal_300[NETWORK::PARTICIPANT_ID_TO_INT() /*5*/].f_2 = { unk };
 			
 				if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AIRSTRIKE_1" /*Throw a Flare to mark an area for the Airstrike to hit. If you do not mark an area with a Flare before the jet arrives it will leave without deploying any bombs.*/))
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+					HUD::CLEAR_HELP(true);
 			
 				if (!bLocal_55)
 				{
@@ -1917,7 +1917,7 @@ char* func_60() // Position - 0x229D
 
 BOOL func_61() // Position - 0x22B5
 {
-	return Global_2683862.f_24;
+	return Global_2683864.f_24;
 }
 
 void func_62() // Position - 0x22C3
@@ -2101,7 +2101,7 @@ BOOL func_69(var uParam0, Hash hParam1, Vector3 vParam2, var uParam3, var uParam
 	if (ENTITY::DOES_ENTITY_EXIST(vehicle))
 	{
 		*uParam0 = NETWORK::VEH_TO_NET(vehicle);
-		Global_2793044.f_6736 = vehicle;
+		Global_2793046.f_6736 = vehicle;
 	
 		if (NETWORK::NETWORK_DOES_NETWORK_ID_EXIST(*uParam0))
 		{
@@ -2268,7 +2268,7 @@ BOOL func_73(Vector3 vParam0, var uParam1, var uParam2, float fParam3, BOOL bPar
 						num = iParam6;
 					
 						if (iParam9 > 0f)
-							if (!PLAYER::GET_PLAYER_TEAM(player) == -1)
+							if (!(PLAYER::GET_PLAYER_TEAM(player) == -1))
 								if (PLAYER::GET_PLAYER_TEAM(player) == PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID()))
 									num = iParam9;
 					
@@ -2357,7 +2357,7 @@ Vector3 func_78(Player plParam0) // Position - 0x2CD4
 
 var func_79() // Position - 0x2D27
 {
-	return Global_2683862.f_19;
+	return Global_2683864.f_19;
 }
 
 BOOL func_80(Vector3 vParam0, var uParam1, var uParam2, int iParam3, BOOL bParam4, BOOL bParam5, BOOL bParam6, BOOL bParam7, BOOL bParam8, BOOL bParam9, BOOL bParam10) // Position - 0x2D35
@@ -2402,24 +2402,24 @@ BOOL func_81(Player plParam0) // Position - 0x2E39
 	if (func_85(PLAYER::PLAYER_ID(), plParam0))
 		return true;
 
-	Global_2764201 = { GET_GAMER_HANDLE_PLAYER(plParam0) };
+	Global_2764203 = { GET_GAMER_HANDLE_PLAYER(plParam0) };
 
-	if (NETWORK::NETWORK_IS_FRIEND(&Global_2764201))
+	if (NETWORK::NETWORK_IS_FRIEND(&Global_2764203))
 		return true;
 
-	if (func_82(PLAYER::PLAYER_ID(), plParam0))
+	if (_ARE_PLAYERS_IN_SAME_ORGANIZATION(PLAYER::PLAYER_ID(), plParam0))
 		return true;
 
 	return false;
 }
 
-BOOL func_82(Player plParam0, Player plParam1) // Position - 0x2E80
+BOOL _ARE_PLAYERS_IN_SAME_ORGANIZATION(Player plParam0, Player plParam1) // Position - 0x2E80
 {
 	Player player;
 
 	player = func_83(plParam0);
 
-	if (!player == _INVALID_PLAYER_INDEX())
+	if (!(player == _INVALID_PLAYER_INDEX()))
 		if (player == func_83(plParam1))
 			return true;
 
@@ -2446,17 +2446,17 @@ BOOL func_85(Player plParam0, Player plParam1) // Position - 0x2EE5
 {
 	if (NETWORK::NETWORK_CLAN_SERVICE_IS_VALID())
 	{
-		Global_2764201 = { GET_GAMER_HANDLE_PLAYER(plParam0) };
-		Global_2764214 = { GET_GAMER_HANDLE_PLAYER(plParam1) };
+		Global_2764203 = { GET_GAMER_HANDLE_PLAYER(plParam0) };
+		Global_2764216 = { GET_GAMER_HANDLE_PLAYER(plParam1) };
 	
-		if (NETWORK::NETWORK_CLAN_PLAYER_IS_ACTIVE(&Global_2764201))
+		if (NETWORK::NETWORK_CLAN_PLAYER_IS_ACTIVE(&Global_2764203))
 		{
-			if (NETWORK::NETWORK_CLAN_PLAYER_IS_ACTIVE(&Global_2764214))
+			if (NETWORK::NETWORK_CLAN_PLAYER_IS_ACTIVE(&Global_2764216))
 			{
-				NETWORK::NETWORK_CLAN_PLAYER_GET_DESC(&Global_2764131, 35, &Global_2764201);
-				NETWORK::NETWORK_CLAN_PLAYER_GET_DESC(&Global_2764166, 35, &Global_2764214);
+				NETWORK::NETWORK_CLAN_PLAYER_GET_DESC(&Global_2764133, 35, &Global_2764203);
+				NETWORK::NETWORK_CLAN_PLAYER_GET_DESC(&Global_2764168, 35, &Global_2764216);
 			
-				if (Global_2764131 == Global_2764166)
+				if (Global_2764133 == Global_2764168)
 					return true;
 			}
 		}
@@ -2523,7 +2523,7 @@ BOOL func_90(Hash hParam0) // Position - 0x3064
 void func_91(int iParam0) // Position - 0x3082
 {
 	if (iParam0 == 3)
-		Global_2793044.f_4487 = 0;
+		Global_2793046.f_4487 = 0;
 
 	iLocal_242.f_2.f_2 = iParam0;
 	return;
@@ -2623,9 +2623,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -2633,7 +2633,7 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 
 void func_99() // Position - 0x32CF
 {
-	Global_2793044.f_4486 = iLocal_242.f_53;
+	Global_2793046.f_4486 = iLocal_242.f_53;
 	return;
 }
 
@@ -2673,12 +2673,12 @@ void func_105(int iParam0, int iParam1, Player plParam2) // Position - 0x3392
 {
 	struct<6> eventData;
 
-	eventData = 1168623138;
+	eventData = -379103418;
 	eventData.f_1 = PLAYER::PLAYER_ID();
 	eventData.f_3 = iParam1;
 	eventData.f_2 = plParam2;
 
-	if (!iParam0 == 0)
+	if (!(iParam0 == 0))
 		SCRIPT::SEND_TU_SCRIPT_EVENT(SCRIPT_EVENT_QUEUE_NETWORK, &eventData, 6, iParam0);
 
 	return;
@@ -2714,7 +2714,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x342F
 	if (func_114())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_113())
@@ -2753,7 +2753,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x34B3
 
 Hash func_109() // Position - 0x34E6
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -2772,7 +2772,7 @@ int func_110() // Position - 0x350A
 
 BOOL func_111() // Position - 0x3515
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x3524
@@ -2785,12 +2785,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x3524
 
 BOOL func_113() // Position - 0x353B
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_114() // Position - 0x3547
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_115() // Position - 0x3556

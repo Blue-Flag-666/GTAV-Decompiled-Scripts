@@ -405,7 +405,7 @@ void main() // Position - 0x0
 									
 										if (!bLocal_56)
 											if (func_38(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false), iLocal_37, 0, false))
-												if (!iLocal_37 == 4 || MISC::GET_GAME_TIMER() - uLocal_78[iLocal_70] > 8000)
+												if (!(iLocal_37 == 4) || MISC::GET_GAME_TIMER() - uLocal_78[iLocal_70] > 8000)
 													func_24();
 											else
 												uLocal_78[iLocal_70] = MISC::GET_GAME_TIMER();
@@ -1530,9 +1530,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;

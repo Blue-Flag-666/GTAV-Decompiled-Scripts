@@ -531,7 +531,7 @@ int func_1(int iParam0, var uParam1, var uParam2, var uParam3, var uParam4, floa
 						return 0;
 				}
 			
-				if (num4 == 14 || num4 == 15 && !num2 == -181320640)
+				if (num4 == 14 || num4 == 15 && !(num2 == -181320640))
 					num4 = 13;
 			
 				randomIntInRange = MISC::GET_RANDOM_INT_IN_RANGE(0, endRange);
@@ -1749,9 +1749,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;

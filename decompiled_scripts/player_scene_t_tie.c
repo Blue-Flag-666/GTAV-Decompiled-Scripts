@@ -510,7 +510,7 @@ void func_16() // Position - 0x4E2
 	if (Global_100404 > 0)
 		return;
 
-	unk_0xF60B883B88B61903();
+	STREAMING::ALLOW_PLAYER_SWITCH_OUTRO();
 	return;
 }
 
@@ -614,18 +614,18 @@ void func_20() // Position - 0x54F
 		
 			if (uLocal_166[i] > 0)
 			{
-				unk_0x245E21EB8407EDF3(iLocal_72[i], 1, 0.36f, 0.71f, "ShotgunSmall");
+				PED::APPLY_PED_BLOOD_BY_ZONE(iLocal_72[i], 1, 0.36f, 0.71f, "ShotgunSmall");
 				PED::APPLY_PED_BLOOD_DAMAGE_BY_ZONE(iLocal_72[i], 1, 0.81f, 0.733f, 4);
 				PED::APPLY_PED_BLOOD_DAMAGE_BY_ZONE(iLocal_72[i], 0, 0.94f, 0.59f, 3);
 				PED::APPLY_PED_BLOOD_DAMAGE_BY_ZONE(iLocal_72[i], 3, 0.24f, 0.62f, 4);
 				PED::APPLY_PED_BLOOD_DAMAGE_BY_ZONE(iLocal_72[i], 2, 0f, 0.15f, 2);
 				PED::APPLY_PED_BLOOD_DAMAGE_BY_ZONE(iLocal_72[i], 5, 0.46f, 0.853f, 3);
 				PED::APPLY_PED_BLOOD_DAMAGE_BY_ZONE(iLocal_72[i], 4, 0.308f, 0.786f, 3);
-				unk_0x6842A202FD26C033(iLocal_72[i], 3, 0.375f, 0.398f, 0f, 1f, -1, 0f, "BasicSlash");
-				unk_0x6842A202FD26C033(iLocal_72[i], 3, 0.5f, 0.6f, 0f, 1f, -1, 0f, "BasicSlash");
-				unk_0x6842A202FD26C033(iLocal_72[i], 3, 0.6f, 0.25f, 50f, 0.5f, -1, 0f, "BasicSlash");
-				unk_0x6842A202FD26C033(iLocal_72[i], 3, 0.65f, 0.325f, 50f, 0.5f, -1, 0f, "BasicSlash");
-				unk_0x6842A202FD26C033(iLocal_72[i], 0, 0.58f, 0.704f, 0f, 1f, -1, 0f, "ShotgunLarge");
+				PED::APPLY_PED_BLOOD_SPECIFIC(iLocal_72[i], 3, 0.375f, 0.398f, 0f, 1f, -1, 0f, "BasicSlash");
+				PED::APPLY_PED_BLOOD_SPECIFIC(iLocal_72[i], 3, 0.5f, 0.6f, 0f, 1f, -1, 0f, "BasicSlash");
+				PED::APPLY_PED_BLOOD_SPECIFIC(iLocal_72[i], 3, 0.6f, 0.25f, 50f, 0.5f, -1, 0f, "BasicSlash");
+				PED::APPLY_PED_BLOOD_SPECIFIC(iLocal_72[i], 3, 0.65f, 0.325f, 50f, 0.5f, -1, 0f, "BasicSlash");
+				PED::APPLY_PED_BLOOD_SPECIFIC(iLocal_72[i], 0, 0.58f, 0.704f, 0f, 1f, -1, 0f, "ShotgunLarge");
 			}
 		}
 	}

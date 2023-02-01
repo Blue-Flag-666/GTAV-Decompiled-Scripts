@@ -8321,7 +8321,7 @@ void func_3(int iParam0, Hash hParam1, int iParam2, BOOL bParam3) // Position - 
 	}
 	else
 	{
-		unk_0x38B4945AEE462C38(tunableContext, hParam1, iParam2);
+		NETWORK::NETWORK_ACCESS_TUNABLE_INT_MODIFICATION_DETECTION_REGISTRATION_HASH(tunableContext, hParam1, iParam2);
 	}
 
 	bParam3;

@@ -1385,9 +1385,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -1570,7 +1570,7 @@ void func_40(var uParam0, Ped pedParam1, var uParam2, var uParam3, var uParam4, 
 		{
 			if (!MISC::IS_STRING_NULL(sParam5))
 				if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(sParam5))
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+					HUD::CLEAR_HELP(true);
 		
 			if (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), true))
 				if (PED::IS_PED_IN_ANY_BOAT(PLAYER::PLAYER_PED_ID()))
@@ -1687,7 +1687,7 @@ BOOL func_45(const char* sParam0) // Position - 0x1475
 	if (!func_46(true, true, false))
 	{
 		if (!MISC::IS_STRING_NULL_OR_EMPTY(sParam0) && _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(sParam0) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("CMN_HINT" /*~s~Press ~INPUT_VEH_CIN_CAM~ to toggle focus on the target.*/))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 	
 		return false;
 	}
@@ -1904,7 +1904,7 @@ int _GET_VEHICLE_SEAT_PED_IS_IN(Ped ped, BOOL includeLastVehicle) // Position - 
 
 BOOL func_51() // Position - 0x1913
 {
-	return Global_2683862.f_19;
+	return Global_2683864.f_19;
 }
 
 BOOL func_52(int iParam0) // Position - 0x1921
@@ -1914,7 +1914,7 @@ BOOL func_52(int iParam0) // Position - 0x1921
 
 BOOL func_53() // Position - 0x192E
 {
-	return Global_2683862.f_18;
+	return Global_2683864.f_18;
 }
 
 BOOL func_54() // Position - 0x193C
@@ -2292,7 +2292,7 @@ void func_68(var uParam0, const char* sParam1, BOOL bParam2) // Position - 0x206
 	const char* str;
 
 	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
-		if (IS_BIT_SET(Global_2793044.f_4690, 26))
+		if (IS_BIT_SET(Global_2793046.f_4690, 26))
 			return;
 
 	if (CAM::IS_GAMEPLAY_HINT_ACTIVE())
@@ -2326,11 +2326,11 @@ void func_68(var uParam0, const char* sParam1, BOOL bParam2) // Position - 0x206
 
 	if (!MISC::IS_STRING_NULL(uParam0->f_3))
 		if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(uParam0->f_3))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 
 	if (!MISC::IS_STRING_NULL(str))
 		if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(str))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 
 	return;
 }
@@ -2400,7 +2400,7 @@ int func_69(int iParam0, var uParam1) // Position - 0x2137
 				{
 					flag = false;
 				
-					if (!PED::GET_PED_TYPE(uLocal_451[iParam0]) == 6)
+					if (!(PED::GET_PED_TYPE(uLocal_451[iParam0]) == 6))
 					{
 						func_70(uLocal_462[iParam0], PLAYER::PLAYER_PED_ID(), &uLocal_534[iParam0], 17.5f, 7.5f, 30f, 0.7f, 1.2f, 1f, flag);
 					}
@@ -2427,7 +2427,7 @@ int func_69(int iParam0, var uParam1) // Position - 0x2137
 			
 				if (!VEHICLE::IS_PLAYBACK_USING_AI_GOING_ON_FOR_VEHICLE(uLocal_462[iParam0]))
 				{
-					if (!PED::GET_PED_TYPE(uLocal_451[iParam0]) == 6)
+					if (!(PED::GET_PED_TYPE(uLocal_451[iParam0]) == 6))
 					{
 						if (MISC::IS_AREA_OCCUPIED(ENTITY::GET_ENTITY_COORDS(uLocal_462[iParam0], true) - { 1f, 1f, 1f }, ENTITY::GET_ENTITY_COORDS(uLocal_462[iParam0], true) + { 1f, 1f, 1f }, false, true, false, false, false, 0, false))
 							VEHICLE::SET_PLAYBACK_TO_USE_AI(uLocal_462[iParam0], iLocal_270);
@@ -2473,7 +2473,7 @@ int func_69(int iParam0, var uParam1) // Position - 0x2137
 			{
 				TASK::CLEAR_PED_TASKS(uLocal_451[iParam0]);
 			
-				if (!PED::GET_PED_TYPE(uLocal_451[iParam0]) == 6)
+				if (!(PED::GET_PED_TYPE(uLocal_451[iParam0]) == 6))
 				{
 					TASK::TASK_VEHICLE_DRIVE_WANDER(uLocal_451[iParam0], uLocal_462[iParam0], fLocal_269, iLocal_270);
 					PED::SET_PED_KEEP_TASK(uLocal_451[iParam0], true);
@@ -2591,7 +2591,7 @@ void func_70(Vehicle veParam0, Ped pedParam1, var uParam2, float fParam3, float 
 	float num2;
 	float num3;
 
-	if (!fParam4 < fParam3)
+	if (!(fParam4 < fParam3))
 		fParam4 = fParam3 - 0.1f;
 
 	if (fParam6 > fParam8)
@@ -2632,7 +2632,7 @@ void func_71(Vehicle veParam0, Ped pedParam1, var uParam2, float fParam3, float 
 
 	num = fParam3 * fParam7;
 
-	if (!num > fParam3)
+	if (!(num > fParam3))
 		num = fParam3 + 0.1f;
 
 	num5 = fParam3 * fParam9;
@@ -3096,7 +3096,7 @@ void func_85() // Position - 0x2F94
 	if (Global_100404 > 0)
 		return;
 
-	unk_0xF60B883B88B61903();
+	STREAMING::ALLOW_PLAYER_SWITCH_OUTRO();
 	return;
 }
 

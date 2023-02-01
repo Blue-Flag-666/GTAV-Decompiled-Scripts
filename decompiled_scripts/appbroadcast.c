@@ -93,7 +93,7 @@ void main() // Position - 0x0
 			func_33();
 		}
 	
-		if (!Global_20383.f_1 == 9 && Global_20383.f_1 > 3)
+		if (!(Global_20383.f_1 == 9) && Global_20383.f_1 > 3)
 		{
 			func_3();
 		
@@ -137,17 +137,17 @@ void func_3() // Position - 0x14A
 	{
 		if (func_16())
 		{
-			if (Global_2694463)
+			if (Global_2694465)
 			{
 				NETWORK::NETWORK_OVERRIDE_SEND_RESTRICTIONS_ALL(false);
-				func_10(-1011984062, _GET_LOBBY_SCRIPT_EVENT_BITS(true, true));
-				Global_2694463 = false;
+				func_10(1583221826, _GET_LOBBY_SCRIPT_EVENT_BITS(true, true));
+				Global_2694465 = false;
 			}
 			else
 			{
 				NETWORK::NETWORK_OVERRIDE_SEND_RESTRICTIONS_ALL(true);
-				func_10(213830448, _GET_LOBBY_SCRIPT_EVENT_BITS(true, true));
-				Global_2694463 = true;
+				func_10(1217051745, _GET_LOBBY_SCRIPT_EVENT_BITS(true, true));
+				Global_2694465 = true;
 			}
 		
 			func_4(0);
@@ -259,12 +259,12 @@ void func_10(int iParam0, int iParam1) // Position - 0x33F
 {
 	struct<4> eventData;
 
-	eventData = 113023613;
+	eventData = -1428749433;
 	eventData.f_1 = PLAYER::PLAYER_ID();
 	eventData.f_2 = iParam0;
 	eventData.f_3 = MISC::GET_RANDOM_INT_IN_RANGE(0, 9999);
 
-	if (!iParam1 == 0)
+	if (!(iParam1 == 0))
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
 			SCRIPT::SEND_TU_SCRIPT_EVENT(SCRIPT_EVENT_QUEUE_NETWORK, &eventData, 4, iParam1);
 
@@ -399,7 +399,7 @@ BOOL func_19(int iParam0, int iParam1) // Position - 0x549
 	Hash statHash;
 	int outValue;
 
-	statHash = Global_2848280[iParam0 /*3*/][func_20(iParam1)];
+	statHash = Global_2848282[iParam0 /*3*/][func_20(iParam1)];
 
 	if (STATS::STAT_GET_BOOL(statHash, &outValue, -1))
 		return outValue;
@@ -420,13 +420,13 @@ int func_20(int iParam0) // Position - 0x575
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -570,7 +570,7 @@ void func_34(BOOL bParam0) // Position - 0x73C
 	}
 	else if (Global_20383.f_1 == 1)
 	{
-		if (!Global_20383.f_1 == 0)
+		if (!(Global_20383.f_1 == 0))
 			Global_20383.f_1 = 3;
 	}
 
@@ -590,13 +590,13 @@ void func_35() // Position - 0x79F
 
 void func_36() // Position - 0x7C8
 {
-	if (!Global_20383.f_1 == 7)
+	if (!(Global_20383.f_1 == 7))
 		Global_20383.f_1 = 7;
 
 	func_44(Global_20364, "SET_DATA_SLOT_EMPTY", SYSTEM::TO_FLOAT(13), -1082130432, -1082130432, -1082130432, -1082130432);
 
 	if (func_16())
-		if (Global_2694463)
+		if (Global_2694465)
 			func_43(Global_20364, "SET_DATA_SLOT", SYSTEM::TO_FLOAT(13), SYSTEM::TO_FLOAT(0), SYSTEM::TO_FLOAT(12), -1f, -1f, &uLocal_46, 0, 0, 0, 0);
 		else
 			func_43(Global_20364, "SET_DATA_SLOT", SYSTEM::TO_FLOAT(13), SYSTEM::TO_FLOAT(0), SYSTEM::TO_FLOAT(12), -1f, -1f, &uLocal_42, 0, 0, 0, 0);
@@ -667,9 +667,9 @@ void func_40(const char* sParam0) // Position - 0x9D5
 	return;
 }
 
-void func_41(Player plParam0, char* sParam1, const char* sParam2, const char* sParam3, const char* sParam4, const char* sParam5, const char* sParam6) // Position - 0x9ED
+void func_41(int iParam0, char* sParam1, const char* sParam2, const char* sParam3, const char* sParam4, const char* sParam5, const char* sParam6) // Position - 0x9ED
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	func_42(sParam2);
 
 	if (!MISC::IS_STRING_NULL_OR_EMPTY(sParam3))
@@ -695,9 +695,9 @@ void func_42(const char* sParam0) // Position - 0xA48
 	return;
 }
 
-void func_43(Player plParam0, char* sParam1, float fParam2, float fParam3, float fParam4, float fParam5, float fParam6, const char* sParam7, const char* sParam8, const char* sParam9, const char* sParam10, const char* sParam11) // Position - 0xA5A
+void func_43(int iParam0, char* sParam1, float fParam2, float fParam3, float fParam4, float fParam5, float fParam6, const char* sParam7, const char* sParam8, const char* sParam9, const char* sParam10, const char* sParam11) // Position - 0xA5A
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(SYSTEM::ROUND(fParam2));
 
 	if (fParam3 != -1f)
@@ -731,9 +731,9 @@ void func_43(Player plParam0, char* sParam1, float fParam2, float fParam3, float
 	return;
 }
 
-void func_44(Player plParam0, char* sParam1, float fParam2, int iParam3, int iParam4, int iParam5, int iParam6) // Position - 0xB0D
+void func_44(int iParam0, char* sParam1, float fParam2, int iParam3, int iParam4, int iParam5, int iParam6) // Position - 0xB0D
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(SYSTEM::ROUND(fParam2));
 
 	if (iParam3 != -1f)

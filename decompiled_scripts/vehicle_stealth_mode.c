@@ -107,7 +107,7 @@ void func_1(int* piParam0) // Position - 0xA8
 	func_16();
 
 	if (func_10(piParam0))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (func_8(&uLocal_46))
 		func_4(&uLocal_46);
@@ -378,7 +378,7 @@ void func_24(int* piParam0, int iParam1) // Position - 0x5D6
 
 void func_25(int* piParam0, int iParam1) // Position - 0x5E6
 {
-	BOOL flag;
+	int num;
 
 	if (func_52(piParam0))
 	{
@@ -386,10 +386,10 @@ void func_25(int* piParam0, int iParam1) // Position - 0x5E6
 		{
 			case joaat("akula"):
 			case joaat("annihilator2"):
-				flag = func_28(19004, -1) + iParam1;
+				num = _STAT_GET_PACKED_INT(19004, -1) + iParam1;
 			
-				if (flag >= false)
-					func_26(19004, flag, -1);
+				if (num >= 0)
+					func_26(19004, num, -1);
 				break;
 		}
 	}
@@ -397,29 +397,29 @@ void func_25(int* piParam0, int iParam1) // Position - 0x5E6
 	return;
 }
 
-void func_26(int iParam0, BOOL bParam1, BOOL bParam2) // Position - 0x62C
+void func_26(int iParam0, int iParam1, int iParam2) // Position - 0x62C
 {
-	if (bParam2 == -1)
-		bParam2 = func_27();
+	if (iParam2 == -1)
+		iParam2 = func_27();
 
-	if (bParam1 < false)
-		bParam1 = 255;
+	if (iParam1 < 0)
+		iParam1 = 255;
 
-	MONEY::NETWORK_SPENT_BUY_PASSIVE_MODE(iParam0, bParam1, bParam2);
+	STATS::SET_PACKED_STAT_INT_CODE(iParam0, iParam1, iParam2);
 	return;
 }
 
-BOOL func_27() // Position - 0x654
+int func_27() // Position - 0x654
 {
 	return Global_1574918;
 }
 
-int func_28(int iParam0, int iParam1) // Position - 0x660
+int _STAT_GET_PACKED_INT(int iParam0, int iParam1) // Position - 0x660
 {
 	if (iParam1 == -1)
 		iParam1 = func_27();
 
-	return unk_0x088E49A1CEC4C23F(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_INT_CODE(iParam0, iParam1);
 }
 
 BOOL func_29() // Position - 0x67C
@@ -464,7 +464,7 @@ BOOL func_33(int* piParam0) // Position - 0x736
 		switch (piParam0->f_2)
 		{
 			case joaat("akula"):
-				return func_28(19004, -1) < 3;
+				return _STAT_GET_PACKED_INT(19004, -1) < 3;
 		
 			default:
 			
@@ -626,7 +626,7 @@ void func_44(int* piParam0) // Position - 0xA4D
 	func_5(&(piParam0->f_6), 0);
 
 	if (func_10(piParam0))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (!func_52(piParam0))
 		if (func_50(piParam0))
@@ -692,7 +692,7 @@ void func_53(int* piParam0) // Position - 0xB70
 	if (func_10(piParam0) && func_32(0) || func_31())
 	{
 		piParam0->f_6.f_2 = 1;
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 		func_5(&(piParam0->f_6), 0);
 	
 		if (func_50(piParam0))
@@ -1277,7 +1277,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x150C
 	if (func_87())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_86())
@@ -1316,7 +1316,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x1590
 
 Hash func_82() // Position - 0x15C3
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -1335,7 +1335,7 @@ int func_83() // Position - 0x15E7
 
 BOOL func_84() // Position - 0x15F2
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x1601
@@ -1348,12 +1348,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x1601
 
 BOOL func_86() // Position - 0x1618
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_87() // Position - 0x1624
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 BOOL func_88(int* piParam0) // Position - 0x1633

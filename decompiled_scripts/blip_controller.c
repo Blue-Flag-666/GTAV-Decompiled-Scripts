@@ -309,7 +309,7 @@ void main() // Position - 0x0
 					
 						if (!HUD::DOES_BLIP_EXIST(Global_32543[j /*23*/].f_19))
 						{
-							while (!HUD::GET_NUMBER_OF_ACTIVE_BLIPS() < 150)
+							while (!(HUD::GET_NUMBER_OF_ACTIVE_BLIPS() < 150))
 							{
 								SYSTEM::WAIT(2000);
 							}
@@ -329,13 +329,13 @@ void main() // Position - 0x0
 										}
 										else
 										{
-											Global_32543[j /*23*/].f_19 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(Global_32543[j /*23*/][echLocal_64 /*3*/]);
+											Global_32543[j /*23*/].f_19 = HUD::ADD_BLIP_FOR_COORD(Global_32543[j /*23*/][echLocal_64 /*3*/]);
 											HUD::SET_BLIP_SPRITE(Global_32543[j /*23*/].f_19, Global_32543[j /*23*/].f_12[echLocal_64]);
 										}
 										break;
 								
 									default:
-										Global_32543[j /*23*/].f_19 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(1f, 2f, 3f);
+										Global_32543[j /*23*/].f_19 = HUD::ADD_BLIP_FOR_COORD(1f, 2f, 3f);
 										break;
 								}
 							}
@@ -347,7 +347,7 @@ void main() // Position - 0x0
 							}
 							else
 							{
-								Global_32543[j /*23*/].f_19 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(Global_32543[j /*23*/][0 /*3*/]);
+								Global_32543[j /*23*/].f_19 = HUD::ADD_BLIP_FOR_COORD(Global_32543[j /*23*/][0 /*3*/]);
 								HUD::SET_BLIP_SPRITE(Global_32543[j /*23*/].f_19, Global_32543[j /*23*/].f_12[0]);
 							}
 						

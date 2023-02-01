@@ -2327,9 +2327,9 @@ BOOL _IS_EXCLUSIVE_CONTENT_UNLOCKED() // Position - 0x38DF
 	else if (Global_152523 == 3)
 		return false;
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (unk_0x8BD41D5945F5762B())
+		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		{
 			if (NETWORK::NETWORK_HAS_ROS_PRIVILEGE_PLAYED_LAST_GEN())
 			{
@@ -5630,7 +5630,7 @@ struct<7> func_116(int iParam0) // Position - 0x6347
 
 BOOL func_117() // Position - 0x8F54
 {
-	if (func_119() == -1 || func_119() == 999 && !func_118() == 0)
+	if (func_119() == -1 || func_119() == 999 && !(func_118() == 0))
 		return true;
 
 	return false;

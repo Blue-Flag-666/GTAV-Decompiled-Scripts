@@ -845,7 +845,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x14F9
 	if (func_40())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_39())
@@ -884,7 +884,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x157D
 
 Hash func_36() // Position - 0x15B0
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -898,7 +898,7 @@ Hash func_36() // Position - 0x15B0
 
 BOOL func_37() // Position - 0x15D4
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x15E3
@@ -911,12 +911,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x15E3
 
 BOOL func_39() // Position - 0x15FA
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_40() // Position - 0x1606
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_41() // Position - 0x1615

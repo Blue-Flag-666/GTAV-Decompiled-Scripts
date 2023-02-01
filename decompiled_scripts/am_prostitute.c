@@ -427,7 +427,7 @@ BOOL func_4() // Position - 0x420
 	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
 		func_5();
 	else
-		unk_0x54919D7FFBD2B608("pb_prostitute", 1);
+		PLAYER::FORCE_CLEANUP_FOR_ALL_THREADS_WITH_THIS_NAME("pb_prostitute", 1);
 
 	return false;
 }
@@ -437,7 +437,7 @@ void func_5() // Position - 0x46E
 	struct<2> eventData;
 	int playerBits;
 
-	eventData = -1763294690;
+	eventData = -1215008560;
 	eventData.f_1 = PLAYER::PLAYER_ID();
 	playerBits = _GET_LOBBY_SCRIPT_EVENT_BITS(true, true);
 
@@ -1080,7 +1080,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x102D
 	if (func_43())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_42())
@@ -1119,7 +1119,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x10B1
 
 Hash func_38() // Position - 0x10E4
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -1138,7 +1138,7 @@ int func_39() // Position - 0x1108
 
 BOOL func_40() // Position - 0x1113
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x1122
@@ -1151,12 +1151,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x1122
 
 BOOL func_42() // Position - 0x1139
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_43() // Position - 0x1145
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_44() // Position - 0x1154
@@ -1184,9 +1184,9 @@ void func_45() // Position - 0x1161
 	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
 		func_5();
 	else
-		unk_0x54919D7FFBD2B608("pb_prostitute", 1);
+		PLAYER::FORCE_CLEANUP_FOR_ALL_THREADS_WITH_THIS_NAME("pb_prostitute", 1);
 
-	Global_2793044.f_4 = 0;
+	Global_2793046.f_4 = 0;
 	func_46();
 	return;
 }
@@ -1199,8 +1199,8 @@ void func_46() // Position - 0x11E2
 
 void func_47() // Position - 0x11EE
 {
-	if (Global_2672505.f_946.f_10)
-		Global_2672505.f_946.f_10 = 0;
+	if (Global_2672505.f_947.f_10)
+		Global_2672505.f_947.f_10 = 0;
 
 	return;
 }
@@ -1238,7 +1238,7 @@ void func_51(var uParam0, var uParam1, var uParam2, var uParam3, var uParam4, va
 	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
 		func_5();
 	else
-		unk_0x54919D7FFBD2B608("pb_prostitute", 1);
+		PLAYER::FORCE_CLEANUP_FOR_ALL_THREADS_WITH_THIS_NAME("pb_prostitute", 1);
 
 	MISC::SET_THIS_SCRIPT_CAN_BE_PAUSED(false);
 	return;

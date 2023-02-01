@@ -418,7 +418,7 @@ void main() // Position - 0x0
 				_CONVERSATION_ADD_LINE(&uLocal_119, "EPS3AUD", "EP3_MCS1", 6, 0, 0, 0);
 			
 				if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("EPS_DROP_HELP" /*This vehicle is wanted by the Epsilon Program. Deliver it to the location marked ~HUD_COLOUR_MICHAEL~~BLIP_EPSILON~~s~*/))
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+					HUD::CLEAR_HELP(true);
 			
 				func_19();
 			}
@@ -466,7 +466,7 @@ void func_1(int* piParam0, var uParam1, var uParam2) // Position - 0x3E6
 			break;
 	
 		case 1:
-			NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam0, "SHOW_SHARD_MIDSIZED_MESSAGE");
+			GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam0, "SHOW_SHARD_MIDSIZED_MESSAGE");
 			GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("EPS_CAR_TITLE" /*Vehicle Delivered~s~*/);
 			GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
 			GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("EPS_CAR_NOTE" /*~1~/5 Epsilon Vehicles Delivered*/);
@@ -480,7 +480,7 @@ void func_1(int* piParam0, var uParam1, var uParam2) // Position - 0x3E6
 		case 2:
 			if (MISC::GET_GAME_TIMER() - *uParam1 > 7000)
 			{
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam0, "SHARD_ANIM_OUT");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam0, "SHARD_ANIM_OUT");
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(0.33f);
 				GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
@@ -1801,9 +1801,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -2177,7 +2177,7 @@ void func_55(int iParam0, int iParam1, BOOL bParam2, BOOL bParam3, BOOL bParam4)
 	int num7;
 	int num8;
 
-	if (!iParam0 < 3)
+	if (!(iParam0 < 3))
 		return;
 
 	num = -1;
@@ -2194,7 +2194,7 @@ void func_55(int iParam0, int iParam1, BOOL bParam2, BOOL bParam3, BOOL bParam4)
 		num3 = num5;
 		unk = { func_10(Global_44465[num5 /*12*/].f_1) };
 	
-		if (Global_44465[num5 /*12*/].f_2 == iParam0 && !Global_44465[num5 /*12*/].f_3 == iParam0)
+		if (Global_44465[num5 /*12*/].f_2 == iParam0 && !(Global_44465[num5 /*12*/].f_3 == iParam0))
 			return;
 	
 		num2 = Global_44465[num5 /*12*/].f_2;
@@ -2589,7 +2589,7 @@ void func_61(var uParam0) // Position - 0x2DA3
 				case 0:
 					if (iLocal_103 == 1 && !uLocal_43.f_26)
 						if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("EPS_DROP_MESS" /*Clear obstructions away from the garage or park closer to the wall.*/))
-							HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+							HUD::CLEAR_HELP(true);
 				
 					if (PLAYER::GET_PLAYER_WANTED_LEVEL(PLAYER::PLAYER_ID()) > 0)
 					{
@@ -2703,7 +2703,7 @@ BOOL func_65(Vehicle veParam0) // Position - 0x3033
 {
 	if (_DOES_ENTITY_EXIST_AND_IS_ALIVE(veParam0))
 		if (VEHICLE::IS_VEHICLE_DRIVEABLE(veParam0, false))
-			if (!FILES::GET_DLC_VEHICLE_FLAGS(veParam0))
+			if (!FIRE::IS_ENTITY_ON_FIRE(veParam0))
 				return true;
 
 	return false;
@@ -2727,7 +2727,7 @@ void func_67(var uParam0) // Position - 0x307E
 		case 1:
 			if (!HUD::DOES_BLIP_EXIST(blLocal_92))
 			{
-				blLocal_92 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(uLocal_40);
+				blLocal_92 = HUD::ADD_BLIP_FOR_COORD(uLocal_40);
 			
 				if (HUD::DOES_BLIP_EXIST(blLocal_92))
 				{

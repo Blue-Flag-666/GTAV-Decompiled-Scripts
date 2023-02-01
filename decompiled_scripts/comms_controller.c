@@ -1264,7 +1264,7 @@ void func_42() // Position - 0x14AF
 										func_44("AM_H_FCAL1" /*Press ~INPUT_CELLPHONE_SELECT~ to answer Simeon's call.~n~Press ~INPUT_CELLPHONE_CANCEL~ to hang up.*/, 1);
 								
 									if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AM_H_FCAL1" /*Press ~INPUT_CELLPHONE_SELECT~ to answer Simeon's call.~n~Press ~INPUT_CELLPHONE_CANCEL~ to hang up.*/))
-										HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+										HUD::CLEAR_HELP(false);
 								
 									func_49(2);
 									func_50("AM_H_FCAL2" /*Press ~INPUT_CELLPHONE_DOWN~ to skip lines in the phone call. Press ~INPUT_CELLPHONE_CANCEL~ to end the call early.*/, 2, 0, 1000, 7500, 7, 0, 0, 0);
@@ -1288,7 +1288,7 @@ void func_42() // Position - 0x14AF
 				func_44("AM_H_FCAL2" /*Press ~INPUT_CELLPHONE_DOWN~ to skip lines in the phone call. Press ~INPUT_CELLPHONE_CANCEL~ to end the call early.*/, 1);
 			
 				if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AM_H_FCAL2" /*Press ~INPUT_CELLPHONE_DOWN~ to skip lines in the phone call. Press ~INPUT_CELLPHONE_CANCEL~ to end the call early.*/))
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+					HUD::CLEAR_HELP(false);
 			
 				func_49(3);
 			}
@@ -1303,13 +1303,13 @@ void func_42() // Position - 0x14AF
 				func_44("AM_H_FCAL1" /*Press ~INPUT_CELLPHONE_SELECT~ to answer Simeon's call.~n~Press ~INPUT_CELLPHONE_CANCEL~ to hang up.*/, 1);
 		
 			if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AM_H_FCAL1" /*Press ~INPUT_CELLPHONE_SELECT~ to answer Simeon's call.~n~Press ~INPUT_CELLPHONE_CANCEL~ to hang up.*/))
-				HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+				HUD::CLEAR_HELP(false);
 		
 			if (func_48("AM_H_FCAL2" /*Press ~INPUT_CELLPHONE_DOWN~ to skip lines in the phone call. Press ~INPUT_CELLPHONE_CANCEL~ to end the call early.*/))
 				func_44("AM_H_FCAL2" /*Press ~INPUT_CELLPHONE_DOWN~ to skip lines in the phone call. Press ~INPUT_CELLPHONE_CANCEL~ to end the call early.*/, 1);
 		
 			if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AM_H_FCAL2" /*Press ~INPUT_CELLPHONE_DOWN~ to skip lines in the phone call. Press ~INPUT_CELLPHONE_CANCEL~ to end the call early.*/))
-				HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+				HUD::CLEAR_HELP(false);
 		}
 	}
 
@@ -1329,7 +1329,7 @@ void func_44(char* sParam0, int iParam1) // Position - 0x16AA
 
 	if (Global_112288 && iParam1)
 		if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(sParam0) && !HUD::IS_HELP_MESSAGE_FADING_OUT())
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+			HUD::CLEAR_HELP(false);
 
 	for (i = 0; i < Global_113648.f_20412.f_145; i = i + 1)
 	{
@@ -1674,13 +1674,13 @@ void func_61(eCharacter echParam0, eCharacter echParam1, BOOL bParam2) // Positi
 			func_15(echParam0, num, 1);
 			func_14(echParam0, num, 1);
 		
-			if (echParam0 == CHAR_SESSANTA && !Global_2793044.f_6891)
+			if (echParam0 == CHAR_SESSANTA && !Global_2793046.f_6891)
 				bParam2 = false;
 		
-			if (echParam0 == CHAR_ISLDJ4 && !Global_2793044.f_6890)
+			if (echParam0 == CHAR_ISLDJ4 && !Global_2793046.f_6890)
 				bParam2 = false;
 		
-			if (echParam0 == CHAR_KDJ && !Global_2793044.f_6890)
+			if (echParam0 == CHAR_KDJ && !Global_2793046.f_6890)
 				bParam2 = false;
 		}
 	
@@ -2920,7 +2920,7 @@ void func_76() // Position - 0x3751
 			if (func_82() != 0)
 			{
 				if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AM_H_FDEC" /*You can now make a choice whether to help Michael's family member or not. Press ~INPUT_CELLPHONE_SELECT~ to help, press ~INPUT_CELLPHONE_CANCEL~ to refuse.*/))
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+					HUD::CLEAR_HELP(false);
 			
 				if (func_82() == 1)
 				{
@@ -3017,7 +3017,7 @@ void func_81(int iParam0) // Position - 0x39A7
 	if (*iParam0 == -1)
 		return;
 
-	if (!*iParam0 == Global_43219)
+	if (!(*iParam0 == Global_43219))
 	{
 		*iParam0 = -1;
 		return;
@@ -4300,123 +4300,123 @@ void func_89(int iParam0, var uParam1) // Position - 0x52F8
 	switch (iParam0)
 	{
 		case 0:
-			*uParam1 = 24156;
+			*uParam1 = &func_127;
 			break;
 	
 		case 1:
-			*uParam1 = 24055;
+			*uParam1 = &func_126;
 			break;
 	
 		case 2:
-			*uParam1 = 24006;
+			*uParam1 = &func_125;
 			break;
 	
 		case 3:
-			*uParam1 = 23972;
+			*uParam1 = &func_124;
 			break;
 	
 		case 4:
-			*uParam1 = 23822;
+			*uParam1 = &func_122;
 			break;
 	
 		case 5:
-			*uParam1 = 23799;
+			*uParam1 = &func_121;
 			break;
 	
 		case 6:
-			*uParam1 = 23775;
+			*uParam1 = &func_120;
 			break;
 	
 		case 7:
-			*uParam1 = 23537;
+			*uParam1 = &func_119;
 			break;
 	
 		case 8:
-			*uParam1 = 23429;
+			*uParam1 = &func_118;
 			break;
 	
 		case 9:
-			*uParam1 = 23405;
+			*uParam1 = &func_117;
 			break;
 	
 		case 10:
-			*uParam1 = 23382;
+			*uParam1 = &func_116;
 			break;
 	
 		case 11:
-			*uParam1 = 23358;
+			*uParam1 = &func_115;
 			break;
 	
 		case 12:
-			*uParam1 = 23216;
+			*uParam1 = &func_113;
 			break;
 	
 		case 13:
-			*uParam1 = 23193;
+			*uParam1 = &func_112;
 			break;
 	
 		case 14:
-			*uParam1 = 23169;
+			*uParam1 = &func_111;
 			break;
 	
 		case 16:
-			*uParam1 = 23137;
+			*uParam1 = &func_110;
 			break;
 	
 		case 17:
-			*uParam1 = 23115;
+			*uParam1 = &func_109;
 			break;
 	
 		case 18:
-			*uParam1 = 22949;
+			*uParam1 = &func_107;
 			break;
 	
 		case 19:
-			*uParam1 = 22935;
+			*uParam1 = &func_106;
 			break;
 	
 		case 20:
-			*uParam1 = 22914;
+			*uParam1 = &func_105;
 			break;
 	
 		case 21:
-			*uParam1 = 22856;
+			*uParam1 = &func_104;
 			break;
 	
 		case 22:
-			*uParam1 = 22796;
+			*uParam1 = &func_103;
 			break;
 	
 		case 23:
-			*uParam1 = 21957;
+			*uParam1 = &func_96;
 			break;
 	
 		case 24:
-			*uParam1 = 21930;
+			*uParam1 = &func_95;
 			break;
 	
 		case 25:
-			*uParam1 = 21903;
+			*uParam1 = &func_94;
 			break;
 	
 		case 26:
-			*uParam1 = 21876;
+			*uParam1 = &func_93;
 			break;
 	
 		case 27:
-			*uParam1 = 21827;
+			*uParam1 = &func_92;
 			break;
 	
 		case 28:
-			*uParam1 = 21778;
+			*uParam1 = &func_91;
 			break;
 	
 		case 29:
-			*uParam1 = 21729;
+			*uParam1 = &func_90;
 			break;
 	
 		default:
-			*uParam1 = 24156;
+			*uParam1 = &func_127;
 			break;
 	}
 
@@ -5051,7 +5051,7 @@ void func_128(var uParam0) // Position - 0x5E65
 			if (func_54(3))
 				if (!func_53(1))
 					if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AM_H_FCAL2" /*Press ~INPUT_CELLPHONE_DOWN~ to skip lines in the phone call. Press ~INPUT_CELLPHONE_CANCEL~ to end the call early.*/))
-						HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+						HUD::CLEAR_HELP(false);
 		}
 	}
 
@@ -5401,7 +5401,7 @@ void func_150(var uParam0, BOOL bParam1) // Position - 0x64B5
 	func_133(0);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AM_H_FCAL1" /*Press ~INPUT_CELLPHONE_SELECT~ to answer Simeon's call.~n~Press ~INPUT_CELLPHONE_CANCEL~ to hang up.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(0);
+		HUD::CLEAR_HELP(false);
 
 	if (IS_BIT_SET(Global_113648.f_7690[Global_43804 /*15*/].f_1, 15))
 	{
@@ -6461,9 +6461,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -6513,7 +6513,7 @@ BOOL func_179(int iParam0) // Position - 0x788B
 	switch (iParam0)
 	{
 		case 5:
-			if (unk_0x64717903D9978CE3("SMOG") || unk_0x64717903D9978CE3("OVERCAST") || unk_0x64717903D9978CE3("RAIN") || unk_0x64717903D9978CE3("THUNDER") || unk_0x64717903D9978CE3("SNOW") || unk_0x553B3FCAA16365C6("SMOG") || unk_0x553B3FCAA16365C6("OVERCAST") || unk_0x553B3FCAA16365C6("RAIN") || unk_0x553B3FCAA16365C6("THUNDER") || unk_0x553B3FCAA16365C6("SNOW"))
+			if (MISC::IS_PREV_WEATHER_TYPE("SMOG") || MISC::IS_PREV_WEATHER_TYPE("OVERCAST") || MISC::IS_PREV_WEATHER_TYPE("RAIN") || MISC::IS_PREV_WEATHER_TYPE("THUNDER") || MISC::IS_PREV_WEATHER_TYPE("SNOW") || MISC::IS_NEXT_WEATHER_TYPE("SMOG") || MISC::IS_NEXT_WEATHER_TYPE("OVERCAST") || MISC::IS_NEXT_WEATHER_TYPE("RAIN") || MISC::IS_NEXT_WEATHER_TYPE("THUNDER") || MISC::IS_NEXT_WEATHER_TYPE("SNOW"))
 				return false;
 			break;
 	
@@ -6803,7 +6803,7 @@ void func_193(int iParam0, int iParam1, BOOL bParam2, BOOL bParam3, BOOL bParam4
 	int num7;
 	int num8;
 
-	if (!iParam0 < 3)
+	if (!(iParam0 < 3))
 		return;
 
 	num = -1;
@@ -6820,7 +6820,7 @@ void func_193(int iParam0, int iParam1, BOOL bParam2, BOOL bParam3, BOOL bParam4
 		num3 = num5;
 		unk = { func_198(Global_44465[num5 /*12*/].f_1) };
 	
-		if (Global_44465[num5 /*12*/].f_2 == iParam0 && !Global_44465[num5 /*12*/].f_3 == iParam0)
+		if (Global_44465[num5 /*12*/].f_2 == iParam0 && !(Global_44465[num5 /*12*/].f_3 == iParam0))
 			return;
 	
 		num2 = Global_44465[num5 /*12*/].f_2;
@@ -9039,7 +9039,7 @@ int func_217(Ped pedParam0) // Position - 0xB32C
 
 	for (i = 0; i < 16; i = i + 1)
 	{
-		if (!Global_44232[i /*5*/] == -1)
+		if (!(Global_44232[i /*5*/] == -1))
 			if (pedParam0 == Global_44232[i /*5*/].f_1)
 				return i;
 	}
@@ -10499,9 +10499,9 @@ BOOL _IS_EXCLUSIVE_CONTENT_UNLOCKED() // Position - 0xD740
 	else if (Global_152523 == 3)
 		return false;
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (unk_0x8BD41D5945F5762B())
+		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		{
 			if (NETWORK::NETWORK_HAS_ROS_PRIVILEGE_PLAYED_LAST_GEN())
 			{
@@ -11882,7 +11882,7 @@ int func_267(eCharacter echParam0, char* sParam1, int iParam2, int iParam3, char
 			}
 		}
 	
-		if (!Global_9058[Global_20383 /*2811*/][0 /*281*/].f_259 == 1)
+		if (!(Global_9058[Global_20383 /*2811*/][0 /*281*/].f_259 == 1))
 			if (!func_274())
 				AUDIO::PLAY_SOUND_FRONTEND(-1, "Text_Arrive_Tone", &Global_20372, true);
 	}
@@ -11909,7 +11909,7 @@ void func_268(eCharacter echParam0, char* sParam1, BOOL bParam2, Any anParam3) /
 	if (!func_166())
 		return;
 
-	MONEY::NETWORK_SPEND_NIGHTCLUB_AND_WAREHOUSE(echParam0, 1654525105, MISC::GET_HASH_KEY(sParam1), 0, bParam2, anParam3, Global_1977511.f_7, Global_1977511.f_8, Global_1977511.f_9, Global_1977511.f_10, Global_1977511.f_11, Global_1977511.f_12, Global_1977511.f_13);
+	STATS::PLAYSTATS_NPC_PHONE(echParam0, 1654525105, MISC::GET_HASH_KEY(sParam1), 0, bParam2, anParam3, Global_1977511.f_7, Global_1977511.f_8, Global_1977511.f_9, Global_1977511.f_10, Global_1977511.f_11, Global_1977511.f_12, Global_1977511.f_13);
 
 	if (bParam2)
 		Global_1977527 = -1;
@@ -11972,7 +11972,7 @@ void func_270(int iParam0) // Position - 0xF2CC
 									Global_20588 = 0;
 								}
 							
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "SET_DATA_SLOT");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "SET_DATA_SLOT");
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(i);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(Global_8260[num /*15*/].f_10);
@@ -11982,7 +11982,7 @@ void func_270(int iParam0) // Position - 0xF2CC
 								GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 							}
 						
-							if (Global_2694519)
+							if (Global_2694521)
 								if (num == 14)
 									func_271(Global_20364, "SET_DATA_SLOT", SYSTEM::TO_FLOAT(1), SYSTEM::TO_FLOAT(i), SYSTEM::TO_FLOAT(Global_8260[num /*15*/].f_10), SYSTEM::TO_FLOAT(Global_22788), -1f, &Global_8260[num /*15*/], 0, 0, 0, 0);
 						
@@ -12064,7 +12064,7 @@ void func_270(int iParam0) // Position - 0xF2CC
 							}
 							else if (num == 20)
 							{
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "SET_DATA_SLOT");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "SET_DATA_SLOT");
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(i);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(Global_8260[num /*15*/].f_10);
@@ -12080,7 +12080,7 @@ void func_270(int iParam0) // Position - 0xF2CC
 								else
 									value4 = 255;
 							
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "SET_DATA_SLOT");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "SET_DATA_SLOT");
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(i);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(Global_8260[num /*15*/].f_10);
@@ -12102,7 +12102,7 @@ void func_270(int iParam0) // Position - 0xF2CC
 									Global_20588 = 0;
 								}
 							
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "SET_DATA_SLOT");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "SET_DATA_SLOT");
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(i);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(Global_8260[num /*15*/].f_10);
@@ -12113,7 +12113,7 @@ void func_270(int iParam0) // Position - 0xF2CC
 							}
 							else if (num == 8)
 							{
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "SET_DATA_SLOT");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "SET_DATA_SLOT");
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(i);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(Global_8260[num /*15*/].f_10);
@@ -12124,7 +12124,7 @@ void func_270(int iParam0) // Position - 0xF2CC
 							}
 							else if (num == 23 && MISC::ARE_STRINGS_EQUAL(&Global_8260[num /*15*/], "CELL_BENWEB" /*Benny's*/) && IS_BIT_SET(Global_8254, 6))
 							{
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(Global_20364, "SET_DATA_SLOT");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_20364, "SET_DATA_SLOT");
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(i);
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(Global_8260[num /*15*/].f_10);
@@ -12157,9 +12157,9 @@ void func_270(int iParam0) // Position - 0xF2CC
 	return;
 }
 
-void func_271(Player plParam0, char* sParam1, float fParam2, float fParam3, float fParam4, float fParam5, float fParam6, const char* sParam7, const char* sParam8, const char* sParam9, const char* sParam10, const char* sParam11) // Position - 0xF866
+void func_271(int iParam0, char* sParam1, float fParam2, float fParam3, float fParam4, float fParam5, float fParam6, const char* sParam7, const char* sParam8, const char* sParam9, const char* sParam10, const char* sParam11) // Position - 0xF866
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(SYSTEM::ROUND(fParam2));
 
 	if (fParam3 != -1f)
@@ -12200,9 +12200,9 @@ void func_272(const char* sParam0) // Position - 0xF919
 	return;
 }
 
-void func_273(Player plParam0, char* sParam1, float fParam2, int iParam3, int iParam4, int iParam5, int iParam6) // Position - 0xF92B
+void func_273(int iParam0, char* sParam1, float fParam2, int iParam3, int iParam4, int iParam5, int iParam6) // Position - 0xF92B
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plParam0, sParam1);
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iParam0, sParam1);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(SYSTEM::ROUND(fParam2));
 
 	if (iParam3 != -1f)
@@ -12323,12 +12323,12 @@ BOOL func_278(int iParam0, var uParam1, var uParam2, var uParam3, var uParam4, v
 		{
 			num = iParam0;
 			num.f_1 = iParam0.f_1 * 60;
-			num.f_2 = iParam0.f_2 * 3600;
+			num.f_2 = iParam0.f_2 * &func_23;
 			num.f_3 = iParam0.f_3 * 86400;
 			num3 = num + num.f_1 + num.f_2 + num.f_3;
 			num2 = iParam6;
 			num2.f_1 = iParam6.f_1 * 60;
-			num2.f_2 = iParam6.f_2 * 3600;
+			num2.f_2 = iParam6.f_2 * &func_23;
 			num2.f_3 = iParam6.f_3 * 86400;
 			num4 = num2 + num2.f_1 + num2.f_2 + num2.f_3;
 		
@@ -12907,7 +12907,7 @@ BOOL func_286(int iParam0, var uParam1) // Position - 0x105BB
 					break;
 			}
 		
-			if (!func_64(iParam0->f_6, num2) == 1)
+			if (!(func_64(iParam0->f_6, num2) == 1))
 			{
 				MISC::SET_BIT(&(iParam0->f_1), 15);
 				func_61(iParam0->f_6, num2, false);

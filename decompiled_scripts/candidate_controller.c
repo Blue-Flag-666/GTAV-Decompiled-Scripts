@@ -521,7 +521,7 @@ void func_17(int iParam0) // Position - 0xA1E
 	if (*iParam0 == -1)
 		return;
 
-	if (!*iParam0 == Global_43219)
+	if (!(*iParam0 == Global_43219))
 	{
 		*iParam0 = -1;
 		return;

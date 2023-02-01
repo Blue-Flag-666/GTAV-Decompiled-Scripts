@@ -1858,7 +1858,7 @@ void func_7(BOOL bParam0) // Position - 0x240B
 	}
 	else if (Global_20383.f_1 == 1)
 	{
-		if (!Global_20383.f_1 == 0)
+		if (!(Global_20383.f_1 == 0))
 			Global_20383.f_1 = 3;
 	}
 
@@ -2032,7 +2032,7 @@ void func_17(Ped pedParam0, Cam caParam1, int iParam2, int iParam3, int iParam4)
 		{
 			num4 = func_27(num3);
 		
-			if (!num4 == -1)
+			if (!(num4 == -1))
 				Global_44232[num4 /*5*/].f_4 = Global_44232[num4 /*5*/].f_4 + iParam2;
 		}
 	}
@@ -2045,7 +2045,7 @@ void func_17(Ped pedParam0, Cam caParam1, int iParam2, int iParam3, int iParam4)
 		{
 			num6 = func_27(num5);
 		
-			if (!num6 == -1)
+			if (!(num6 == -1))
 				Global_44232[num6 /*5*/].f_4 = Global_44232[num6 /*5*/].f_4 + iParam2;
 		}
 	
@@ -2067,7 +2067,7 @@ void func_17(Ped pedParam0, Cam caParam1, int iParam2, int iParam3, int iParam4)
 	if (num7 == -1)
 	{
 		num8 = func_27(num7);
-		!num8 == -1;
+		!(num8 == -1);
 		return;
 	}
 
@@ -2189,7 +2189,7 @@ void func_24(Ped pedParam0, int iParam1) // Position - 0x2941
 	{
 		num2 = func_26(pedParam0);
 	
-		if (!num2 == -1)
+		if (!(num2 == -1))
 		{
 			Global_44206[num2 /*5*/].f_3 = Global_44206[num2 /*5*/].f_3 + iParam1;
 			Global_44206[num2 /*5*/].f_2 = Global_44206[num2 /*5*/].f_2 + iParam1;
@@ -2377,12 +2377,12 @@ int func_32(Ped pedParam0, int iParam1, BOOL bParam2) // Position - 0x2BF5
 
 	num = func_28(pedParam0);
 
-	if (!num == -1)
+	if (!(num == -1))
 		return 1;
 
 	num2 = func_26(pedParam0);
 
-	if (!num2 == -1)
+	if (!(num2 == -1))
 		return 1;
 
 	if (!bParam2)
@@ -2444,7 +2444,7 @@ int func_35(Ped pedParam0) // Position - 0x2D01
 
 	for (i = 0; i < 16; i = i + 1)
 	{
-		if (!Global_44232[i /*5*/] == -1)
+		if (!(Global_44232[i /*5*/] == -1))
 			if (pedParam0 == Global_44232[i /*5*/].f_1)
 				return i;
 	}
@@ -2474,7 +2474,7 @@ int func_36(Ped pedParam0) // Position - 0x2D4A
 
 BOOL func_37() // Position - 0x2D8D
 {
-	if (!hLocal_73 == 0)
+	if (!(hLocal_73 == 0))
 	{
 		if (!ENTITY::DOES_ENTITY_EXIST(obLocal_72))
 		{
@@ -2700,7 +2700,7 @@ void func_49() // Position - 0x31A7
 	if (Global_100404 > 0)
 		return;
 
-	unk_0xF60B883B88B61903();
+	STREAMING::ALLOW_PLAYER_SWITCH_OUTRO();
 	return;
 }
 
@@ -2747,7 +2747,7 @@ void func_53() // Position - 0x3214
 			if (!AUDIO::REQUEST_AMBIENT_AUDIO_BANK(&uLocal_175, false, -1))
 				flag = false;
 	
-		if (!hLocal_73 == 0)
+		if (!(hLocal_73 == 0))
 		{
 			if (!ENTITY::DOES_ENTITY_EXIST(obLocal_72))
 			{

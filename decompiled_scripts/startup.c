@@ -324,7 +324,7 @@ void func_6(Any* panParam0, int iParam1) // Position - 0xBB2
 	TEXT_LABEL_ASSIGN_STRING(&arrayName, "g_SaveData_STRING_ScriptSaves", 32);
 	TEXT_LABEL_APPEND_INT(&arrayName, iParam1, 32);
 	MISC::START_SAVE_ARRAY_WITH_SIZE(&(panParam0->f_5541.f_6), 9, &arrayName);
-	unk_0x27649F9500782BDB(&panParam0->f_5541.f_6[0 /*8*/], "TEMPSTAT_LABEL");
+	MISC::REGISTER_TEXT_LABEL_31_TO_SAVE(&panParam0->f_5541.f_6[0 /*8*/], "TEMPSTAT_LABEL");
 	MISC::STOP_SAVE_ARRAY();
 	return;
 }
@@ -371,9 +371,9 @@ void func_10(Any* panParam0, int iParam1) // Position - 0xC97
 	int i;
 	var arrayName;
 	var name;
-	var unk12;
 	var name2;
 	var name3;
+	var name4;
 
 	TEXT_LABEL_ASSIGN_STRING(&structName, "MP_ATM_SAVED", 24);
 	TEXT_LABEL_APPEND_INT(&structName, iParam1, 24);
@@ -396,9 +396,9 @@ void func_10(Any* panParam0, int iParam1) // Position - 0xC97
 
 	for (i = 0; i < 16; i = i + 1)
 	{
-		unk12 = { arrayName };
-		TEXT_LABEL_APPEND_INT(&unk12, i, 16);
-		unk_0xD6D49D6017A2AF49(&panParam0->f_5391.f_18[i /*6*/], &unk12);
+		name2 = { arrayName };
+		TEXT_LABEL_APPEND_INT(&name2, i, 16);
+		MISC::REGISTER_TEXT_LABEL_23_TO_SAVE(&panParam0->f_5391.f_18[i /*6*/], &name2);
 	}
 
 	MISC::STOP_SAVE_ARRAY();
@@ -407,9 +407,9 @@ void func_10(Any* panParam0, int iParam1) // Position - 0xC97
 
 	for (i = 0; i < 16; i = i + 1)
 	{
-		name2 = { arrayName };
-		TEXT_LABEL_APPEND_INT(&name2, i, 16);
-		MISC::REGISTER_ENUM_TO_SAVE(&panParam0->f_5391.f_115[i], &name2);
+		name3 = { arrayName };
+		TEXT_LABEL_APPEND_INT(&name3, i, 16);
+		MISC::REGISTER_ENUM_TO_SAVE(&panParam0->f_5391.f_115[i], &name3);
 	}
 
 	MISC::STOP_SAVE_ARRAY();
@@ -418,9 +418,9 @@ void func_10(Any* panParam0, int iParam1) // Position - 0xC97
 
 	for (i = 0; i < 16; i = i + 1)
 	{
-		name3 = { arrayName };
-		TEXT_LABEL_APPEND_INT(&name3, i, 16);
-		MISC::REGISTER_INT_TO_SAVE(&panParam0->f_5391.f_132[i], &name3);
+		name4 = { arrayName };
+		TEXT_LABEL_APPEND_INT(&name4, i, 16);
+		MISC::REGISTER_INT_TO_SAVE(&panParam0->f_5391.f_132[i], &name4);
 	}
 
 	MISC::STOP_SAVE_ARRAY();
@@ -882,7 +882,7 @@ void func_13(Any* panParam0, const char* sParam1) // Position - 0x1258
 		TEXT_LABEL_ASSIGN_STRING(&name, "Name", 16);
 		TEXT_LABEL_APPEND_STRING(&name, "_", 16);
 		TEXT_LABEL_APPEND_INT(&name, k, 16);
-		unk_0x27649F9500782BDB(&panParam0->f_2460[k /*8*/], &name);
+		MISC::REGISTER_TEXT_LABEL_31_TO_SAVE(&panParam0->f_2460[k /*8*/], &name);
 	}
 
 	MISC::STOP_SAVE_ARRAY();
@@ -1584,16 +1584,16 @@ void func_32(Hash hParam0, eStackSize essParam1) // Position - 0x30E4
 
 void func_33() // Position - 0x3113
 {
-	unk_0x1632FC7746D55A15("No_Filter" /*No Filter*/, 1);
-	unk_0x1632FC7746D55A15("phone_cam1", 1);
-	unk_0x1632FC7746D55A15("phone_cam2", 1);
-	unk_0x1632FC7746D55A15("phone_cam3", 1);
-	unk_0x1632FC7746D55A15("phone_cam4", 1);
-	unk_0x1632FC7746D55A15("phone_cam5", 1);
-	unk_0x1632FC7746D55A15("phone_cam6", 1);
-	unk_0x1632FC7746D55A15("phone_cam7", 1);
-	unk_0x1632FC7746D55A15("phone_cam9", 1);
-	unk_0x1632FC7746D55A15("phone_cam12", 0);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("No_Filter" /*No Filter*/, true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam1", true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam2", true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam3", true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam4", true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam5", true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam6", true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam7", true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam9", true);
+	REPLAY::REGISTER_EFFECT_FOR_REPLAY_EDITOR("phone_cam12", false);
 	return;
 }
 
@@ -5073,7 +5073,7 @@ void func_48(int iParam0, int iParam1, var uParam2, int iParam3, BOOL bParam4) /
 		case 773:
 		case 774:
 		case 775:
-		case 776:
+		case &func_1:
 		case 777:
 		case 778:
 		case 779:
@@ -12967,7 +12967,7 @@ BOOL func_70() // Position - 0x22CB6
 
 int func_71() // Position - 0x22CCC
 {
-	switch (unk_0xFEBC973B8E62750A())
+	switch (NETWORK::GET_USER_STARTER_ACCESS())
 	{
 		case 1:
 		case 2:
@@ -12984,7 +12984,7 @@ int func_71() // Position - 0x22CCC
 
 int func_72() // Position - 0x22CFA
 {
-	switch (unk_0xC28C2A12902F8BB0())
+	switch (NETWORK::GET_USER_PREMIUM_ACCESS())
 	{
 		case 1:
 		case 2:
@@ -13053,9 +13053,9 @@ int func_74() // Position - 0x22D60
 			return 1;
 	}
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (unk_0x8BD41D5945F5762B())
+		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		{
 			if (NETWORK::NETWORK_HAS_ROS_PRIVILEGE_SPECIAL_EDITION_CONTENT())
 			{
@@ -13093,9 +13093,9 @@ int _IS_EXCLUSIVE_CONTENT_UNLOCKED() // Position - 0x22E99
 	else if (Global_152523 == 3)
 		return 0;
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (unk_0x8BD41D5945F5762B())
+		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
 		{
 			if (NETWORK::NETWORK_HAS_ROS_PRIVILEGE_PLAYED_LAST_GEN())
 			{

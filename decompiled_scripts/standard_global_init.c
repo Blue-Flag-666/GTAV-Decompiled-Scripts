@@ -368,7 +368,7 @@ void func_4(float fParam0, float fParam1, float fParam2, float fParam3, float fP
 	if (iParam7 == 5)
 		return;
 
-	Global_95884[iParam7 /*9*/].f_8 = unk_0x1C0AB754E755A76C(fParam3, fParam6, 0);
+	Global_95884[iParam7 /*9*/].f_8 = MISC::ADD_HOSPITAL_RESTART(fParam3, fParam6, 0);
 	MISC::DISABLE_HOSPITAL_RESTART(Global_95884[iParam7 /*9*/].f_8, false);
 	Global_95884[iParam7 /*9*/] = { fParam0 };
 	Global_95884[iParam7 /*9*/].f_3 = { fParam3 };
@@ -665,7 +665,7 @@ void func_16(float fParam0, float fParam1, float fParam2, float fParam3, float f
 	if (iParam7 == 7)
 		return;
 
-	Global_95820[iParam7 /*9*/].f_8 = unk_0x744FDEEB8F04EBA4(fParam3, fParam6, 0);
+	Global_95820[iParam7 /*9*/].f_8 = MISC::ADD_POLICE_RESTART(fParam3, fParam6, 0);
 	MISC::DISABLE_POLICE_RESTART(Global_95820[iParam7 /*9*/].f_8, false);
 	Global_95820[iParam7 /*9*/] = { fParam0 };
 	Global_95820[iParam7 /*9*/].f_3 = { fParam3 };
@@ -1640,7 +1640,7 @@ void func_62(int iParam0) // Position - 0x2C6C
 	if (iParam0 < 0 || iParam0 >= 5)
 		return;
 
-	if (!Global_44206[iParam0 /*5*/].f_1 == 0)
+	if (!(Global_44206[iParam0 /*5*/].f_1 == 0))
 		if (Global_44206[iParam0 /*5*/].f_1 == PLAYER::PLAYER_PED_ID())
 			Global_44444 = 0;
 
@@ -2341,117 +2341,117 @@ void func_85() // Position - 0x5305
 {
 	func_87();
 	func_86();
-	unk_0xC941B6AD871B00A9();
+	DECORATOR::DECOR_REGISTER_LOCK();
 	return;
 }
 
 void func_86() // Position - 0x5319
 {
-	unk_0xDD10456894D83231("Player_Vehicle", 3);
-	unk_0xDD10456894D83231("PV_Slot", 3);
-	unk_0xDD10456894D83231("Previous_Owner", 3);
-	unk_0xDD10456894D83231("Sprayed_Vehicle_Decorator", 2);
-	unk_0xDD10456894D83231("Sprayed_Vehicle_Timer_Dec", 5);
-	unk_0xDD10456894D83231("Vehicle_Reward", 3);
-	unk_0xDD10456894D83231("Vehicle_Reward_Teams", 3);
-	unk_0xDD10456894D83231("Skill_Blocker", 2);
-	unk_0xDD10456894D83231("TargetPlayerForTeam", 3);
-	unk_0xDD10456894D83231("XP_Blocker", 2);
-	unk_0xDD10456894D83231("CrowdControlSetUp", 3);
-	unk_0xDD10456894D83231("Bought_Drugs", 2);
-	unk_0xDD10456894D83231("HeroinInPossession", 1);
-	unk_0xDD10456894D83231("CokeInPossession", 1);
-	unk_0xDD10456894D83231("WeedInPossession", 1);
-	unk_0xDD10456894D83231("MethInPossession", 1);
-	unk_0xDD10456894D83231("bombdec", 3);
-	unk_0xDD10456894D83231("bombdec1", 3);
-	unk_0xDD10456894D83231("bombowner", 3);
-	unk_0xDD10456894D83231("noPlateScan", 2);
-	unk_0xDD10456894D83231("prisonBreakBoss", 2);
-	unk_0xDD10456894D83231("cashondeadbody", 3);
-	unk_0xDD10456894D83231("MissionType", 3);
-	unk_0xDD10456894D83231("MatchId", 3);
-	unk_0xDD10456894D83231("TeamId", 3);
-	unk_0xDD10456894D83231("Not_Allow_As_Saved_Veh", 3);
-	unk_0xDD10456894D83231("Veh_Modded_By_Player", 3);
-	unk_0xDD10456894D83231("MPBitset", 3);
-	unk_0xDD10456894D83231("MC_EntityID", 3);
-	unk_0xDD10456894D83231("MC_ChasePedID", 3);
-	unk_0xDD10456894D83231("MC_Team0_VehDeliveredRules", 3);
-	unk_0xDD10456894D83231("MC_Team1_VehDeliveredRules", 3);
-	unk_0xDD10456894D83231("MC_Team2_VehDeliveredRules", 3);
-	unk_0xDD10456894D83231("MC_Team3_VehDeliveredRules", 3);
-	unk_0xDD10456894D83231("FMMC_ClonedPedPart", 3);
-	unk_0xDD10456894D83231("AttributeDamage", 3);
-	unk_0xDD10456894D83231("GangBackup", 3);
-	unk_0xDD10456894D83231("CreatedByPegasus", 2);
-	unk_0xDD10456894D83231("BeforeCorona", 3);
-	unk_0xDD10456894D83231("Heist_Veh_ID", 3);
-	unk_0xDD10456894D83231("CC_iState", 3);
-	unk_0xDD10456894D83231("CC_iStatePrev", 3);
-	unk_0xDD10456894D83231("CC_iBitSet", 3);
-	unk_0xDD10456894D83231("CC_fInfluenceDirectThreat", 1);
-	unk_0xDD10456894D83231("CC_fInfluenceShouting", 1);
-	unk_0xDD10456894D83231("CC_iBeatdownHitsRemaining", 3);
-	unk_0xDD10456894D83231("CC_iBeatdownRounds", 3);
-	unk_0xDD10456894D83231("LUXE_MINIGAME_ACT_PROPS", 3);
-	unk_0xDD10456894D83231("LUXE_VEH_INSTANCE_ID", 3);
-	unk_0xDD10456894D83231("UsingForTimeTrial", 2);
-	unk_0xDD10456894D83231("EnableVehLuxeActs", 3);
-	unk_0xDD10456894D83231("Player_Goon", 3);
-	unk_0xDD10456894D83231("Player_Boss", 3);
-	unk_0xDD10456894D83231("Previous_Boss", 3);
-	unk_0xDD10456894D83231("PYV_Owner", 3);
-	unk_0xDD10456894D83231("PYV_Vehicle", 3);
-	unk_0xDD10456894D83231("PYV_Yacht", 3);
-	unk_0xDD10456894D83231("PYV_WarpFrom", 3);
-	unk_0xDD10456894D83231("ContrabandOwner", 3);
-	unk_0xDD10456894D83231("HeliTaxi", 2);
-	unk_0xDD10456894D83231("ContrabandDeliveryType", 3);
-	unk_0xDD10456894D83231("RandomID", 3);
-	unk_0xDD10456894D83231("ExportVehicle", 3);
-	unk_0xDD10456894D83231("RespawnVeh", 3);
-	unk_0xDD10456894D83231("Player_Truck", 3);
-	unk_0xDD10456894D83231("Creator_Trailer", 3);
-	unk_0xDD10456894D83231("FMDeliverableID", 3);
-	unk_0xDD10456894D83231("Player_Avenger", 3);
-	unk_0xDD10456894D83231("Player_Acid_Lab", 3);
-	unk_0xDD10456894D83231("Player_Support_Bike_Vehicle", 3);
-	unk_0xDD10456894D83231("Player_Hacker_Truck", 3);
-	unk_0xDD10456894D83231("BBCarrier", 2);
-	unk_0xDD10456894D83231("GBMissionFire", 3);
-	unk_0xDD10456894D83231("GBCVehicle", 2);
-	unk_0xDD10456894D83231("CSHVehicle", 2);
-	unk_0xDD10456894D83231("AllowModSprayRepair", 2);
-	unk_0xDD10456894D83231("FMCVehicle", 2);
-	unk_0xDD10456894D83231("Player_Submarine", 3);
-	unk_0xDD10456894D83231("Player_Submarine_Dinghy", 3);
-	unk_0xDD10456894D83231("Player_Moon_Pool", 3);
-	unk_0xDD10456894D83231("VehicleList", 2);
-	unk_0xDD10456894D83231("Company_SUV" /*Company SUV*/, 3);
-	unk_0xDD10456894D83231("TestDrive", 2);
+	DECORATOR::DECOR_REGISTER("Player_Vehicle", INT);
+	DECORATOR::DECOR_REGISTER("PV_Slot", INT);
+	DECORATOR::DECOR_REGISTER("Previous_Owner", INT);
+	DECORATOR::DECOR_REGISTER("Sprayed_Vehicle_Decorator", BOOL);
+	DECORATOR::DECOR_REGISTER("Sprayed_Vehicle_Timer_Dec", TIME);
+	DECORATOR::DECOR_REGISTER("Vehicle_Reward", INT);
+	DECORATOR::DECOR_REGISTER("Vehicle_Reward_Teams", INT);
+	DECORATOR::DECOR_REGISTER("Skill_Blocker", BOOL);
+	DECORATOR::DECOR_REGISTER("TargetPlayerForTeam", INT);
+	DECORATOR::DECOR_REGISTER("XP_Blocker", BOOL);
+	DECORATOR::DECOR_REGISTER("CrowdControlSetUp", INT);
+	DECORATOR::DECOR_REGISTER("Bought_Drugs", BOOL);
+	DECORATOR::DECOR_REGISTER("HeroinInPossession", FLOAT);
+	DECORATOR::DECOR_REGISTER("CokeInPossession", FLOAT);
+	DECORATOR::DECOR_REGISTER("WeedInPossession", FLOAT);
+	DECORATOR::DECOR_REGISTER("MethInPossession", FLOAT);
+	DECORATOR::DECOR_REGISTER("bombdec", INT);
+	DECORATOR::DECOR_REGISTER("bombdec1", INT);
+	DECORATOR::DECOR_REGISTER("bombowner", INT);
+	DECORATOR::DECOR_REGISTER("noPlateScan", BOOL);
+	DECORATOR::DECOR_REGISTER("prisonBreakBoss", BOOL);
+	DECORATOR::DECOR_REGISTER("cashondeadbody", INT);
+	DECORATOR::DECOR_REGISTER("MissionType", INT);
+	DECORATOR::DECOR_REGISTER("MatchId", INT);
+	DECORATOR::DECOR_REGISTER("TeamId", INT);
+	DECORATOR::DECOR_REGISTER("Not_Allow_As_Saved_Veh", INT);
+	DECORATOR::DECOR_REGISTER("Veh_Modded_By_Player", INT);
+	DECORATOR::DECOR_REGISTER("MPBitset", INT);
+	DECORATOR::DECOR_REGISTER("MC_EntityID", INT);
+	DECORATOR::DECOR_REGISTER("MC_ChasePedID", INT);
+	DECORATOR::DECOR_REGISTER("MC_Team0_VehDeliveredRules", INT);
+	DECORATOR::DECOR_REGISTER("MC_Team1_VehDeliveredRules", INT);
+	DECORATOR::DECOR_REGISTER("MC_Team2_VehDeliveredRules", INT);
+	DECORATOR::DECOR_REGISTER("MC_Team3_VehDeliveredRules", INT);
+	DECORATOR::DECOR_REGISTER("FMMC_ClonedPedPart", INT);
+	DECORATOR::DECOR_REGISTER("AttributeDamage", INT);
+	DECORATOR::DECOR_REGISTER("GangBackup", INT);
+	DECORATOR::DECOR_REGISTER("CreatedByPegasus", BOOL);
+	DECORATOR::DECOR_REGISTER("BeforeCorona", INT);
+	DECORATOR::DECOR_REGISTER("Heist_Veh_ID", INT);
+	DECORATOR::DECOR_REGISTER("CC_iState", INT);
+	DECORATOR::DECOR_REGISTER("CC_iStatePrev", INT);
+	DECORATOR::DECOR_REGISTER("CC_iBitSet", INT);
+	DECORATOR::DECOR_REGISTER("CC_fInfluenceDirectThreat", FLOAT);
+	DECORATOR::DECOR_REGISTER("CC_fInfluenceShouting", FLOAT);
+	DECORATOR::DECOR_REGISTER("CC_iBeatdownHitsRemaining", INT);
+	DECORATOR::DECOR_REGISTER("CC_iBeatdownRounds", INT);
+	DECORATOR::DECOR_REGISTER("LUXE_MINIGAME_ACT_PROPS", INT);
+	DECORATOR::DECOR_REGISTER("LUXE_VEH_INSTANCE_ID", INT);
+	DECORATOR::DECOR_REGISTER("UsingForTimeTrial", BOOL);
+	DECORATOR::DECOR_REGISTER("EnableVehLuxeActs", INT);
+	DECORATOR::DECOR_REGISTER("Player_Goon", INT);
+	DECORATOR::DECOR_REGISTER("Player_Boss", INT);
+	DECORATOR::DECOR_REGISTER("Previous_Boss", INT);
+	DECORATOR::DECOR_REGISTER("PYV_Owner", INT);
+	DECORATOR::DECOR_REGISTER("PYV_Vehicle", INT);
+	DECORATOR::DECOR_REGISTER("PYV_Yacht", INT);
+	DECORATOR::DECOR_REGISTER("PYV_WarpFrom", INT);
+	DECORATOR::DECOR_REGISTER("ContrabandOwner", INT);
+	DECORATOR::DECOR_REGISTER("HeliTaxi", BOOL);
+	DECORATOR::DECOR_REGISTER("ContrabandDeliveryType", INT);
+	DECORATOR::DECOR_REGISTER("RandomID", INT);
+	DECORATOR::DECOR_REGISTER("ExportVehicle", INT);
+	DECORATOR::DECOR_REGISTER("RespawnVeh", INT);
+	DECORATOR::DECOR_REGISTER("Player_Truck", INT);
+	DECORATOR::DECOR_REGISTER("Creator_Trailer", INT);
+	DECORATOR::DECOR_REGISTER("FMDeliverableID", INT);
+	DECORATOR::DECOR_REGISTER("Player_Avenger", INT);
+	DECORATOR::DECOR_REGISTER("Player_Acid_Lab", INT);
+	DECORATOR::DECOR_REGISTER("Player_Support_Bike_Vehicle", INT);
+	DECORATOR::DECOR_REGISTER("Player_Hacker_Truck", INT);
+	DECORATOR::DECOR_REGISTER("BBCarrier", BOOL);
+	DECORATOR::DECOR_REGISTER("GBMissionFire", INT);
+	DECORATOR::DECOR_REGISTER("GBCVehicle", BOOL);
+	DECORATOR::DECOR_REGISTER("CSHVehicle", BOOL);
+	DECORATOR::DECOR_REGISTER("AllowModSprayRepair", BOOL);
+	DECORATOR::DECOR_REGISTER("FMCVehicle", BOOL);
+	DECORATOR::DECOR_REGISTER("Player_Submarine", INT);
+	DECORATOR::DECOR_REGISTER("Player_Submarine_Dinghy", INT);
+	DECORATOR::DECOR_REGISTER("Player_Moon_Pool", INT);
+	DECORATOR::DECOR_REGISTER("VehicleList", BOOL);
+	DECORATOR::DECOR_REGISTER("Company_SUV" /*Company SUV*/, INT);
+	DECORATOR::DECOR_REGISTER("TestDrive", BOOL);
 	return;
 }
 
 void func_87() // Position - 0x560C
 {
-	unk_0xDD10456894D83231("PHOTO_TAKEN", 2);
-	unk_0xDD10456894D83231("doe_elk", 2);
-	unk_0xDD10456894D83231("hunt_score", 3);
-	unk_0xDD10456894D83231("hunt_weapon", 3);
-	unk_0xDD10456894D83231("hunt_undetected", 2);
-	unk_0xDD10456894D83231("hunt_nocall", 2);
-	unk_0xDD10456894D83231("hunt_chal_weapon", 3);
-	unk_0xDD10456894D83231("hunt_kill_time", 3);
-	unk_0xDD10456894D83231("DismissedBy", 3);
-	unk_0xDD10456894D83231("Darts_name", 3);
-	unk_0xDD10456894D83231("Getaway_Winched", 2);
-	unk_0xDD10456894D83231("MapGauntlet", 3);
-	unk_0xDD10456894D83231("IgnoredByQuickSave", 2);
-	unk_0xDD10456894D83231("GetawayVehicleValid", 2);
-	unk_0xDD10456894D83231("RampageCarExploded", 2);
-	unk_0xDD10456894D83231("Carwash_Vehicle_Decorator", 2);
-	unk_0xDD10456894D83231("Casino_Game_Info_Decorator", 3);
+	DECORATOR::DECOR_REGISTER("PHOTO_TAKEN", BOOL);
+	DECORATOR::DECOR_REGISTER("doe_elk", BOOL);
+	DECORATOR::DECOR_REGISTER("hunt_score", INT);
+	DECORATOR::DECOR_REGISTER("hunt_weapon", INT);
+	DECORATOR::DECOR_REGISTER("hunt_undetected", BOOL);
+	DECORATOR::DECOR_REGISTER("hunt_nocall", BOOL);
+	DECORATOR::DECOR_REGISTER("hunt_chal_weapon", INT);
+	DECORATOR::DECOR_REGISTER("hunt_kill_time", INT);
+	DECORATOR::DECOR_REGISTER("DismissedBy", INT);
+	DECORATOR::DECOR_REGISTER("Darts_name", INT);
+	DECORATOR::DECOR_REGISTER("Getaway_Winched", BOOL);
+	DECORATOR::DECOR_REGISTER("MapGauntlet", INT);
+	DECORATOR::DECOR_REGISTER("IgnoredByQuickSave", BOOL);
+	DECORATOR::DECOR_REGISTER("GetawayVehicleValid", BOOL);
+	DECORATOR::DECOR_REGISTER("RampageCarExploded", BOOL);
+	DECORATOR::DECOR_REGISTER("Carwash_Vehicle_Decorator", BOOL);
+	DECORATOR::DECOR_REGISTER("Casino_Game_Info_Decorator", INT);
 	return;
 }
 

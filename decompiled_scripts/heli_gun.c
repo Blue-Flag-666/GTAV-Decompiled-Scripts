@@ -71,7 +71,7 @@
 	var uLocal_69 = 0;
 	int iLocal_70 = 0;
 	BOOL bLocal_71 = 0;
-	Player plLocal_72 = 0;
+	int iLocal_72 = 0;
 	var uLocal_73 = 0;
 	var uLocal_74 = 0;
 	var uLocal_75 = 0;
@@ -459,7 +459,7 @@ void main() // Position - 0x0
 					}
 				
 					func_1();
-					Global_2696216 = false;
+					Global_2696218 = false;
 				
 					if (iLocal_350 >= 3)
 						func_195(3);
@@ -522,7 +522,7 @@ void func_1() // Position - 0x20B
 	func_190();
 	func_189();
 
-	if (VEHICLE::IS_VEHICLE_DRIVEABLE(veLocal_340, false) && NETWORK::IS_ENTITY_A_GHOST(veLocal_340) && !func_188(PLAYER::PLAYER_ID()) == 129 && bLocal_302 || bLocal_303 || bLocal_304 || Global_1581967 != -1 || bLocal_301)
+	if (VEHICLE::IS_VEHICLE_DRIVEABLE(veLocal_340, false) && NETWORK::IS_ENTITY_A_GHOST(veLocal_340) && !(func_188(PLAYER::PLAYER_ID()) == 129) && bLocal_302 || bLocal_303 || bLocal_304 || Global_1581967 != -1 || bLocal_301)
 	{
 		func_187();
 		bLocal_298 = true;
@@ -633,7 +633,7 @@ void func_1() // Position - 0x20B
 			if (Global_1581961 != -1 || Global_1581967 != -1)
 			{
 				CAM::DO_SCREEN_FADE_OUT(250);
-				plLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
+				iLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
 			
 				if (uLocal_73.f_214)
 					uLocal_73.f_214 = 0;
@@ -658,19 +658,19 @@ void func_1() // Position - 0x20B
 			}
 			else if (func_194(veLocal_340))
 			{
-				plLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
+				iLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
 			}
 			else
 			{
-				plLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
+				iLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
 			}
 		
 			GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT("helicopterhud", false);
 			func_140();
 		
-			if (func_139(&uLocal_73, 0) && GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_72) && GRAPHICS::HAS_STREAMED_TEXTURE_DICT_LOADED("helicopterhud"))
+			if (func_139(&uLocal_73, 0) && GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_72) && GRAPHICS::HAS_STREAMED_TEXTURE_DICT_LOADED("helicopterhud"))
 			{
-				if (Global_2694993)
+				if (Global_2694995)
 				{
 					if (STREAMING::IS_NEW_LOAD_SCENE_ACTIVE() == false || STREAMING::IS_NEW_LOAD_SCENE_LOADED())
 						STREAMING::NEW_LOAD_SCENE_STOP();
@@ -684,7 +684,7 @@ void func_1() // Position - 0x20B
 				uLocal_73.f_4 = 1;
 				MISC::SET_BIT(&(Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_861), 6);
 				func_136(&uLocal_73, veLocal_340, 1, veLocal_340, 1);
-				Global_2803647 = 1;
+				Global_2803649 = 1;
 				func_134();
 				ENTITY::SET_ENTITY_ALWAYS_PRERENDER(veLocal_340, true);
 				func_150(2);
@@ -694,13 +694,13 @@ void func_1() // Position - 0x20B
 			
 				if (!bLocal_302 && !bLocal_303 && !bLocal_304 && !bLocal_301 && Global_1581967 == -1)
 				{
-					Global_2803651 = 1;
+					Global_2803653 = 1;
 					uLocal_73.f_7 = 1;
 					func_131();
 				}
 				else
 				{
-					Global_2803651 = 0;
+					Global_2803653 = 0;
 				}
 			
 				if (!(Global_1581961 != -1 || Global_1581967 != -1))
@@ -771,9 +771,9 @@ void func_1() // Position - 0x20B
 			}
 		
 			if (func_121())
-				GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&plLocal_72);
-			else if (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_72))
-				plLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
+				GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_72);
+			else if (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_72))
+				iLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
 		
 			func_140();
 			func_115(0);
@@ -834,7 +834,7 @@ void func_1() // Position - 0x20B
 			
 				finalRenderedCamCoord = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 			
-				if (HUD::IS_PAUSE_MENU_ACTIVE() || func_121() || PAD::IS_CONTROL_JUST_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 199) || PAD::IS_CONTROL_JUST_RELEASED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE))
+				if (HUD::IS_PAUSE_MENU_ACTIVE() || func_121() || PAD::IS_CONTROL_JUST_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE) || PAD::IS_CONTROL_JUST_RELEASED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE))
 				{
 					HUD::SET_FAKE_PAUSEMAP_PLAYER_POSITION_THIS_FRAME(finalRenderedCamCoord, finalRenderedCamCoord.f_1);
 				
@@ -1082,7 +1082,7 @@ void func_1() // Position - 0x20B
 			
 				finalRenderedCamCoord = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 			
-				if (HUD::IS_PAUSE_MENU_ACTIVE() || func_121() || PAD::IS_CONTROL_JUST_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 199) || PAD::IS_CONTROL_JUST_RELEASED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE))
+				if (HUD::IS_PAUSE_MENU_ACTIVE() || func_121() || PAD::IS_CONTROL_JUST_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE) || PAD::IS_CONTROL_JUST_RELEASED(FRONTEND_CONTROL, INPUT_FRONTEND_PAUSE))
 				{
 					HUD::SET_FAKE_PAUSEMAP_PLAYER_POSITION_THIS_FRAME(finalRenderedCamCoord, finalRenderedCamCoord.f_1);
 				
@@ -1154,7 +1154,7 @@ void func_1() // Position - 0x20B
 					if (Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_832)
 						HUD::UNLOCK_MINIMAP_POSITION();
 				
-					Global_2764487 = 0;
+					Global_2764489 = 0;
 					Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_832 = 0;
 					func_71();
 				}
@@ -1166,13 +1166,13 @@ void func_1() // Position - 0x20B
 		
 			if (!bLocal_302 && !bLocal_303 && !bLocal_304 && !bLocal_301 && hLocal_295 != joaat("hunter") && hLocal_295 != joaat("akula") && Global_1581967 == -1)
 			{
-				Global_2803651 = 1;
+				Global_2803653 = 1;
 				uLocal_73.f_7 = 1;
 				func_131();
 			}
 			else
 			{
-				Global_2803651 = 0;
+				Global_2803653 = 0;
 			}
 		
 			if (bLocal_302 || bLocal_303 || bLocal_304 || func_113() || bLocal_301)
@@ -1233,12 +1233,12 @@ void func_1() // Position - 0x20B
 						func_71();
 					
 						if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(func_9(veLocal_340)))
-							HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+							HUD::CLEAR_HELP(true);
 					
 						CAM::DO_SCREEN_FADE_OUT(0);
-						Global_2764487 = 0;
+						Global_2764489 = 0;
 						Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_832 = 0;
-						Global_2764488 = 1;
+						Global_2764490 = 1;
 						func_150(0);
 						finalRenderedCamCoord = { _GET_PLAYER_COORDS(PLAYER::PLAYER_ID()) };
 					
@@ -1703,7 +1703,7 @@ BOOL func_10() // Position - 0x1DCC
 	if (func_142(PLAYER::PLAYER_ID()))
 		vehicle = func_16(false, false);
 	else if (func_141(PLAYER::PLAYER_ID()))
-		vehicle = Global_2793044.f_310;
+		vehicle = Global_2793046.f_310;
 
 	if (ENTITY::DOES_ENTITY_EXIST(vehicle))
 	{
@@ -1825,7 +1825,7 @@ BOOL func_18() // Position - 0x1FF3
 	if (func_142(PLAYER::PLAYER_ID()))
 		vehicle = func_16(false, false);
 	else if (func_141(PLAYER::PLAYER_ID()))
-		vehicle = Global_2793044.f_310;
+		vehicle = Global_2793046.f_310;
 
 	if (ENTITY::DOES_ENTITY_EXIST(vehicle))
 	{
@@ -1862,9 +1862,9 @@ BOOL func_19() // Position - 0x207B
 	}
 
 	if (func_141(PLAYER::PLAYER_ID()))
-		if (ENTITY::DOES_ENTITY_EXIST(Global_2793044.f_310))
-			if (!ENTITY::IS_ENTITY_DEAD(Global_2793044.f_310, false))
-				if (VEHICLE::GET_VEHICLE_MOD(Global_2793044.f_310, 10) == 0 || VEHICLE::GET_VEHICLE_MOD(Global_2793044.f_310, 10) == 1)
+		if (ENTITY::DOES_ENTITY_EXIST(Global_2793046.f_310))
+			if (!ENTITY::IS_ENTITY_DEAD(Global_2793046.f_310, false))
+				if (VEHICLE::GET_VEHICLE_MOD(Global_2793046.f_310, 10) == 0 || VEHICLE::GET_VEHICLE_MOD(Global_2793046.f_310, 10) == 1)
 					return true;
 
 	return false;
@@ -1910,7 +1910,7 @@ int func_22(int iParam0) // Position - 0x21F0
 		if (ENTITY::IS_ENTITY_DEAD(Global_1648763, false))
 			return -1;
 	else if (func_141(PLAYER::PLAYER_ID()))
-		if (ENTITY::IS_ENTITY_DEAD(Global_2793044.f_310, false))
+		if (ENTITY::IS_ENTITY_DEAD(Global_2793046.f_310, false))
 			return -1;
 
 	if (iParam0 == 0)
@@ -2697,7 +2697,7 @@ BOOL func_56(Player plParam0, int iParam1) // Position - 0x3271
 {
 	if (iParam1 == -1)
 		return IS_BIT_SET(Global_2657589[PLAYER::PLAYER_ID() /*466*/].f_33, plParam0);
-	else if (Global_2672505.f_3575[plParam0] >= iParam1)
+	else if (Global_2672505.f_3576[plParam0] >= iParam1)
 		return true;
 
 	return false;
@@ -2751,7 +2751,7 @@ void func_58() // Position - 0x32D3
 		
 			if (STREAMING::HAS_MODEL_LOADED(weapontypeModel))
 			{
-				if (PAD::IS_DISABLED_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_RT) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 229) && !bLocal_298 && !_STOPWATCH_IS_INITIALIZED(&(Global_2672505.f_3794)))
+				if (PAD::IS_DISABLED_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_RT) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_RT) && !bLocal_298 && !_STOPWATCH_IS_INITIALIZED(&(Global_2672505.f_3795)))
 				{
 					if (ENTITY::DOES_ENTITY_EXIST(PLAYER::PLAYER_PED_ID()))
 					{
@@ -2800,7 +2800,7 @@ void func_58() // Position - 0x32D3
 												MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY_NEW(finalRenderedCamCoord, uLocal_73.f_45, damage, true, func_69(veLocal_340), PLAYER::PLAYER_PED_ID(), true, true, -1082130432, vehicleIndexFromEntityIndex, false, false, 0, true, 0, 1, 0);
 											}
 										
-											_STOPWATCH_INITIALIZE(&(Global_2672505.f_3794), false, false);
+											_STOPWATCH_INITIALIZE(&(Global_2672505.f_3795), false, false);
 										
 											if (iLocal_333 != 0)
 											{
@@ -2826,7 +2826,7 @@ void func_58() // Position - 0x32D3
 			{
 				if (STREAMING::HAS_MODEL_LOADED(weapontypeModel))
 				{
-					if (PAD::IS_DISABLED_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_LT) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 228) && !_STOPWATCH_IS_INITIALIZED(&uLocal_290))
+					if (PAD::IS_DISABLED_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_LT) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_LT) && !_STOPWATCH_IS_INITIALIZED(&uLocal_290))
 					{
 						if (ENTITY::DOES_ENTITY_EXIST(PLAYER::PLAYER_PED_ID()))
 						{
@@ -2880,41 +2880,41 @@ void func_58() // Position - 0x32D3
 							}
 						}
 					}
-					else if (!(PAD::IS_DISABLED_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_AIM) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 25) && func_125(3) && !_STOPWATCH_IS_INITIALIZED(&uLocal_290)))
+					else if (!(PAD::IS_DISABLED_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_AIM) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_AIM) && func_125(3) && !_STOPWATCH_IS_INITIALIZED(&uLocal_290)))
 					{
 						_STOPWATCH_IS_INITIALIZED(&uLocal_290);
 					}
 				}
 			}
 		
-			if (_STOPWATCH_IS_INITIALIZED(&(Global_2672505.f_3794)) || _STOPWATCH_IS_INITIALIZED(&uLocal_290))
+			if (_STOPWATCH_IS_INITIALIZED(&(Global_2672505.f_3795)) || _STOPWATCH_IS_INITIALIZED(&uLocal_290))
 			{
 				if (func_65(veLocal_340, Global_1581966) || func_113())
 				{
 					if (func_196(PLAYER::PLAYER_ID()) || func_143(PLAYER::PLAYER_ID()))
 					{
-						if (_STOPWATCH_HAS_TIME_PASSED(&(Global_2672505.f_3794), 1000, false))
+						if (_STOPWATCH_HAS_TIME_PASSED(&(Global_2672505.f_3795), 1000, false))
 						{
-							_STOPWATCH_DESTROY(&(Global_2672505.f_3794));
-							Global_2672505.f_3794 = { unk17 };
+							_STOPWATCH_DESTROY(&(Global_2672505.f_3795));
+							Global_2672505.f_3795 = { unk17 };
 						}
 					}
 					else if (func_142(PLAYER::PLAYER_ID()) || func_141(PLAYER::PLAYER_ID()))
 					{
-						if (_STOPWATCH_HAS_TIME_PASSED(&(Global_2672505.f_3794), 500, false))
+						if (_STOPWATCH_HAS_TIME_PASSED(&(Global_2672505.f_3795), 500, false))
 						{
-							_STOPWATCH_DESTROY(&(Global_2672505.f_3794));
-							Global_2672505.f_3794 = { unk19 };
+							_STOPWATCH_DESTROY(&(Global_2672505.f_3795));
+							Global_2672505.f_3795 = { unk19 };
 						}
 					}
 					else if (func_125(3))
 					{
-						if (_STOPWATCH_IS_INITIALIZED(&(Global_2672505.f_3794)))
+						if (_STOPWATCH_IS_INITIALIZED(&(Global_2672505.f_3795)))
 						{
-							if (_STOPWATCH_HAS_TIME_PASSED(&(Global_2672505.f_3794), 500, false))
+							if (_STOPWATCH_HAS_TIME_PASSED(&(Global_2672505.f_3795), 500, false))
 							{
-								_STOPWATCH_DESTROY(&(Global_2672505.f_3794));
-								Global_2672505.f_3794 = { unk21 };
+								_STOPWATCH_DESTROY(&(Global_2672505.f_3795));
+								Global_2672505.f_3795 = { unk21 };
 							}
 						}
 					
@@ -2927,10 +2927,10 @@ void func_58() // Position - 0x32D3
 							}
 						}
 					}
-					else if (_STOPWATCH_HAS_TIME_PASSED(&(Global_2672505.f_3794), 2000, false))
+					else if (_STOPWATCH_HAS_TIME_PASSED(&(Global_2672505.f_3795), 2000, false))
 					{
-						_STOPWATCH_DESTROY(&(Global_2672505.f_3794));
-						Global_2672505.f_3794 = { unk25 };
+						_STOPWATCH_DESTROY(&(Global_2672505.f_3795));
+						Global_2672505.f_3795 = { unk25 };
 					}
 				}
 			}
@@ -3248,7 +3248,7 @@ BOOL func_63() // Position - 0x3EA4
 						if (landingGearState == 0 || landingGearState == 3 || landingGearState == 1)
 							if (uLocal_73.f_186 > -13f)
 								if (uLocal_73.f_186 > -3.7f)
-									flag = !num > 157f;
+									flag = !(num > 157f);
 								else
 									flag = !(num > 164f && num < 177f);
 						else
@@ -3393,17 +3393,17 @@ void func_71() // Position - 0x4367
 	Global_1581960 = false;
 	func_72();
 	func_136(&uLocal_73, vehicle, 0, veLocal_340, 1);
-	Global_2803647 = 0;
+	Global_2803649 = 0;
 	MISC::CLEAR_BIT(&(Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_861), 6);
 
 	if (ENTITY::GET_ENTITY_MODEL(veLocal_340) == joaat("volatol"))
-		unk_0x0F99CCD53B5510B7("muz_xm_volatol_twinmg");
+		GRAPHICS::RESET_PARTICLE_FX_OVERRIDE("muz_xm_volatol_twinmg");
 
 	if (Global_1581961 != -1 || func_194(veLocal_340) || Global_1581967 != -1)
 		if (!func_194(veLocal_340) && NETWORK::NETWORK_HAS_CONTROL_OF_ENTITY(veLocal_340))
 			VEHICLE::SET_SHOULD_RESET_TURRET_IN_SCRIPTED_CAMERAS(veLocal_340, true);
 
-	if (Global_2694993)
+	if (Global_2694995)
 		if (ENTITY::DOES_ENTITY_EXIST(PLAYER::PLAYER_PED_ID()))
 			if (!STREAMING::IS_ENTITY_FOCUS(PLAYER::PLAYER_PED_ID()))
 				STREAMING::CLEAR_FOCUS();
@@ -3422,46 +3422,46 @@ void func_71() // Position - 0x4367
 void func_72() // Position - 0x444B
 {
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_2" /*You are using the helicopter's rocket launcher.~n~Press ~INPUT_ATTACK~ to fire.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out.~n~Press ~INPUT_CONTEXT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_2b" /*You are using the helicopter's mounted surveillance camera.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out.~n~Press ~INPUT_CONTEXT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_2c" /*You are using the helicopter's gun.~n~Press ~INPUT_ATTACK~ to fire.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out.~n~Press ~INPUT_CONTEXT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_4" /*You are viewing the co-pilot's rocket launcher. Press ~INPUT_CONTEXT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_4b" /*You are viewing the co-pilot's mounted surveillance camera. Press ~INPUT_CONTEXT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_4c" /*You are viewing the co-pilot's gun. Press ~INPUT_CONTEXT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_5" /*Press ~INPUT_FRONTEND_ACCEPT~ to tag.~n~Press ~INPUT_FRONTEND_RIGHT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_6" /*You can tag other players for the pilot to see. To tag a player, target them with the camera and press ~INPUT_FRONTEND_ACCEPT~.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AKULAGUN_P1" /*You are using the Akula Passenger Cam.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out. ~n~Press ~INPUT_FRONTEND_LB~ or ~INPUT_FRONTEND_RB~to switch camera modes.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AKULAGUN_P2" /*You are using the Akula's mounted gun.~n~Press ~INPUT_ATTACK~ to fire.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out.~n~Press ~INPUT_SCRIPT_RRIGHT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (MISC::IS_PC_VERSION())
 	{
 		if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_5_KM" /*Press ~INPUT_AIM~ to tag.*/))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 	
 		if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_6_KM" /*You can tag other players for the pilot to see. To tag a player, target them with the camera and press ~INPUT_AIM~.*/))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 	}
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_T_2b" /*You are using the Bombushka Dual .50 Cal Nose Turret.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out. ~n~Press ~INPUT_ATTACK~ to fire. ~n~Press ~INPUT_SCRIPT_RRIGHT~ to go back.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_T_2c" /*You are using the Bombushka Dual .50 Cal Top Turret.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out. ~n~Press ~INPUT_ATTACK~ to fire. ~n~Press ~INPUT_SCRIPT_RRIGHT~ to go back.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_T_2d" /*You are using the Bombushka Dual .50 Cal Rear Turret.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out. ~n~Press ~INPUT_ATTACK~ to fire. ~n~Press ~INPUT_SCRIPT_RRIGHT~ to go back.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_T_2b" /*You are using the Volatol Dual .50 Cal Nose Turret.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out. ~n~Press ~INPUT_ATTACK~ to fire. ~n~Press ~INPUT_SCRIPT_RRIGHT~ to go back.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_T_2c" /*You are using the Volatol Dual .50 Cal Top Turret.~n~Use ~INPUT_SNIPER_ZOOM~ to zoom in/out. ~n~Press ~INPUT_ATTACK~ to fire. ~n~Press ~INPUT_SCRIPT_RRIGHT~ to go back.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	return;
 }
@@ -3809,14 +3809,14 @@ int func_80(eHudColour ehcParam0) // Position - 0x4963
 	return (r * 16777216) + (g * 65536) + (b * 256) + a;
 }
 
-Blip func_81(var uParam0, var uParam1, var uParam2, BOOL bParam3) // Position - 0x4BCB
+Blip func_81(Vector3 vParam0, var uParam1, var uParam2, BOOL bParam3) // Position - 0x4BCB
 {
-	Blip vehicleWheelType;
+	Blip blip;
 
-	vehicleWheelType = VEHICLE::GET_VEHICLE_WHEEL_TYPE(uParam0);
-	HUD::SET_BLIP_SCALE(vehicleWheelType, NETWORK::NETWORK_IS_GAME_IN_PROGRESS() ? 1f : 1f);
-	HUD::SET_BLIP_ROUTE(vehicleWheelType, bParam3);
-	return vehicleWheelType;
+	blip = HUD::ADD_BLIP_FOR_COORD(vParam0);
+	HUD::SET_BLIP_SCALE(blip, NETWORK::NETWORK_IS_GAME_IN_PROGRESS() ? 1f : 1f);
+	HUD::SET_BLIP_ROUTE(blip, bParam3);
+	return blip;
 }
 
 var func_82(BOOL bParam0, var uParam1, var uParam2) // Position - 0x4BF7
@@ -3931,7 +3931,7 @@ void func_86(var uParam0, int iParam1, int iParam2, int iParam3) // Position - 0
 	
 		STREAMING::FORCE_ALLOW_TIME_BASED_FADING_THIS_FRAME();
 	
-		if (!GRAPHICS::HAS_STREAMED_TEXTURE_DICT_LOADED("helicopterhud") || iParam1 == 0 && !GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_72))
+		if (!GRAPHICS::HAS_STREAMED_TEXTURE_DICT_LOADED("helicopterhud") || iParam1 == 0 && !GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_72))
 		{
 			uParam0->f_86 = 0;
 		}
@@ -3948,7 +3948,7 @@ void func_86(var uParam0, int iParam1, int iParam2, int iParam3) // Position - 0
 				else
 				{
 					GRAPHICS::SET_SCRIPT_GFX_DRAW_ORDER(0);
-					GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(plLocal_72, 255, 255, 255, 0, 1);
+					GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(iLocal_72, 255, 255, 255, 0, 1);
 					HUD::HIDE_HUD_COMPONENT_THIS_FRAME(HUD_RETICLE);
 				
 					if (!uParam0->f_86)
@@ -3957,20 +3957,20 @@ void func_86(var uParam0, int iParam1, int iParam2, int iParam3) // Position - 0
 						{
 							if (ENTITY::GET_ENTITY_MODEL(uParam0->f_8) == joaat("polmav") && VEHICLE::GET_VEHICLE_LIVERY(uParam0->f_8) == 0)
 							{
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_72, "SET_CAM_LOGO");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_72, "SET_CAM_LOGO");
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 								GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 							}
 							else
 							{
-								NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_72, "SET_CAM_LOGO");
+								GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_72, "SET_CAM_LOGO");
 								GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(0);
 								GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 							}
 						}
 						else
 						{
-							NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_72, "SET_CAM_LOGO");
+							GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_72, "SET_CAM_LOGO");
 							GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(0);
 							GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 						}
@@ -4154,7 +4154,7 @@ void func_86(var uParam0, int iParam1, int iParam2, int iParam3) // Position - 0
 				{
 					if (!IS_BIT_SET(uParam0->f_175[uParam0->f_92 /*10*/].f_2, 0))
 					{
-						if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 229))
+						if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_RT))
 						{
 							if (uParam0->f_77 / (uParam0->f_40 * distanceBetweenCoords) > 0.5f)
 							{
@@ -4240,7 +4240,7 @@ void func_86(var uParam0, int iParam1, int iParam2, int iParam3) // Position - 0
 							uParam0->f_201 = 0;
 						}
 					}
-					else if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 229) || MISC::GET_GAME_TIMER() < uParam0->f_94 && uParam0->f_93 == uParam0->f_92)
+					else if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_SCRIPT_RT) || MISC::GET_GAME_TIMER() < uParam0->f_94 && uParam0->f_93 == uParam0->f_92)
 					{
 						if (!ENTITY::IS_ENTITY_DEAD(uParam0->f_175[uParam0->f_92 /*10*/], false))
 						{
@@ -4404,7 +4404,7 @@ void func_86(var uParam0, int iParam1, int iParam2, int iParam3) // Position - 0
 				else if (value2 > 2f || value2 < -1f)
 					value2 = 0.5f;
 			
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_72, "SET_ALT_FOV_HEADING");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_72, "SET_ALT_FOV_HEADING");
 				GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(entityCoords4.f_2);
 			
 				if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
@@ -5145,7 +5145,7 @@ void func_100(var uParam0, int iParam1, int iParam2, int iParam3, int iParam4, i
 				{
 					if (!func_105(true))
 					{
-						if (!GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 19) && !HUD::IS_PAUSE_MENU_ACTIVE())
+						if (!PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CHARACTER_WHEEL) && !HUD::IS_PAUSE_MENU_ACTIVE())
 						{
 							PAD::SET_INPUT_EXCLUSIVE(PLAYER_CONTROL, INPUT_SNIPER_ZOOM);
 						
@@ -6072,7 +6072,7 @@ void func_109() // Position - 0x82C4
 				}
 				else if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(func_9(veLocal_340)))
 				{
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+					HUD::CLEAR_HELP(true);
 				}
 			}
 			break;
@@ -6098,7 +6098,7 @@ void func_109() // Position - 0x82C4
 
 BOOL func_110() // Position - 0x85F3
 {
-	return IS_BIT_SET(Global_2793044.f_1827, 11);
+	return IS_BIT_SET(Global_2793046.f_1827, 11);
 }
 
 BOOL func_111(Player plParam0, int iParam1) // Position - 0x8605
@@ -6145,7 +6145,7 @@ void func_115(int iParam0) // Position - 0x86F0
 	if (func_120())
 		return;
 
-	if (!Global_20383.f_1 == 1)
+	if (!(Global_20383.f_1 == 1))
 	{
 		if (func_45(0))
 			func_116(iParam0);
@@ -6514,16 +6514,16 @@ int func_136(var uParam0, Vehicle veParam1, int iParam2, Vehicle veParam3, int i
 	{
 		if (uParam0->f_5 == 0)
 			if (Global_1581961 != -1)
-				plLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
+				iLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
 			else
-				plLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
+				iLocal_72 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(func_144());
 	
 		GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT("helicopterhud", false);
 	
 		if (!CAM::DOES_CAM_EXIST(uParam0->f_32))
 		{
 			uParam0->f_35 = 0;
-			uParam0->f_32 = unk_0xDEE46CEB08617ECA("default_scripted_camera", 0);
+			uParam0->f_32 = CAM::CREATE_CAM("default_scripted_camera", false);
 		
 			if (func_194(veParam3) || func_126())
 				uParam0->f_12 = 0.1f;
@@ -6720,7 +6720,7 @@ int func_136(var uParam0, Vehicle veParam1, int iParam2, Vehicle veParam3, int i
 			GRAPHICS::CLEAR_TIMECYCLE_MODIFIER();
 			GRAPHICS::CASCADE_SHADOWS_SET_AIRCRAFT_MODE(false);
 			GRAPHICS::SET_STREAMED_TEXTURE_DICT_AS_NO_LONGER_NEEDED("helicopterHUD");
-			GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&plLocal_72);
+			GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_72);
 			GRAPHICS::POP_TIMECYCLE_MODIFIER();
 			func_137(false, false, true, false);
 			uParam0->f_8 = 0;
@@ -6910,31 +6910,31 @@ void func_146(BOOL bParam0) // Position - 0x96CC
 void func_147() // Position - 0x9726
 {
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_1" /*You are the co-pilot of a combat helicopter. Press ~INPUT_CONTEXT~ to use the rocket launcher.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_1b" /*You are the co-pilot of a helicopter. Press ~INPUT_CONTEXT~ to use the mounted surveillance camera.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_1c" /*You are the co-pilot of a Valkyrie helicopter. Press ~INPUT_CONTEXT~ to enter and exit the gun camera.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_3" /*Your co-pilot is operating the helicopter's rocket launcher. Press ~INPUT_CONTEXT~ to view the camera.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_3b" /*Your co-pilot is operating the helicopter's mounted surveillance camera. Press ~INPUT_CONTEXT~ to view the camera.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUN_3c" /*Your co-pilot is operating the helicopter's gun. Press ~INPUT_CONTEXT~ to view the camera.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_1c" /*You are the co-pilot of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_1c1" /*You are the co-pilot of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Nose Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_1c2" /*You are the co-pilot of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Rear Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_2c" /*You are sitting in the Nose Turret seat of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_2c1" /*You are sitting in the Nose Turret seat of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Top Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_2c2" /*You are sitting in the Nose Turret seat of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Rear Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_3c" /*You are sitting in the Rear Turret seat of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_3c1" /*You are sitting in the Rear Turret seat of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Top Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_3c2" /*You are sitting in the Rear Turret seat of a Bombushka. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Nose Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_FULL" /*That seat is taken. You cannot move to it.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("BOMBGUN_BUSY" /*You cannot move to another seat or enter the turret camera while moving to another seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AKULAGUN_2" /*You are a passenger of an Akula. ~n~Press ~INPUT_CONTEXT~ to enter the passenger camera.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("AKULAGUN_1" /*You are the co-pilot of an Akula. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_1c" /*You are sitting in the Nose Turret seat of a Volatol. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera  ~n~You cannot swap between turrets as the other stations are currently in use.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_1c1" /*You are sitting in the Nose Turret seat of a Volatol. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Co-Pilot seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_1c2" /*You are sitting in the Nose Turret seat of a Volatol. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Top Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_2c" /*You are sitting in the Top Turret seat of a Volatol. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~You cannot swap between turrets as the other stations are currently in use.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_2c1" /*You are sitting in the Top Turret seat of a Volatol. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Nose Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_2c2" /*You are sitting in the Top Turret seat of a Volatol. ~n~Press ~INPUT_CONTEXT~ to enter the gun camera. ~n~Hold ~INPUT_CONTEXT~ to move to the Co-Pilot seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_3c" /*You are the Co-Pilot of a Volatol. ~n~You cannot swap between turrets as the other stations are currently in use.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_3c1" /*You are the Co-Pilot of a Volatol. ~n~Hold ~INPUT_CONTEXT~ to move to the Nose Turret seat.*/) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("VOLGUN_3c2" /*You are the Co-Pilot of a Volatol. ~n~Hold ~INPUT_CONTEXT~ to move to the Top Turret seat.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("HUNTGUNH_1c" /*You are the co-pilot of a Hunter helicopter. Press ~INPUT_CONTEXT~ to enter and exit the gun camera.*/))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(func_9(veLocal_340)))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	return;
 }
@@ -7082,12 +7082,12 @@ BOOL func_151() // Position - 0x9960
 				
 					if (func_152())
 					{
-						if (!IS_BIT_SET(Global_4718592.f_15, 12) && !Global_2694560)
+						if (!IS_BIT_SET(Global_4718592.f_15, 12) && !Global_2694562)
 						{
 							if (VEHICLE::IS_VEHICLE_DRIVEABLE(veLocal_340, false) && !func_43(veLocal_340, false))
 							{
 								flag = 1;
-								Global_2764487 = 1;
+								Global_2764489 = 1;
 								Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_832 = 1;
 							}
 							else
@@ -7095,7 +7095,7 @@ BOOL func_151() // Position - 0x9960
 								if (!VEHICLE::IS_VEHICLE_DRIVEABLE(veLocal_340, false) && ENTITY::GET_ENTITY_MODEL(veLocal_340) == joaat("avenger"))
 								{
 									flag = 1;
-									Global_2764487 = 1;
+									Global_2764489 = 1;
 									Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_832 = 1;
 								}
 							
@@ -7443,13 +7443,13 @@ void func_165() // Position - 0xA347
 	if (!func_173())
 		return;
 
-	if (IS_BIT_SET(Global_4718592.f_15, 12) || Global_2694560 || Global_1577914)
+	if (IS_BIT_SET(Global_4718592.f_15, 12) || Global_2694562 || Global_1577914)
 		return;
 
 	if (func_158())
 		return;
 
-	if (veLocal_340 != Global_2793044.f_4632 || Global_1581961 != -1 || func_194(veLocal_340) || Global_1581967 != -1)
+	if (veLocal_340 != Global_2793046.f_4632 || Global_1581961 != -1 || func_194(veLocal_340) || Global_1581967 != -1)
 	{
 		if (!bLocal_297 || Global_1581961 != -1)
 		{
@@ -7539,7 +7539,7 @@ void func_165() // Position - 0xA347
 				}
 				else if (bLocal_301)
 				{
-					if (!Global_2803649)
+					if (!Global_2803651)
 					{
 						if (func_171(PLAYER::PLAYER_ID()) == 2)
 							_DISPLAY_HELP_TEXT("TR_HT_VKCHCAM" /*Press ~INPUT_CONTEXT~ to use the helicopter's mounted surveillance camera to scan license plates and locate the bank manager's vehicle. ~INPUT_VEH_HORN~ can be used to make the helicopter hover in place.*/, -1);
@@ -7547,10 +7547,10 @@ void func_165() // Position - 0xA347
 							_DISPLAY_HELP_TEXT("TR_HT_HCAM" /*Press ~INPUT_CONTEXT~ to use the mounted surveillance camera.*/, -1);
 					
 						bLocal_297 = true;
-						Global_2803649 = true;
+						Global_2803651 = true;
 					}
 				}
-				else if (func_182() && !Global_2694560.f_133 && !Global_1577914 && hLocal_295 != joaat("hunter") && !func_194(veLocal_340))
+				else if (func_182() && !Global_2694562.f_133 && !Global_1577914 && hLocal_295 != joaat("hunter") && !func_194(veLocal_340))
 				{
 					if (hLocal_295 == joaat("buzzard") || hLocal_295 == joaat("savage"))
 						_DISPLAY_HELP_TEXT("HUNTGUN_3" /*Your co-pilot is operating the helicopter's rocket launcher. Press ~INPUT_CONTEXT~ to view the camera.*/, -1);
@@ -7578,13 +7578,13 @@ void func_165() // Position - 0xA347
 						if (func_166())
 						{
 							bLocal_300 = true;
-							Global_2793044.f_4632 = veLocal_340;
+							Global_2793046.f_4632 = veLocal_340;
 						}
 					}
 					else
 					{
 						bLocal_300 = true;
-						Global_2793044.f_4632 = veLocal_340;
+						Global_2793046.f_4632 = veLocal_340;
 					}
 				}
 			}
@@ -7592,7 +7592,7 @@ void func_165() // Position - 0xA347
 		else
 		{
 			bLocal_300 = true;
-			Global_2793044.f_4632 = veLocal_340;
+			Global_2793046.f_4632 = veLocal_340;
 		}
 	}
 	else
@@ -7787,7 +7787,7 @@ void func_178() // Position - 0xAA7A
 		
 	}
 
-	if (IS_BIT_SET(Global_4718592.f_15, 12) || Global_2694560)
+	if (IS_BIT_SET(Global_4718592.f_15, 12) || Global_2694562)
 		return;
 
 	if (plLocal_344 == PLAYER::PLAYER_ID() && hLocal_295 != joaat("bombushka"))
@@ -7817,7 +7817,7 @@ BOOL func_179(Vehicle veParam0) // Position - 0xAB0C
 	if (ENTITY::GET_ENTITY_MODEL(veParam0) == joaat("akula"))
 		return true;
 
-	if (Global_2696216)
+	if (Global_2696218)
 		return false;
 
 	if (entityModel == joaat("buzzard"))
@@ -8263,7 +8263,7 @@ int func_204() // Position - 0xB2D4
 
 void func_205() // Position - 0xB2E2
 {
-	Global_2696215 = 1;
+	Global_2696217 = 1;
 	return;
 }
 
@@ -8290,22 +8290,22 @@ void func_206(BOOL bParam0, BOOL bParam1, BOOL bParam2) // Position - 0xB2EF
 BOOL func_207() // Position - 0xB33A
 {
 	if (func_208())
-		return Global_2694451;
+		return Global_2694453;
 
 	return false;
 }
 
 BOOL func_208() // Position - 0xB351
 {
-	if (Global_2694444)
-		return Global_2694443;
+	if (Global_2694446)
+		return Global_2694445;
 
 	return false;
 }
 
 BOOL func_209() // Position - 0xB368
 {
-	return Global_2672505.f_21;
+	return Global_2672505.f_22;
 }
 
 BOOL func_210(Hash hParam0) // Position - 0xB376
@@ -8501,7 +8501,7 @@ void func_211() // Position - 0xB38D
 
 BOOL func_212() // Position - 0xB6B6
 {
-	if (Global_2803648)
+	if (Global_2803650)
 		return true;
 
 	return false;
@@ -8531,7 +8531,7 @@ void func_214() // Position - 0xB708
 	if (Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_832)
 		HUD::UNLOCK_MINIMAP_POSITION();
 
-	Global_2764487 = 0;
+	Global_2764489 = 0;
 	Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_832 = 0;
 	func_72();
 	func_147();
@@ -8555,7 +8555,7 @@ void func_214() // Position - 0xB708
 		HUD::SET_BLIP_ALPHA(HUD::GET_MAIN_PLAYER_BLIP_ID(), 255);
 
 	func_136(&uLocal_73, entity, 0, veLocal_340, 1);
-	Global_2803647 = 0;
+	Global_2803649 = 0;
 	Global_1581962 = false;
 	Global_1835477 = 0;
 	MISC::CLEAR_BIT(&(Global_1853910[PLAYER::PLAYER_ID() /*862*/].f_861), 6);
@@ -8641,7 +8641,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0xB913
 	if (func_225())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_224())
@@ -8680,7 +8680,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0xB997
 
 Hash func_221() // Position - 0xB9CA
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -8694,7 +8694,7 @@ Hash func_221() // Position - 0xB9CA
 
 BOOL func_222() // Position - 0xB9EE
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0xB9FD
@@ -8707,12 +8707,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0xB9FD
 
 BOOL func_224() // Position - 0xBA14
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_225() // Position - 0xBA20
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_226() // Position - 0xBA2F
@@ -8753,8 +8753,8 @@ void func_227(var uParam0, var uParam1, var uParam2, var uParam3, var uParam4, v
 		if (func_196(PLAYER::PLAYER_ID()) || func_143(PLAYER::PLAYER_ID()))
 		{
 			if (IS_BIT_SET(Global_4718592.f_25, 7))
-				if (veLocal_340 != Global_2793044.f_308)
-					veLocal_340 = Global_2793044.f_308;
+				if (veLocal_340 != Global_2793046.f_308)
+					veLocal_340 = Global_2793046.f_308;
 			else if (veLocal_340 != Global_1648746)
 				veLocal_340 = Global_1648746;
 		}
@@ -8768,7 +8768,7 @@ void func_227(var uParam0, var uParam1, var uParam2, var uParam3, var uParam4, v
 		}
 		else if (func_141(PLAYER::PLAYER_ID()))
 		{
-			veLocal_340 = Global_2793044.f_310;
+			veLocal_340 = Global_2793046.f_310;
 		
 			if (ENTITY::DOES_ENTITY_EXIST(veLocal_340))
 			{

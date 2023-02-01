@@ -398,7 +398,7 @@ void func_24(int iParam0) // Position - 0x5A1
 	if (func_29())
 		return;
 
-	if (!Global_20383.f_1 == 1)
+	if (!(Global_20383.f_1 == 1))
 	{
 		if (func_28(0))
 			func_25(iParam0);
@@ -533,7 +533,7 @@ void func_31(int iParam0, int iParam1) // Position - 0x797
 
 void func_32() // Position - 0x7CD
 {
-	Global_2793044.f_4629 = 0;
+	Global_2793046.f_4629 = 0;
 	return;
 }
 
@@ -554,7 +554,7 @@ BOOL _SHOULD_NETWORK_SCRIPT_TERMINATE() // Position - 0x7F1
 	if (func_41())
 		return true;
 
-	if (Global_2696915)
+	if (Global_2696917)
 		return true;
 
 	if (func_40())
@@ -593,7 +593,7 @@ Hash _GET_CURRENT_SESSION_TYPE_SCRIPT_HASH() // Position - 0x875
 
 Hash func_36() // Position - 0x8A8
 {
-	switch (Global_2697019)
+	switch (Global_2697021)
 	{
 		case 0:
 			return joaat("freemode");
@@ -612,7 +612,7 @@ int func_37() // Position - 0x8CC
 
 BOOL func_38() // Position - 0x8D7
 {
-	return Global_2683862.f_698;
+	return Global_2683864.f_698;
 }
 
 BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x8E6
@@ -625,12 +625,12 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x8E6
 
 BOOL func_40() // Position - 0x8FD
 {
-	return Global_2694524;
+	return Global_2694526;
 }
 
 BOOL func_41() // Position - 0x909
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 void func_42() // Position - 0x918

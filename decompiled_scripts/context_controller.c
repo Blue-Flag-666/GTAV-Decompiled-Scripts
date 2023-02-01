@@ -338,7 +338,7 @@ void main() // Position - 0x0
 						num = 2;
 					}
 				
-					if (!num5 == Global_44000[num3 /*32*/].f_1)
+					if (!(num5 == Global_44000[num3 /*32*/].f_1))
 						num = 0;
 				
 					if (Global_44000[num3 /*32*/].f_7 || Global_44000[num3 /*32*/] == false)
@@ -476,7 +476,7 @@ void func_2(BOOL bParam0) // Position - 0x4F4
 
 BOOL func_3() // Position - 0x528
 {
-	return Global_2672505.f_2513[0 /*80*/].f_1 != 0;
+	return Global_2672505.f_2514[0 /*80*/].f_1 != 0;
 }
 
 BOOL func_4(BOOL bParam0) // Position - 0x53E
@@ -856,7 +856,7 @@ void func_26() // Position - 0xB3E
 	{
 		if (func_31(false))
 		{
-			if (!MISC::IS_STRING_NULL_OR_EMPTY(&(Global_2683862.f_785.f_12)))
+			if (!MISC::IS_STRING_NULL_OR_EMPTY(&(Global_2683864.f_785.f_12)))
 			{
 				func_30();
 				func_27(6, false, 0);
@@ -1021,16 +1021,16 @@ BOOL func_29() // Position - 0xD90
 
 void func_30() // Position - 0xD9C
 {
-	Global_2683862.f_785.f_28 = 0;
+	Global_2683864.f_785.f_28 = 0;
 	return;
 }
 
 BOOL func_31(BOOL bParam0) // Position - 0xDAE
 {
 	if (bParam0)
-		return Global_2683862.f_785.f_28 && MISC::GET_HASH_KEY(SCRIPT::GET_THIS_SCRIPT_NAME()) == Global_2683862.f_785.f_31;
+		return Global_2683864.f_785.f_28 && MISC::GET_HASH_KEY(SCRIPT::GET_THIS_SCRIPT_NAME()) == Global_2683864.f_785.f_31;
 
-	return Global_2683862.f_785.f_28;
+	return Global_2683864.f_785.f_28;
 }
 
 BOOL func_32() // Position - 0xDEA
@@ -1112,7 +1112,7 @@ void func_35() // Position - 0xE9A
 		unk[0 /*13*/].f_11 = Global_1835458[11];
 		unk[0 /*13*/].f_12 = Global_1835458[12];
 	
-		if (MISC::IS_XBOX360_VERSION() || func_40())
+		if (MISC::IS_XBOX360_VERSION() || IS_XBOX_PLATFORM())
 		{
 			if (!bLocal_117)
 				if (NETWORK::NETWORK_GAMERTAG_FROM_HANDLE_START(&unk[0 /*13*/]))
@@ -1132,7 +1132,7 @@ void func_35() // Position - 0xE9A
 				}
 			}
 		}
-		else if (MISC::IS_PS3_VERSION() || func_37())
+		else if (MISC::IS_PS3_VERSION() || IS_PLAYSTATION_PLATFORM())
 		{
 			if (IS_GAMER_HANDLE_VALID(unk[0 /*13*/]))
 			{
@@ -1189,9 +1189,9 @@ BOOL IS_GAMER_HANDLE_VALID(var uParam0, var uParam1, var uParam2, var uParam3, v
 	return NETWORK::NETWORK_IS_HANDLE_VALID(&uParam0, 13);
 }
 
-BOOL func_37() // Position - 0x10C4
+BOOL IS_PLAYSTATION_PLATFORM() // Position - 0x10C4
 {
-	return MISC::IS_ORBIS_VERSION() || unk_0xEE17703CF2C2875A();
+	return MISC::IS_ORBIS_VERSION() || MISC::IS_PROSPERO_VERSION();
 }
 
 void func_38() // Position - 0x10DA
@@ -1211,9 +1211,9 @@ int func_39() // Position - 0x10F0
 	return num;
 }
 
-BOOL func_40() // Position - 0x10FD
+BOOL IS_XBOX_PLATFORM() // Position - 0x10FD
 {
-	return MISC::IS_DURANGO_VERSION() || unk_0x14F62099DEBAEA33();
+	return MISC::IS_DURANGO_VERSION() || MISC::IS_SCARLETT_VERSION();
 }
 
 void func_41() // Position - 0x1113

@@ -611,7 +611,7 @@
 	char* sLocal_609 = 0;
 	int iLocal_610 = 0;
 	var uLocal_611 = 0;
-	Player plLocal_612 = 0;
+	int iLocal_612 = 0;
 	int iLocal_613 = 0;
 	var uLocal_614 = 4;
 	var uLocal_615 = 0;
@@ -710,14 +710,14 @@ void func_1() // Position - 0xF8
 							uLocal_614[1] = "LETTERS_PAGE_TWO" /*And in the years since, I've had to, at times, goad her family into further suffering. Just to prove how very much I understand suffering and how I can represent it best as an artist – isn't it better that one family suffers so the world can be free to enjoy, to learn and to be cleansed by my masterpieces? Don't even bother answering that. The answer is obvious and if you get it wrong, well, then you're less of a man than I thought.~n~~n~But let us not concern ourselves with such trivialities – we are artists, my friend. The last of a dying breed. I dread the day when you finally retire and Solomon takes over – sure I love the kid but he's a remorseless hack with none of your passion, your creative zeal. He's a weak livered moralizer hiding in the body of a Vinewood decadent.*/;
 							uLocal_614[2] = "LETTERS_PAGE_THREE" /*He understands nothing about why we act as we do! Not because we can, but because we must. And that's the thing. Some people take advantage of their position in this town for pleasure – as if sleeping with multiple young girls, or torturing hitchhikers or eating dogs could ever be fun? It's awful. I only do it to experience it so my art is truer, deeper, more meaningful, and I believe you know that.~n~~n~I cannot wait for you to read my new draft of LEARED. I have really removed the cliches that ruined Shakespeare's plays and found the power, the moment, the thing we talked about that wonderful night in Mexico when we paid the hookers to stab each other.*/;
 							uLocal_614[3] = "LETTERS_PAGE_FOUR" /*Anyway, I hope you and Rachel have worked through your problems. I look forward to making Friday supper again soon.  You've always been an inspiration to me.~n~~n~Your dear friend~n~~n~Dreyfuss*/;
-							plLocal_612 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("LETTER_SCRAPS");
+							iLocal_612 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("LETTER_SCRAPS");
 						
-							while (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_612))
+							while (!GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_612))
 							{
 								SYSTEM::WAIT(0);
 							}
 						
-							NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_612, "SET_LETTER_TEXT");
+							GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_612, "SET_LETTER_TEXT");
 							func_11(uLocal_614[0]);
 							GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 							GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(true);
@@ -743,24 +743,24 @@ void func_1() // Position - 0xF8
 			{
 				if (!bLocal_619)
 				{
-					if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 190))
+					if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_RIGHT))
 					{
 						if (iLocal_613 >= 0 && iLocal_613 < 3)
 						{
 							iLocal_613 = iLocal_613 + 1;
-							NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_612, "SET_LETTER_TEXT");
+							GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_612, "SET_LETTER_TEXT");
 							func_11(uLocal_614[iLocal_613]);
 							GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 						}
 					
 						bLocal_619 = true;
 					}
-					else if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 189))
+					else if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_LEFT))
 					{
 						if (iLocal_613 > 0 && iLocal_613 < 4)
 						{
 							iLocal_613 = iLocal_613 - 1;
-							NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_612, "SET_LETTER_TEXT");
+							GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_612, "SET_LETTER_TEXT");
 							func_11(uLocal_614[iLocal_613]);
 							GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 						}
@@ -777,7 +777,7 @@ void func_1() // Position - 0xF8
 					bLocal_619 = false;
 				}
 			
-				GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(plLocal_612, 255, 255, 255, 255, 0);
+				GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(iLocal_612, 255, 255, 255, 255, 0);
 			}
 			else
 			{
@@ -787,7 +787,7 @@ void func_1() // Position - 0xF8
 	
 		case 2:
 			HUD::DISPLAY_RADAR(true);
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 			func_6(false, true, true, false);
 			func_70(12);
 			func_73();
@@ -799,7 +799,7 @@ void func_1() // Position - 0xF8
 
 BOOL func_2() // Position - 0x304
 {
-	if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 190) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 189) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 202))
+	if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_RIGHT) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_LEFT) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_CANCEL))
 		return true;
 
 	return false;
@@ -810,7 +810,7 @@ void func_3(int iParam0) // Position - 0x335
 	if (func_5())
 		return;
 
-	if (!Global_20383.f_1 == 1)
+	if (!(Global_20383.f_1 == 1))
 	{
 		if (func_4(0))
 			func_7(iParam0);
@@ -957,7 +957,7 @@ BOOL func_13() // Position - 0x552
 
 	for (i = 0; i <= 9; i = i + 1)
 	{
-		if (Global_2694418[i] != 0)
+		if (Global_2694420[i] != 0)
 		{
 			Global_1577845 = i;
 			num = 1;
@@ -1179,7 +1179,7 @@ void func_24(var uParam0, var uParam1, var uParam2, int iParam3, var uParam4, in
 				break;
 		
 			case 1:
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam5, "SHOW_SHARD_MIDSIZED_MESSAGE");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam5, "SHOW_SHARD_MIDSIZED_MESSAGE");
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING(sParam6);
 				GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING(sParam7);
@@ -1193,7 +1193,7 @@ void func_24(var uParam0, var uParam1, var uParam2, int iParam3, var uParam4, in
 			case 2:
 				if (MISC::GET_GAME_TIMER() - *uParam2 > 7000)
 				{
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam5, "SHARD_ANIM_OUT");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam5, "SHARD_ANIM_OUT");
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(0.33f);
 					GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
@@ -1284,7 +1284,7 @@ int func_26(int iParam0) // Position - 0xB70
 		{
 			num = func_29(iParam0) + i;
 		
-			if (func_27(num, -1))
+			if (_STAT_GET_PACKED_BOOL(num, -1))
 				outValue = outValue + 1;
 		}
 	}
@@ -1292,12 +1292,12 @@ int func_26(int iParam0) // Position - 0xB70
 	return outValue;
 }
 
-BOOL func_27(int iParam0, int iParam1) // Position - 0xC34
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0xC34
 {
 	if (iParam1 == -1)
 		iParam1 = func_28();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 int func_28() // Position - 0xC50
@@ -1669,7 +1669,7 @@ void func_47(var uParam0) // Position - 0x1407
 		if (func_57(uParam0, i))
 		{
 			num = num + 1;
-			_STAT_SET_PACKED_BOOL(uParam0->f_2 + i, 1, -1);
+			_STAT_SET_PACKED_BOOL(uParam0->f_2 + i, true, -1);
 			bLocal_40;
 		}
 	}
@@ -1683,12 +1683,12 @@ void func_47(var uParam0) // Position - 0x1407
 	return;
 }
 
-void _STAT_SET_PACKED_BOOL(int iParam0, int iParam1, int iParam2) // Position - 0x1488
+void _STAT_SET_PACKED_BOOL(int iParam0, BOOL bParam1, int iParam2) // Position - 0x1488
 {
 	if (iParam2 == -1)
 		iParam2 = func_28();
 
-	unk_0x0111091C0EE35B9C(iParam0, iParam1, iParam2);
+	STATS::SET_PACKED_STAT_BOOL_CODE(iParam0, bParam1, iParam2);
 	return;
 }
 
@@ -1702,7 +1702,7 @@ void func_49(var uParam0, int iParam1) // Position - 0x14A6
 	if (func_57(uParam0, iParam1))
 	{
 		uParam0->f_4 = uParam0->f_4 + 1;
-		_STAT_SET_PACKED_BOOL(uParam0->f_2 + iParam1, 1, -1);
+		_STAT_SET_PACKED_BOOL(uParam0->f_2 + iParam1, true, -1);
 		bLocal_40;
 	}
 
@@ -1937,7 +1937,7 @@ void func_60(int* piParam0, int iParam1, int iParam2) // Position - 0x18E9
 
 	for (i = 0; i < piParam0->f_3; i = i + 1)
 	{
-		if (func_27(piParam0->f_2 + i, -1))
+		if (_STAT_GET_PACKED_BOOL(piParam0->f_2 + i, -1))
 		{
 			num = num + 1;
 			func_51(piParam0, i, true);
@@ -2331,7 +2331,7 @@ void func_67(int iParam0, int iParam1, int iParam2) // Position - 0x25E5
 	}
 	else
 	{
-		_STAT_SET_PACKED_BOOL(891 + iParam0, 1, -1);
+		_STAT_SET_PACKED_BOOL(891 + iParam0, true, -1);
 	}
 
 	flag = true;
@@ -2599,7 +2599,7 @@ void func_73() // Position - 0x2C6F
 	int i;
 
 	GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(false);
-	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&plLocal_612);
+	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_612);
 	MISC::SET_GAME_PAUSED(false);
 	Global_113648.f_10051.f_122.f_2 = 0;
 

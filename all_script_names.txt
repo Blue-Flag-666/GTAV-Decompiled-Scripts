@@ -1012,6 +1012,7 @@ ugc_global_registration_2
 ugc_global_registration
 underwaterpickups
 utvc
+valentinerpreward2
 veh_play_widget
 vehicle_ai_test
 vehicle_force_widget

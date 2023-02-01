@@ -549,7 +549,7 @@ void func_17() // Position - 0x6FC
 	if (Global_100404 > 0)
 		return;
 
-	unk_0xF60B883B88B61903();
+	STREAMING::ALLOW_PLAYER_SWITCH_OUTRO();
 	return;
 }
 
@@ -622,7 +622,7 @@ void func_21() // Position - 0x769
 			PED::SET_PED_COMBAT_ATTRIBUTES(iLocal_72[i], BF_Aggressive, false);
 			PED::SET_PED_COMBAT_ATTRIBUTES(iLocal_72[i], BF_AlwaysFlee, true);
 			PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_72[i], true);
-			PED::SET_PED_DIES_WHEN_INJURED(iLocal_72[i], false);
+			PED::SET_PED_CAN_RAGDOLL(iLocal_72[i], false);
 		}
 	}
 

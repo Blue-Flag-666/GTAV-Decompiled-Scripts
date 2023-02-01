@@ -239,7 +239,7 @@ BOOL _DOES_EVENT_OF_TYPE_EXIST(int iParam0) // Position - 0x1CE
 
 BOOL func_5() // Position - 0x1E5
 {
-	return Global_2683862.f_693;
+	return Global_2683864.f_693;
 }
 
 BOOL func_6(BOOL bParam0) // Position - 0x1F4

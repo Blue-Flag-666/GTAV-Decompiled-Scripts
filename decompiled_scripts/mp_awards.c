@@ -169,7 +169,7 @@ void main() // Position - 0x0
 		HUD::PAUSE_MENU_DEACTIVATE_CONTEXT(joaat("SupressSelectPM"));
 		HUD::PAUSE_MENU_SET_BUSY_SPINNER(false, -1, 0);
 		Global_1574599 = 0;
-		unk_0x5A18BCB2F0320898(Global_1652549.f_471, Global_1652549.f_472, Global_1652549.f_499, Global_1652549.f_500);
+		STATS::PLAYSTATS_AWARD_NAV(Global_1652549.f_471, Global_1652549.f_472, Global_1652549.f_499, Global_1652549.f_500);
 		Global_1652549.f_471 = 0;
 		Global_1652549.f_472 = 0;
 		Global_1652549.f_499 = 0;
@@ -351,7 +351,7 @@ void main() // Position - 0x0
 	HUD::RELEASE_CONTROL_OF_FRONTEND();
 	Global_1574599 = 0;
 	HUD::PAUSE_MENU_SET_BUSY_SPINNER(false, -1, 0);
-	unk_0x5A18BCB2F0320898(Global_1652549.f_471, Global_1652549.f_472, Global_1652549.f_499, Global_1652549.f_500);
+	STATS::PLAYSTATS_AWARD_NAV(Global_1652549.f_471, Global_1652549.f_472, Global_1652549.f_499, Global_1652549.f_500);
 	Global_1652549.f_471 = 0;
 	Global_1652549.f_472 = 0;
 	Global_1652549.f_499 = 0;
@@ -391,28 +391,28 @@ void func_2(var uParam0, var uParam1, var uParam2) // Position - 0x552
 	if (!_STOPWATCH_IS_INITIALIZED(uParam2) || _STOPWATCH_IS_INITIALIZED(uParam2) && _STOPWATCH_HAS_TIME_PASSED(uParam2, 250, false))
 		flag = true;
 
-	if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 187) || func_12(187, &(Global_1653913.f_1060), 1) && flag)
+	if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_DOWN) || func_12(187, &(Global_1653913.f_1060), 1) && flag)
 	{
 		_STOPWATCH_DESTROY(uParam2);
 		_STOPWATCH_INITIALIZE(uParam2, false, false);
 		MISC::SET_BIT(&(uParam0->f_464), 0);
 	}
 
-	if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 188) || func_12(188, &(Global_1653913.f_1060), 1) && flag)
+	if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_UP) || func_12(188, &(Global_1653913.f_1060), 1) && flag)
 	{
 		_STOPWATCH_DESTROY(uParam2);
 		_STOPWATCH_INITIALIZE(uParam2, false, false);
 		MISC::SET_BIT(&(uParam0->f_464), 1);
 	}
 
-	if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 189) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 241) || func_12(189, &(Global_1653913.f_1060), 1) && flag)
+	if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_LEFT) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CURSOR_SCROLL_UP) || func_12(189, &(Global_1653913.f_1060), 1) && flag)
 	{
 		_STOPWATCH_DESTROY(uParam2);
 		_STOPWATCH_INITIALIZE(uParam2, false, false);
 		MISC::SET_BIT(&(uParam0->f_464), 2);
 	}
 
-	if (GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 190) || GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(2, 242) || func_12(190, &(Global_1653913.f_1060), 1) && flag)
+	if (PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_FRONTEND_RIGHT) || PAD::IS_CONTROL_PRESSED(FRONTEND_CONTROL, INPUT_CURSOR_SCROLL_DOWN) || func_12(190, &(Global_1653913.f_1060), 1) && flag)
 	{
 		_STOPWATCH_DESTROY(uParam2);
 		_STOPWATCH_INITIALIZE(uParam2, false, false);
@@ -1015,7 +1015,7 @@ void func_15(var uParam0) // Position - 0xED6
 					break;
 			
 				case 6:
-					if (func_122() || func_121() || MISC::IS_PC_VERSION())
+					if (IS_XBOX_PLATFORM() || IS_PLAYSTATION_PLATFORM() || MISC::IS_PC_VERSION())
 					{
 						iLocal_110 = 1;
 						iLocal_111 = 8;
@@ -1538,7 +1538,7 @@ void func_15(var uParam0) // Position - 0xED6
 								func_114(140, 8, num3, &Global_1652549);
 								func_85(21, 8, num3, &Global_1652549);
 							
-								if (func_122() || func_121() || MISC::IS_PC_VERSION())
+								if (IS_XBOX_PLATFORM() || IS_PLAYSTATION_PLATFORM() || MISC::IS_PC_VERSION())
 									func_85(20, 8, num3, &Global_1652549);
 							}
 							break;
@@ -1803,7 +1803,7 @@ void func_15(var uParam0) // Position - 0xED6
 								func_79(89, 8, num3, &Global_1652549);
 								num = 0;
 							
-								if (func_66(3608, -1))
+								if (_STAT_GET_PACKED_BOOL(3608, -1))
 									num = 1;
 							
 								func_62("CLO_LTS_T_0", "CLO_LTS_TD_0", "Elitas_Tshirt", "MPTshirtAwardLTS", 1, num, -1, 1, &Global_1652549, 168, 152);
@@ -2038,7 +2038,7 @@ void func_15(var uParam0) // Position - 0xED6
 							{
 								func_85(21, 8, num3, &Global_1652549);
 							
-								if (func_122() || func_121() || MISC::IS_PC_VERSION())
+								if (IS_XBOX_PLATFORM() || IS_PLAYSTATION_PLATFORM() || MISC::IS_PC_VERSION())
 									func_85(20, 8, num3, &Global_1652549);
 							
 								func_85(1, 8, num3, &Global_1652549);
@@ -2959,7 +2959,7 @@ void _MPCHAR_STAT_SET_INT(eMPStat empsParam0, int iParam1, int iParam2, BOOL bPa
 	Hash statName;
 
 	bParam4;
-	statName = Global_2805027[empsParam0 /*3*/][func_45(iParam2)];
+	statName = Global_2805029[empsParam0 /*3*/][func_45(iParam2)];
 
 	if (statName != 0)
 		STATS::STAT_SET_INT(statName, iParam1, bParam3);
@@ -2980,13 +2980,13 @@ int func_45(int iParam0) // Position - 0x4A00
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -2998,13 +2998,13 @@ eMPStat func_46(int iParam0) // Position - 0x4A34
 	switch (iParam0)
 	{
 		case 0:
-			return MP_STAT_RAYPISTOL_ENEMY_KILLS;
+			return MP_STAT_LOW_FLOW_CURRENT_PROG;
 	
 		default:
 		
 	}
 
-	return MP_STAT_RAYPISTOL_ENEMY_KILLS;
+	return MP_STAT_LOW_FLOW_CURRENT_PROG;
 }
 
 int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Position - 0x4A52
@@ -3012,10 +3012,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_45(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_45(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -3029,7 +3029,7 @@ int func_48(int iParam0, int iParam1) // Position - 0x4A8F
 	Hash statHash;
 	int outValue;
 
-	statHash = Global_2850192[iParam0 /*3*/][func_45(iParam1)];
+	statHash = Global_2850194[iParam0 /*3*/][func_45(iParam1)];
 
 	if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 		return outValue;
@@ -6769,7 +6769,7 @@ BOOL func_50(int iParam0) // Position - 0x77FE
 {
 	BOOL flag;
 
-	flag = func_58(386, -1) == 0;
+	flag = _STAT_GET_PACKED_INT(386, -1) == 0;
 
 	if (flag)
 		if (func_51(func_56(func_57(iParam0, flag), 3), -1))
@@ -6788,7 +6788,7 @@ BOOL func_51(int iParam0, int iParam1) // Position - 0x7857
 	int num;
 	int num2;
 
-	if (func_54(iParam0) == 14192)
+	if (func_54(iParam0) == MP_STAT_INVALID)
 		return false;
 
 	num = func_53(iParam0, iParam1);
@@ -6882,7 +6882,7 @@ eMPStat func_54(int iParam0) // Position - 0x78AC
 				return MP_STAT_TATTOO_FM_UNLOCKS_19;
 		
 			case 20:
-				return MP_STAT_TATTOO_FM_UNLOCKS_20;
+				return &_STOPWATCH_IS_INITIALIZED;
 		
 			case 21:
 				return MP_STAT_TATTOO_FM_UNLOCKS_21;
@@ -6966,20 +6966,20 @@ eMPStat func_54(int iParam0) // Position - 0x78AC
 				return MP_STAT_TATTOO_FM_UNLOCKS_47;
 		
 			case 48:
-				return _0x1336161242;
+				return MP_STAT_TATTOO_FM_UNLOCKS_48;
 		
 			case 49:
-				return _0x1587587249;
+				return MP_STAT_TATTOO_FM_UNLOCKS_49;
 		
 			case 50:
-				return MP_STAT_OPPRESSOR_MISS_HITS;
+				return UNK_647247665;
 		
 			case 51:
-				return MP_STAT_TAMPA3_MISS_KILLS;
+				return UNK_408623807;
 		}
 	}
 
-	return 14192;
+	return MP_STAT_INVALID;
 }
 
 int func_55(int iParam0) // Position - 0x7C09
@@ -7259,12 +7259,12 @@ int func_57(int iParam0, BOOL bParam1) // Position - 0x7C38
 	return 0;
 }
 
-int func_58(int iParam0, int iParam1) // Position - 0x80ED
+int _STAT_GET_PACKED_INT(int iParam0, int iParam1) // Position - 0x80ED
 {
 	if (iParam1 == -1)
 		iParam1 = func_7();
 
-	return unk_0x088E49A1CEC4C23F(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_INT_CODE(iParam0, iParam1);
 }
 
 void func_59(int iParam0) // Position - 0x8109
@@ -7369,19 +7369,19 @@ int func_60() // Position - 0x8288
 {
 	int num;
 
-	if (func_66(3765, -1))
+	if (_STAT_GET_PACKED_BOOL(3765, -1))
 		num = num + 1;
 
-	if (func_66(3766, -1))
+	if (_STAT_GET_PACKED_BOOL(3766, -1))
 		num = num + 1;
 
-	if (func_66(3767, -1))
+	if (_STAT_GET_PACKED_BOOL(3767, -1))
 		num = num + 1;
 
-	if (func_66(3768, -1))
+	if (_STAT_GET_PACKED_BOOL(3768, -1))
 		num = num + 1;
 
-	if (func_66(3769, -1))
+	if (_STAT_GET_PACKED_BOOL(3769, -1))
 		num = num + 1;
 
 	return num;
@@ -7811,12 +7811,12 @@ int func_65(int iParam0) // Position - 0x88D8
 	return 0;
 }
 
-BOOL func_66(int iParam0, int iParam1) // Position - 0x8927
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0x8927
 {
 	if (iParam1 == -1)
 		iParam1 = func_7();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 void func_67(int iParam0, int iParam1, int iParam2, var uParam3) // Position - 0x8943
@@ -10229,154 +10229,154 @@ int func_104(int iParam0) // Position - 0xB0A0
 	switch (iParam0)
 	{
 		case 0:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_MINI_ENEMY_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_1, -1, 0);
 	
 		case 1:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_BARR_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_2, -1, 0);
 	
 		case 2:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_BARR_DEATHS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_3, -1, 0);
 	
 		case 3:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_BARR_SHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_4, -1, 0);
 	
 		case 4:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_BARR_HITS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_5, -1, 0);
 	
 		case 5:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_BARR_HELDTIME, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_6, -1, 0);
 	
 		case 6:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_BARR_ENEMY_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_7, -1, 0);
 	
 		case 7:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_ROCKET_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_8, -1, 0);
 	
 		case 8:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_ROCKET_DEATHS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_9, -1, 0);
 	
 		case 9:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_ROCKET_SHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_10, -1, 0);
 	
 		case 10:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_ROCKET_HITS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_11, -1, 0);
 	
 		case 11:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_ROCKET_HELDTIME, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_12, -1, 0);
 	
 		case 12:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AKULA_ROCKET_ENEMY_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_13, -1, 0);
 	
 		case 13:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AVENGER_CANNON_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_14, -1, 0);
 	
 		case 14:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AVENGER_CANNON_DEATHS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_15, -1, 0);
 	
 		case 15:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AVENGER_CANNON_SHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_16, -1, 0);
 	
 		case 16:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AVENGER_CANNON_HITS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_17, -1, 0);
 	
 		case 17:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AVENGER_CANNON_HELDTIME, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_18, -1, 0);
 	
 		case 18:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_AVENGER_CANNON_ENEMY_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_19, -1, 0);
 	
 		case 19:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MG_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_20, -1, 0);
 	
 		case 20:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MG_DEATHS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_21, -1, 0);
 	
 		case 21:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MG_SHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_22, -1, 0);
 	
 		case 22:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MG_HITS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_23, -1, 0);
 	
 		case 23:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MG_HEADSHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_24, -1, 0);
 	
 		case 24:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MG_HELDTIME, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_25, -1, 0);
 	
 		case 25:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MG_ENEMY_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_26, -1, 0);
 	
 		case 26:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MINI_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_27, -1, 0);
 	
 		case 27:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MINI_DEATHS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_28, -1, 0);
 	
 		case 28:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MINI_SHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_29, -1, 0);
 	
 		case 29:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MINI_HITS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_30, -1, 0);
 	
 		case 30:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MINI_HEADSHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_31, -1, 0);
 	
 		case 31:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MINI_HELDTIME, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_32, -1, 0);
 	
 		case 32:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_MINI_ENEMY_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_33, -1, 0);
 	
 		case 33:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_GL_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_34, -1, 0);
 	
 		case 34:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_GL_DEATHS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_35, -1, 0);
 	
 		case 35:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_GL_SHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_36, -1, 0);
 	
 		case 36:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_GL_HITS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_37, -1, 0);
 	
 		case 37:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_GL_HELDTIME, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_38, -1, 0);
 	
 		case 38:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_R_GL_ENEMY_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_39, -1, 0);
 	
 		case 39:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MG_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_40, -1, 0);
 	
 		case 40:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MG_DEATHS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_41, -1, 0);
 	
 		case 41:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MG_SHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_42, -1, 0);
 	
 		case 42:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MG_HITS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_43, -1, 0);
 	
 		case 43:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MG_HEADSHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_44, -1, 0);
 	
 		case 44:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MG_HELDTIME, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_45, -1, 0);
 	
 		case 45:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MG_ENEMY_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_46, -1, 0);
 	
 		case 46:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MINI_KILLS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_47, -1, 0);
 	
 		case 47:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MINI_DEATHS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_48, -1, 0);
 	
 		case 48:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MINI_SHOTS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_49, -1, 0);
 	
 		case 49:
-			return _MPCHAR_STAT_GET_INT(MP_STAT_BARRAGE_T_MINI_HITS, -1, 0);
+			return _MPCHAR_STAT_GET_INT(MP_STAT_HEIST_ROLE_50, -1, 0);
 	
 		default:
 			break;
@@ -10390,7 +10390,7 @@ BOOL func_105(int iParam0, int iParam1) // Position - 0xB437
 	Hash statHash;
 	int outValue;
 
-	statHash = Global_2850649[iParam0 /*3*/][func_45(iParam1)];
+	statHash = Global_2850651[iParam0 /*3*/][func_45(iParam1)];
 
 	if (STATS::STAT_GET_BOOL(statHash, &outValue, -1))
 		return outValue;
@@ -14906,14 +14906,14 @@ int func_120(int iParam0, int iParam1) // Position - 0x10212
 	return 5;
 }
 
-BOOL func_121() // Position - 0x1028B
+BOOL IS_PLAYSTATION_PLATFORM() // Position - 0x1028B
 {
-	return MISC::IS_ORBIS_VERSION() || unk_0xEE17703CF2C2875A();
+	return MISC::IS_ORBIS_VERSION() || MISC::IS_PROSPERO_VERSION();
 }
 
-BOOL func_122() // Position - 0x102A1
+BOOL IS_XBOX_PLATFORM() // Position - 0x102A1
 {
-	return MISC::IS_DURANGO_VERSION() || unk_0x14F62099DEBAEA33();
+	return MISC::IS_DURANGO_VERSION() || MISC::IS_SCARLETT_VERSION();
 }
 
 BOOL func_123() // Position - 0x102B7

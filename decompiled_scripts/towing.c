@@ -5326,7 +5326,7 @@ BOOL func_55() // Position - 0x286D
 				if (HUD::DOES_BLIP_EXIST(blLocal_2985))
 					HUD::REMOVE_BLIP(&blLocal_2985);
 		
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 			fLocal_429 = fLocal_429 + 500f;
 		
 			if (iLocal_470 != 0 && !bLocal_2935)
@@ -5357,8 +5357,8 @@ BOOL func_55() // Position - 0x286D
 			break;
 	
 		case 16:
-			if (DECORATOR::DECOR_GET_BOOL())
-				HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			if (HUD::IS_HELP_MESSAGE_ON_SCREEN())
+				HUD::CLEAR_HELP(true);
 		
 			if (!func_56(&iLocal_2608, 0))
 			{
@@ -5435,7 +5435,7 @@ void func_57(int* piParam0) // Position - 0x3048
 
 void func_58(var uParam0, int iParam1) // Position - 0x305E
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*uParam0, "SHARD_ANIM_OUT");
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*uParam0, "SHARD_ANIM_OUT");
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(uParam0->f_9);
 	GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(iParam1);
 	GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
@@ -6201,25 +6201,25 @@ void func_68(int iParam0) // Position - 0x3F63
 
 	if (iParam0 == 8)
 	{
-		_STAT_SET_PACKED_BOOL(129, 0, -1);
+		_STAT_SET_PACKED_BOOL(129, false, -1);
 		return;
 	}
 
 	if (iParam0 == 9)
 	{
-		_STAT_SET_PACKED_BOOL(135, 0, -1);
+		_STAT_SET_PACKED_BOOL(135, false, -1);
 		return;
 	}
 
 	if (iParam0 == 10)
 	{
-		_STAT_SET_PACKED_BOOL(136, 0, -1);
+		_STAT_SET_PACKED_BOOL(136, false, -1);
 		return;
 	}
 
 	if (iParam0 == 11)
 	{
-		_STAT_SET_PACKED_BOOL(137, 0, -1);
+		_STAT_SET_PACKED_BOOL(137, false, -1);
 		return;
 	}
 
@@ -6365,7 +6365,7 @@ void _MPCHAR_STAT_SET_INT(eMPStat empsParam0, int iParam1, int iParam2, BOOL bPa
 	Hash statName;
 
 	bParam4;
-	statName = Global_2805027[empsParam0 /*3*/][func_72(iParam2)];
+	statName = Global_2805029[empsParam0 /*3*/][func_72(iParam2)];
 
 	if (statName != 0)
 		STATS::STAT_SET_INT(statName, iParam1, bParam3);
@@ -6386,13 +6386,13 @@ int func_72(int iParam0) // Position - 0x4222
 	
 		if (num2 > -1)
 		{
-			Global_2804739 = 0;
+			Global_2804741 = 0;
 			num = num2;
 		}
 		else
 		{
 			num = 0;
-			Global_2804739 = 1;
+			Global_2804741 = 1;
 		}
 	}
 
@@ -6404,12 +6404,12 @@ int func_73() // Position - 0x4256
 	return Global_1574918;
 }
 
-void _STAT_SET_PACKED_BOOL(int iParam0, int iParam1, int iParam2) // Position - 0x4262
+void _STAT_SET_PACKED_BOOL(int iParam0, BOOL bParam1, int iParam2) // Position - 0x4262
 {
 	if (iParam2 == -1)
 		iParam2 = func_73();
 
-	unk_0x0111091C0EE35B9C(iParam0, iParam1, iParam2);
+	STATS::SET_PACKED_STAT_BOOL_CODE(iParam0, bParam1, iParam2);
 	return;
 }
 
@@ -6437,16 +6437,16 @@ BOOL func_76(int iParam0) // Position - 0x42A0
 	int num6;
 
 	if (iParam0 == 8)
-		return func_78(129, -1);
+		return _STAT_GET_PACKED_BOOL(129, -1);
 
 	if (iParam0 == 9)
-		return func_78(135, -1);
+		return _STAT_GET_PACKED_BOOL(135, -1);
 
 	if (iParam0 == 10)
-		return func_78(136, -1);
+		return _STAT_GET_PACKED_BOOL(136, -1);
 
 	if (iParam0 == 11)
-		return func_78(137, -1);
+		return _STAT_GET_PACKED_BOOL(137, -1);
 
 	if (iParam0 == 12)
 	{
@@ -6525,10 +6525,10 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	Hash statHash;
 	int outValue;
 
-	if (empsParam0 != 14192)
+	if (empsParam0 != MP_STAT_INVALID)
 	{
 		iParam2 == 0;
-		statHash = Global_2805027[empsParam0 /*3*/][func_72(iParam1)];
+		statHash = Global_2805029[empsParam0 /*3*/][func_72(iParam1)];
 	
 		if (STATS::STAT_GET_INT(statHash, &outValue, -1))
 			return outValue;
@@ -6537,12 +6537,12 @@ int _MPCHAR_STAT_GET_INT(eMPStat empsParam0, int iParam1, int iParam2) // Positi
 	return 0;
 }
 
-BOOL func_78(int iParam0, int iParam1) // Position - 0x4483
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0x4483
 {
 	if (iParam1 == -1)
 		iParam1 = func_73();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 int func_79(BOOL bParam0) // Position - 0x449F
@@ -6832,21 +6832,21 @@ void func_96() // Position - 0x4926
 {
 	int outValue;
 
-	if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
 		STATS::STAT_GET_INT(joaat("SP0_TOTAL_CASH"), &outValue, -1);
 	
-		if (!Global_60536[0] == outValue)
+		if (!(Global_60536[0] == outValue))
 			Global_60536[0] = outValue;
 	
 		STATS::STAT_GET_INT(joaat("SP1_TOTAL_CASH"), &outValue, -1);
 	
-		if (!Global_60536[1] == outValue)
+		if (!(Global_60536[1] == outValue))
 			Global_60536[1] = outValue;
 	
 		STATS::STAT_GET_INT(joaat("SP2_TOTAL_CASH"), &outValue, -1);
 	
-		if (!Global_60536[2] == outValue)
+		if (!(Global_60536[2] == outValue))
 			Global_60536[2] = outValue;
 	}
 
@@ -6916,7 +6916,7 @@ int func_98(int iParam0) // Position - 0x49AC
 
 void func_99(var uParam0, char* sParam1, int iParam2, int iParam3, int iParam4, char* sParam5, int iParam6, eHudColour ehcParam7) // Position - 0x4A9C
 {
-	NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*uParam0, "SHOW_SHARD_MIDSIZED_MESSAGE");
+	GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*uParam0, "SHOW_SHARD_MIDSIZED_MESSAGE");
 	GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("STRING");
 	HUD::SET_COLOUR_OF_NEXT_TEXT_COMPONENT(ehcParam7);
 	HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam1);
@@ -7239,7 +7239,7 @@ void _DISPLAY_HELP_TEXT(const char* text, int iParam1) // Position - 0x53BA
 	return;
 }
 
-BOOL func_104(char* sParam0, var uParam1, var uParam2, var uParam3) // Position - 0x53D1
+BOOL func_104(char* sParam0, Vector3 vParam1, var uParam2, var uParam3) // Position - 0x53D1
 {
 	BOOL flag;
 	int i;
@@ -7310,9 +7310,9 @@ BOOL func_104(char* sParam0, var uParam1, var uParam2, var uParam3) // Position 
 					
 						if (iLocal_2992 == 0)
 						{
-							uLocal_2996[i /*20*/].f_8 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(uParam1);
-							fLocal_430 = func_9(uParam1, false);
-							uLocal_2625[0 /*3*/] = { uParam1 };
+							uLocal_2996[i /*20*/].f_8 = HUD::ADD_BLIP_FOR_COORD(vParam1);
+							fLocal_430 = func_9(vParam1, false);
+							uLocal_2625[0 /*3*/] = { vParam1 };
 						}
 					
 						if (iLocal_420 == 4)
@@ -7375,7 +7375,7 @@ void func_107() // Position - 0x563C
 void func_108(char* sParam0) // Position - 0x5684
 {
 	if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(sParam0))
-		HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+		HUD::CLEAR_HELP(true);
 
 	return;
 }
@@ -7419,7 +7419,7 @@ void func_111() // Position - 0x56D7
 			{
 				if (func_4(&uLocal_3106) > 10f)
 				{
-					if (!DECORATOR::DECOR_GET_BOOL() && !_CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
+					if (!HUD::IS_HELP_MESSAGE_ON_SCREEN() && !_CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
 					{
 						num = MISC::GET_RANDOM_INT_IN_RANGE(0, 65535) % 2;
 					
@@ -7442,7 +7442,7 @@ void func_111() // Position - 0x56D7
 			{
 				if (func_4(&uLocal_3106) > 15f)
 				{
-					if (!DECORATOR::DECOR_GET_BOOL() && !_CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
+					if (!HUD::IS_HELP_MESSAGE_ON_SCREEN() && !_CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
 					{
 						_DISPLAY_HELP_TEXT("TOW_TUT_03", -1);
 						func_59(&uLocal_3106);
@@ -7457,7 +7457,7 @@ void func_111() // Position - 0x56D7
 			{
 				if (func_4(&uLocal_3106) > 15f)
 				{
-					if (!DECORATOR::DECOR_GET_BOOL() && !_CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
+					if (!HUD::IS_HELP_MESSAGE_ON_SCREEN() && !_CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
 					{
 						_DISPLAY_HELP_TEXT("TOW_TUT_01", -1);
 						iLocal_3050 = 4;
@@ -8391,12 +8391,12 @@ void func_139(int iParam0) // Position - 0x71E2
 	int num;
 	var textLabel;
 
-	if (MISC::IS_XBOX360_VERSION() || func_141())
+	if (MISC::IS_XBOX360_VERSION() || IS_XBOX_PLATFORM())
 	{
 		num = iParam0;
 		NETWORK::NETWORK_SET_RICH_PRESENCE(8, &num, 1, 1);
 	}
-	else if (MISC::IS_PS3_VERSION() || func_140())
+	else if (MISC::IS_PS3_VERSION() || IS_PLAYSTATION_PLATFORM())
 	{
 		TEXT_LABEL_ASSIGN_STRING(&textLabel, "SPMG_", 24);
 		TEXT_LABEL_APPEND_INT(&textLabel, iParam0, 24);
@@ -8407,14 +8407,14 @@ void func_139(int iParam0) // Position - 0x71E2
 	return;
 }
 
-BOOL func_140() // Position - 0x723B
+BOOL IS_PLAYSTATION_PLATFORM() // Position - 0x723B
 {
-	return MISC::IS_ORBIS_VERSION() || unk_0xEE17703CF2C2875A();
+	return MISC::IS_ORBIS_VERSION() || MISC::IS_PROSPERO_VERSION();
 }
 
-BOOL func_141() // Position - 0x7251
+BOOL IS_XBOX_PLATFORM() // Position - 0x7251
 {
-	return MISC::IS_DURANGO_VERSION() || unk_0x14F62099DEBAEA33();
+	return MISC::IS_DURANGO_VERSION() || MISC::IS_SCARLETT_VERSION();
 }
 
 void func_142() // Position - 0x7267
@@ -8474,7 +8474,7 @@ void func_146(var uParam0, const char* sParam1, BOOL bParam2) // Position - 0x73
 	const char* str;
 
 	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
-		if (IS_BIT_SET(Global_2793044.f_4690, 26))
+		if (IS_BIT_SET(Global_2793046.f_4690, 26))
 			return;
 
 	if (CAM::IS_GAMEPLAY_HINT_ACTIVE())
@@ -8508,11 +8508,11 @@ void func_146(var uParam0, const char* sParam1, BOOL bParam2) // Position - 0x73
 
 	if (!MISC::IS_STRING_NULL(uParam0->f_3))
 		if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(uParam0->f_3))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 
 	if (!MISC::IS_STRING_NULL(str))
 		if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(str))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 
 	return;
 }
@@ -8587,7 +8587,7 @@ void func_147(var uParam0, Vector3 vParam1, var uParam2, var uParam3, const char
 	{
 		if (!MISC::IS_STRING_NULL(string2))
 			if (_IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(string2) && HUD::IS_HELP_MESSAGE_BEING_DISPLAYED())
-				HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+				HUD::CLEAR_HELP(true);
 	
 		if (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), true))
 			if (PED::IS_PED_IN_ANY_BOAT(PLAYER::PLAYER_PED_ID()))
@@ -8707,7 +8707,7 @@ BOOL func_152(const char* sParam0) // Position - 0x78B0
 	if (!func_153(true, true, false))
 	{
 		if (!MISC::IS_STRING_NULL_OR_EMPTY(sParam0) && _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED(sParam0) || _IS_THIS_HELP_MESSAGE_BEING_DISPLAYED("CMN_HINT" /*~s~Press ~INPUT_VEH_CIN_CAM~ to toggle focus on the target.*/))
-			HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+			HUD::CLEAR_HELP(true);
 	
 		return false;
 	}
@@ -8924,7 +8924,7 @@ int _GET_VEHICLE_SEAT_PED_IS_IN(Ped ped, BOOL includeLastVehicle) // Position - 
 
 BOOL func_158() // Position - 0x7D4F
 {
-	return Global_2683862.f_19;
+	return Global_2683864.f_19;
 }
 
 BOOL func_159(int iParam0) // Position - 0x7D5D
@@ -8934,7 +8934,7 @@ BOOL func_159(int iParam0) // Position - 0x7D5D
 
 BOOL func_160() // Position - 0x7D6A
 {
-	return Global_2683862.f_18;
+	return Global_2683864.f_18;
 }
 
 BOOL func_161() // Position - 0x7D78
@@ -9321,7 +9321,7 @@ BOOL func_173() // Position - 0x83D7
 	
 		if (!HUD::DOES_BLIP_EXIST(uLocal_2996[0 /*20*/].f_8))
 		{
-			uLocal_2996[0 /*20*/].f_8 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(uLocal_2625[0 /*3*/]);
+			uLocal_2996[0 /*20*/].f_8 = HUD::ADD_BLIP_FOR_COORD(uLocal_2625[0 /*3*/]);
 		
 			if (bLocal_468)
 			{
@@ -9588,7 +9588,7 @@ BOOL func_180(Vehicle veParam0) // Position - 0x8A83
 						if (func_117(PLAYER::PLAYER_PED_ID(), veParam0, true) < 40f)
 							if (PLAYER::GET_ENTITY_PLAYER_IS_FREE_AIMING_AT(PLAYER::PLAYER_ID(), &entity))
 								if (ENTITY::IS_ENTITY_A_VEHICLE(entity) && ENTITY::GET_VEHICLE_INDEX_FROM_ENTITY_INDEX(entity) == veParam0 || ENTITY::IS_ENTITY_A_PED(entity) && ENTITY::GET_PED_INDEX_FROM_ENTITY_INDEX(entity) == VEHICLE::GET_PED_IN_VEHICLE_SEAT(veParam0, -1, false))
-									if (PED::IS_PED_ON_FOOT(PLAYER::PLAYER_PED_ID()) && GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(0, 24) || PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), false) && GRAPHICS::RESET_PARTICLE_FX_OVERRIDE(0, 69))
+									if (PED::IS_PED_ON_FOOT(PLAYER::PLAYER_PED_ID()) && PAD::IS_CONTROL_PRESSED(PLAYER_CONTROL, INPUT_ATTACK) || PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), false) && PAD::IS_CONTROL_PRESSED(PLAYER_CONTROL, INPUT_VEH_ATTACK))
 										return true;
 
 	return false;
@@ -10128,7 +10128,7 @@ void func_193() // Position - 0x9978
 	int i;
 
 	func_195();
-	HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+	HUD::CLEAR_HELP(true);
 	HUD::CLEAR_ADDITIONAL_TEXT(2, true);
 
 	if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_2608))
@@ -10234,11 +10234,11 @@ void func_195() // Position - 0x9C1A
 {
 	var textLabel;
 
-	if (MISC::IS_XBOX360_VERSION() || func_141())
+	if (MISC::IS_XBOX360_VERSION() || IS_XBOX_PLATFORM())
 	{
 		NETWORK::NETWORK_SET_RICH_PRESENCE(StackVal, 0, 0, 0);
 	}
-	else if (MISC::IS_PS3_VERSION() || func_140())
+	else if (MISC::IS_PS3_VERSION() || IS_PLAYSTATION_PLATFORM())
 	{
 		TEXT_LABEL_ASSIGN_STRING(&textLabel, "PRESENCE_0_STR" /*Playing story*/, 24);
 		NETWORK::NETWORK_SET_RICH_PRESENCE_STRING(0, &textLabel);
@@ -11322,7 +11322,7 @@ int func_214(Vehicle veParam0, Vehicle veParam1, Vector3 vParam2, var uParam3, v
 			case 2:
 				if (bLocal_468)
 				{
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+					HUD::CLEAR_HELP(true);
 					iLocal_2601 = 4;
 				}
 			
@@ -11392,7 +11392,7 @@ int func_214(Vehicle veParam0, Vehicle veParam1, Vector3 vParam2, var uParam3, v
 					TEXT_LABEL_ASSIGN_STRING(sParam24, "TOW_TUT_04A", 64);
 					uParam23->[0 /*3*/] = { vParam2.f_14 };
 					fLocal_430 = func_9(vParam2.f_14, false);
-					*pblParam22 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(vParam2.f_14);
+					*pblParam22 = HUD::ADD_BLIP_FOR_COORD(vParam2.f_14);
 					SYSTEM::SETTIMERB(0);
 					iLocal_2601 = 7;
 				}
@@ -11426,7 +11426,7 @@ int func_214(Vehicle veParam0, Vehicle veParam1, Vector3 vParam2, var uParam3, v
 							HUD::REMOVE_BLIP(pblParam22);
 							uParam23->[0 /*3*/] = { vParam2.f_14 };
 							fLocal_430 = func_9(vParam2.f_14, false);
-							*pblParam22 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(vParam2.f_14);
+							*pblParam22 = HUD::ADD_BLIP_FOR_COORD(vParam2.f_14);
 						}
 					
 						if (HUD::DOES_BLIP_EXIST(*pblParam22))
@@ -11490,7 +11490,7 @@ int func_214(Vehicle veParam0, Vehicle veParam1, Vector3 vParam2, var uParam3, v
 				{
 					if (!VEHICLE::IS_VEHICLE_ATTACHED_TO_TOW_TRUCK(veParam0, veParam1))
 					{
-						HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+						HUD::CLEAR_HELP(true);
 						HUD::CLEAR_PRINTS();
 						func_146(&uLocal_399, 0, false);
 						iLocal_2601 = 12;
@@ -11511,7 +11511,7 @@ int func_214(Vehicle veParam0, Vehicle veParam1, Vector3 vParam2, var uParam3, v
 					if (_CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
 					{
 						if (HUD::IS_HELP_MESSAGE_BEING_DISPLAYED())
-							HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+							HUD::CLEAR_HELP(true);
 					
 						func_172();
 						iLocal_2601 = 6;
@@ -11533,7 +11533,7 @@ int func_214(Vehicle veParam0, Vehicle veParam1, Vector3 vParam2, var uParam3, v
 				{
 					if (!_CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
 					{
-						HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+						HUD::CLEAR_HELP(true);
 						_SHOW_SUBTITLE_CLEAR_EXISTING("TOWT_OBJ_06", 7500, 1);
 						bLocal_462 = true;
 					}
@@ -11634,7 +11634,7 @@ void func_218(var uParam0, var uParam1, var uParam2, var uParam3, var uParam4, v
 			{
 				if (!VEHICLE::IS_VEHICLE_ATTACHED_TO_TOW_TRUCK(veParam20, veParam21))
 				{
-					HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+					HUD::CLEAR_HELP(true);
 					HUD::CLEAR_PRINTS();
 					iLocal_2601 = 12;
 					bLocal_445 = true;
@@ -11914,7 +11914,7 @@ void func_223(var uParam0, Blip* pblParam1, var uParam2, var uParam3, char* sPar
 			{
 				if (!HUD::DOES_BLIP_EXIST(uParam2->[0 /*20*/].f_8))
 				{
-					uParam2->[0 /*20*/].f_8 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(uParam3->[0 /*3*/]);
+					uParam2->[0 /*20*/].f_8 = HUD::ADD_BLIP_FOR_COORD(uParam3->[0 /*3*/]);
 					HUD::SET_BLIP_ROUTE(uParam2->[0 /*20*/].f_8, true);
 				}
 			}
@@ -11936,7 +11936,7 @@ void func_223(var uParam0, Blip* pblParam1, var uParam2, var uParam3, char* sPar
 				
 					if (!HUD::DOES_BLIP_EXIST(uParam2->[0 /*20*/].f_8))
 					{
-						uParam2->[0 /*20*/].f_8 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(uLocal_650[iLocal_2604 /*23*/].f_1);
+						uParam2->[0 /*20*/].f_8 = HUD::ADD_BLIP_FOR_COORD(uLocal_650[iLocal_2604 /*23*/].f_1);
 						HUD::SET_BLIP_COLOUR(uParam2->[0 /*20*/].f_8, 3);
 						HUD::SET_BLIP_ROUTE(uParam2->[0 /*20*/].f_8, true);
 					}
@@ -11962,7 +11962,7 @@ void func_223(var uParam0, Blip* pblParam1, var uParam2, var uParam3, char* sPar
 					
 						if (!HUD::DOES_BLIP_EXIST(uParam2->[0 /*20*/].f_8))
 						{
-							uParam2->[0 /*20*/].f_8 = VEHICLE::GET_VEHICLE_WHEEL_TYPE(uLocal_650[iLocal_2604 /*23*/].f_1);
+							uParam2->[0 /*20*/].f_8 = HUD::ADD_BLIP_FOR_COORD(uLocal_650[iLocal_2604 /*23*/].f_1);
 							HUD::SET_BLIP_COLOUR(uParam2->[0 /*20*/].f_8, 3);
 							HUD::SET_BLIP_ROUTE(uParam2->[0 /*20*/].f_8, true);
 						}
@@ -12721,9 +12721,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -13557,7 +13557,7 @@ int func_272(const char* sParam0, int iParam1, int iParam2) // Position - 0xF8DC
 		}
 	}
 
-	HUD::SET_SCRIPT_VARIABLE_HUD_COLOUR(1);
+	HUD::CLEAR_HELP(true);
 	HUD::CLEAR_PRINTS();
 	func_285(false);
 	func_284(1);
@@ -14522,7 +14522,7 @@ void func_290(BOOL bParam0) // Position - 0x1168C
 	}
 	else if (Global_20383.f_1 == 1)
 	{
-		if (!Global_20383.f_1 == 0)
+		if (!(Global_20383.f_1 == 0))
 			Global_20383.f_1 = 3;
 	}
 

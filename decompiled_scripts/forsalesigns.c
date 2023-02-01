@@ -40,7 +40,7 @@
 	Hash hLocal_38 = 0;
 	BOOL bLocal_39 = 0;
 	int iLocal_40 = 0;
-	Player plLocal_41 = 0;
+	int iLocal_41 = 0;
 	BOOL bLocal_42 = 0;
 	int iLocal_43 = 0;
 	Ped pedLocal_44 = 0;
@@ -499,7 +499,7 @@ BOOL func_2(int iParam0) // Position - 0x248
 {
 	int i;
 
-	if (!iParam0 == 2)
+	if (!(iParam0 == 2))
 	{
 		if (func_5(iParam0) < func_4(iParam0))
 			return false;
@@ -579,7 +579,7 @@ int func_5(int iParam0) // Position - 0x310
 		{
 			num = func_8(iParam0) + i;
 		
-			if (func_6(num, -1))
+			if (_STAT_GET_PACKED_BOOL(num, -1))
 				outValue = outValue + 1;
 		}
 	}
@@ -587,12 +587,12 @@ int func_5(int iParam0) // Position - 0x310
 	return outValue;
 }
 
-BOOL func_6(int iParam0, int iParam1) // Position - 0x3D4
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0x3D4
 {
 	if (iParam1 == -1)
 		iParam1 = func_7();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 int func_7() // Position - 0x3F0
@@ -628,9 +628,9 @@ void func_9() // Position - 0x443
 			case 0:
 				if (!CAM::IS_SCREEN_FADED_OUT())
 				{
-					plLocal_41 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("MIDSIZED_MESSAGE");
+					iLocal_41 = GRAPHICS::REQUEST_SCALEFORM_MOVIE("MIDSIZED_MESSAGE");
 				
-					if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_41))
+					if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_41))
 					{
 						soundId = AUDIO::GET_SOUND_ID();
 						AUDIO::PLAY_SOUND_FRONTEND(soundId, "SIGN_DESTROYED", "HUD_AWARDS", true);
@@ -640,7 +640,7 @@ void func_9() // Position - 0x443
 				break;
 		
 			case 1:
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_41, "SHOW_SHARD_MIDSIZED_MESSAGE");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_41, "SHOW_SHARD_MIDSIZED_MESSAGE");
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("FS_TITLE" /*Sign Destroyed~s~*/);
 				GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING("FS_DESTROY" /*~1~/15 signs destroyed.*/);
@@ -654,7 +654,7 @@ void func_9() // Position - 0x443
 			case 2:
 				if (SYSTEM::TIMERB() > 7000)
 				{
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(plLocal_41, "SHARD_ANIM_OUT");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(iLocal_41, "SHARD_ANIM_OUT");
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(0.33f);
 					GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
@@ -662,8 +662,8 @@ void func_9() // Position - 0x443
 				}
 				else if (!func_10())
 				{
-					if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_41))
-						GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(plLocal_41, 100, 100, 100, 255, 0);
+					if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_41))
+						GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(iLocal_41, 100, 100, 100, 255, 0);
 				}
 				break;
 		
@@ -671,13 +671,13 @@ void func_9() // Position - 0x443
 				if (SYSTEM::TIMERB() > 7500)
 					iLocal_40 = iLocal_40 + 1;
 				else if (!func_10())
-					if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_41))
-						GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(plLocal_41, 100, 100, 100, 255, 0);
+					if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_41))
+						GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(iLocal_41, 100, 100, 100, 255, 0);
 				break;
 		
 			case 4:
-				if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(plLocal_41))
-					GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&plLocal_41);
+				if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(iLocal_41))
+					GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_41);
 			
 				bLocal_376 = false;
 				bLocal_39 = false;
@@ -813,7 +813,7 @@ void func_18(int iParam0, int iParam1) // Position - 0x786
 void func_19(int iParam0) // Position - 0x79E
 {
 	if (iParam0 < 16)
-		_STAT_SET_PACKED_BOOL(875 + iParam0, 1, -1);
+		_STAT_SET_PACKED_BOOL(875 + iParam0, true, -1);
 
 	func_20(joaat("NUM_DESTROYED_SIGNS_0"), 1);
 	return;
@@ -829,12 +829,12 @@ void func_20(Hash hParam0, int iParam1) // Position - 0x7C6
 	return;
 }
 
-void _STAT_SET_PACKED_BOOL(int iParam0, int iParam1, int iParam2) // Position - 0x7E9
+void _STAT_SET_PACKED_BOOL(int iParam0, BOOL bParam1, int iParam2) // Position - 0x7E9
 {
 	if (iParam2 == -1)
 		iParam2 = func_7();
 
-	unk_0x0111091C0EE35B9C(iParam0, iParam1, iParam2);
+	STATS::SET_PACKED_STAT_BOOL_CODE(iParam0, bParam1, iParam2);
 	return;
 }
 
@@ -1549,9 +1549,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -1859,7 +1859,7 @@ void func_65(int iParam0, int iParam1, int iParam2) // Position - 0x1C04
 	}
 	else
 	{
-		_STAT_SET_PACKED_BOOL(891 + iParam0, 1, -1);
+		_STAT_SET_PACKED_BOOL(891 + iParam0, true, -1);
 	}
 
 	flag = true;

@@ -172,7 +172,7 @@ void main() // Position - 0x0
 	
 		if (ENTITY::DOES_ENTITY_EXIST(pedLocal_95))
 		{
-			if (ENTITY::IS_ENTITY_DEAD(pedLocal_95, false) && !iLocal_99 == 7)
+			if (ENTITY::IS_ENTITY_DEAD(pedLocal_95, false) && !(iLocal_99 == 7))
 			{
 				func_35(&(Global_113648.f_20119), 16384);
 				iLocal_99 = 7;
@@ -208,7 +208,7 @@ void main() // Position - 0x0
 				break;
 		
 			case 2:
-				if (unk_0x804373B32F7D9075(iLocal_101, "MNT_DNC") == 1)
+				if (AUDIO::PREPARE_SYNCHRONIZED_AUDIO_EVENT_FOR_SCENE(iLocal_101, "MNT_DNC") == true)
 				{
 					AUDIO::PLAY_SYNCHRONIZED_AUDIO_EVENT(iLocal_101);
 					iLocal_99 = 3;

@@ -322,7 +322,7 @@ void func_4() // Position - 0x4E2
 
 BOOL func_5() // Position - 0x518
 {
-	return Global_2766478;
+	return Global_2766480;
 }
 
 BOOL func_6(Ped pedParam0) // Position - 0x524
@@ -347,7 +347,7 @@ int func_7(Ped pedParam0) // Position - 0x545
 
 	for (i = 0; i < 16; i = i + 1)
 	{
-		if (!Global_44232[i /*5*/] == -1)
+		if (!(Global_44232[i /*5*/] == -1))
 			if (pedParam0 == Global_44232[i /*5*/].f_1)
 				return i;
 	}
@@ -570,7 +570,7 @@ void func_19(int iParam0) // Position - 0x87E
 	if (iParam0 < 0 || iParam0 >= 5)
 		return;
 
-	if (!Global_44206[iParam0 /*5*/].f_1 == 0)
+	if (!(Global_44206[iParam0 /*5*/].f_1 == 0))
 		if (Global_44206[iParam0 /*5*/].f_1 == PLAYER::PLAYER_PED_ID())
 			Global_44444 = 0;
 
@@ -589,7 +589,7 @@ void func_19(int iParam0) // Position - 0x87E
 
 void func_20() // Position - 0x901
 {
-	if (!Global_44313[iLocal_13 /*6*/].f_2 == 6)
+	if (!(Global_44313[iLocal_13 /*6*/].f_2 == 6))
 	{
 		if (Global_44313[iLocal_13 /*6*/].f_1 == 0)
 		{
@@ -644,7 +644,7 @@ void func_23() // Position - 0x9C8
 
 	num = -1;
 
-	if (!Global_44232[iLocal_14 /*5*/] == -1)
+	if (!(Global_44232[iLocal_14 /*5*/] == -1))
 	{
 		num = func_29(Global_44232[iLocal_14 /*5*/], 0);
 	

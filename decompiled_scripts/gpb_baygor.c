@@ -731,7 +731,7 @@ void main() // Position - 0x0
 	
 		entityCoords = { ENTITY::GET_ENTITY_COORDS(pedLocal_240, true) };
 	
-		if (ENTITY::HAS_ENTITY_COLLIDED_WITH_ANYTHING(pedLocal_240) && !iLocal_250 == 25 && !iLocal_250 == 5 && !iLocal_250 == 6)
+		if (ENTITY::HAS_ENTITY_COLLIDED_WITH_ANYTHING(pedLocal_240) && !(iLocal_250 == 25) && !(iLocal_250 == 5) && !(iLocal_250 == 6))
 		{
 			func_97();
 		
@@ -955,7 +955,7 @@ void main() // Position - 0x0
 					else
 						Global_113593[iLocal_251] = Global_113593[iLocal_251] + 1;
 				
-					if (!Global_113593[iLocal_251] < iLocal_252)
+					if (!(Global_113593[iLocal_251] < iLocal_252))
 						Global_113593[iLocal_251] = 0;
 				
 					func_104(0, true);
@@ -1020,7 +1020,7 @@ void main() // Position - 0x0
 					_CONVERSATION_INITIALIZE_ACTOR(&uLocal_37, 3, pedLocal_240, &uLocal_236, 0, 1);
 					Global_113593[iLocal_251] = Global_113593[iLocal_251] + 1;
 				
-					if (!Global_113593[iLocal_251] < iLocal_252)
+					if (!(Global_113593[iLocal_251] < iLocal_252))
 						Global_113593[iLocal_251] = 0;
 				
 					iLocal_250 = 10;
@@ -1080,7 +1080,7 @@ void main() // Position - 0x0
 				iLocal_246 = iLocal_246 + 1;
 				uLocal_420 = { uLocal_404 };
 			
-				if (!iLocal_246 < func_19() || num6 > 10f)
+				if (!(iLocal_246 < func_19()) || num6 > 10f)
 				{
 					if (num6 > 10f && _CONVERSATION_IS_DIALOGUE_IN_PROGRESS())
 						func_17();
@@ -1382,13 +1382,13 @@ void _CONTEXT_ADD_HELP_TEXT(var uParam0, int iParam1, char* sParam2, int iParam3
 
 	if (STREAMING::IS_PLAYER_SWITCH_IN_PROGRESS())
 	{
-		if (!*uParam0 == -1)
+		if (!(*uParam0 == -1))
 			_CONTEXT_REMOVE_HELP_TEXT(uParam0);
 	
 		return;
 	}
 
-	if (!*uParam0 == -1)
+	if (!(*uParam0 == -1))
 		return;
 
 	i = 0;
@@ -2352,9 +2352,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;

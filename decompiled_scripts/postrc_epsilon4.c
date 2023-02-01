@@ -970,9 +970,9 @@ void _CONVERSATION_INITIALIZE_ACTOR(var uParam0, int iParam1, Ped pedParam2, cha
 	
 		if (!PED::IS_PED_INJURED(pedParam2))
 			if (uParam0->[iParam1 /*10*/].f_9 == 0)
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 0);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, false);
 			else
-				TASK::OPEN_PATROL_ROUTE(pedParam2, 1);
+				PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(pedParam2, true);
 	}
 
 	return;
@@ -990,9 +990,9 @@ Hash func_32(eCharacter echParam0) // Position - 0xDEF
 
 BOOL func_33(eCharacter echParam0) // Position - 0xE15
 {
-	if (!_GET_CURRENT_PLAYER_CHARACTER() == echParam0 || func_35() || func_34() || Global_78555 != -1)
+	if (!(_GET_CURRENT_PLAYER_CHARACTER() == echParam0) || func_35() || func_34() || Global_78555 != -1)
 	{
-		!_GET_CURRENT_PLAYER_CHARACTER() == CHAR_FRANKLIN;
+		!(_GET_CURRENT_PLAYER_CHARACTER() == CHAR_FRANKLIN);
 		func_35();
 		func_34();
 		Global_78555 != -1;

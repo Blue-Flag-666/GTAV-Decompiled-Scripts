@@ -660,7 +660,7 @@ void main() // Position - 0x0
 		
 			if (bLocal_608)
 			{
-				if (!_GET_CURRENT_PLAYER_CHARACTER() == CHAR_FRANKLIN)
+				if (!(_GET_CURRENT_PLAYER_CHARACTER() == CHAR_FRANKLIN))
 					func_1("SSHIP_SWITCH" /*Switch to Franklin to deliver the spaceship parts to Omega.*/, 1, 0, 20000, 10000, 3, 0, 0, 0);
 			
 				func_53();
@@ -1056,7 +1056,7 @@ void func_17(var uParam0, var uParam1, var uParam2, int iParam3, var uParam4, in
 				break;
 		
 			case 1:
-				NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam5, "SHOW_SHARD_MIDSIZED_MESSAGE");
+				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam5, "SHOW_SHARD_MIDSIZED_MESSAGE");
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING(sParam6);
 				GRAPHICS::END_TEXT_COMMAND_SCALEFORM_STRING();
 				GRAPHICS::BEGIN_TEXT_COMMAND_SCALEFORM_STRING(sParam7);
@@ -1070,7 +1070,7 @@ void func_17(var uParam0, var uParam1, var uParam2, int iParam3, var uParam4, in
 			case 2:
 				if (MISC::GET_GAME_TIMER() - *uParam2 > 7000)
 				{
-					NETWORK::NETWORK_LEAVE_PED_BEHIND_BEFORE_CUTSCENE(*piParam5, "SHARD_ANIM_OUT");
+					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(*piParam5, "SHARD_ANIM_OUT");
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT(1);
 					GRAPHICS::SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT(0.33f);
 					GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
@@ -1161,7 +1161,7 @@ int func_19(int iParam0) // Position - 0xBE4
 		{
 			num = func_22(iParam0) + i;
 		
-			if (func_20(num, -1))
+			if (_STAT_GET_PACKED_BOOL(num, -1))
 				outValue = outValue + 1;
 		}
 	}
@@ -1169,12 +1169,12 @@ int func_19(int iParam0) // Position - 0xBE4
 	return outValue;
 }
 
-BOOL func_20(int iParam0, int iParam1) // Position - 0xCA8
+BOOL _STAT_GET_PACKED_BOOL(int iParam0, int iParam1) // Position - 0xCA8
 {
 	if (iParam1 == -1)
 		iParam1 = func_21();
 
-	return unk_0xD03506C6E58E4E95(iParam0, iParam1);
+	return STATS::GET_PACKED_STAT_BOOL_CODE(iParam0, iParam1);
 }
 
 int func_21() // Position - 0xCC4
@@ -1414,7 +1414,7 @@ void func_34(var uParam0) // Position - 0x10C6
 		if (func_45(uParam0, i))
 		{
 			num = num + 1;
-			_STAT_SET_PACKED_BOOL(uParam0->f_2 + i, 1, -1);
+			_STAT_SET_PACKED_BOOL(uParam0->f_2 + i, true, -1);
 			bLocal_40;
 		}
 	}
@@ -1438,12 +1438,12 @@ void func_35(int iParam0, int iParam1) // Position - 0x1147
 	return;
 }
 
-void _STAT_SET_PACKED_BOOL(int iParam0, int iParam1, int iParam2) // Position - 0x1184
+void _STAT_SET_PACKED_BOOL(int iParam0, BOOL bParam1, int iParam2) // Position - 0x1184
 {
 	if (iParam2 == -1)
 		iParam2 = func_21();
 
-	unk_0x0111091C0EE35B9C(iParam0, iParam1, iParam2);
+	STATS::SET_PACKED_STAT_BOOL_CODE(iParam0, bParam1, iParam2);
 	return;
 }
 
@@ -1457,7 +1457,7 @@ void func_37(var uParam0, int iParam1) // Position - 0x11A2
 	if (func_45(uParam0, iParam1))
 	{
 		uParam0->f_4 = uParam0->f_4 + 1;
-		_STAT_SET_PACKED_BOOL(uParam0->f_2 + iParam1, 1, -1);
+		_STAT_SET_PACKED_BOOL(uParam0->f_2 + iParam1, true, -1);
 		bLocal_40;
 	}
 
@@ -1695,7 +1695,7 @@ void func_48(int* piParam0, int iParam1, int iParam2) // Position - 0x15F5
 
 	for (i = 0; i < piParam0->f_3; i = i + 1)
 	{
-		if (func_20(piParam0->f_2 + i, -1))
+		if (_STAT_GET_PACKED_BOOL(piParam0->f_2 + i, -1))
 		{
 			num = num + 1;
 			func_39(piParam0, i, true);
