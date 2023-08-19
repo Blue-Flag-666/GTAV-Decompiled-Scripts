@@ -2470,7 +2470,7 @@ BOOL func_51(int iParam0, int iParam1) // Position - 0x351D
 
 Hash func_52(int iParam0, int iParam1) // Position - 0x3541
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_53(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_53(iParam1));
 }
 
 int func_53(int iParam0) // Position - 0x3556
@@ -2786,7 +2786,7 @@ float func_72(int iParam0, int iParam1) // Position - 0x3A6E
 
 Hash func_73(int iParam0, int iParam1) // Position - 0x3A92
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_53(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_53(iParam1));
 }
 
 // Unhandled jump detected. Output should be considered invalid
@@ -3197,7 +3197,7 @@ int func_78(int iParam0, int iParam1) // Position - 0x40D6
 
 Hash func_79(int iParam0, int iParam1) // Position - 0x4105
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_53(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_53(iParam1));
 }
 
 void func_80(char* sParam0) // Position - 0x411A
@@ -46994,7 +46994,7 @@ BOOL func_346(int iParam0, int iParam1) // Position - 0x3E9F5
 
 Hash func_347(int iParam0, int iParam1) // Position - 0x3EA19
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_53(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_53(iParam1));
 }
 
 int func_348(int iParam0, int iParam1, int iParam2) // Position - 0x3EA2F
@@ -50740,7 +50740,7 @@ int func_349(int iParam0, int iParam1) // Position - 0x41782
 
 Hash func_350(int iParam0, int iParam1) // Position - 0x417A6
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_53(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_53(iParam1));
 }
 
 BOOL func_351(eControlAction ecaParam0, int iParam1, BOOL bParam2) // Position - 0x417BC

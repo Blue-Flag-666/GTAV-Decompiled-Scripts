@@ -3817,7 +3817,7 @@ void func_53(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_54(int iParam0, int iParam1) // Position - 0x22C9
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_55(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_55(iParam1));
 }
 
 int func_55(int iParam0) // Position - 0x22DE
@@ -5357,7 +5357,7 @@ int func_89(int iParam0, int iParam1) // Position - 0x4032
 
 Hash func_90(int iParam0, int iParam1) // Position - 0x4061
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_55(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_55(iParam1));
 }
 
 int func_91(int iParam0) // Position - 0x4076
@@ -20499,7 +20499,7 @@ void func_599(int iParam0, int iParam1, int iParam2) // Position - 0x19964
 
 Hash func_600(int iParam0, int iParam1) // Position - 0x19980
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_55(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_55(iParam1));
 }
 
 int func_601(int iParam0, int iParam1) // Position - 0x19996
@@ -32358,7 +32358,7 @@ BOOL func_856(int iParam0, int iParam1) // Position - 0x2473C
 
 Hash func_857(int iParam0, int iParam1) // Position - 0x24760
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_55(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_55(iParam1));
 }
 
 int func_858(Hash hParam0) // Position - 0x24776
@@ -37941,7 +37941,7 @@ void func_929(var uParam0, var uParam1, const char* sParam2, int iParam3, BOOL b
 
 Hash func_930(var uParam0, int iParam1) // Position - 0x2AC7F
 {
-	return unk_0xD69CE161FE614531(3, uParam0, func_55(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(3, uParam0, func_55(iParam1));
 }
 
 BOOL func_931(int iParam0, var uParam1, var uParam2) // Position - 0x2AC94
@@ -50354,7 +50354,7 @@ void func_968(int iParam0, int iParam1) // Position - 0x38B7D
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;
@@ -71109,7 +71109,7 @@ void func_1305(int iParam0) // Position - 0x5493F
 	if (num2 > NETWORK::GET_CLOUD_TIME_AS_INT())
 		num.f_13 = num2 - NETWORK::GET_CLOUD_TIME_AS_INT();
 
-	unk_0xCEACCF0550FDC5BA(&num);
+	_PLAYSTATS_ACID_RND(&num);
 	return;
 }
 

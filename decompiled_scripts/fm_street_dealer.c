@@ -7487,7 +7487,7 @@ void func_163(var uParam0, var uParam1, int iParam2) // Position - 0x9D50
 	unk.f_2 = uParam0->f_7;
 	unk.f_3 = Global_2794162.f_6751.f_31;
 	unk.f_4 = uParam0->f_7 == uParam1->f_3;
-	unk_0xA81017EE1324FDFE(iParam2, &unk);
+	_NETWORK_EARN_STREET_DEALER(iParam2, &unk);
 	return;
 }
 
@@ -7534,7 +7534,7 @@ void func_166(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_167(int iParam0, int iParam1) // Position - 0x9E81
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_168(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_168(iParam1));
 }
 
 int func_168(int iParam0) // Position - 0x9E96
@@ -7734,7 +7734,7 @@ BOOL func_172(int iParam0, int iParam1, int iParam2, int iParam3, var uParam4, i
 						
 							if (iParam0 == 6)
 							{
-								unk_0x79B656937DF6DF5D(iParam2, func_174(PLAYER::PLAYER_ID(), 306));
+								_NETWORK_EARN_SELL_ACID(iParam2, func_174(PLAYER::PLAYER_ID(), 306));
 							}
 							else
 							{

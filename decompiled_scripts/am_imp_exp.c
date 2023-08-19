@@ -2990,7 +2990,7 @@ int func_81(int iParam0, int iParam1) // Position - 0x308B
 
 Hash func_82(int iParam0, int iParam1) // Position - 0x30BA
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_83(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_83(iParam1));
 }
 
 int func_83(int iParam0) // Position - 0x30CF
@@ -16529,7 +16529,7 @@ void func_490(int iParam0, int iParam1, int iParam2) // Position - 0x14E43
 
 Hash func_491(int iParam0, int iParam1) // Position - 0x14E5F
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_83(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_83(iParam1));
 }
 
 int func_492(int iParam0, int iParam1) // Position - 0x14E75
@@ -18012,7 +18012,7 @@ BOOL func_543(int iParam0, int iParam1) // Position - 0x167F5
 
 Hash func_544(int iParam0, int iParam1) // Position - 0x16819
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_83(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_83(iParam1));
 }
 
 BOOL _IS_FMMC_ACTIVE() // Position - 0x1682E

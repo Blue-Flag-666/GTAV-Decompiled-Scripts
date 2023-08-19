@@ -13842,7 +13842,7 @@ int func_157(int iParam0, int iParam1) // Position - 0x1134F
 
 Hash func_158(int iParam0, int iParam1) // Position - 0x1137E
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_159(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_159(iParam1));
 }
 
 int func_159(int iParam0) // Position - 0x11393
@@ -48503,7 +48503,7 @@ void func_401(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position 
 
 Hash func_402(int iParam0, int iParam1) // Position - 0x3353E
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_159(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_159(iParam1));
 }
 
 BOOL func_403(int iParam0, int iParam1) // Position - 0x33553
@@ -78239,7 +78239,7 @@ void func_1077(BOOL bParam0, int iParam1, int iParam2, BOOL bParam3, int iParam4
 
 void func_1078(int iParam0) // Position - 0x5C0F1
 {
-	unk_0x8A23D1324F6B2BAC(&Global_1949338);
+	_PLAYSTATS_ACID_MISSION_END(&Global_1949338);
 	func_1079();
 	return;
 }

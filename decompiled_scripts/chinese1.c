@@ -5498,7 +5498,7 @@ int func_14(int iParam0, int iParam1) // Position - 0x38DF
 
 Hash func_15(int iParam0, int iParam1) // Position - 0x390E
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_16(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_16(iParam1));
 }
 
 int func_16(int iParam0) // Position - 0x3923
@@ -29814,7 +29814,7 @@ void func_111(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position 
 
 Hash func_112(int iParam0, int iParam1) // Position - 0x1D115
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_16(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_16(iParam1));
 }
 
 int func_113(Ped pedParam0, int iParam1, int iParam2, int iParam3, int iParam4, int iParam5, int iParam6, int iParam7, int iParam8, int iParam9, int iParam10, BOOL bParam11, BOOL bParam12, BOOL bParam13) // Position - 0x1D12A
@@ -34326,7 +34326,7 @@ float func_153(int iParam0, int iParam1) // Position - 0x2495C
 
 Hash func_154(int iParam0, int iParam1) // Position - 0x2497F
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_16(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_16(iParam1));
 }
 
 int func_155(int iParam0) // Position - 0x24994
@@ -40271,7 +40271,7 @@ BOOL func_179(int iParam0, int iParam1) // Position - 0x315A9
 
 Hash func_180(int iParam0, int iParam1) // Position - 0x315CD
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_16(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_16(iParam1));
 }
 
 int func_181(int iParam0, int iParam1, int iParam2) // Position - 0x315E3
@@ -44017,7 +44017,7 @@ int func_182(int iParam0, int iParam1) // Position - 0x34326
 
 Hash func_183(int iParam0, int iParam1) // Position - 0x3434A
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_16(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_16(iParam1));
 }
 
 BOOL func_184(int iParam0, int iParam1, BOOL bParam2) // Position - 0x34360

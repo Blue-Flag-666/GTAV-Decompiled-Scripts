@@ -5383,7 +5383,7 @@ Hash func_37(int iParam0, int iParam1) // Position - 0x66E2
 
 Hash func_38(int iParam0, int iParam1) // Position - 0x6711
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_39(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_39(iParam1));
 }
 
 int func_39(int iParam0) // Position - 0x6726
@@ -27585,7 +27585,7 @@ BOOL func_211(int iParam0, int iParam1) // Position - 0x22EB5
 
 Hash func_212(int iParam0, int iParam1) // Position - 0x22ED9
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_39(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_39(iParam1));
 }
 
 int func_213(Hash hParam0) // Position - 0x22EEE
@@ -39910,12 +39910,12 @@ void func_341(int iParam0, BOOL bParam1, int iParam2, int iParam3) // Position -
 						MONEY::NETWORK_BUY_ITEM(Global_100885.f_1409, Global_100885.f_1410, iParam2, Global_100885.f_1411, flag2, &(Global_100885.f_1405), MISC::GET_HASH_KEY(func_345(iParam0, iParam3, true)), Global_100885.f_1410, Global_100885.f_1412, flag3);
 					else if (iParam2 == 1 || iParam2 == 2 || iParam2 == 8 || iParam2 == 16 || iParam2 == 15)
 						if (iParam2 == 8 && iParam0 == 45 && iParam3 == 21 && MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "CMOD_ACD_EQUIP"))
-							unk_0x110EE9D486C23126(Global_100885.f_1409, 0, 1, 1013460729);
+							_NETWORK_SPEND_UPGRADE_ACID_LAB_EQUIPMENT(Global_100885.f_1409, 0, 1, 1013460729);
 						else if (iParam2 == 8 && iParam0 == 45 && iParam3 == 12 && MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "AVENG3_MGUN") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "AVENG3_LAUNCHER") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "CMM_MOD_AVR_TRM") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "CMM_MOD_AVR_TRS") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "STEALTH_MOD") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "MLJ_UNIT" /*Missile Lock-on Jammer*/))
 							if (MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "STEALTH_MOD"))
-								unk_0x95CE79A6939C537A(Global_100885.f_1409, flag2, flag3, 670542637);
+								_NETWORK_SPENT_STEALTH_MODULE(Global_100885.f_1409, flag2, flag3, 670542637);
 							else if (MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "MLJ_UNIT" /*Missile Lock-on Jammer*/))
-								unk_0xD687100F616163F4(Global_100885.f_1409, flag2, flag3, 954742878);
+								_NETWORK_SPENT_MISSILE_JAMMER(Global_100885.f_1409, flag2, flag3, 954742878);
 							else
 								func_344(iParam0, flag2, flag3, iParam3);
 						else
@@ -49830,7 +49830,7 @@ void func_400(int iParam0, int iParam1, int iParam2) // Position - 0x48083
 
 Hash func_401(int iParam0, int iParam1) // Position - 0x4809F
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_39(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_39(iParam1));
 }
 
 void func_402(int iParam0, int iParam1, int iParam2, int iParam3, Hash hParam4) // Position - 0x480B5
@@ -139859,7 +139859,7 @@ void func_986(int iParam0, BOOL bParam1, int iParam2) // Position - 0xB9422
 
 Hash func_987(int iParam0, int iParam1) // Position - 0xB943E
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_39(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_39(iParam1));
 }
 
 BOOL func_988(int iParam0, int iParam1) // Position - 0xB9454
@@ -155517,7 +155517,7 @@ void func_1215() // Position - 0xCF1A3
 						num = -677003483;
 						num2 = func_14();
 						flag5 = false;
-						unk_0xF96E9EA876D9DC92(num, num2, func_1217(flag5));
+						_PLAYSTATS_SHOPMENU_NAV(num, num2, func_1217(flag5));
 						func_796(36946, true);
 					}
 				
@@ -158731,7 +158731,7 @@ void func_1290(var uParam0) // Position - 0xD462F
 		}
 	
 		if (VEHICLE::IS_VEHICLE_DOOR_FULLY_OPEN(*uParam0, 2) || VEHICLE::IS_VEHICLE_DOOR_FULLY_OPEN(*uParam0, 3))
-			unk_0x5815BD2763178DF4(*uParam0, 0);
+			SET_VEHICLE_TAIL_LIGHTS(*uParam0, 0);
 	}
 
 	return;

@@ -1652,7 +1652,7 @@ int func_22(int iParam0, int iParam1) // Position - 0x138F
 
 Hash func_23(int iParam0, int iParam1) // Position - 0x13BE
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_24(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_24(iParam1));
 }
 
 int func_24(int iParam0) // Position - 0x13D3
@@ -15665,7 +15665,7 @@ BOOL func_344(int iParam0, int iParam1, int iParam2, int iParam3, var uParam4, i
 						
 							if (iParam0 == 6)
 							{
-								unk_0x79B656937DF6DF5D(iParam2, func_345(PLAYER::PLAYER_ID(), 306));
+								_NETWORK_EARN_SELL_ACID(iParam2, func_345(PLAYER::PLAYER_ID(), 306));
 							}
 							else
 							{

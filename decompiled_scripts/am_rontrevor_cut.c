@@ -1786,7 +1786,7 @@ void func_31(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_32(int iParam0, int iParam1) // Position - 0x17B0
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_33(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_33(iParam1));
 }
 
 int func_33(int iParam0) // Position - 0x17C5
@@ -3255,7 +3255,7 @@ void func_79(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position - 
 
 Hash func_80(int iParam0, int iParam1) // Position - 0x2FC2
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_33(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_33(iParam1));
 }
 
 int func_81(int iParam0, int iParam1) // Position - 0x2FD7
@@ -12003,7 +12003,7 @@ float func_254(int iParam0, int iParam1) // Position - 0x10682
 
 Hash func_255(int iParam0, int iParam1) // Position - 0x106A5
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_33(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_33(iParam1));
 }
 
 int func_256(int iParam0) // Position - 0x106BA
@@ -17943,7 +17943,7 @@ BOOL func_279(int iParam0, int iParam1) // Position - 0x1D23A
 
 Hash func_280(int iParam0, int iParam1) // Position - 0x1D25E
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_33(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_33(iParam1));
 }
 
 int func_281(int iParam0, int iParam1, int iParam2) // Position - 0x1D274
@@ -21689,7 +21689,7 @@ int func_282(int iParam0, int iParam1) // Position - 0x1FFB7
 
 Hash func_283(int iParam0, int iParam1) // Position - 0x1FFDB
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_33(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_33(iParam1));
 }
 
 BOOL func_284(int iParam0, int iParam1, BOOL bParam2) // Position - 0x1FFF1
@@ -90964,7 +90964,7 @@ void func_708(int iParam0, int iParam1) // Position - 0x78F0C
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;

@@ -10473,7 +10473,7 @@ int func_137(int iParam0, int iParam1) // Position - 0x1124B
 
 Hash func_138(int iParam0, int iParam1) // Position - 0x1127A
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_139(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_139(iParam1));
 }
 
 int func_139(int iParam0) // Position - 0x1128F
@@ -32369,7 +32369,7 @@ BOOL func_205(int iParam0, int iParam1) // Position - 0x26BA1
 
 Hash func_206(int iParam0, int iParam1) // Position - 0x26BC5
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_139(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_139(iParam1));
 }
 
 void func_207(Ped pedParam0, ePedComponentType epctParam1, var uParam2, var uParam3, int iParam4, eCharacter echParam5) // Position - 0x26BDA

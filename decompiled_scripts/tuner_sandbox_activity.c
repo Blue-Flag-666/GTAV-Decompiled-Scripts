@@ -6953,7 +6953,7 @@ int func_205(int iParam0, int iParam1) // Position - 0x4DFF
 
 Hash func_206(int iParam0, int iParam1) // Position - 0x4E2E
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_207(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_207(iParam1));
 }
 
 int func_207(int iParam0) // Position - 0x4E43
@@ -17793,7 +17793,7 @@ BOOL func_302(int iParam0, int iParam1, Vector3* pvParam2, var uParam3, int iPar
 
 	if (PATHFIND::GET_RANDOM_VEHICLE_NODE(*pvParam2, 30f, true, false, false, pvParam2, &nodeId))
 	{
-		unk_0x809549AFC7AEC597(nodeId, *pvParam2, pvParam2, uParam3);
+		GET_SPAWN_COORDS_FOR_VEHICLE_NODE(nodeId, *pvParam2, pvParam2, uParam3);
 	
 		if (!_IS_NULL_VECTOR(*pvParam2))
 			return true;
@@ -19103,13 +19103,13 @@ void func_307(BOOL bParam0) // Position - 0x18983
 	{
 		if (bParam0)
 		{
-			unk_0xC2AB6BFE34E92F8B(1);
+			LOAD_ALL_PATH_NODES(1);
 			func_309(83);
 		}
 	}
 	else if (!bParam0)
 	{
-		unk_0xC2AB6BFE34E92F8B(0);
+		LOAD_ALL_PATH_NODES(0);
 		func_308(83);
 	}
 
@@ -25262,7 +25262,7 @@ void func_456(int iParam0, Vehicle veParam1, BOOL bParam2) // Position - 0x26859
 	if (!func_168(ENTITY::GET_ENTITY_MODEL(veParam1)))
 		return;
 
-	vehicle = unk_0x80D9D32636369C92(veParam1);
+	vehicle = _GET_VEHICLE_TRAILER_PARENT_VEHICLE(veParam1);
 
 	if (ENTITY::DOES_ENTITY_EXIST(vehicle) && !VEHICLE::IS_VEHICLE_SEAT_FREE(veParam1, -1, false))
 	{
@@ -35271,7 +35271,7 @@ void func_670(int iParam0, int iParam1, int iParam2) // Position - 0x31D16
 
 Hash func_671(int iParam0, int iParam1) // Position - 0x31D32
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_207(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_207(iParam1));
 }
 
 void func_672(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4) // Position - 0x31D48
@@ -40795,7 +40795,7 @@ void func_968(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position 
 
 Hash func_969(int iParam0, int iParam1) // Position - 0x38A63
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_207(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_207(iParam1));
 }
 
 void func_970(int iParam0, int iParam1, int iParam2, var uParam3) // Position - 0x38A78
@@ -59687,7 +59687,7 @@ float func_1660(int iParam0, int iParam1) // Position - 0x52A28
 
 Hash func_1661(int iParam0, int iParam1) // Position - 0x52A4B
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_207(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_207(iParam1));
 }
 
 int func_1662(int iParam0) // Position - 0x52A60
@@ -65564,7 +65564,7 @@ BOOL func_1680(int iParam0, int iParam1) // Position - 0x5F4F5
 
 Hash func_1681(int iParam0, int iParam1) // Position - 0x5F519
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_207(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_207(iParam1));
 }
 
 int func_1682(int iParam0, int iParam1, int iParam2) // Position - 0x5F52F
@@ -126391,7 +126391,7 @@ void func_1898(int iParam0, int iParam1) // Position - 0xA4CF5
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;
@@ -162657,7 +162657,7 @@ void func_2848(int iParam0, Vehicle veParam1) // Position - 0xD7074
 			if (func_322(ENTITY::GET_ENTITY_COORDS(veParam1, true), 0f, 0f, 0f, ENTITY::GET_ENTITY_MODEL(veParam1), 1, &vector, &heading, &num))
 			{
 				if (func_168(ENTITY::GET_ENTITY_MODEL(veParam1)))
-					if (ENTITY::DOES_ENTITY_EXIST(veLocal_2158) && veLocal_2158 == unk_0x80D9D32636369C92(veParam1))
+					if (ENTITY::DOES_ENTITY_EXIST(veLocal_2158) && veLocal_2158 == _GET_VEHICLE_TRAILER_PARENT_VEHICLE(veParam1))
 						VEHICLE::DETACH_VEHICLE_FROM_TRAILER(veLocal_2158);
 			
 				func_308(89);
@@ -162971,7 +162971,7 @@ void func_2868(int iParam0, Vehicle veParam1, BOOL bParam2) // Position - 0xD785
 
 	if (bParam2)
 	{
-		vehicle = unk_0x80D9D32636369C92(veParam1);
+		vehicle = _GET_VEHICLE_TRAILER_PARENT_VEHICLE(veParam1);
 	
 		if (ENTITY::DOES_ENTITY_EXIST(vehicle) && !VEHICLE::IS_VEHICLE_SEAT_FREE(veParam1, -1, false))
 		{
@@ -179819,7 +179819,7 @@ void func_3675(BOOL bParam0, int iParam1, int iParam2, BOOL bParam3, int iParam4
 
 void func_3676(int iParam0) // Position - 0xEB95E
 {
-	unk_0x8A23D1324F6B2BAC(&Global_1949338);
+	_PLAYSTATS_ACID_MISSION_END(&Global_1949338);
 	func_3677();
 	return;
 }

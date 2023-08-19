@@ -7883,7 +7883,7 @@ int func_150(int iParam0, int iParam1) // Position - 0x5B66
 
 Hash func_151(int iParam0, int iParam1) // Position - 0x5B95
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_152(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_152(iParam1));
 }
 
 int func_152(int iParam0) // Position - 0x5BAA
@@ -12223,7 +12223,7 @@ BOOL func_254(var uParam0, BOOL bParam1, BOOL bParam2, int iParam3) // Position 
 					if (bParam2)
 					{
 						NETSHOPPING::NET_GAMESERVER_SET_TELEMETRY_NONCE_SEED(func_256(func_272()));
-						unk_0xED1B407BADA42CEC(Global_262145.f_16063, 0, 1, iParam3);
+						_NETWORK_SPENT_SKIP_CARGO_SOURCE_SETUP(Global_262145.f_16063, 0, 1, iParam3);
 					}
 				
 					func_259(func_272());
@@ -14510,7 +14510,7 @@ BOOL func_341(var uParam0, var uParam1) // Position - 0xC509
 			}
 			else
 			{
-				unk_0xED1B407BADA42CEC(Global_262145.f_16063, 0, 1, iLocal_141);
+				_NETWORK_SPENT_SKIP_CARGO_SOURCE_SETUP(Global_262145.f_16063, 0, 1, iLocal_141);
 				*uParam0 = 1;
 			}
 			break;

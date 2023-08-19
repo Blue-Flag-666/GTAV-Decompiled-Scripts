@@ -9260,7 +9260,7 @@ BOOL func_72(int iParam0, int iParam1) // Position - 0x5FB4
 
 Hash func_73(int iParam0, int iParam1) // Position - 0x5FD8
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_74(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_74(iParam1));
 }
 
 int func_74(int iParam0) // Position - 0x5FED
@@ -12944,7 +12944,7 @@ float func_111(int iParam0, int iParam1) // Position - 0xC19B
 
 Hash func_112(int iParam0, int iParam1) // Position - 0xC1BF
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_74(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_74(iParam1));
 }
 
 BOOL func_113(Hash hParam0, int iParam1, int iParam2, int iParam3, int iParam4, int iParam5, Ped pedParam6, int iParam7, int iParam8, int iParam9, int iParam10, int iParam11) // Position - 0xC1D4
@@ -18792,7 +18792,7 @@ BOOL func_133(int iParam0, int iParam1) // Position - 0x18C29
 
 Hash func_134(int iParam0, int iParam1) // Position - 0x18C4D
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_74(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_74(iParam1));
 }
 
 int func_135(int iParam0, int iParam1, int iParam2) // Position - 0x18C63
@@ -22538,7 +22538,7 @@ int func_136(int iParam0, int iParam1) // Position - 0x1B9A6
 
 Hash func_137(int iParam0, int iParam1) // Position - 0x1B9CA
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_74(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_74(iParam1));
 }
 
 BOOL func_138(int iParam0, int iParam1, BOOL bParam2) // Position - 0x1B9E0
@@ -67020,7 +67020,7 @@ void func_275(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_276(int iParam0, int iParam1) // Position - 0x4F925
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_74(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_74(iParam1));
 }
 
 void func_277(Ped pedParam0, int iParam1, BOOL bParam2) // Position - 0x4F93A
@@ -104424,7 +104424,7 @@ void func_584(int iParam0, int iParam1, const char* sParam2, int iParam3, BOOL b
 
 Hash func_585(int iParam0, int iParam1) // Position - 0x7B5FF
 {
-	return unk_0xD69CE161FE614531(3, iParam0, func_74(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(3, iParam0, func_74(iParam1));
 }
 
 struct<16> func_586(int iParam0, int iParam1, int iParam2) // Position - 0x7B614
@@ -140240,7 +140240,7 @@ void func_1251(int iParam0, int iParam1) // Position - 0xAE788
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;

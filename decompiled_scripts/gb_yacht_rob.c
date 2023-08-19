@@ -2396,7 +2396,7 @@ BOOL func_98(int iParam0, int iParam1) // Position - 0x278D
 
 Hash func_99(int iParam0, int iParam1) // Position - 0x27B1
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_100(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_100(iParam1));
 }
 
 int func_100(int iParam0) // Position - 0x27C6
@@ -2927,7 +2927,7 @@ void func_112(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_113(int iParam0, int iParam1) // Position - 0x3056
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_100(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_100(iParam1));
 }
 
 int func_114(int iParam0) // Position - 0x306B
@@ -8620,7 +8620,7 @@ void func_335(BOOL bParam0, int iParam1, int iParam2, BOOL bParam3, int iParam4,
 
 void func_336(int iParam0) // Position - 0xA9E0
 {
-	unk_0x8A23D1324F6B2BAC(&Global_1949338);
+	_PLAYSTATS_ACID_MISSION_END(&Global_1949338);
 	func_337();
 	return;
 }
@@ -84230,7 +84230,7 @@ float func_1217(int iParam0, int iParam1) // Position - 0x62AA8
 
 Hash func_1218(int iParam0, int iParam1) // Position - 0x62ACB
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_100(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_100(iParam1));
 }
 
 int func_1219(int iParam0) // Position - 0x62AE0
@@ -89908,7 +89908,7 @@ BOOL func_1233(int iParam0, int iParam1) // Position - 0x6F1C6
 
 Hash func_1234(int iParam0, int iParam1) // Position - 0x6F1EA
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_100(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_100(iParam1));
 }
 
 int func_1235(int iParam0, int iParam1, int iParam2) // Position - 0x6F200
@@ -93654,7 +93654,7 @@ int func_1236(int iParam0, int iParam1) // Position - 0x71F43
 
 Hash func_1237(int iParam0, int iParam1) // Position - 0x71F67
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_100(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_100(iParam1));
 }
 
 BOOL func_1238(int iParam0, int iParam1, BOOL bParam2) // Position - 0x71F7D
@@ -124045,7 +124045,7 @@ void func_1558(int iParam0, int iParam1) // Position - 0xA610D
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;

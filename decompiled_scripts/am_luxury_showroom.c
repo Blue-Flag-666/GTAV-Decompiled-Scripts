@@ -10812,7 +10812,7 @@ void func_96(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position - 
 
 Hash func_97(int iParam0, int iParam1) // Position - 0xF068
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_98(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_98(iParam1));
 }
 
 int func_98(int iParam0) // Position - 0xF07D
@@ -23254,7 +23254,7 @@ void func_173(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position 
 
 Hash func_174(int iParam0, int iParam1) // Position - 0x1D21E
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_98(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_98(iParam1));
 }
 
 void func_175(Vehicle veParam0) // Position - 0x1D233
@@ -42959,7 +42959,7 @@ int func_355(int iParam0, int iParam1) // Position - 0x339DD
 
 Hash func_356(int iParam0, int iParam1) // Position - 0x33A01
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_98(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_98(iParam1));
 }
 
 BOOL func_357() // Position - 0x33A17
@@ -67096,7 +67096,7 @@ BOOL func_458(int iParam0, int iParam1) // Position - 0x5990B
 
 Hash func_459(int iParam0, int iParam1) // Position - 0x5992F
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_98(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_98(iParam1));
 }
 
 BOOL func_460(int iParam0, BOOL bParam1) // Position - 0x59945
@@ -73460,7 +73460,7 @@ void func_534(int iParam0, int iParam1) // Position - 0x60F36
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;
@@ -76855,7 +76855,7 @@ struct<16> func_597(var uParam0, var uParam1, int iParam2) // Position - 0x6643F
 
 Hash func_598(var uParam0, int iParam1) // Position - 0x6647C
 {
-	return unk_0xD69CE161FE614531(3, uParam0, func_98(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(3, uParam0, func_98(iParam1));
 }
 
 BOOL func_599(int iParam0, var uParam1, var uParam2) // Position - 0x66491
@@ -89090,7 +89090,7 @@ void func_838(var uParam0, var uParam1, Ped pedParam2) // Position - 0x77B86
 	else
 		entityModel = 0;
 
-	unk_0x961D4157B9B428DB(func_260(uParam0), uParam1, entityModel);
+	_PLAYSTATS_SHOWROOM_NAV(func_260(uParam0), uParam1, entityModel);
 	return;
 }
 

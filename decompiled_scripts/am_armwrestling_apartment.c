@@ -44963,7 +44963,7 @@ BOOL func_329(int iParam0, int iParam1) // Position - 0x31954
 
 Hash func_330(int iParam0, int iParam1) // Position - 0x31978
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_103(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_103(iParam1));
 }
 
 BOOL func_331(Player plParam0) // Position - 0x3198D
@@ -48224,7 +48224,7 @@ BOOL func_392(int iParam0, int iParam1) // Position - 0x356F6
 
 Hash func_393(int iParam0, int iParam1) // Position - 0x3571A
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_103(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_103(iParam1));
 }
 
 BOOL func_394(int iParam0, BOOL bParam1) // Position - 0x35730
@@ -55239,7 +55239,7 @@ void func_567(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_568(int iParam0, int iParam1) // Position - 0x3E3DF
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_103(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_103(iParam1));
 }
 
 void func_569() // Position - 0x3E3F4

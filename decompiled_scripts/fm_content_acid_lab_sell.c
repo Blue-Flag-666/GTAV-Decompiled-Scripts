@@ -14947,7 +14947,7 @@ int func_255(int iParam0, int iParam1) // Position - 0x642F
 
 Hash func_256(int iParam0, int iParam1) // Position - 0x645E
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_257(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_257(iParam1));
 }
 
 int func_257(int iParam0) // Position - 0x6473
@@ -25593,7 +25593,7 @@ BOOL func_351(int iParam0, Player plParam1, Vector3* pvParam2, var uParam3, int 
 
 	if (PATHFIND::GET_RANDOM_VEHICLE_NODE(*pvParam2, 30f, true, false, false, pvParam2, &nodeId))
 	{
-		unk_0x809549AFC7AEC597(nodeId, *pvParam2, pvParam2, uParam3);
+		GET_SPAWN_COORDS_FOR_VEHICLE_NODE(nodeId, *pvParam2, pvParam2, uParam3);
 	
 		if (!_IS_NULL_VECTOR(*pvParam2))
 			return true;
@@ -33044,13 +33044,13 @@ void func_500(BOOL bParam0) // Position - 0x27B5C
 	{
 		if (bParam0)
 		{
-			unk_0xC2AB6BFE34E92F8B(1);
+			LOAD_ALL_PATH_NODES(1);
 			func_144(83);
 		}
 	}
 	else if (!bParam0)
 	{
-		unk_0xC2AB6BFE34E92F8B(0);
+		LOAD_ALL_PATH_NODES(0);
 		func_501(83);
 	}
 
@@ -33188,7 +33188,7 @@ void func_509(Player plParam0, Vehicle veParam1, BOOL bParam2) // Position - 0x2
 	if (!func_209(ENTITY::GET_ENTITY_MODEL(veParam1)))
 		return;
 
-	vehicle = unk_0x80D9D32636369C92(veParam1);
+	vehicle = _GET_VEHICLE_TRAILER_PARENT_VEHICLE(veParam1);
 
 	if (ENTITY::DOES_ENTITY_EXIST(vehicle) && !VEHICLE::IS_VEHICLE_SEAT_FREE(veParam1, -1, false))
 	{
@@ -34747,7 +34747,7 @@ BOOL func_593(int iParam0, int iParam1, int iParam2, int iParam3, var uParam4, A
 						
 							if (iParam0 == 6)
 							{
-								unk_0x79B656937DF6DF5D(iParam2, func_597(PLAYER::PLAYER_ID(), 306));
+								_NETWORK_EARN_SELL_ACID(iParam2, func_597(PLAYER::PLAYER_ID(), 306));
 							}
 							else
 							{
@@ -53299,7 +53299,7 @@ int func_1469() // Position - 0x3FCD1
 	{
 		vector = { 0f, 0f, 0f };
 	
-		if (unk_0x3DA8C28346B62CED(unk.f_2, unk.f_5, unk.f_8, weaponHash, &vector, 1))
+		if (GET_COORDS_OF_PROJECTILE_TYPE_IN_ANGLED_AREA(unk.f_2, unk.f_5, unk.f_8, weaponHash, &vector, 1))
 		{
 			uLocal_6737[iLocal_5166 /*349*/].f_268.f_1[num /*7*/].f_1 = { vector };
 		
@@ -54292,7 +54292,7 @@ void func_1534(int iParam0) // Position - 0x40DB4
 	if (func_69())
 	{
 		if (!_NETSHOPPING_SHOULD_USE_TRANSACTION_SYSTEM())
-			unk_0x79B656937DF6DF5D(iParam0, func_694());
+			_NETWORK_EARN_SELL_ACID(iParam0, func_694());
 	}
 	else if (_NETSHOPPING_SHOULD_USE_TRANSACTION_SYSTEM())
 	{
@@ -54301,7 +54301,7 @@ void func_1534(int iParam0) // Position - 0x40DB4
 	}
 	else
 	{
-		unk_0xCA3EF9B09A8D76B4(iParam0, func_694());
+		_NETWORK_EARN_SELL_PARTICIPATION_ACID_LAB(iParam0, func_694());
 	}
 
 	return;
@@ -56471,7 +56471,7 @@ BOOL func_1651(int iParam0, int iParam1) // Position - 0x43720
 
 Hash func_1652(int iParam0, int iParam1) // Position - 0x43744
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_257(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_257(iParam1));
 }
 
 BOOL func_1653() // Position - 0x43759
@@ -68758,7 +68758,7 @@ float func_1974(int iParam0, int iParam1) // Position - 0x55D24
 
 Hash func_1975(int iParam0, int iParam1) // Position - 0x55D47
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_257(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_257(iParam1));
 }
 
 int func_1976(int iParam0) // Position - 0x55D5C
@@ -74635,7 +74635,7 @@ BOOL func_1994(int iParam0, int iParam1) // Position - 0x627F7
 
 Hash func_1995(int iParam0, int iParam1) // Position - 0x6281B
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_257(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_257(iParam1));
 }
 
 int func_1996(int iParam0, int iParam1, int iParam2) // Position - 0x62831
@@ -78381,7 +78381,7 @@ int func_1997(int iParam0, int iParam1) // Position - 0x65582
 
 Hash func_1998(int iParam0, int iParam1) // Position - 0x655A6
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_257(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_257(iParam1));
 }
 
 BOOL func_1999(int iParam0, int iParam1, BOOL bParam2) // Position - 0x655BC
@@ -134950,7 +134950,7 @@ void func_2192(int iParam0, int iParam1) // Position - 0xA7419
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;
@@ -175074,7 +175074,7 @@ void func_3297(Player plParam0, Vehicle veParam1) // Position - 0xDEE28
 			if (func_358(ENTITY::GET_ENTITY_COORDS(veParam1, true), 0f, 0f, 0f, ENTITY::GET_ENTITY_MODEL(veParam1), 1, &vector, &heading, &num))
 			{
 				if (func_209(ENTITY::GET_ENTITY_MODEL(veParam1)))
-					if (ENTITY::DOES_ENTITY_EXIST(veLocal_5171) && veLocal_5171 == unk_0x80D9D32636369C92(veParam1))
+					if (ENTITY::DOES_ENTITY_EXIST(veLocal_5171) && veLocal_5171 == _GET_VEHICLE_TRAILER_PARENT_VEHICLE(veParam1))
 						VEHICLE::DETACH_VEHICLE_FROM_TRAILER(veLocal_5171);
 			
 				func_501(89);
@@ -175388,7 +175388,7 @@ void func_3317(Player plParam0, Vehicle veParam1, BOOL bParam2) // Position - 0x
 
 	if (bParam2)
 	{
-		vehicle = unk_0x80D9D32636369C92(veParam1);
+		vehicle = _GET_VEHICLE_TRAILER_PARENT_VEHICLE(veParam1);
 	
 		if (ENTITY::DOES_ENTITY_EXIST(vehicle) && !VEHICLE::IS_VEHICLE_SEAT_FREE(veParam1, -1, false))
 		{
@@ -192322,7 +192322,7 @@ void func_4158(BOOL bParam0, int iParam1, int iParam2, BOOL bParam3, int iParam4
 
 void func_4159(int iParam0) // Position - 0xF3C71
 {
-	unk_0x8A23D1324F6B2BAC(&Global_1949338);
+	_PLAYSTATS_ACID_MISSION_END(&Global_1949338);
 	func_4160();
 	return;
 }

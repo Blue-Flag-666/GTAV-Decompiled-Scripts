@@ -7750,7 +7750,7 @@ int func_173(int iParam0, int iParam1) // Position - 0x6DF8
 
 Hash func_174(int iParam0, int iParam1) // Position - 0x6E27
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_175(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_175(iParam1));
 }
 
 int func_175(int iParam0) // Position - 0x6E3C
@@ -17050,7 +17050,7 @@ BOOL func_500(int iParam0, int iParam1) // Position - 0x1348E
 
 Hash func_501(int iParam0, int iParam1) // Position - 0x134B2
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_175(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_175(iParam1));
 }
 
 int func_502() // Position - 0x134C7
@@ -21195,7 +21195,7 @@ float func_548(int iParam0, int iParam1) // Position - 0x1A202
 
 Hash func_549(int iParam0, int iParam1) // Position - 0x1A225
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_175(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_175(iParam1));
 }
 
 int func_550(int iParam0) // Position - 0x1A23A
@@ -27125,7 +27125,7 @@ BOOL func_571(int iParam0, int iParam1) // Position - 0x26D9E
 
 Hash func_572(int iParam0, int iParam1) // Position - 0x26DC2
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_175(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_175(iParam1));
 }
 
 int func_573(int iParam0, int iParam1, int iParam2) // Position - 0x26DD8
@@ -30871,7 +30871,7 @@ int func_574(int iParam0, int iParam1) // Position - 0x29B40
 
 Hash func_575(int iParam0, int iParam1) // Position - 0x29B64
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_175(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_175(iParam1));
 }
 
 BOOL func_576(int iParam0, int iParam1, BOOL bParam2) // Position - 0x29B7A
@@ -99174,7 +99174,7 @@ void func_963(int iParam0, int iParam1) // Position - 0x817F9
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;

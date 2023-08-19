@@ -17580,7 +17580,7 @@ int func_176(int iParam0, int iParam1) // Position - 0x18DC1
 
 Hash func_177(int iParam0, int iParam1) // Position - 0x18DF0
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_178(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_178(iParam1));
 }
 
 int func_178(int iParam0) // Position - 0x18E05
@@ -17695,7 +17695,7 @@ BOOL func_183(int iParam0, int iParam1) // Position - 0x18F39
 
 Hash func_184(int iParam0, int iParam1) // Position - 0x18F5D
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_178(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_178(iParam1));
 }
 
 BOOL func_185(int iParam0, BOOL bParam1) // Position - 0x18F73
@@ -18325,7 +18325,7 @@ BOOL func_209(int iParam0, int iParam1) // Position - 0x1985B
 
 Hash func_210(int iParam0, int iParam1) // Position - 0x1987F
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_178(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_178(iParam1));
 }
 
 BOOL func_211(Player plParam0) // Position - 0x19894

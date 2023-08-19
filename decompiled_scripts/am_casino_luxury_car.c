@@ -1022,7 +1022,7 @@ int func_38(int iParam0, int iParam1) // Position - 0xEFB
 
 Hash func_39(int iParam0, int iParam1) // Position - 0xF2A
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_40(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_40(iParam1));
 }
 
 int func_40(int iParam0) // Position - 0xF3F

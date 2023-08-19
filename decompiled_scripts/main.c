@@ -2525,7 +2525,7 @@ BOOL func_73(int iParam0, int iParam1) // Position - 0x2AC5
 
 Hash func_74(int iParam0, int iParam1) // Position - 0x2AE9
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_75(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_75(iParam1));
 }
 
 int func_75(int iParam0) // Position - 0x2AFE
@@ -6134,7 +6134,7 @@ int func_144(int iParam0, int iParam1) // Position - 0x83EC
 
 Hash func_145(int iParam0, int iParam1) // Position - 0x841B
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_75(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_75(iParam1));
 }
 
 void func_146(eCharacter echParam0, int iParam1, var uParam2, var uParam3) // Position - 0x8430
@@ -39958,7 +39958,7 @@ float func_314(int iParam0, int iParam1) // Position - 0x2FC30
 
 Hash func_315(int iParam0, int iParam1) // Position - 0x2FC53
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_75(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_75(iParam1));
 }
 
 int func_316(int iParam0) // Position - 0x2FC68
@@ -45888,7 +45888,7 @@ BOOL func_337(int iParam0, int iParam1) // Position - 0x3C7D5
 
 Hash func_338(int iParam0, int iParam1) // Position - 0x3C7F9
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_75(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_75(iParam1));
 }
 
 int func_339(int iParam0, int iParam1, int iParam2) // Position - 0x3C80F
@@ -49634,7 +49634,7 @@ int func_340(int iParam0, int iParam1) // Position - 0x3F552
 
 Hash func_341(int iParam0, int iParam1) // Position - 0x3F576
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_75(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_75(iParam1));
 }
 
 BOOL func_342(int iParam0, int iParam1, BOOL bParam2) // Position - 0x3F58C
@@ -109129,7 +109129,7 @@ BOOL func_855(var uParam0, var uParam1, var uParam2, var uParam3, var uParam4, v
 	if (!IS_GAMER_HANDLE_VALID(uParam0))
 		return 1;
 
-	return unk_0xAD4326FCA30D62F8(&uParam0);
+	return NETWORK_IS_PLAYER_ON_BLOCKLIST(&uParam0);
 }
 
 void func_856() // Position - 0x8EDBA

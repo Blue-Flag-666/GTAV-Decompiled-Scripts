@@ -6875,7 +6875,7 @@ int func_128(int iParam0, int iParam1) // Position - 0x9B7E
 
 Hash func_129(int iParam0, int iParam1) // Position - 0x9BAD
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_130(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_130(iParam1));
 }
 
 int func_130(int iParam0) // Position - 0x9BC2

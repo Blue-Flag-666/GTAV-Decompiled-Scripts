@@ -2055,7 +2055,7 @@ void func_40(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_41(int iParam0, int iParam1) // Position - 0x1BD5
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_42(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_42(iParam1));
 }
 
 int func_42(int iParam0) // Position - 0x1BEA
@@ -3675,7 +3675,7 @@ void func_96(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position - 
 
 Hash func_97(int iParam0, int iParam1) // Position - 0x3663
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_42(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_42(iParam1));
 }
 
 int func_98(int iParam0, int iParam1) // Position - 0x3678
@@ -60626,7 +60626,7 @@ void func_539(int iParam0, int iParam1) // Position - 0x4840A
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;
@@ -86078,7 +86078,7 @@ float func_1074(int iParam0, int iParam1) // Position - 0x72801
 
 Hash func_1075(int iParam0, int iParam1) // Position - 0x72824
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_42(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_42(iParam1));
 }
 
 int func_1076(int iParam0) // Position - 0x72839
@@ -91761,7 +91761,7 @@ BOOL func_1091(int iParam0, int iParam1) // Position - 0x7EF31
 
 Hash func_1092(int iParam0, int iParam1) // Position - 0x7EF55
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_42(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_42(iParam1));
 }
 
 int func_1093(int iParam0, int iParam1, int iParam2) // Position - 0x7EF6B
@@ -95507,7 +95507,7 @@ int func_1094(int iParam0, int iParam1) // Position - 0x81CB0
 
 Hash func_1095(int iParam0, int iParam1) // Position - 0x81CD4
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_42(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_42(iParam1));
 }
 
 BOOL func_1096(int iParam0, int iParam1, BOOL bParam2) // Position - 0x81CEA

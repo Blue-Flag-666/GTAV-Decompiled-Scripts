@@ -7861,7 +7861,7 @@ int func_66(int iParam0, int iParam1) // Position - 0x6F4A
 
 Hash func_67(int iParam0, int iParam1) // Position - 0x6F79
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_68(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_68(iParam1));
 }
 
 int func_68(int iParam0) // Position - 0x6F8E
@@ -14592,7 +14592,7 @@ void func_241(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position 
 
 Hash func_242(int iParam0, int iParam1) // Position - 0xF9F8
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_68(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_68(iParam1));
 }
 
 void _STOPWATCH_RESET(var pStopwatch, BOOL useLocalTimer, BOOL useAccurateTime) // Position - 0xFA0D

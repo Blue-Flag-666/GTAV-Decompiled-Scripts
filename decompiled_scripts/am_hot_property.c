@@ -6708,7 +6708,7 @@ int func_137(int iParam0, int iParam1) // Position - 0x489E
 
 Hash func_138(int iParam0, int iParam1) // Position - 0x48CD
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_139(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_139(iParam1));
 }
 
 int func_139(int iParam0) // Position - 0x48E2
@@ -20296,7 +20296,7 @@ BOOL func_579(int iParam0, int iParam1) // Position - 0x16CB0
 
 Hash func_580(int iParam0, int iParam1) // Position - 0x16CD4
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_139(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_139(iParam1));
 }
 
 BOOL func_581() // Position - 0x16CE9
@@ -28290,7 +28290,7 @@ float func_723(int iParam0, int iParam1) // Position - 0x23286
 
 Hash func_724(int iParam0, int iParam1) // Position - 0x232A9
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_139(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_139(iParam1));
 }
 
 int func_725(int iParam0) // Position - 0x232BE
@@ -34220,7 +34220,7 @@ BOOL func_746(int iParam0, int iParam1) // Position - 0x2FE27
 
 Hash func_747(int iParam0, int iParam1) // Position - 0x2FE4B
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_139(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_139(iParam1));
 }
 
 int func_748(int iParam0, int iParam1, int iParam2) // Position - 0x2FE61
@@ -37966,7 +37966,7 @@ int func_749(int iParam0, int iParam1) // Position - 0x32D36
 
 Hash func_750(int iParam0, int iParam1) // Position - 0x32D5A
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_139(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_139(iParam1));
 }
 
 BOOL func_751(int iParam0, int iParam1, BOOL bParam2) // Position - 0x32D70
@@ -104055,7 +104055,7 @@ void func_1084(int iParam0, int iParam1) // Position - 0x8773F
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;

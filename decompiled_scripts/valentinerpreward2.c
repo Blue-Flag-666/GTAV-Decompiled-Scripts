@@ -460,7 +460,7 @@ void func_17(int iParam0, int iParam1, const char* sParam2, int iParam3, BOOL bP
 
 Hash func_18(int iParam0, int iParam1) // Position - 0x73F
 {
-	return unk_0xD69CE161FE614531(3, iParam0, func_19(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(3, iParam0, func_19(iParam1));
 }
 
 int func_19(int iParam0) // Position - 0x754
@@ -1232,7 +1232,7 @@ void func_68(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position - 
 
 Hash func_69(int iParam0, int iParam1) // Position - 0x1530
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_19(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_19(iParam1));
 }
 
 int func_70(int iParam0, int iParam1) // Position - 0x1545

@@ -731,7 +731,7 @@ void func_52(Vehicle veParam0, BOOL bParam1) // Position - 0xC05
 				break;
 		
 			case 239897677:
-				unk_0x0C02468829E4AA65(veParam0, !bParam1);
+				_SET_DEPLOY_MISSILE_BAYS(veParam0, !bParam1);
 				break;
 		}
 	}
@@ -1242,7 +1242,7 @@ BOOL func_74(int* piParam0) // Position - 0x14D2
 				break;
 		
 			case 239897677:
-				flag = !unk_0xEA4743874D515F13(piParam0->f_1);
+				flag = !_ARE_MISSILE_BAYS_DEPLOYED(piParam0->f_1);
 				break;
 		}
 	}

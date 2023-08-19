@@ -3605,7 +3605,7 @@ BOOL func_17(int iParam0, int iParam1) // Position - 0x410B
 
 Hash func_18(int iParam0, int iParam1) // Position - 0x413A
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_19(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_19(iParam1));
 }
 
 int func_19(int iParam0) // Position - 0x414F
@@ -8354,7 +8354,7 @@ BOOL func_73(int iParam0, int iParam1) // Position - 0xC659
 
 Hash func_74(int iParam0, int iParam1) // Position - 0xC67D
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_19(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_19(iParam1));
 }
 
 void func_75(Ped pedParam0, ePedComponentType epctParam1, var uParam2, var uParam3, int iParam4, eCharacter echParam5) // Position - 0xC692
@@ -15345,7 +15345,7 @@ float func_194(int iParam0, int iParam1) // Position - 0x17B79
 
 Hash func_195(int iParam0, int iParam1) // Position - 0x17B9C
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_19(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_19(iParam1));
 }
 
 int func_196(int iParam0) // Position - 0x17BB1
@@ -21222,7 +21222,7 @@ BOOL func_214(int iParam0, int iParam1) // Position - 0x24650
 
 Hash func_215(int iParam0, int iParam1) // Position - 0x24674
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_19(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_19(iParam1));
 }
 
 int func_216(int iParam0, int iParam1, int iParam2) // Position - 0x2468A
@@ -24968,7 +24968,7 @@ int func_217(int iParam0, int iParam1) // Position - 0x273CD
 
 Hash func_218(int iParam0, int iParam1) // Position - 0x273F1
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_19(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_19(iParam1));
 }
 
 BOOL func_219(int iParam0, int iParam1, BOOL bParam2) // Position - 0x27407
@@ -102298,12 +102298,12 @@ void func_687(int iParam0, BOOL bParam1, int iParam2, int iParam3) // Position -
 						MONEY::NETWORK_BUY_ITEM(Global_100885.f_1409, Global_100885.f_1410, iParam2, Global_100885.f_1411, flag2, &(Global_100885.f_1405), MISC::GET_HASH_KEY(func_368(iParam0, iParam3, true)), Global_100885.f_1410, Global_100885.f_1412, flag3);
 					else if (iParam2 == 1 || iParam2 == 2 || iParam2 == 8 || iParam2 == 16 || iParam2 == 15)
 						if (iParam2 == 8 && iParam0 == 45 && iParam3 == 21 && MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "CMOD_ACD_EQUIP"))
-							unk_0x110EE9D486C23126(Global_100885.f_1409, 0, 1, 1013460729);
+							_NETWORK_SPEND_UPGRADE_ACID_LAB_EQUIPMENT(Global_100885.f_1409, 0, 1, 1013460729);
 						else if (iParam2 == 8 && iParam0 == 45 && iParam3 == 12 && MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "AVENG3_MGUN") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "AVENG3_LAUNCHER") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "CMM_MOD_AVR_TRM") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "CMM_MOD_AVR_TRS") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "STEALTH_MOD") || MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "MLJ_UNIT" /*Missile Lock-on Jammer*/))
 							if (MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "STEALTH_MOD"))
-								unk_0x95CE79A6939C537A(Global_100885.f_1409, flag2, flag3, 670542637);
+								_NETWORK_SPENT_STEALTH_MODULE(Global_100885.f_1409, flag2, flag3, 670542637);
 							else if (MISC::ARE_STRINGS_EQUAL(&(Global_100885.f_1405), "MLJ_UNIT" /*Missile Lock-on Jammer*/))
-								unk_0xD687100F616163F4(Global_100885.f_1409, flag2, flag3, 954742878);
+								_NETWORK_SPENT_MISSILE_JAMMER(Global_100885.f_1409, flag2, flag3, 954742878);
 							else
 								func_689(iParam0, flag2, flag3, iParam3);
 						else

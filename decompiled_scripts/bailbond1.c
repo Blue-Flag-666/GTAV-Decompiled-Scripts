@@ -13052,7 +13052,7 @@ void func_249(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_250(int iParam0, int iParam1) // Position - 0x140C4
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_251(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_251(iParam1));
 }
 
 int func_251(int iParam0) // Position - 0x140D9

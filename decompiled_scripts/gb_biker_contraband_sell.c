@@ -24622,7 +24622,7 @@ int func_439(int iParam0, int iParam1) // Position - 0x1FEC1
 
 Hash func_440(int iParam0, int iParam1) // Position - 0x1FEF0
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_441(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_441(iParam1));
 }
 
 int func_441(int iParam0) // Position - 0x1FF05
@@ -33170,7 +33170,7 @@ void func_632(int iParam0, BOOL bParam1, int iParam2, BOOL bParam3) // Position 
 
 Hash func_633(int iParam0, int iParam1) // Position - 0x29892
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_441(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_441(iParam1));
 }
 
 void func_634(BOOL bParam0) // Position - 0x298A7
@@ -33742,7 +33742,7 @@ float func_647(int iParam0, int iParam1) // Position - 0x2A607
 
 Hash func_648(int iParam0, int iParam1) // Position - 0x2A62A
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_441(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_441(iParam1));
 }
 
 int func_649(int iParam0) // Position - 0x2A63F
@@ -44394,7 +44394,7 @@ BOOL func_708(int iParam0, int iParam1) // Position - 0x3F22C
 
 Hash func_709(int iParam0, int iParam1) // Position - 0x3F250
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_441(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_441(iParam1));
 }
 
 int func_710(int iParam0, int iParam1, int iParam2) // Position - 0x3F266
@@ -48140,7 +48140,7 @@ int func_711(int iParam0, int iParam1) // Position - 0x41FAA
 
 Hash func_712(int iParam0, int iParam1) // Position - 0x41FCE
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_441(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_441(iParam1));
 }
 
 BOOL func_713(int iParam0, int iParam1, BOOL bParam2) // Position - 0x41FE4
@@ -149663,7 +149663,7 @@ BOOL func_2016(int iParam0, int iParam1, int iParam2, int iParam3, var uParam4, 
 						
 							if (iParam0 == 6)
 							{
-								unk_0x79B656937DF6DF5D(iParam2, func_2017(PLAYER::PLAYER_ID(), 306));
+								_NETWORK_EARN_SELL_ACID(iParam2, func_2017(PLAYER::PLAYER_ID(), 306));
 							}
 							else
 							{
@@ -154216,7 +154216,7 @@ void func_2145(BOOL bParam0, int iParam1, int iParam2, BOOL bParam3, int iParam4
 
 void func_2146(int iParam0) // Position - 0xC18E4
 {
-	unk_0x8A23D1324F6B2BAC(&Global_1949338);
+	_PLAYSTATS_ACID_MISSION_END(&Global_1949338);
 	func_2147();
 	return;
 }

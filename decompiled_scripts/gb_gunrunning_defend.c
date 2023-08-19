@@ -24301,7 +24301,7 @@ BOOL func_580(int iParam0, int iParam1) // Position - 0x21C8C
 
 Hash func_581(int iParam0, int iParam1) // Position - 0x21CB0
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_582(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_582(iParam1));
 }
 
 int func_582(int iParam0) // Position - 0x21CC5
@@ -26164,7 +26164,7 @@ BOOL func_656(int iParam0, int iParam1, int iParam2, int iParam3, var uParam4, A
 						
 							if (iParam0 == 6)
 							{
-								unk_0x79B656937DF6DF5D(iParam2, func_660(PLAYER::PLAYER_ID(), 306));
+								_NETWORK_EARN_SELL_ACID(iParam2, func_660(PLAYER::PLAYER_ID(), 306));
 							}
 							else
 							{
@@ -27253,7 +27253,7 @@ int func_684(int iParam0, int iParam1) // Position - 0x257E1
 
 Hash func_685(int iParam0, int iParam1) // Position - 0x25810
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_582(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_582(iParam1));
 }
 
 int func_686(int iParam0) // Position - 0x25825
@@ -29468,7 +29468,7 @@ void func_760(BOOL bParam0, int iParam1, int iParam2, BOOL bParam3, int iParam4,
 
 void func_761(int iParam0) // Position - 0x289D3
 {
-	unk_0x8A23D1324F6B2BAC(&Global_1949338);
+	_PLAYSTATS_ACID_MISSION_END(&Global_1949338);
 	func_762();
 	return;
 }
@@ -87252,7 +87252,7 @@ float func_1309(int iParam0, int iParam1) // Position - 0x6C9B6
 
 Hash func_1310(int iParam0, int iParam1) // Position - 0x6C9D9
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_582(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_582(iParam1));
 }
 
 int func_1311(int iParam0) // Position - 0x6C9EE
@@ -92930,7 +92930,7 @@ BOOL func_1325(int iParam0, int iParam1) // Position - 0x79103
 
 Hash func_1326(int iParam0, int iParam1) // Position - 0x79127
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_582(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_582(iParam1));
 }
 
 int func_1327(int iParam0, int iParam1, int iParam2) // Position - 0x7913D
@@ -96676,7 +96676,7 @@ int func_1328(int iParam0, int iParam1) // Position - 0x7BE80
 
 Hash func_1329(int iParam0, int iParam1) // Position - 0x7BEA4
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_582(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_582(iParam1));
 }
 
 BOOL func_1330(int iParam0, int iParam1, BOOL bParam2) // Position - 0x7BEBA
@@ -130733,7 +130733,7 @@ void func_1542(int iParam0, int iParam1) // Position - 0xAB9BA
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;

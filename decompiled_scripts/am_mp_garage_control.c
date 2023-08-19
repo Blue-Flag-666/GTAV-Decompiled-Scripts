@@ -4762,7 +4762,7 @@ void func_113(int iParam0, int iParam1, int iParam2, BOOL bParam3) // Position -
 
 Hash func_114(int iParam0, int iParam1) // Position - 0x6589
 {
-	return unk_0xD69CE161FE614531(0, iParam0, func_115(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(0, iParam0, func_115(iParam1));
 }
 
 int func_115(int iParam0) // Position - 0x659E
@@ -4806,7 +4806,7 @@ BOOL func_116(int iParam0, int iParam1) // Position - 0x65D2
 
 Hash func_117(int iParam0, int iParam1) // Position - 0x65F6
 {
-	return unk_0xD69CE161FE614531(2, iParam0, func_115(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(2, iParam0, func_115(iParam1));
 }
 
 int func_118() // Position - 0x660B
@@ -8951,7 +8951,7 @@ float func_164(int iParam0, int iParam1) // Position - 0xD337
 
 Hash func_165(int iParam0, int iParam1) // Position - 0xD35A
 {
-	return unk_0xD69CE161FE614531(1, iParam0, func_115(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(1, iParam0, func_115(iParam1));
 }
 
 int func_166(int iParam0) // Position - 0xD36F
@@ -14891,7 +14891,7 @@ BOOL func_189(int iParam0, int iParam1) // Position - 0x19F94
 
 Hash func_190(int iParam0, int iParam1) // Position - 0x19FB8
 {
-	return unk_0xD69CE161FE614531(10, iParam0, func_115(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(10, iParam0, func_115(iParam1));
 }
 
 int func_191(int iParam0, int iParam1, int iParam2) // Position - 0x19FCE
@@ -18637,7 +18637,7 @@ int func_192(int iParam0, int iParam1) // Position - 0x1CD11
 
 Hash func_193(int iParam0, int iParam1) // Position - 0x1CD35
 {
-	return unk_0xD69CE161FE614531(8, iParam0, func_115(iParam1));
+	return _GET_STAT_HASH_FOR_CHARACTER_STAT(8, iParam0, func_115(iParam1));
 }
 
 BOOL func_194(int iParam0, int iParam1, BOOL bParam2) // Position - 0x1CD4B
@@ -88395,7 +88395,7 @@ void func_630(int iParam0, int iParam1) // Position - 0x7681D
 			num3 = -1;
 		}
 	
-		unk_0x10A691F5756416D0(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
+		PLAYSTATS_VEH_DEL(num, num2, num3, Global_1586488[iParam0 /*142*/].f_66, num4);
 	}
 
 	return;
